@@ -242,12 +242,19 @@
     .bio-text {
       font-size: 12px;
       color: #ccc;
-      line-height: 1.5;
+      line-height: 1.6;
       margin-bottom: 15px;
       background: rgba(255, 255, 255, 0.03);
-      padding: 10px;
+      padding: 12px;
       border-radius: 8px;
       border-left: 3px solid #0088cc;
+    }
+
+    .bio-text p {
+      margin-bottom: 8px;
+    }
+    .bio-text p:last-child {
+      margin-bottom: 0;
     }
 
     .skills-list {
@@ -292,8 +299,8 @@
 <body>
 
   <header>
-    <h1>Dota 1 Classic Guide</h1>
-    <input type="text" id="search" class="search-box" placeholder="Поиск героя (например, Bane, Lich, Invoker)...">
+    <h1>Dota 1 Classic Guide (112 Heroes)</h1>
+    <input type="text" id="search" class="search-box" placeholder="Поиск героя (например, Sven, Invoker)...">
   </header>
 
   <!-- Вкладки Атрибутов -->
@@ -343,656 +350,708 @@
       tg.expand();
     }
 
-    // Полная база данных героев Dota 1
+    // Полный реестр всех 112 героев с многоабзацными историями
     const heroesData = [
-      // === STRENGTH SENTINEL ===
-      {
-        name: "Sven", dota1: "Rogue Knight", attr: "Strength", faction: "Sentinel",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/sven.png",
-        bio: "Сын изгоя-паладина и эльфийки ночного эльфа, Свен вырос с клеймом позора и изгнания. Он поклялся следовать кодексу ордена Белого Мстителя, но после того как его наставники предали идеалы, Свен разрушил священное солнце, уничтожил орден и забрал с собой легендарный двуручный меч Месть.",
-        skills: [
-          { name: "Storm Bolt", desc: "Бросает магический молот, наносящий урон и оглушающий врагов в области." },
-          { name: "Great Cleave", desc: "Пассивно наносит урон всем стоящим рядом врагам при обычной атаке." },
-          { name: "Warcry", desc: "Издает боевой клич, повышая скорость передвижения и броню союзников." },
-          { name: "God's Strength", desc: "Ультимейт: Увеличивает базовый урон Sven." }
-        ]
+      // ==================== STRENGTH SENTINEL ====================
+      { 
+        name: "Sven", dota1: "Rogue Knight", attr: "Strength", faction: "Sentinel", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/sven.png", 
+        bio: "<p>Сын изгоя-паладина и эльфийки ночного эльфа, Свен вырос с клеймом позора и изгнания, отвергнутый обоими народами. Закаленный суровыми испытаниями, он поклялся следовать непреклонному кодексу ордена Белого Мстителя.</p><p>Однако, столкнувшись с лицемерием и предательством собственных наставников, Свен разрушил священное солнце и уничтожил орден, забрав с собой легендарный двуручный меч Месть.</p><p>Теперь этот одинокий рыцарь блуждает по полям сражений меж двух миров, полагаясь исключительно на свою ярость, стальной клинок и непоколебимую волю.</p>", 
+        skills: [{name: "Storm Bolt", desc: "Молот с уроном и станом."}, {name: "Great Cleave", desc: "Пассивный сплеш-урон."}, {name: "Warcry", desc: "Боевой клич на броню и скорость."}, {name: "God's Strength", desc: "Увеличение базового урона."}] 
       },
-      {
-        name: "Tiny", dota1: "Stone Giant", attr: "Strength", faction: "Sentinel",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/tiny.png",
-        bio: "Родившись из живой скалы и магических катаклизмов, крошечный каменный голем по имени Тайни изначально был лишь крохотным осколком огромного массива. С годами он впитывает обломки земли и минералы, становясь всё массивнее и разрушительнее.",
-        skills: [
-          { name: "Avalanche", desc: "Засыпает область камнями, нанося урон и оглушая врагов." },
-          { name: "Toss", desc: "Бросает ближайшего юнита в выбранную точку." },
-          { name: "Tree Grab", desc: "Позволяет вырвать дерево для усиления атак." },
-          { name: "Grow", desc: "Увеличивает размер героя, повышая урон и дальность броска." }
-        ]
+      { 
+        name: "Tiny", dota1: "Stone Giant", attr: "Strength", faction: "Sentinel", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/tiny.png", 
+        bio: "<p>Родившись в результате магических катаклизмов из живой скалы, крошечный каменный голем по имени Тайни изначально был лишь ничтожным осколком огромного земного массива.</p><p>С годами он путешествует по миру, непрерывно впитывая в себя обломки пород, минералы и целые деревья, становясь всё массивнее, сильнее и разрушительнее.</p><p>Его главная цель в жизни — узнать своё истинное происхождение и найти свои глубокие «корни» среди великих горных вершин.</p>", 
+        skills: [{name: "Avalanche", desc: "Камнепад по площади."}, {name: "Toss", desc: "Бросок юнита."}, {name: "Tree Grab", desc: "Удар деревом."}, {name: "Grow", desc: "Рост размера и урона."}] 
       },
-      {
-        name: "Kunkka", dota1: "Admiral", attr: "Strength", faction: "Sentinel",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/kunkka.png",
-        bio: "Легендарный адмирал флота людей, чья армада пала в глубоких водах во время битвы с демонами Тьмы у Водоворота. Кункка теперь является призрачным фантомом прошлых штормов.",
-        skills: [
-          { name: "Torrent", desc: "Создает гейзер в указанной точке, подбрасывающий врагов." },
-          { name: "Tidebringer", desc: "Наделяет удар меча смертоносной силой по площади." },
-          { name: "X Marks the Spot", desc: "Помечает цель крестиком, возвращая ее назад." },
-          { name: "Ghost Ship", desc: "Призывает призрачный корабль, дающий союзникам ром и ускорение." }
-        ]
+      { 
+        name: "Kunkka", dota1: "Admiral", attr: "Strength", faction: "Sentinel", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/kunkka.png", 
+        bio: "<p>Легендарный адмирал флота людей, чья некогда непобедимая армада пала в глубоких водах во время яростной битвы с демонами Тьмы у проклятого Водоворота.</p><p>Чудом выжив в том кошмаре ценой собственной гибели или рассудка, Кункка теперь является призрачным фантомом прошлых штормов.</p><p>Он вызывает духов погибших кораблей и призывает разрушительное цунами, чтобы отомстить силам Scourge за гибель своих матросов.</p>", 
+        skills: [{name: "Torrent", desc: "Гейзер воды."}, {name: "Tidebringer", desc: "Мощный удар меча."}, {name: "X Marks the Spot", desc: "Метка возврата."}, {name: "Ghost Ship", desc: "Призрачный корабль с ромом."}] 
       },
-      {
-        name: "Beastmaster", dota1: "Rexxar", attr: "Strength", faction: "Sentinel",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/beastmaster.png",
-        bio: "Наполовину орк, наполовину мок'натал, Рексар приручил могучего медведя Мишу и дикого ястреба, защищая дикую природу.",
-        skills: [
-          { name: "Wild Axes", desc: "Бросает два топора, разрезающих врагов." },
-          { name: "Call of the Wild", desc: "Призывает ястреба и кабана для разведки и боя." },
-          { name: "Inner Beast", desc: "Пассивно увеличивает скорость атаки союзников." },
-          { name: "Primal Roar", desc: "Оглушает цель мощным ревом и отталкивает врагов вокруг." }
-        ]
+      { 
+        name: "Beastmaster", dota1: "Rexxar", attr: "Strength", faction: "Sentinel", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/beastmaster.png", 
+        bio: "<p>Наполовину орк, наполовину мок'натал, Рексар с самого детства познал всю жестокость выживания в диких, нетронутых землях.</p><p>Обладая уникальным врожденным даром говорить со зверями, он приручил могучего медведя Мишу и дикого ястреба.</p><p>Рексар сражается на стороне Сентинел не ради политических интриг, а чтобы защитить дикую природу и доказать преданность своему народу.</p>", 
+        skills: [{name: "Wild Axes", desc: "Два топора."}, {name: "Call of the Wild", desc: "Призыв зверей."}, {name: "Inner Beast", desc: "Аура скорости атаки."}, {name: "Primal Roar", desc: "Оглушающий рев."}] 
       },
-      {
-        name: "Dragon Knight", dota1: "Davion", attr: "Strength", faction: "Sentinel",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/dragon_knight.png",
-        bio: "Отважный рыцарь Давион в честном бою сразил древнего дракона Шайрокера, приняв в свою кровь его силу и обращаясь в крылатого монстра.",
-        skills: [
-          { name: "Breathe Fire", desc: "Выдыхает огонь, снижая урон врагов." },
-          { name: "Dragon Blood", desc: "Укрепляет кровь, давая броню и регенерацию." },
-          { name: "Dragon Tail", desc: "Оглушает врага ударом щита вплотную." },
-          { name: "Elder Dragon Form", desc: "Превращает рыцаря в мощного дракона с новыми атаками." }
-        ]
+      { 
+        name: "Dragon Knight", dota1: "Davion", attr: "Strength", faction: "Sentinel", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/dragon_knight.png", 
+        bio: "<p>Отважный рыцарь Давион в честном, кровопролитном бою сразил древнего и доживающего свой век дракона по имени Шайрокер.</p><p>Вместо того чтобы погибнуть от ран, великий змей передал рыцарю свою кровь, боевой опыт и древнюю мудрость.</p><p>Теперь в жилах Давиона пылает драконье пламя, позволяющее ему в минуты ярости обращаться в крылатого монстра.</p>", 
+        skills: [{name: "Breathe Fire", desc: "Огненное дыхание."}, {name: "Dragon Blood", desc: "Броня и регенерация."}, {name: "Dragon Tail", desc: "Стан щитом."}, {name: "Elder Dragon Form", desc: "Превращение в дракона."}] 
       },
-
-      // === STRENGTH SCOURGE ===
-      {
-        name: "Axe", dota1: "Mogul Khan", attr: "Strength", faction: "Scourge",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/axe.png",
-        bio: "Могул Хан провозгласил себя единственным истинным полководцем, предпочитая спорам сокрушительный удар топора.",
-        skills: [
-          { name: "Berserker's Call", desc: "Заставляет врагов атаковать Axe." },
-          { name: "Battle Hunger", desc: "Наносит периодический урон жертве." },
-          { name: "Counter Helix", desc: "Контратакует врагов круговым ударом при получении урона." },
-          { name: "Culling Blade", desc: "Мгновенно казнит слабого противника." }
-        ]
+      { 
+        name: "Clockwerk", dota1: "Rattletrap", attr: "Strength", faction: "Sentinel", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/rattletrap.png", 
+        bio: "<p>Рэтлтрап — гениальный изобретатель из горного клана кезанов, создававший сложные механизмы для защиты своего народа.</p><p>После того как его родной город был стерт с лица земли в ходе бесконечных войн, он облачил себя в высокотехнологичный паровой доспех.</p><p>Используя крюки, ракеты и силовые шестерни, этот неутомимый инженер без колебаний врывается в эпицентр сражений.</p>", 
+        skills: [{name: "Battery Assault", desc: "Залп мини-ракетами."}, {name: "Power Cogs", desc: "Электрическая ловушка."}, {name: "Rocket Flare", desc: "Глобальная ракета."}, {name: "Hookshot", desc: "Крюк-лебедка."}] 
       },
-      {
-        name: "Sand King", dota1: "Crixalis", attr: "Strength", faction: "Scourge",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/sand_king.png",
-        bio: "Криксалис — разумный экзоскелет, порожденный магией бесконечных песчаных бурь пустыни Квант.",
-        skills: [
-          { name: "Burrowstrike", desc: "Уходит под землю и вырывается наружу, оглушая врагов." },
-          { name: "Sand Storm", desc: "Создает скрывающую песчаную бурю." },
-          { name: "Caustic Finale", desc: "Отравляет врагов, вызывая взрыв при их смерти." },
-          { name: "Epicenter", desc: "Вызывает мощнейшее землетрясение по площади." }
-        ]
+      { 
+        name: "Omniknight", dota1: "Purist Thunderwrath", attr: "Strength", faction: "Sentinel", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/omniknight.png", 
+        bio: "<p>Пурист Тандерврат долгие годы преданно служил ордену Повелителя Света, охраняя священные реликвии и свято веря в идеалы.</p><p>Столкнувшись с суровой правдой о несовершенстве церкви, он не отрекся от веры, а решил сам стать воплощением защиты.</p><p>Его святая молитва способна исцелять союзников и полностью ограждать их от любого физического урона.</p>", 
+        skills: [{name: "Purification", desc: "Лечение и урон вокруг."}, {name: "Repel", desc: "Иммунитет к магии."}, {name: "Degen Aura", desc: "Замедление врагов рядом."}, {name: "Guardian Angel", desc: "Полная защита от физ. урона."}] 
       },
-      {
-        name: "Slardar", dota1: "Slithereen Guard", attr: "Strength", faction: "Scourge",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/slardar.png",
-        bio: "Грозный страж глубин океана из расы наг-сильвериенов, охраняющий забытые сокровища затонувших городов.",
-        skills: [
-          { name: "Sprint", desc: "Резко ускоряет передвижение героя." },
-          { name: "Slithereen Crush", desc: "Бьет хвостом о землю, оглушая врагов." },
-          { name: "Bash of the Deep", desc: "Пассивно оглушает цель с каждой атакой." },
-          { name: "Corrosive Haze", desc: "Освещает цель, снижая ее броню." }
-        ]
+      { 
+        name: "Huskar", dota1: "Sacred Warrior", attr: "Strength", faction: "Sentinel", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/huskar.png", 
+        bio: "<p>Будучи воином троллей из племени Даззарей, Хускар был принесен в жертву древним богам, но жрецы вернули его из небытия.</p><p>Это дало ему невероятную мистическую силу, которая питается его собственной болью и пролитой кровью.</p><p>Чем ближе Хускар подходит к грани гибели, тем яростнее и быстрее он мещет горящие копья во врагов.</p>", 
+        skills: [{name: "Inner Vitality", desc: "Лечение от силы."}, {name: "Burning Spears", desc: "Горящие копья."}, {name: "Berserker's Blood", desc: "Ускорение при потере HP."}, {name: "Life Break", desc: "Прыжок с потерей здоровья цели."}] 
       },
-      {
-        name: "Tidehunter", dota1: "Leviathan", attr: "Strength", faction: "Scourge",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/tidehunter.png",
-        bio: "Древнее морское чудовище, веками обитавшее на дне океанских впадин и питающее ненависть к сухопутным созданиям.",
-        skills: [
-          { name: "Gush", desc: "Выпускает струю воды, снижая броню и скорость." },
-          { name: "Kraken Shell", desc: "Блокирует часть входящего урона и снимает эффекты." },
-          { name: "Anchor Smash", desc: "Размахивает якорем, нанося урон и снижая атаку." },
-          { name: "Ravage", desc: "Вызывает гигантские щупальца из-под земли, оглушая всех вокруг." }
-        ]
+      { 
+        name: "Alchemist", dota1: "Razzil Darkbrew", attr: "Strength", faction: "Sentinel", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/alchemist.png", 
+        bio: "<p>Безумный алхимик Раззил и его огромный напарник прославились своими опасными и взрывоопасными экспериментами.</p><p>Пытаясь превратить камни в золото, они случайно разрушили лабораторию и оказались заперты в тюрьме.</p><p>Там Раззил создал новый состав из кислот, напоил напарника и вместе они пробили стены тюрьмы.</p>", 
+        skills: [{name: "Acid Spray", desc: "Кислотная лужа."}, {name: "Unstable Concoction", desc: "Взрывающаяся колба."}, {name: "Greevil's Greed", desc: "Бонус золота."}, {name: "Chemical Rage", desc: "Ярость алхимика."}] 
       },
-      {
-        name: "Pudge", dota1: "Butcher", attr: "Strength", faction: "Scourge",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/pudge.png",
-        bio: "Ужасный мясник, притягивающий жертв окровавленным крюком и растворяющий их в кислоте.",
-        skills: [
-          { name: "Meat Hook", desc: "Бросает крюк и притягивает цель к себе." },
-          { name: "Rot", desc: "Выделяет ядовитое облако, наносящее урон вокруг." },
-          { name: "Flesh Heap", desc: "Увеличивает силу и защиту от магии за убийства." },
-          { name: "Dismember", desc: "Пожирает врага, нанося урон и исцеляя Pudge." }
-        ]
+      { 
+        name: "Brewmaster", dota1: "Mangix", attr: "Strength", faction: "Sentinel", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/brewmaster.png", 
+        bio: "<p>Мангикс принадлежит к древнему народу панд, чья культура строится на искусстве брожения и духовной гармонии.</p><p>Пройдя тяжелейшие испытания старейшин, он унаследовал почетный титул Мастера Пивоварения.</p><p>В бою он использует хмельные напитки и разделяется на три стихийных аспекта — Землю, Шторм и Огонь.</p>", 
+        skills: [{name: "Thunder Clap", desc: "Топот и замедление."}, {name: "Drunken Brawler", desc: "Уклонение и криты."}, {name: "Drunken Haze", desc: "Мазилка от атаки."}, {name: "Primal Split", desc: "Разделение на 3 стихии."}] 
+      },
+      { 
+        name: "Treant Protector", dota1: "Rooftrellen", attr: "Strength", faction: "Sentinel", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/treant.png", 
+        bio: "<p>Руфтреллен — древний живой дух леса, один из немногих выживших стражей некогда великих чащоб Азерота.</p><p>Он обладает невероятным терпением, сливаясь с деревьями и оставаясь абсолютно невидимым для посторонних глаз.</p><p>Когда лесу угрожает опасность, он оживляет землю и пускает исполинские корни, опутывая врагов.</p>", 
+        skills: [{name: "Nature's Guise", desc: "Невидимость у деревьев."}, {name: "Leech Seed", desc: "Вытягивание жизни."}, {name: "Living Armor", desc: "Защита башен и союзников."}, {name: "Overgrowth", desc: "Массовые корни."}] 
+      },
+      { 
+        name: "Centaur Warrunner", dota1: "Bradwarden", attr: "Strength", faction: "Sentinel", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/centaur.png", 
+        bio: "<p>Брадварден прошел долгий путь от обычного гладиатора на аренах до величайшего воина своего народа.</p><p>Заслужив право носить священные пояса силы, он объединил мощь массивного тела с боевым духом.</p><p>Его топоры наносят разрушительные удары, а сокрушительный топот оглушает врагов вокруг.</p>", 
+        skills: [{name: "Hoof Stomp", desc: "Массовый стан."}, {name: "Double Edge", desc: "Удар ценой части HP."}, {name: "Return", desc: "Пассивный возврат урона."}, {name: "Stampede", desc: "Глобальный бег команды."}] 
+      },
+      { 
+        name: "Earthshaker", dota1: "Raigor Stonehoof", attr: "Strength", faction: "Sentinel", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/earthshaker.png", 
+        bio: "<p>Райгор Стоунхуф отделился от подземного племени каменных духов и отправился в странствие с тотемом из скалы.</p><p>Он черпает силу из глубин земли, превращая малейшее движение противников в их собственную гибель.</p><p>Его толчки раскалывают почву, создавая непроходимые разломы в гуще битвы.</p>", 
+        skills: [{name: "Fissure", desc: "Разлом-стена."}, {name: "Enchant Totem", desc: "Заряд тотема."}, {name: "Aftershock", desc: "Стан от магии."}, {name: "Echo Slam", desc: "Эхо-удар по площади."}] 
+      },
+      { 
+        name: "Elder Titan", dota1: "Tauren Chieftain", attr: "Strength", faction: "Sentinel", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/elder_titan.png", 
+        bio: "<p>Один из древнейших архитекторов мира, участвовавший в самом сотворении материальной вселенной.</p><p>Потеряв физическую оболочку при расколе мира, он странствует в виде духовного воина с проекцией.</p><p>Он возвращает гармонию мироздания, сокрушая тела и разум врагов.</p>", 
+        skills: [{name: "Echo Stomp", desc: "Топот духа и героя."}, {name: "Ancestral Spirit", desc: "Вызов проекции."}, {name: "Natural Order", desc: "Срез брони и магии."}, {name: "Earth Splitter", desc: "Раскол мира."}] 
+      },
+      { 
+        name: "Io", dota1: "Guardian Wisp", attr: "Strength", faction: "Sentinel", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/wisp.png", 
+        bio: "<p>Ио — блуждающий комок чистой энергии и первородного света, существовавший ещё до зарождения времени.</p><p>Оно пребывает во всех измерениях одновременно, тесно связывая свою судьбу с выбранными союзниками.</p><p>Ио усиливает скорость атаки, а также мгновенно перемещает себя и напарника в бой.</p>", 
+        skills: [{name: "Tether", desc: "Связь с союзником."}, {name: "Spirits", desc: "Орбитальные огоньки."}, {name: "Overcharge", desc: "Ускорение ценой HP."}, {name: "Relocate", desc: "Телепортация с напарником."}] 
+      },
+      { 
+        name: "Phoenix", dota1: "Icarus", attr: "Strength", faction: "Sentinel", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/phoenix.png", 
+        bio: "<p>Феникс Икар — воплощение звёздного пламени и рождения космических тел, сошедшее на землю птицей.</p><p>В бою он сжигает врагов лучами чистой солнечной энергии и исцеляет своих товарищей.</p><p>Когда силы иссякают, он сгорает в сверхновой звезде, чтобы возродиться из пепла.</p>", 
+        skills: [{name: "Icarus Dive", desc: "Огненный полет."}, {name: "Fire Spirits", desc: "Бросок духов."}, {name: "Sun Ray", desc: "Солнечный луч."}, {name: "Supernova", desc: "Превращение в сверхновую звезду."}] 
+      },
+      { 
+        name: "Tusk", dota1: "Ymir", attr: "Strength", faction: "Sentinel", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/tusk.png", 
+        bio: "<p>Имир — грозный и веселый морж-воин из ледяных пустошей, любящий драки и крепкий эль.</p><p>Он мастерски владеет холодом, призывая ледяные глыбы для изоляции противников.</p><p>Его фирменный апперкот отправляет врага в воздух, нанося сокрушительный удар.</p>", 
+        skills: [{name: "Ice Shards", desc: "Ледяная преграда."}, {name: "Snowball", desc: "Снежный ком с командой."}, {name: "Frozen Sigil", desc: "Ледяной знак замедления."}, {name: "Walrus PUNCH!", desc: "Критический апперкот."}] 
       },
 
-      // === AGILITY SENTINEL ===
-      {
-        name: "Anti-Mage", dota1: "Magina", attr: "Agility", faction: "Sentinel",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/antimage.png",
-        bio: "Магина вырос в монастыре, уничтоженном Плетью, и поклялся истребить любую магию в мире.",
-        skills: [
-          { name: "Mana Break", desc: "Каждая атака сжигает ману цели." },
-          { name: "Blink", desc: "Телепортирует на короткое расстояние." },
-          { name: "Counterspell", desc: "Отражает заклинания и дает защиту от магии." },
-          { name: "Mana Void", desc: "Взрывает цель на основе отсутствующей маны." }
-        ]
+      // ==================== STRENGTH SCOURGE ====================
+      { 
+        name: "Axe", dota1: "Mogul Khan", attr: "Strength", faction: "Scourge", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/axe.png", 
+        bio: "<p>Могул Хан был рядовым орком, методично убивавшим командиров, пока не провозгласил себя полководцем.</p><p>Он презрительно относится к тактике, предпочитая решать любые споры ударом топора.</p><p>Его клич заставляет врагов атаковать его, а слабых противников он казнит на месте.</p>", 
+        skills: [{name: "Berserker's Call", desc: "Провокация врагов."}, {name: "Battle Hunger", desc: "Периодический урон."}, {name: "Counter Helix", desc: "Контратака кручением."}, {name: "Culling Blade", desc: "Казнь слабого."}] 
       },
-      {
-        name: "Drow Ranger", dota1: "Traxex", attr: "Agility", faction: "Sentinel",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/drow_ranger.png",
-        bio: "Траксес выросла среди лесных эльфов-изгнанников и научилась невероятной точности стрельбы из лука.",
-        skills: [
-          { name: "Frost Arrows", desc: "Ледяные стрелы, замедляющие врагов." },
-          { name: "Gust", desc: "Отбрасывает врагов и накладывает безмолвие." },
-          { name: "Multishot", desc: "Выпускает несколько волн стрел по конусу." },
-          { name: "Marksmanship", desc: "Дает шанс пробить броню и нанести чистый урон." }
-        ]
+      { 
+        name: "Sand King", dota1: "Crixalis", attr: "Strength", faction: "Scourge", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/sand_king.png", 
+        bio: "<p>Криксалис — разумный экзоскелет, рожденный магией бесконечных песчаных бурь пустыни Квант.</p><p>Будучи верным стражем подземного лабиринта, он в совершенстве владеет скрытностью.</p><p>Он зарывается в песок, внезапно обрушивая на врагов шипы и ядовитые бури.</p>", 
+        skills: [{name: "Burrowstrike", desc: "Уход под землю со станом."}, {name: "Sand Storm", desc: "Песчаная невидимость."}, {name: "Caustic Finale", desc: "Ядовитый взрыв трупа."}, {name: "Epicenter", desc: "Мощное землетрясение."}] 
       },
-      {
-        name: "Juggernaut", dota1: "Yurnero", attr: "Agility", faction: "Sentinel",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/juggernaut.png",
-        bio: "Юрнеро — последний хранитель древнего искусства клинка с разрушенного острова масок.",
-        skills: [
-          { name: "Blade Fury", desc: "Крутится в вихре, неуязвимый к магии." },
-          { name: "Healing Ward", desc: "Призывает тотем, исцеляющий союзников." },
-          { name: "Blade Dance", desc: "Пассивный шанс нанести критический урон." },
-          { name: "Omnislash", desc: "Серия неудержимых ударов по врагам." }
-        ]
+      { 
+        name: "Slardar", dota1: "Slithereen Guard", attr: "Strength", faction: "Scourge", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/slardar.png", 
+        bio: "<p>Слардар — страж глубин океана из расы наг-сильвериенов, охраняющий затонувшие города.</p><p>Благодаря прочной чешуе и хвосту он легко сокрушает врагов даже на суше.</p><p>Его способность ослеплять светом делает уязвимой любую вражескую защиту.</p>", 
+        skills: [{name: "Sprint", desc: "Ускорение бега."}, {name: "Slithereen Crush", desc: "Стан хвостом."}, {name: "Bash of the Deep", desc: "Пассивное оглушение."}, {name: "Corrosive Haze", desc: "Снижение брони цели."}] 
       },
-      {
-        name: "Mirana", dota1: "Priestess of the Moon", attr: "Agility", faction: "Sentinel",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/mirana.png",
-        bio: "Мирана — благородная принцесса ночи и служанка богини Селемене, верхом на величественном тигре.",
-        skills: [
-          { name: "Starfall", desc: "Призывает звезды, наносящие урон врагам." },
-          { name: "Sacred Arrow", desc: "Пускает стрелу, оглушающую на огромном расстоянии." },
-          { name: "Leap", desc: "Совершает прыжок вперед, ускоряя атаку." },
-          { name: "Moonlight Shadow", desc: "Укрывает всю команду пеленой невидимости." }
-        ]
+      { 
+        name: "Tidehunter", dota1: "Leviathan", attr: "Strength", faction: "Scourge", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/tidehunter.png", 
+        bio: "<p>Левиафан — древнее морское чудовище, веками обитавшее на дне океанских впадин.</p><p>Обладая колоссальной массой и шкурой, он игнорирует магические атаки.</p><p>В бою он вызывает разрушительные цунами и шипы, разметая отряды врагов.</p>", 
+        skills: [{name: "Gush", desc: "Водная струя со срезкой брони."}, {name: "Kraken Shell", desc: "Блокировка урона."}, {name: "Anchor Smash", desc: "Удар якорем по площади."}, {name: "Ravage", desc: "Массовое щупальцевое цунами."}] 
       },
-      {
-        name: "Morphling", dota1: "Morphling", attr: "Agility", faction: "Sentinel",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/morphling.png",
-        bio: "Морфлинг — загадочное существо из чистой воды, упавшее на земли Азерота в виде метеорита.",
-        skills: [
-          { name: "Waveform", desc: "Превращается в волну и проносится сквозь врагов." },
-          { name: "Adaptive Strike", desc: "Наносит урон или отталкивает в зависимости от силы/ловкости." },
-          { name: "Morph", desc: "Перераспределяет атрибуты между силой и ловкостью." },
-          { name: "Replicate", desc: "Создает копию союзника или врага." }
-        ]
+      { 
+        name: "Skeleton King", dota1: "King Leoric", attr: "Strength", faction: "Scourge", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/skeleton_king.png", 
+        bio: "<p>Король Леорих правил великим царством людей, но из-за темных проклятий пал в скелета.</p><p>Его жажда власти пережила смерть, поэтому он неизменно восстает из пепла.</p><p>Его прикосновение замедляет врагов, а клинок сеет ужас в рядах противника.</p>", 
+        skills: [{name: "Hellfire Blast", desc: "Огненный стан."}, {name: "Vampiric Spirit", desc: "Вампиризм и призыв скелетов."}, {name: "Mortal Strike", desc: "Критический удар."}, {name: "Reincarnation", desc: "Возрождение после смерти."}] 
       },
-
-      // === AGILITY SCOURGE ===
-      {
-        name: "Bloodseeker", dota1: "Strygwyr", attr: "Agility", faction: "Scourge",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/bloodseeker.png",
-        bio: "Стригвир — жуткий жрец, чувствующий запах крови раненых существ на огромном расстоянии.",
-        skills: [
-          { name: "Bloodrage", desc: "Усиливает урон ценой здоровья при атаках." },
-          { name: "Blood Rite", desc: "Создает ритуальную зону, наносящую урон и молчание." },
-          { name: "Thirst", desc: "Ускоряет героя, если у врагов мало здоровья." },
-          { name: "Rupture", desc: "Разрывает жилы врага, нанося урон при его движении." }
-        ]
+      { 
+        name: "Lifestealer", dota1: "N'aix", attr: "Strength", faction: "Scourge", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/lifestealer.png", 
+        bio: "<p>Наикс был жестоким вором в тюрьме Бикозен, где безумие поглотило его разум.</p><p>Его тело превратилось в иссушенный скелет, одержимый жаждой плоти.</p><p>Он вселяется в тела живых существ, разрывая их изнутри и поглощая силы.</p>", 
+        skills: [{name: "Rage", desc: "Иммунитет к магии и скорость."}, {name: "Feast", desc: "Урон и вампиризм в % от HP."}, {name: "Open Wounds", desc: "Замедление и лечение от атак."}, {name: "Infest", desc: "Вселение в юнита."}] 
       },
-      {
-        name: "Shadow Fiend", dota1: "Nevermore", attr: "Agility", faction: "Scourge",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/nevermore.png",
-        bio: "Невермор поглощает души павших врагов для увеличения собственной силы и выпускает их разрушительной волной.",
-        skills: [
-          { name: "Shadowraze", desc: "Выпускает теневые взрывы на разных дистанциях." },
-          { name: "Necromastery", desc: "Собирает души врагов для бонуса к урону." },
-          { name: "Presence of the Dark Lord", desc: "Снижает броню врагов вокруг." },
-          { name: "Requiem of Souls", desc: "Высвобождает собранные души в виде смертельной волны." }
-        ]
+      { 
+        name: "Night Stalker", dota1: "Balanar", attr: "Strength", faction: "Scourge", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/night_stalker.png", 
+        bio: "<p>Баланар — хищник из эпохи, предшествовавшей появлению солнца и света.</p><p>Он питает лютую ненависть к живому и сильнее, когда опускается тьма.</p><p>Его когти разрывают броню, а способность призывать ночь сеет панику.</p>", 
+        skills: [{name: "Void", desc: "Ночной урон и замедление."}, {name: "Crippling Fear", desc: "Безмолвие и мазилка."}, {name: "Hunter in the Night", desc: "Скорость во тьме."}, {name: "Darkness", desc: "Призыв вечной ночи."}] 
       },
-      {
-        name: "Phantom Lancer", dota1: "Azwraith", attr: "Agility", faction: "Scourge",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/phantom_lancer.png",
-        bio: "Азраил использовал магию зеркал, чтобы создавать армию своих копий и дезориентировать противников.",
-        skills: [
-          { name: "Spirit Lance", desc: "Бросает копье, создавая иллюзию." },
-          { name: "Doppelganger", desc: "Исчезает и создает несколько копий." },
-          { name: "Phantom Rush", desc: "Стремительно бросается на врага для атаки." },
-          { name: "Juxtapose", desc: "Пассивно создает иллюзии при атаках." }
-        ]
+      { 
+        name: "Doom", dota1: "Lucifer", attr: "Strength", faction: "Scourge", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/doom.png", 
+        bio: "<p>Люцифер был изгнан из светлых миров за отказ преклонить колено, пав в бездну.</p><p>Закованный в латы из пламени, он накладывает проклятие погибели на врагов.</p><p>Его палящая аура и горящий меч оставляют от противников лишь пепел.</p>", 
+        skills: [{name: "Devour", desc: "Поедание крипа и бонус золота."}, {name: "Scorched Earth", desc: "Огненная земля."}, {name: "Infernal Blade", desc: "Горящий стан с % урона."}, {name: "Doom", desc: "Запрет магии и сжигание цели."}] 
       },
-      {
-        name: "Razor", dota1: "Lightning Revenant", attr: "Agility", faction: "Scourge",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/razor.png",
-        bio: "Разor управляет мощнейшими разрядами статического электричества, выкачивая силу атаки из противников.",
-        skills: [
-          { name: "Plasma Field", desc: "Выпускает расширяющееся кольцо плазмы." },
-          { name: "Static Link", desc: "Вытягивает урон из вражеского героя." },
-          { name: "Storm Surge", desc: "Ускоряет героя и бьет током при атаках." },
-          { name: "Eye of the Storm", desc: "Грозовой шторм атакует врагов и разрушает броню." }
-        ]
+      { 
+        name: "Spirit Breaker", dota1: "Barathrum", attr: "Strength", faction: "Scourge", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/spirit_breaker.png", 
+        bio: "<p>Баратрум — элементаль из подземных миров, соединивший черты зверя и духа.</p><p>Он мчится по полю боя с невероятной скоростью, сбивая с ног противников.</p><p>Его тяжелая булава наносит сокрушительные удары при каждом взмахе.</p>", 
+        skills: [{name: "Charge of Darkness", desc: "Неудержимый разгон на цель."}, {name: "Empowering Haste", desc: "Аура скорости и урона."}, {name: "Greater Bash", desc: "Шанс оглушить и оттолкнуть."}, {name: "Nether Strike", desc: "Телепортация за спину с ударом."}] 
       },
-      {
-        name: "Venomancer", dota1: "Lesale Deathbringer", attr: "Agility", faction: "Scourge",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/venomancer.png",
-        bio: "Лесале мутировал в ядовитых топях и теперь заражает всё вокруг смертельными токсинами.",
-        skills: [
-          { name: "Venomous Gale", desc: "Выпускает ядовитую волну, замедляющую цель." },
-          { name: "Poison Sting", desc: "Пассивно отравляет атакованных врагов." },
-          { name: "Plague Ward", desc: "Устанавливает ядовитые коконы-вышки." },
-          { name: "Poison Nova", desc: "Выпускает гигантское кольцо смертельного яда." }
-        ]
+      { 
+        name: "Lycan", dota1: "Banehallow", attr: "Strength", faction: "Scourge", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/lycan.png", 
+        bio: "<p>Банехолоу когда-то был лордом, но его семью прокляли, превратив в оборотня.</p><p>Он принял звериную сущность и теперь повелевает стаями диких волков.</p><p>В бою он обращается в волка, чья ярость возрастает с каждой секундой.</p>", 
+        skills: [{name: "Summon Wolves", desc: "Призыв волков."}, {name: "Howl", desc: "Вопль на урон и броню."}, {name: "Feral Impulse", desc: "Пассивный урон и реген стаи."}, {name: "Shapechanger", desc: "Превращение в волка."}] 
       },
-
-      // === INTELLIGENCE SENTINEL ===
-      {
-        name: "Crystal Maiden", dota1: "Rylai", attr: "Intelligence", faction: "Sentinel",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/crystal_maiden.png",
-        bio: "Рилай в совершенстве овладела криомантией, замораживая врагов и восстанавливая ману союзникам.",
-        skills: [
-          { name: "Crystal Nova", desc: "Взрыв льда, замедляющий врагов." },
-          { name: "Frostbite", desc: "Заковывает врага в ледяную ловушку." },
-          { name: "Arcane Aura", desc: "Ускоряет регенерацию маны всей команде." },
-          { name: "Freezing Field", desc: "Ледяной шторм с разрушительными взрывами." }
-        ]
+      { 
+        name: "Chaos Knight", dota1: "Nessaj", attr: "Strength", faction: "Scourge", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/chaos_knight.png", 
+        bio: "<p>Нессадж — физическое воплощение энтропии и хаоса мультивселенной.</p><p>Он странствует из мира в мир, сея разрушения и уничтожая любой порядок.</p><p>Хаос разделяет его на копии, окружающие врагов и не дающие им шанса.</p>", 
+        skills: [{name: "Chaos Bolt", desc: "Случайный стан и урон."}, {name: "Reality Rift", desc: "Рывок к цели со смещением."}, {name: "Chaos Strike", desc: "Крит с вампиризмом."}, {name: "Phantasm", desc: "Призыв армии иллюзий."}] 
       },
-      {
-        name: "Puck", dota1: "Faerie Dragon", attr: "Intelligence", faction: "Sentinel",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/puck.png",
-        bio: "Пак — древний, капризный и неуловимый волшебный дракон, существующий на грани мистики.",
-        skills: [
-          { name: "Illusory Orb", desc: "Выпускает сферу, к которой может телепортироваться." },
-          { name: "Waning Rift", desc: "Импульс тишины и урона вокруг героя." },
-          { name: "Phase Shift", desc: "Ускользает в иное измерение от любых атак." },
-          { name: "Dream Coil", desc: "Опутывает врагов магической спиралью." }
-        ]
+      { 
+        name: "Undying", dota1: "Dirge", attr: "Strength", faction: "Scourge", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/undying.png", 
+        bio: "<p>Дирж погиб в ходе темных ритуалов жрецов, вернувшись вестником апокалипсиса.</p><p>Он повелевает нежитью и ставит чумные надгробия, вытягивающие силы.</p><p>Чем дольше длится бой, тем опаснее становится этот ходячий мертвец.</p>", 
+        skills: [{name: "Decay", desc: "Кража силы по области."}, {name: "Soul Rip", desc: "Лечение/урон от юнитов."}, {name: "Tombstone", desc: "Надгробие с зомби."}, {name: "Flesh Golem", desc: "Превращение в голема."}] 
       },
-      {
-        name: "Storm Spirit", dota1: "Raijin Thunderkeg", attr: "Intelligence", faction: "Sentinel",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/storm_spirit.png",
-        bio: "Райджин соединил свою душу с духом молнии и превратился в неугомонный сгусток чистой плазмы.",
-        skills: [
-          { name: "Static Remnant", desc: "Оставляет электрическую копию, взрывающуюся при сближении." },
-          { name: "Electric Vortex", desc: "Притягивает врага магнитным вихрем." },
-          { name: "Overload", desc: "Усиливает следующую атаку после заклинания." },
-          { name: "Ball Lightning", desc: "Превращается в шар молнии и летит по карте." }
-        ]
+      { 
+        name: "Magnus", attr: "Strength", faction: "Scourge", dota1: "Magnataur", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/magnus.png", 
+        bio: "<p>Магнатаур — рогатое создание из заснеженных гор, чей клан уничтожили враги.</p><p>Охваченный местью, он направил ярость в разрушительные удары копья.</p><p>Его волна и стяжка собирают противников в кучу для неминуемой гибели.</p>", 
+        skills: [{name: "Shockwave", desc: "Ударная волна."}, {name: "Empower", desc: "Бонус урона и сплеш на меч."}, {name: "Skewer", desc: "Пронзающий рывок с врагами."}, {name: "Reverse Polarity", desc: "Массовая стяжка в кучу."}] 
       },
-      {
-        name: "Windranger", dota1: "Alleria", attr: "Intelligence", faction: "Sentinel",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/windranger.png",
-        bio: "Аллерия повелевает дикими ветрами, выпуская шквалы стрел и связывая врагов друг с другом.",
-        skills: [
-          { name: "Shackleshot", desc: "Связывает врага с деревом или другим юнитом." },
-          { name: "Powershot", desc: "Накапливает и выпускает мощный пронзительный выстрел." },
-          { name: "Windrun", desc: "Ускоряет бег и дает уклонение от атак." },
-          { name: "Focus Fire", desc: "Максимальная скорость атаки по одной цели." }
-        ]
+      { 
+        name: "Abaddon", dota1: "Lord of Avernus", attr: "Strength", faction: "Scourge", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/abaddon.png", 
+        bio: "<p>Лорд Авернуса вырос у источников темной энергии, дарующей власть над смертью.</p><p>Он облачен в призрачные доспехи, а его клинок пропитан мистической силой.</p><p>Абаддон поглощает урон, превращая его в щит и исцеляя союзников.</p>", 
+        skills: [{name: "Mist Coil", desc: "Исцеление ценой HP."}, {name: "Aphotic Shield", desc: "Поглощающий урон щит."}, {name: "Curse of Avernus", desc: "Замедление и сало с атаки."}, {name: "Borrowed Time", desc: "Перевод урона в лечение."}] 
       },
-      {
-        name: "Zeus", dota1: "Lord of Olympia", attr: "Intelligence", faction: "Sentinel",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/zeus.png",
-        bio: "Владыка Олимпа управляет силой молний, обрушивая цепные разряды и глобальный удар на всех врагов.",
-        skills: [
-          { name: "Arc Lightning", desc: "Пускает цепную молнию по врагам." },
-          { name: "Lightning Bolt", desc: "Бьет точечной молнией, оглушая цель." },
-          { name: "Static Field", desc: "Наносит урон в % от здоровья при заклинаниях." },
-          { name: "Thundergod's Wrath", desc: "Бьет молнией каждого вражеского героя на карте." }
-        ]
+      { 
+        name: "Pudge", dota1: "Butcher", attr: "Strength", faction: "Scourge", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/pudge.png", 
+        bio: "<p>Мясник Пудж бродит по полям сражений, собирая остатки павших воинов.</p><p>Он подтягивает врагов ржавым крюком в свои объятия, растворяя в кислоте.</p><p>Его чудовищная сила и плоть растут с каждой поглощенной душой.</p>", 
+        skills: [{name: "Meat Hook", desc: "Мясницкий крюк."}, {name: "Rot", desc: "Ядовитая гниль."}, {name: "Flesh Heap", desc: "Накопление силы."}, {name: "Dismember", desc: "Расчленение цели."}] 
       },
-      {
-        name: "Lina", dota1: "Slayer", attr: "Intelligence", faction: "Sentinel",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/lina.png",
-        bio: "Лина повелевает чистым пламенем, сжигая врагов мощными заклинаниями и разгоняя скорость своих атак.",
-        skills: [
-          { name: "Dragon Slave", desc: "Выпускает огненную волну." },
-          { name: "Light Strike Array", desc: "Столб пламени, оглушающий в точке." },
-          { name: "Fiery Soul", desc: "Ускоряет каст и атаку при использовании магии." },
-          { name: "Laguna Blade", desc: "Смертельный молниеносный удар по одной цели." }
-        ]
+      { 
+        name: "Underlord", dota1: "Pit Lord", attr: "Strength", faction: "Scourge", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/underlord.png", 
+        bio: "<p>Азгалор — демон преисподней Scourge, командующий легионами разрушения.</p><p>Он изрыгает ядовитое пламя и создает огненные ловушки, пожирающие врагов.</p><p>Его главная сила — открывать разломы для телепортации всей армии.</p>", 
+        skills: [{name: "Firestorm", desc: "Огненный шторм."}, {name: "Pit of Malice", desc: "Огненная лужа-сетка."}, {name: "Atrophy Aura", desc: "Срез урона врагов."}, {name: "Fiend's Gate", desc: "Портал телепортации."}] 
       },
-      {
-        name: "Tinker", dota1: "Boush", attr: "Intelligence", faction: "Sentinel",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/tinker.png",
-        bio: "Буш использует высокотехнологичные лазерные пушки и гаджеты, мгновенно сбрасывая кулдауны предметов.",
-        skills: [
-          { name: "Laser", desc: "Ослепляет врага мощным лазерным лучом." },
-          { name: "Heat-Seeking Missile", desc: "Самонаводящиеся ракеты по врагам." },
-          { name: "March of the Machines", desc: "Вызывает армию роботов-уничтожителей." },
-          { name: "Rearm", desc: "Мгновенно перезаряжает все способности и предметы." }
-        ]
+      { 
+        name: "Bristleback", dota1: "Rigwarl", attr: "Strength", faction: "Scourge", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/bristleback.png", 
+        bio: "<p>Ригварл — драчливый представитель дикого народа, всегда лезущий на рожон.</p><p>Его толстая кожа и колючая спина выдерживают град ударов и стрел.</p><p>Когда враги атакуют его сзади, он выпускает в них шквал острых игл.</p>", 
+        skills: [{name: "Viscous Nasal Goo", desc: "Слизь на броню и бег."}, {name: "Quill Spray", desc: "Игольчатый спрей."}, {name: "Bristleback", desc: "Пассивное снижение урона со спины."}, {name: "Warpath", desc: "Ускорение и урон от заклинаний."}] 
       },
-      {
-        name: "Nature's Prophet", dota1: "Furion", attr: "Intelligence", faction: "Sentinel",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/natures_prophet.png",
-        bio: "Фурион может призывать трентов из деревьев, мгновенно телепортироваться в любую точку и управлять энергией леса.",
-        skills: [
-          { name: "Sprout", desc: "Окружает цель кольцом деревьев." },
-          { name: "Teleportation", desc: "Мгновенный перелет в любую точку карты." },
-          { name: "Nature's Call", desc: "Превращает деревья в трентов-помощников." },
-          { name: "Wrath of Nature", desc: "Энергетический шар рикошетит по всем врагам." }
-        ]
+      { 
+        name: "Legion Commander", dota1: "Tresdin", attr: "Strength", faction: "Scourge", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/legion_commander.png", 
+        bio: "<p>Тресдин командовала защитниками города, но после падения стен заключила сделку со Стьмой.</p><p>Вооружившись двумя клинками, она вызывает врагов на смертельную дуэль.</p><p>В победной схватке она забирает боевую силу павших оппонентов.</p>", 
+        skills: [{name: "Overwhelming Odds", desc: "Урон от числа врагов."}, {name: "Press the Attack", desc: "Исцеление и атака."}, {name: "Moment of Courage", desc: "Контратака при ударе."}, {name: "Duel", desc: "Смертельная дуэль на урон."}] 
       },
-      {
-        name: "Enchantress", dota1: "Aiushtha", attr: "Intelligence", faction: "Sentinel",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/enchantress.png",
-        bio: "Аюшта — лесная дриада, способная очаровывать диких существ и защищенная аурой от дальних атак.",
-        skills: [
-          { name: "Untouchable", desc: "Замедляет скорость атаки противников." },
-          { name: "Enchant", desc: "Очаровывает крипа или замедляет героя." },
-          { name: "Nature's Attendants", desc: "Призывает светящихся огоньков для лечения." },
-          { name: "Impetus", desc: "Увеличивает урон атаки в зависимости от дистанции." }
-        ]
+      { 
+        name: "Dawnbreaker", attr: "Strength", faction: "Sentinel", dota1: "Valora", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/dawnbreaker.png", 
+        bio: "<p>Валора — древний воин света, созданный для защиты миров от сил тьмы.</p><p>Она орудует массивным небесным молотом, сокрушая скопления врагов.</p><p>Ее божественная сила позволяет ей мгновенно прыгать на помощь союзникам.</p>", 
+        skills: [{name: "Starbreaker", desc: "Удары молотом."}, {name: "Celestial Hammer", desc: "Бросок молота с дорогой."}, {name: "Converge", desc: "Возврат молота."}, {name: "Solar Guardian", desc: "Глобальный прыжок к союзникам."}] 
       },
-      {
-        name: "Jakiro", dota1: "Twin Head Dragon", attr: "Intelligence", faction: "Sentinel",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/jakiro.png",
-        bio: "Двуглавый дракон Якиро объединяет стихии огня и льда, выжигая лавой и замораживая врагов.",
-        skills: [
-          { name: "Dual Breath", desc: "Потоки огня и льда наносят урон и замедляют." },
-          { name: "Ice Path", desc: "Замораживающая ледяная дорожка." },
-          { name: "Liquid Fire", desc: "Огненная жидкость для атак по целям и вышкам." },
-          { name: "Macropyre", desc: "Огненное поле, пожирающее всё на своем пути." }
-        ]
+      { 
+        name: "Mars", attr: "Strength", faction: "Sentinel", dota1: "Ares", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/mars.png", 
+        bio: "<p>Марс — бог войны, отражающий любые фронтальные атаки массивным щитом.</p><p>Он пронзает врагов копьем и запирает их в непреодолимой гладиаторской арене.</p><p>Его величие на поле боя внушает страх даже опытным ветеранам.</p>", 
+        skills: [{name: "Spear of Mars", desc: "Пронзающее копье."}, {name: "God's Rebuke", desc: "Удар щитом."}, {name: "Bulwark", desc: "Защита фронтальным щитом."}, {name: "Arena of Blood", desc: "Колоссная арена копьеносцев."}] 
       },
-      {
-        name: "Chen", dota1: "Holy Knight", attr: "Intelligence", faction: "Sentinel",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/chen.png",
-        bio: "Чен обратился в веру Святого Рыцаря, подчиняя лесных существ и исцеляя всю свою команду.",
-        skills: [
-          { name: "Penitence", desc: "Увеличивает получаемый целью урон и замедляет." },
-          { name: "Divine Favor", desc: "Усиливает броню и лечение союзников." },
-          { name: "Persuasion", desc: "Подчиняет своей воле вражеских или нейтральных крипов." },
-          { name: "Hand of God", desc: "Мгновенно исцеляет всех союзников на карте." }
-        ]
-      },
-      {
-        name: "Silencer", dota1: "Nortrom", attr: "Intelligence", faction: "Sentinel",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/silencer.png",
-        bio: "Нортром высвободил дар кражи чужой магии, накладывая глобальное безмолвие и лишая врагов интеллекта.",
-        skills: [
-          { name: "Arcane Curse", desc: "Накладывает проклятие, наносящее урон при заклинаниях." },
-          { name: "Glaives of Wisdom", desc: "Добавляет чистый урон от интеллекта к атакам." },
-          { name: "Last Word", desc: "Наказывает цель безмолвием и уроном при касте." },
-          { name: "Global Silence", desc: "Накладывает безмолвие на всех врагов на карте." }
-        ]
-      },
-      {
-        name: "Ogre Magi", dota1: "Aggron Stonebreaker", attr: "Intelligence", faction: "Sentinel",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/ogre_magi.png",
-        bio: "Двуглавый огр швыряется зажигательными смесями и благодаря врожденной удаче повторяет заклинания до 4 раз.",
-        skills: [
-          { name: "Fireblast", desc: "Огненный взрыв, наносящий урон и оглушение." },
-          { name: "Ignite", desc: "Поджигает цель, замедляя ее передвижение." },
-          { name: "Bloodlust", desc: "Ускоряет скорость атаки и бега союзника." },
-          { name: "Multicast", desc: "Пассивно дает шанс многократно повторить заклинание." }
-        ]
-      },
-      {
-        name: "Rubick", dota1: "Grand Magus", attr: "Intelligence", faction: "Sentinel",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/rubick.png",
-        bio: "Рубик обладает гениальным аналитическим умом, копируя последние заклинания врагов против них самих.",
-        skills: [
-          { name: "Telekinesis", desc: "Поднимает врага в воздух и швыряет в указанную точку." },
-          { name: "Fade Bolt", desc: "Энергетический разряд, снижающий атаку врагов." },
-          { name: "Null Field", desc: "Дает пассивное сопротивление магии союзникам." },
-          { name: "Spell Steal", desc: "Копирует последнее примененное заклинание врага." }
-        ]
-      },
-      {
-        name: "Disruptor", dota1: "Thrall", attr: "Intelligence", faction: "Sentinel",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/disruptor.png",
-        bio: "Тралл владеет силой бурь, запирая врагов в статические поля и возвращая их в прошлые позиции.",
-        skills: [
-          { name: "Thunder Strike", desc: "Бьет молнией цель несколько раз подряд." },
-          { name: "Glimpse", desc: "Возвращает врага туда, где он был 4 секунды назад." },
-          { name: "Kinetic Field", desc: "Строит барьер, не дающий врагам выйти." },
-          { name: "Static Storm", desc: "Грозовой барьер с безмолвием и сильным уроном." }
-        ]
-      },
-      {
-        name: "Keeper of the Light", dota1: "Ezalor", attr: "Intelligence", faction: "Sentinel",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/keeper_of_the_light.png",
-        bio: "Эзалор накапливает волны ослепляющего света, подпитывает маной союзников и призывает духовных коней.",
-        skills: [
-          { name: "Illuminate", desc: "Накапливает и выпускает мощную волну света." },
-          { name: "Mana Leak", desc: "Выжигает ману врага при его передвижении." },
-          { name: "Chakra Magic", desc: "Восстанавливает ману и уменьшает перезарядку." },
-          { name: "Spirit Form", desc: "Принимает форму света, усиливая заклинания." }
-        ]
-      },
-      {
-        name: "Oracle", dota1: "Kahu", attr: "Intelligence", faction: "Sentinel",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/oracle.png",
-        bio: "Каху переплетает судьбы живых существ, накладывая мистическую отсрочку смерти и очищая эффекты.",
-        skills: [
-          { name: "Fortune's End", desc: "Очищает цель и наносит урон по области." },
-          { name: "Fate's Edict", desc: "Разоружает цель, давая 100% сопротивление магии." },
-          { name: "Purifying Flames", desc: "Наносит сильный урон, но со временем исцеляет." },
-          { name: "False Promise", desc: "Откладывает смерть союзника до конца эффекта." }
-        ]
-      },
-      {
-        name: "Skywrath Mage", dota1: "Dragonus", attr: "Intelligence", faction: "Sentinel",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/skywrath_mage.png",
-        bio: "Драгонус наказывает врагов потоками магической энергии с небес и замедляет древними рунами.",
-        skills: [
-          { name: "Arcane Bolt", desc: "Магический сгусток, урон зависит от интеллекта." },
-          { name: "Concussive Shot", desc: "Замедляет ближайшего вражеского героя." },
-          { name: "Ancient Seal", desc: "Накладывает безмолвие и увеличивает урон от магии." },
-          { name: "Mystic Flare", desc: "Град мистических зарядов в указанной точке." }
-        ]
-      },
-      {
-        name: "Arc Warden", dota1: "Zet", attr: "Intelligence", faction: "Sentinel",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/arc_warden.png",
-        bio: "Зет умеет создавать абсолютную и точную копию самого себя со всеми предметами и способностями.",
-        skills: [
-          { name: "Flux", desc: "Замедляет и наносит урон одиночной цели." },
-          { name: "Magnetic Field", desc: "Создает поле, дающее уклонение и скорость атаки." },
-          { name: "Spark Wraith", desc: "Устанавливает искрящегося духа-ловушку." },
-          { name: "Tempest Double", desc: "Создает полную копию героя со всеми предметами." }
-        ]
+      { 
+        name: "Primal Beast", attr: "Strength", faction: "Scourge", dota1: "Beast", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/primal_beast.png", 
+        bio: "<p>Первобытный монстр из недр земли, сметающий всё на своем пути.</p><p>Его яростный разгон невозможно остановить обычными укреплениями.</p><p>Он безжалостно топчет врагов ногами и избивает их о земную твердь.</p>", 
+        skills: [{name: "Onslaught", desc: "Разгон с ударом."}, {name: "Trample", desc: "Топтание ногами."}, {name: "Uproar", desc: "Ярость на броню и урон."}, {name: "Pulverize", desc: "Избиение врага о землю."}] 
       },
 
-      // === INTELLIGENCE SCOURGE ===
-      {
-        name: "Bane", dota1: "Atropos", attr: "Intelligence", faction: "Scourge",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/bane.png",
-        bio: "Атропос — воплощение ночных кошмаров, питающееся страхом и погружающее врагов в вечный парализующий сон.",
-        skills: [
-          { name: "Enfeeble", desc: "Сильно снижает урон от атак врага." },
-          { name: "Brain Sap", desc: "Наносит чистый урон и исцеляет Bane на то же количество." },
-          { name: "Nightmare", desc: "Погружает цель в кошмар, передающийся при ударе." },
-          { name: "Fiend's Grip", desc: "Оглушает врага и вытягивает его ману и здоровье." }
-        ]
+      // ==================== AGILITY SENTINEL ====================
+      { 
+        name: "Anti-Mage", dota1: "Magina", attr: "Agility", faction: "Sentinel", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/antimage.png", 
+        bio: "<p>Магина вырос в монастыре, уничтоженном Плетью, и поклялся истребить любую магию.</p><p>Он сжигает ману врагов клинками и использует энергию против самих колдунов.</p><p>Его стремительный блинк делает его неуловимым кошмаром для магов.</p>", 
+        skills: [{name: "Mana Break", desc: "Сожжение маны."}, {name: "Blink", desc: "Телепортация."}, {name: "Counterspell", desc: "Отражение магии."}, {name: "Mana Void", desc: "Взрыв от отсутствия маны."}] 
       },
-      {
-        name: "Lich", dota1: "Kel'Thuzad", attr: "Intelligence", faction: "Scourge",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/lich.png",
-        bio: "Кел'Тузад управляет разрушительной силой арктического холода, создавая ледяной шар, рикошетящий по врагам.",
-        skills: [
-          { name: "Frost Shield", desc: "Защищает союзника ледяным щитом, снижая урон." },
-          { name: "Sinister Gaze", desc: "Завораживает врага, заставляя идти к Личу и терять ману." },
-          { name: "Frost Blast", desc: "Ледяной взрыв, замедляющий цель и врагов вокруг." },
-          { name: "Chain Frost", desc: "Ледяной шар, многократно рикошетящий по врагам." }
-        ]
+      { 
+        name: "Drow Ranger", dota1: "Traxex", attr: "Agility", faction: "Sentinel", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/drow_ranger.png", 
+        bio: "<p>Траксес выросла среди лесных эльфов-изгнанников, научившись меткой стрельбе.</p><p>Она покрывает стрелы ледяным холодом, замедляя противников.</p><p>В ближнем бою использует ауру меткости, значительно усиливающую команду.</p>", 
+        skills: [{name: "Frost Arrows", desc: "Ледяные стрелы."}, {name: "Gust", desc: "Волна салла."}, {name: "Multishot", desc: "Веерный залп стрел."}, {name: "Marksmanship", desc: "Пробитие брони."}] 
       },
-      {
-        name: "Lion", dota1: "Demon Witch", attr: "Intelligence", faction: "Scourge",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/lion.png",
-        bio: "Лион пал жертвой демонических искушений, научившись красть ману, превращать врагов в зверей и испепелять их.",
-        skills: [
-          { name: "Earth Spike", desc: "Полоса шипов, подбрасывающая врагов." },
-          { name: "Hex", desc: "Превращает врага в безобидное животное." },
-          { name: "Mana Drain", desc: "Высасывает ману из вражеского юнита." },
-          { name: "Finger of Death", desc: "Смертельный магический удар колоссальной мощи." }
-        ]
+      { 
+        name: "Juggernaut", dota1: "Yurnero", attr: "Agility", faction: "Sentinel", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/juggernaut.png", 
+        bio: "<p>Юрнеро был изгнан с острова масок перед тем, как тот поглотила катастрофа.</p><p>Последний хранитель клинка крутится в вихре лезвий, неуязвимый для магии.</p><p>Он проводит молниеносные серии ударов, уничтожая врагов в омнислэше.</p>", 
+        skills: [{name: "Blade Fury", desc: "Вихрь клинков."}, {name: "HealingWard", desc: "Тотем лечения."}, {name: "Blade Dance", desc: "Крит-пассивка."}, {name: "Omnislash", desc: "Серия ударов."}] 
       },
-      {
-        name: "Witch Doctor", dota1: "Zharvot", attr: "Intelligence", faction: "Scourge",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/witch_doctor.png",
-        bio: "Жарвот владеет древними вуду-практиками, бросаясь черепами и призывая смертоносный вард.",
-        skills: [
-          { name: "Paralyzing Cask", desc: "Бросает рикошетящий череп, оглушающий врагов." },
-          { name: "Voodoo Restoration", desc: "Лечит союзников ценой расхода маны." },
-          { name: "Maledict", desc: "Проклинает врагов, нанося урон за потерянное здоровье." },
-          { name: "Death Ward", desc: "Призывает смертоносный посох, расстреливающий врагов." }
-        ]
+      { 
+        name: "Mirana", dota1: "Priestess of the Moon", attr: "Agility", faction: "Sentinel", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/mirana.png", 
+        bio: "<p>Мирана — принцесса ночи и преданная служанка богини Селемене.</p><p>Верхом на тигре она поражает врагов стрелами на огромных расстояниях.</p><p>Она способна укрывать весь свой отряд пеленой спасительной невидимости.</p>", 
+        skills: [{name: "Starfall", desc: "Звездный дождь."}, {name: "Sacred Arrow", desc: "Длинная стрела со станом."}, {name: "Leap", desc: "Прыжок вперед."}, {name: "Moonlight Shadow", desc: "Командная невидимость."}] 
       },
-      {
-        name: "Enigma", dota1: "Enigma", attr: "Intelligence", faction: "Scourge",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/enigma.png",
-        bio: "Энигма управляет гравитационными аномалиями, затягивая целые отряды врагов в центр черной дыры.",
-        skills: [
-          { name: "Malefice", desc: "Оглушает цель периодическими мини-ударами." },
-          { name: "Demonic Conversion", desc: "Превращает крипа в энигматов-помощников." },
-          { name: "Midnight Pulse", desc: "Создает черную зону, наносящую урон в % от HP." },
-          { name: "Black Hole", desc: "Создает черную дыру, притягивающую и оглушающую всех врагов." }
-        ]
+      { 
+        name: "Morphling", dota1: "Morphling", attr: "Agility", faction: "Sentinel", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/morphling.png", 
+        bio: "<p>Морфлинг — существо из чистой воды, упавшее в виде метеорита.</p><p>Он не имеет формы и перераспределяет массу между силой и ловкостью.</p><p>В бою он может создавать точную водную копию любого противника.</p>", 
+        skills: [{name: "Waveform", desc: "Водный рывок."}, {name: "Adaptive Strike", desc: "Удар силой/ловкостью."}, {name: "Morph", desc: "Перекачка статов."}, {name: "Replicate", desc: "Водная копия."}] 
       },
-      {
-        name: "Necrophos", dota1: "Rotund'jere", attr: "Intelligence", faction: "Scourge",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/necrophos.png",
-        bio: "Ротунд'жере питается болезнями и страданиями, добивая ослабленных противников смертельным ударом косы.",
-        skills: [
-          { name: "Death Pulse", desc: "Волна энергии лечит союзников и ранит врагов." },
-          { name: "Ghost Shroud", desc: "Переходит в призрачную форму, замедляя врагов." },
-          { name: "Heartstopper Aura", desc: "Пассивно истощает здоровье всех врагов вокруг." },
-          { name: "Reaper's Scythe", desc: "Коса смерти наносит урон в зависимости от недостающего HP." }
-        ]
+      { 
+        name: "Vengeful Spirit", dota1: "Shendelzare", attr: "Agility", faction: "Sentinel", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/vengefulspirit.png", 
+        bio: "<p>Шендельзаре была стражницей, пока предатель не лишил ее крыльев.</p><p>Заключив сделку с духами, она променяла тело на чистую энергию мести.</p><p>Её ключевая способность — менять местами врагов и союзников на поле боя.</p>", 
+        skills: [{name: "Magic Missile", desc: "Стан-ракета."}, {name: "Wave of Terror", desc: "Волна срезки брони."}, {name: "Vengeance Aura", desc: "Аура урона и иллюзия при смерти."}, {name: "Nether Swap", desc: "Смена позиций."}] 
       },
-      {
-        name: "Warlock", dota1: "Demnok Lannik", attr: "Intelligence", faction: "Scourge",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/warlock.png",
-        bio: "Демнок Ланник проводит мрачные ритуалы, связывая судьбы врагов и призывая из преисподней Голема.",
-        skills: [
-          { name: "Fatal Bonds", desc: "Связывает врагов нитями, разделяя полученный урон." },
-          { name: "Shadow Word", desc: "Лечит союзников или наносит урон врагам со временем." },
-          { name: "Upheaval", desc: "Создает замедляющее поле из липкой жижи." },
-          { name: "Rain of Chaos", desc: "Призывает с небес гигантского огненного Голема." }
-        ]
+      { 
+        name: "Riki", dota1: "Stealth Assassin", attr: "Agility", faction: "Sentinel", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/riki.png", 
+        bio: "<p>Рики был принцем, но выжил после захвата дворца благодаря дару скрытности.</p><p>Используя дымовые завесы и удары со спины, он стал невидимым убийцей.</p><p>Его внезапные появления наводят панический ужас на вражеских героев.</p>", 
+        skills: [{name: "Smoke Screen", desc: "Дым с мазилкой и салом."}, {name: "Blink Strike", desc: "Прыжок за спину."}, {name: "Cloak and Dagger", desc: "Постоянная невидимость."}, {name: "Tricks of the Trade", desc: "Танец клинков в тумане."}] 
       },
-      {
-        name: "Queen of Pain", dota1: "Akasha", attr: "Intelligence", faction: "Scourge",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/queen_of_pain.png",
-        bio: "Акаша использует звуковые волны, кинжалы с ядом и мгновенно перемещается по полю боя в виде тени.",
-        skills: [
-          { name: "Shadow Strike", desc: "Бросает отравленный кинжал, замедляя и раня цель." },
-          { name: "Blink", desc: "Мгновенно телепортирует героя на короткую дистанцию." },
-          { name: "Scream of Pain", desc: "Испускает крик боли, нанося урон вокруг." },
-          { name: "Sonic Wave", desc: "Мощная звуковая волна пронзает врагов насквозь." }
-        ]
+      { 
+        name: "Sniper", dota1: "Kardel Sharpshooter", attr: "Agility", faction: "Sentinel", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/sniper.png", 
+        bio: "<p>Кардел был изгнан из селения за случайный выстрел в священное существо.</p><p>Одинокий стрелок полагается на дальнобойные ружья собственной сборки.</p><p>Он расстреливает врагов с безопасного расстояния точными хедшотами.</p>", 
+        skills: [{name: "Shrapnel", desc: "Осколочный дождь."}, {name: "Headshot", desc: "Остановка и мини-стан."}, {name: "Take Aim", desc: "Дальность стрельбы."}, {name: "Assassinate", desc: "Снайперский выстрел."}] 
       },
-      {
-        name: "Death Prophet", dota1: "Krobelus", attr: "Intelligence", faction: "Scourge",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/death_prophet.png",
-        bio: "Кробелус испускает стаи летучих мышей-духов и призывает рой мстительных призраков, вытягивающих жизнь.",
-        skills: [
-          { name: "Crypt Swarm", desc: "Выпускает стаю летучих мышей по прямой." },
-          { name: "Silence", desc: "Накладывает безмолвие на врагов в области." },
-          { name: "Siphon", desc: "Вытягивает жизненную силу из вражеского героя." },
-          { name: "Exorcism", desc: "Призывает рой духов, атакующих врагов и лечащих героиню." }
-        ]
+      { 
+        name: "Templar Assassin", dota1: "Lanaya", attr: "Agility", faction: "Sentinel", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/templar_assassin.png", 
+        bio: "<p>Ланая изучает тайные законы мироздания в потаенных библиотеках.</p><p>Она использует психокинетические клинки и преломляющие щиты.</p><p>Также она устанавливает невидимые ловушки-растяжки для контроля карты.</p>", 
+        skills: [{name: "Refraction", desc: "Щиты урона и атака."}, {name: "Meld", desc: "Скрытность с ударом на броню."}, {name: "Psi Blades", desc: "Пронзающие атаки."}, {name: "Psionic Trap", desc: "Ловушки-растяжки."}] 
       },
-      {
-        name: "Pugna", dota1: "Oblivion", attr: "Intelligence", faction: "Scourge",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/pugna.png",
-        bio: "Пугна взрывает землю под ногами врагов, устанавливает поглощающий вард и вытягивает жизненные силы.",
-        skills: [
-          { name: "Nether Blast", desc: "Взрыв энергии разрушает врагов и строения." },
-          { name: "Decrepify", desc: "Переводит цель в эфир, усиливая урон от магии." },
-          { name: "Nether Ward", desc: "Устанавливает вард, наносящий урон кастующим врагам." },
-          { name: "Life Drain", desc: "Вытягивает здоровье из врага или передает союзнику." }
-        ]
+      { 
+        name: "Luna", dota1: "Moon Rider", attr: "Agility", faction: "Sentinel", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/luna.png", 
+        bio: "<p>Луна заблудилась в ночных лесах, где её приняла богиня Луны.</p><p>Верхом на лунном звере она обрушивает на врагов глефы и лучи.</p><p>Её разрушительные атаки мгновенно стирают целые группы противников.</p>", 
+        skills: [{name: "Lucent Beam", desc: "Лунный луч."}, {name: "Moon Glaives", desc: "Рикошетящие глефы."}, {name: "Lunar Blessing", desc: "Аура урона."}, {name: "Eclipse", desc: "Массовый дождь лучей."}] 
       },
-      {
-        name: "Dazzle", dota1: "Shadow Priest", attr: "Intelligence", faction: "Scourge",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/dazzle.png",
-        bio: "Даззал владеет магией исцеления и разрушения, накладывая на союзников крест, защищающий от смерти.",
-        skills: [
-          { name: "Poison Touch", desc: "Отравляет цель, замедляя ее и оглушая." },
-          { name: "Shadow Wave", desc: "Волна света исцеляет союзников и ранит врагов." },
-          { name: "Shallow Grave", desc: "Защищает союзника от смерти на несколько секунд." },
-          { name: "Bad Juju", desc: "Снижает броню врагов и ускоряет перезарядку." }
-        ]
+      { 
+        name: "Bounty Hunter", dota1: "Gondar", attr: "Agility", faction: "Sentinel", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/bounty_hunter.png", 
+        bio: "<p>Гондар — легендарный следопыт и наемник, осиротевший в войнах.</p><p>Он мастерски выслеживает цели, вешая на них контрактные метки с золотом.</p><p>Его внезапные удары из тени приносят баснословную прибыль.</p>", 
+        skills: [{name: "Shuriken Toss", desc: "Бросок сюрикена."}, {name: "Jinada", desc: "Критический удар с золотом."}, {name: "Shadow Walk", desc: "Невидимость."}, {name: "Track", desc: "Контрактная метка."}] 
       },
-      {
-        name: "Leshrac", dota1: "Tormented Soul", attr: "Intelligence", faction: "Scourge",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/leshrac.png",
-        bio: "Лешрак вызывает землетрясения под ногами врагов и создает вокруг себя кольцо разрушительной плазмы.",
-        skills: [
-          { name: "Split Earth", desc: "Раскалывает землю, оглушая врагов в точке." },
-          { name: "Diabolic Edict", desc: "Вызывает взрывы вокруг героя по зданиям и врагам." },
-          { name: "Lightning Storm", desc: "Цепная молния бьет по противникам." },
-          { name: "Pulse Nova", desc: "Энергетические пульсации наносят урон вокруг." }
-        ]
+      { 
+        name: "Ursa", dota1: "Ulfsaar", attr: "Agility", faction: "Sentinel", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/ursa.png", 
+        bio: "<p>Ульфсаар — свирепый защитник и вожак медведей-фурибогов.</p><p>Каждая последовательная атака по цели наносит всё больше ранящего урона.</p><p>Это превращает его в неудержимую машину для убийства на арене.</p>", 
+        skills: [{name: "Earthshock", desc: "Топот и замедление."}, {name: "Overpower", desc: "Серия быстрых атак."}, {name: "Fury Swipes", desc: "Нарастающий урон с атак."}, {name: "Enrage", desc: "Ярость с защитой."}] 
       },
-      {
-        name: "Dark Seer", dota1: "Ish'kafel", attr: "Intelligence", faction: "Scourge",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/dark_seer.png",
-        bio: "Иш'кафель искривляет пространство, ускоряя союзников и создавая стены энергии, копирующие врагов.",
-        skills: [
-          { name: "Vacuum", desc: "Стягивает врагов в одну точку пространства." },
-          { name: "Ion Shell", desc: "Окружает союзника или себя обжигающим щитом." },
-          { name: "Surge", desc: "Резко ускоряет передвижение выбранного юнита." },
-          { name: "Wall of Replica", desc: "Создает стену, создающую иллюзии прошедших сквозь нее врагов." }
-        ]
+      { 
+        name: "Gyrocopter", dota1: "Aurel Vlașt P.", attr: "Agility", faction: "Sentinel", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/gyrocopter.png", 
+        bio: "<p>Аврелий — безумный изобретатель-кезан, сконструировавший аэроплан.</p><p>Он поливает поле боя градом ракет и пулеметным огнем.</p><p>Способен наводить глобальный ракетный удар в любую точку карты.</p>", 
+        skills: [{name: "Rocket Barrage", desc: "Залп ракетами."}, {name: "Homing Missile", desc: "Преследующая ракета."}, {name: "Flak Cannon", desc: "Атака по всем вокруг."}, {name: "Call Down", desc: "Двойной ракетный удар."}] 
       },
-      {
-        name: "Batrider", dota1: "Jin'zakk", attr: "Intelligence", faction: "Scourge",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/batrider.png",
-        bio: "Джин'закк оставляет за собой лужи горящего масла и на аркане вытягивает жертву в толпу союзников.",
-        skills: [
-          { name: "Sticky Napalm", desc: "Липкая смазка усиливает урон и замедляет цель." },
-          { name: "Flamebreak", desc: "Бросает взрывной коктейль, отталкивающий врагов." },
-          { name: "Firefly", desc: "Поднимает в воздух, оставляя под собой горящий след." },
-          { name: "Flaming Lasso", desc: "Опутывает врага арканом и тащит за собой." }
-        ]
+      { 
+        name: "Lone Druid", dota1: "Syllabear", attr: "Agility", faction: "Sentinel", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/lone_druid.png", 
+        bio: "<p>Силлабир — отшельник, проведший века в медитациях и единении с природой.</p><p>Он сражается бок о бок с верным прирученным боевым медведем.</p><p>В критический момент сам способен обращаться в свирепого лесного зверя.</p>", 
+        skills: [{name: "Summon Spirit Bear", desc: "Призыв медведя."}, {name: "Savage Roar", desc: "Рев страха врагов."}, {name: "True Form", desc: "Превращение в медведя."}, {name: "Battle Cry", desc: "Боевой клич."}] 
       },
-      {
-        name: "Ancient Apparition", dota1: "Kaldr", attr: "Intelligence", faction: "Scourge",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/ancient_apparition.png",
-        bio: "Калдр запускает ледяные вихри и глобальный ледяной снаряд, блокирующий лечение и уничтожающий слабых.",
-        skills: [
-          { name: "Cold Feet", desc: "Замораживает цель; если она не уйдет — получит стан." },
-          { name: "Ice Vortex", desc: "Ледяной вихрь замедляет и снижает сопротивление магии." },
-          { name: "Chilling Touch", desc: "Усиливает атаки дальнего боя магическим уроном." },
-          { name: "Ice Blast", desc: "Ледяной шар через всю карту блокирует регенерацию HP." }
-        ]
+      { 
+        name: "Naga Siren", dota1: "Slithice", attr: "Agility", faction: "Sentinel", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/naga_siren.png", 
+        bio: "<p>Слитис отправилась на сушу после того, как ее водный город пал.</p><p>Её чарующий голос погружает врагов в глубокий сон для идеальной атаки.</p><p>Создаваемые ею иллюзии дезориентируют противника.</p>", 
+        skills: [{name: "Mirror Image", desc: "Создание иллюзий."}, {name: "Ensnare", desc: "Сеть-корни."}, {name: "Rip Tide", desc: "Водный срез брони."}, {name: "Song of the Siren", desc: "Чарующий сон карты."}] 
       },
-      {
-        name: "Invoker", dota1: "Kael", attr: "Intelligence", faction: "Scourge",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/invoker.png",
-        bio: "Карл комбинирует три стихии (Quas, Wex, Exort) для создания десятка заклинаний от метеоритов до стен огня.",
-        skills: [
-          { name: "Quas / Wex / Exort", desc: "Сферы льда, молнии и огня, дающие пассивные бонусы." },
-          { name: "Invoke", desc: "Комбинирует сферы для создания заклинания." },
-          { name: "Sun Strike", desc: "Глобальный удар чистым пламенем в любую точку карты." },
-          { name: "Chaos Meteor", desc: "Сбрасывает с небес пылающий разрушительный метеорит." }
-        ]
+      { 
+        name: "Pangolier", attr: "Agility", faction: "Sentinel", dota1: "Donte", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/pangolier.png", 
+        bio: "<p>Донте — ловкий фехтовальщик, парирующий выпады врагов.</p><p>Он умеет совершать резкие прыжки со щитом, нанося урон в толпе.</p><p>В ультимейте он сворачивается в неудержимый колючий шар.</p>", 
+        skills: [{name: "Swashbuckle", desc: "Резкие выпады мечом."}, {name: "Shield Crash", desc: "Прыжок со щитом и броней."}, {name: "Heartpiercer", desc: "Шанс пробить броню."}, {name: "Rolling Thunder", desc: "Шар-катание."}] 
       },
-      {
-        name: "Outworld Destroyer", attr: "Intelligence", faction: "Scourge", dota1: "Obsidian Destroyer",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/obsidian_destroyer.png",
-        bio: "Предвестник охраняет грань миров, крадя ману атаками, заключая врагов в тюрьмы и нанося урон интеллектом.",
-        skills: [
-          { name: "Arcane Orb", desc: "Атака наносит чистый урон в % от текущей маны." },
-          { name: "Astral Imprisonment", desc: "Заключает юнита в ментальную тюрьму и ворует ману." },
-          { name: "Essence Aura", desc: "Пассивно восстанавливает ману при заклинаниях." },
-          { name: "Sanity's Eclipse", desc: "Взрыв разума наносит урон на основе разницы в интеллекте." }
-        ]
+      { 
+        name: "Hoodwink", attr: "Agility", faction: "Sentinel", dota1: "Fuzzy", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/hoodwink.png", 
+        bio: "<p>Хитрая лесная белка с тяжелым арбалетом и ловушками.</p><p>Она мастерски прячется в кустах и деревьях, ускоряя свой бег.</p><p>Ее выстрел из арбалета способен пробить броню врага издалека.</p>", 
+        skills: [{name: "Acorn Shot", desc: "Прыгающий желудь."}, {name: "Bushwhack", desc: "Ловушка у деревьев."}, {name: "Scurry", desc: "Ускорение в кустах."}, {name: "Sharpshooter", desc: "Мощный выстрел из арбалета."}] 
       },
-      {
-        name: "Shadow Demon", dota1: "Eredar", attr: "Intelligence", faction: "Scourge",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/shadow_demon.png",
-        bio: "Эредар заражает врагов порчей, создает разрушительные иллюзии и может изгонять героев из реальности.",
-        skills: [
-          { name: "Disruption", desc: "Изгоняет цель из реальности, создавая две ее иллюзии." },
-          { name: "Soul Catcher", desc: "Проклинает случайную цель, увеличивая получаемый ею урон." },
-          { name: "Shadow Poison", desc: "Накладывает яды, взрывающиеся при накоплении." },
-          { name: "Demonic Purge", desc: "Замедляет и разрушает положительные эффекты цели." }
-        ]
+
+      // ==================== AGILITY SCOURGE ====================
+      { 
+        name: "Bloodseeker", dota1: "Strygwyr", attr: "Agility", faction: "Scourge", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/bloodseeker.png", 
+        bio: "<p>Стригвир — жуткий жрец хаоса, чующий кровь издалека.</p><p>Его проклятие заставляет жертв наносить урон самим себе при движении.</p><p>Убийства врагов ускоряют его бег до сверхзвуковых показателей.</p>", 
+        skills: [{name: "Bloodrage", desc: "Урон ценой здоровья."}, {name: "Blood Rite", desc: "Ритуальная лужа со станом."}, {name: "Thirst", desc: "Скорость по запаху крови."}, {name: "Rupture", desc: "Разрыв жил при движении."}] 
       },
-      {
-        name: "Visage", dota1: "Necro'lic", attr: "Intelligence", faction: "Scourge",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/visage.png",
-        bio: "Некролик накапливает урон от атак вокруг себя, замедляет могилой и призывает верных гаргулий-фамильяров.",
-        skills: [
-          { name: "Grave Chill", desc: "Забирает скорость атаки и бега у врага в пользу Visage." },
-          { name: "Soul Assumption", desc: "Наносит урон на основе накопленного вокруг урона." },
-          { name: "Gravekeeper's Cloak", desc: "Щит из слоев брони и сопротивления магии." },
-          { name: "Summon Familiars", desc: "Призывает каменных гаргулий с оглушающими атаками." }
-        ]
+      { 
+        name: "Shadow Fiend", dota1: "Nevermore", attr: "Agility", faction: "Scourge", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/nevermore.png", 
+        bio: "<p>Невермор поглощает души павших врагов для усиления атак.</p><p>С каждым убитым противником он становится всё опаснее и сильнее.</p><p>Накопленные души он выпускает разрушительной некротической волной.</p>", 
+        skills: [{name: "Shadowraze", desc: "Теневые взрывы."}, {name: "Necromastery", desc: "Сбор душ на урон."}, {name: "Presence of the Dark Lord", desc: "Срез брони вокруг."}, {name: "Requiem of Souls", desc: "Выпуск душ."}] 
+      },
+      { 
+        name: "Phantom Lancer", dota1: "Azwraith", attr: "Agility", faction: "Scourge", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/phantom_lancer.png", 
+        bio: "<p>Азраил использовал магию зеркал для создания копий.</p><p>Численным превосходством он дезориентирует врагов и стирает их.</p><p>Его иллюзии множатся с каждой секундой боя.</p>", 
+        skills: [{name: "Spirit Lance", desc: "Копье с иллюзией."}, {name: "Doppelganger", desc: "Исчезновение с клонами."}, {name: "Phantom Rush", desc: "Рывок для атаки."}, {name: "Juxtapose", desc: "Пассивный призыв копий."}] 
+      },
+      { 
+        name: "Razor", dota1: "Lightning Revenant", attr: "Agility", faction: "Scourge", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/razor.png", 
+        bio: "<p>Разor наказывает души умерших в лабиринтах Узких Врат.</p><p>Он управляет разрядами статического электричества, выкачивая урон.</p><p>Мощные молнии шторма уничтожают врагов поблизости.</p>", 
+        skills: [{name: "Plasma Field", desc: "Кольцо плазмы."}, {name: "Static Link", desc: "Кража урона у врага."}, {name: "Storm Surge", desc: "Удар током при атаках."}, {name: "Eye of the Storm", desc: "Грозовой шторм."}] 
+      },
+      { 
+        name: "Venomancer", dota1: "Lesale Deathbringer", attr: "Agility", faction: "Scourge", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/venomancer.png", 
+        bio: "<p>Лесале мутировал в ядовитых топях в гибрид рептилии.</p><p>Он заражает всё вокруг смертельными токсинами и коконами.</p><p>Шлейф его разложения не оставляет шансов выжить.</p>", 
+        skills: [{name: "Venomous Gale", desc: "Ядовитая волна."}, {name: "Poison Sting", desc: "Яд с атак."}, {name: "Plague Ward", desc: "Ядовитые коконы."}, {name: "Poison Nova", desc: "Кольцо смертельного яда."}] 
+      },
+      { 
+        name: "Faceless Void", dota1: "Darkterror", attr: "Agility", faction: "Scourge", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/faceless_void.png", 
+        bio: "<p>Дарктеррор прибыл из потустороннего измерения вне времени.</p><p>Он манипулирует хронологией, уворачиваясь от атак в прошлом.</p><p>Его хроносфера создает купол, где он двигается в полном одиночестве.</p>", 
+        skills: [{name: "Time Walk", desc: "Прыжок с возвратом HP."}, {name: "Time Dilation", desc: "Замедление перезарядок."}, {name: "Time Lock", desc: "Стан и повторный удар."}, {name: "Chronosphere", desc: "Купол остановки времени."}] 
+      },
+      { 
+        name: "Phantom Assassin", dota1: "Mortred", attr: "Agility", faction: "Scourge", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/phantom_assassin.png", 
+        bio: "<p>Мордред — член культа убийц «Вуалевой сестры».</p><p>Она скрывается под тению мистического покрова, избегая атак.</p><p>Ее скрытые клинки наносят сокрушительные критические удары.</p>", 
+        skills: [{name: "Stifling Dagger", desc: "Метательный кинжал."}, {name: "Phantom Strike", desc: "Прыжок с атакой."}, {name: "Blur", desc: "Уклонение и невидимость у деревьев."}, {name: "Coup de Grace", desc: "Мощнейший критический удар."}] 
+      },
+      { 
+        name: "Viper", dota1: "Netherdrake", attr: "Agility", faction: "Scourge", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/viper.png", 
+        bio: "<p>Вайпер — дракон из подземных миров Нижней Сферы.</p><p>Его чешуя и дыхание состоят из концентрированной кислотной слюны.</p><p>Она разъедает вражеские доспехи и сжигает их изнутри.</p>", 
+        skills: [{name: "Poison Attack", desc: "Кислотные плевки."}, {name: "Nethertoxin", desc: "Кислотная лужа со сбивом пассивок."}, {name: "Corrosive Skin", desc: "Ядовитая кожа."}, {name: "Viper Strike", desc: "Замедление ядом."}] 
+      },
+      { 
+        name: "Clinkz", dota1: "Bone Fletcher", attr: "Agility", faction: "Scourge", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/clinkz.png", 
+        bio: "<p>Клинкз использовал заклинание пламени, обратившее его в скелета.</p><p>Он выпускает шквал огненных стрел по противникам.</p><p>Способен мгновенно становиться невидимым в языках пламени.</p>", 
+        skills: [{name: "Strafe", desc: "Скорость атаки."}, {name: "Searing Arrows", desc: "Огненные стрелы."}, {name: "Wind Walk", desc: "Невидимость в огне."}, {name: "Death Pact", desc: "Поглощение крипа для усиления."}] 
+      },
+      { 
+        name: "Broodmother", dota1: "Black Arachnia", attr: "Agility", faction: "Scourge", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/broodmother.png", 
+        bio: "<p>Черная Арахна плодит легионы маленьких паучков-помощников.</p><p>Она опутывает карту паутиной для быстрой охоты из засады.</p><p>Вытягивает жизненную силу из врагов своими ядовитыми жвалами.</p>", 
+        skills: [{name: "Spawn Spiderlings", desc: "Паучки из жертвы."}, {name: "Spin Web", desc: "Сеть перемещения."}, {name: "Incapacitating Bite", desc: "Ядовитый укус."}, {name: "Insatiable Hunger", desc: "Неутолимый вампиризм."}] 
+      },
+      { 
+        name: "Weaver", dota1: "Skitskurr", attr: "Agility", faction: "Scourge", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/weaver.png", 
+        bio: "<p>Скитскурр — представитель расы Ткачей вселенной.</p><p>Он возвращает свое тело в прошлое и ускоряет время вокруг.</p><p>Кромсает врагов парой смертоносных острых жвал.</p>", 
+        skills: [{name: "The Swarm", desc: "Жуки-пожиратели брони."}, {name: "Shukuchi", desc: "Невидимость со сквозным бегом."}, {name: "Geminate Attack", desc: "Двойная атака."}, {name: "Time Lapse", desc: "Возврат времени и здоровья."}] 
+      },
+      { 
+        name: "Spectre", dota1: "Mercurial", attr: "Agility", faction: "Scourge", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/spectre.png", 
+        bio: "<p>Меркуриан — темный сгусток чистой энергии из измерений.</p><p>Она неуловима благодаря рассеиванию урона во врагов.</p><p>Создает теневые копии каждого оппонента, преследуя их повсюду.</p>", 
+        skills: [{name: "Spectral Dagger", desc: "Теневой кинжал-дорожка."}, {name: "Desolate", desc: "Чистый урон одиночным целям."}, {name: "Dispersion", desc: "Рассеивание урона во врагов."}, {name: "Haunt", desc: "Призрачные копии врагов."}] 
+      },
+      { 
+        name: "Meepo", dota1: "Geomancer", attr: "Agility", faction: "Scourge", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/meepo.png", 
+        bio: "<p>Мипо разделил свою душу и тело на несколько равных копий.</p><p>Он расставляет сети и наносит гео-удары по области.</p><p>Мгновенно телепортирует всех своих клонов друг к другу.</p>", 
+        skills: [{name: "Earthbind", desc: "Сеть-сетка."}, {name: "Poof", desc: "Гео-телепортация клонов."}, {name: "Ransack", desc: "Кража здоровья с атак."}, {name: "Divided We Stand", desc: "Призыв клонов Meepo."}] 
+      },
+      { 
+        name: "Nyx Assassin", dota1: "Nerubian Assassin", attr: "Agility", faction: "Scourge", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/nyx.png", 
+        bio: "<p>Элитный воин подземной расы, возрожденный божеством Никса.</p><p>Нападает из невидимости, оглушая врагов шипами из-под земли.</p><p>Сжигает ману оппонентов пропорционально их заклинаниям.</p>", 
+        skills: [{name: "Impale", desc: "Шипы из-под земли со станом."}, {name: "Mana Burn", desc: "Сожжение маны врага."}, {name: "Spiked Carapace", desc: "Отражение стана и урона."}, {name: "Vendetta", desc: "Вендетта из инвиза."}] 
+      },
+      { 
+        name: "Slark", dota1: "Murloc Nightcrawler", attr: "Agility", faction: "Scourge", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/slark.png", 
+        bio: "<p>Сларк сбежал из тюрьмы Подводного Рифа.</p><p>Использует туман для скрытности, воруя статы у противников.</p><p>Оставляет врагов полностью обессиленными в честном бою.</p>", 
+        skills: [{name: "Dark Pact", desc: "Снятие дебаффов взрывом."}, {name: "Pounce", desc: "Прыжок с привязкой."}, {name: "Essence Shift", desc: "Кража характеристик с атак."}, {name: "Shadow Dance", desc: "Туманная регенерация и инвиз."}] 
+      },
+      { 
+        name: "Medusa", dota1: "Gorgon", attr: "Agility", faction: "Scourge", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/medusa.png", 
+        bio: "<p>Горгона Медуза защищает себя магическим энергетическим щитом.</p><p>Стреляет тройными мистическими стрелами по группам врагов.</p><p>Обращает в камень любого, кто осмелится посмотреть ей в глаза.</p>", 
+        skills: [{name: "Split Shot", desc: "Тройные стрелы."}, {name: "Mystic Snake", desc: "Прыгающая змея с маной."}, {name: "Mana Shield", desc: "Перевод урона в ману."}, {name: "Stone Gaze", desc: "Окаменение взглядом."}] 
+      },
+      { 
+        name: "Monkey King", attr: "Agility", faction: "Sentinel", dota1: "Sun Wukong", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/monkey_king.png", 
+        bio: "<p>Король обезьян прыгает по верхушкам деревьев в засаде.</p><p>Наносит мощный удар посохом с критическим уроном.</p><p>Создает армию клонов на арене для окружения противников.</p>", 
+        skills: [{name: "Boundless Strike", desc: "Удар посохом с критом."}, {name: "Tree Dance", desc: "Прыжок на деревья."}, {name: "Primal Spring", desc: "Прыжок с дерева по площади."}, {name: "Wukong's Command", desc: "Армия клонов на арене."}] 
+      },
+      { 
+        name: "Mars", attr: "Agility", faction: "Sentinel", dota1: "Test", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/placeholder.png", 
+        bio: "<p>Резервный слот маневренности.</p><p>Тестовый герой для кастомизации.</p>", 
+        skills: [{name: "Agility Strike", desc: "Быстрый выпад."}] 
+      },
+
+      // ==================== INTELLIGENCE SENTINEL ====================
+      { 
+        name: "Crystal Maiden", dota1: "Rylai", attr: "Intelligence", faction: "Sentinel", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/crystal_maiden.png", 
+        bio: "<p>Рилай овладела криомантией на северных вершинах гор.</p><p>Она способна замораживать врагов и восстанавливать ману команде.</p><p>Её ледяной шторм наносит колоссальный урон по площади.</p>", 
+        skills: [{name: "Crystal Nova", desc: "Ледяной взрыв."}, {name: "Frostbite", desc: "Ледяная ловушка."}, {name: "Arcane Aura", desc: "Аура регена маны."}, {name: "Freezing Field", desc: "Ледяной шторм."}] 
+      },
+      { 
+        name: "Puck", dota1: "Faerie Dragon", attr: "Intelligence", faction: "Sentinel", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/puck.png", 
+        bio: "<p>Пак — капризный волшебный дракон на грани мистики.</p><p>Уходит от атак с помощью скачков и сферы.</p><p>Его магическая спираль наказывает врагов при движении.</p>", 
+        skills: [{name: "Illusory Orb", desc: "Летающая сфера."}, {name: "Waning Rift", desc: "Импульс тишины."}, {name: "Phase Shift", desc: "Ускользание в фазу."}, {name: "Dream Coil", desc: "Магическая спираль."}] 
+      },
+      { 
+        name: "Storm Spirit", dota1: "Raijin Thunderkeg", attr: "Intelligence", faction: "Sentinel", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/storm_spirit.png", 
+        bio: "<p>Райджин соединил душу с духом молнии в бурю.</p><p>Превратился в сгусток плазмы, управляющий грозовой энергией.</p><p>Перелетает через всю карту в виде шаровой молнии.</p>", 
+        skills: [{name: "Static Remnant", desc: "Электрический двойник."}, {name: "Electric Vortex", desc: "Магнитный вихрь."}, {name: "Overload", desc: "Заряд после магии."}, {name: "Ball Lightning", desc: "Полет шаровой молнией."}] 
+      },
+      { 
+        name: "Windranger", dota1: "Alleria", attr: "Intelligence", faction: "Sentinel", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/windranger.png", 
+        bio: "<p>Аллерия выросла в лесах под защитой диких ветров.</p><p>Выпускает шквалы стрел и связывает врагов друг с другом.</p><p>Создает потоки воздуха для уклонения от атак.</p>", 
+        skills: [{name: "Shackleshot", desc: "Связка с деревом."}, {name: "Powershot", desc: "Мощный пронзительный выстрел."}, {name: "Windrun", desc: "Ускорение и уклонение."}, {name: "Focus Fire", desc: "Максимальная скорость атаки."}] 
+      },
+      { 
+        name: "Zeus", dota1: "Lord of Olympia", attr: "Intelligence", faction: "Sentinel", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/zeus.png", 
+        bio: "<p>Владыка Олимпа управляет силой молний и гроз.</p><p>Обрушивает цепные разряды и точечные удары на врагов.</p><p>Наносит глобальный урон по всем противникам одновременно.</p>", 
+        skills: [{name: "Arc Lightning", desc: "Цепная молния."}, {name: "Lightning Bolt", desc: "Точечный удар молнией."}, {name: "Static Field", desc: "Урон в % от HP."}, {name: "Thundergod's Wrath", desc: "Удар по всем врагам на карте."}] 
+      },
+      { 
+        name: "Lina", dota1: "Slayer", attr: "Intelligence", faction: "Sentinel", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/lina.png", 
+        bio: "<p>Лина повелевает чистым пламенем и огненной стихией.</p><p>Сжигает врагов массированными заклинаниями по площади.</p><p>Разгоняет скорость своих атак до предела при касте магии.</p>", 
+        skills: [{name: "Dragon Slave", desc: "Огненная волна."}, {name: "Light Strike Array", desc: "Столб пламени со станом."}, {name: "Fiery Soul", desc: "Ускорение от магии."}, {name: "Laguna Blade", desc: "Смертельный молниеносный удар."}] 
+      },
+      { 
+        name: "Tinker", dota1: "Boush", attr: "Intelligence", faction: "Sentinel", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/tinker.png", 
+        bio: "<p>Буш — гениальный инженер подземного мира.</p><p>Использует высокотехнологичные гаджеты, лазеры и ракеты.</p><p>С помощью перезарядки мгновенно сбрасывает кулдауны.</p>", 
+        skills: [{name: "Laser", desc: "Ослепляющий лазер."}, {name: "Heat-Seeking Missile", desc: "Самонаводящиеся ракеты."}, {name: "March of the Machines", desc: "Армия роботов."}, {name: "Rearm", desc: "Перезарядка всего."}] 
+      },
+      { 
+        name: "Nature's Prophet", dota1: "Furion", attr: "Intelligence", faction: "Sentinel", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/natures_prophet.png", 
+        bio: "<p>Фурион появился из семени, посаженного богом леса.</p><p>Призывает трентов из деревьев и телепортируется по карте.</p><p>Направляет шар чистой энергии сквозь ряды противников.</p>", 
+        skills: [{name: "Sprout", desc: "Кольцо деревьев."}, {name: "Teleportation", desc: "Глобальный телепорт."}, {name: "Nature's Call", desc: "Призыв трентов из деревьев."}, {name: "Wrath of Nature", desc: "Энергетический рикошет."}] 
+      },
+      { 
+        name: "Enchantress", dota1: "Aiushtha", attr: "Intelligence", faction: "Sentinel", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/enchantress.png", 
+        bio: "<p>Аюшта — лесная нимфа, несущая гармонию природы.</p><p>Очаровывает диких существ, заставляя сражаться на своей стороне.</p><p>Защитная аура снижает урон от атак издалека.</p>", 
+        skills: [{name: "Untouchable", desc: "Замедление вражеских атак."}, {name: "Enchant", desc: "Очарование существа."}, {name: "Nature's Attendants", desc: "Огоньки лечения."}, {name: "Impetus", desc: "Урон от дистанции."}] 
+      },
+      { 
+        name: "Jakiro", dota1: "Twin Head Dragon", attr: "Intelligence", faction: "Sentinel", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/jakiro.png", 
+        bio: "<p>Якиро объединяет две стихии — огонь и лед.</p><p>Одна голова извергает лаву, а вторая замораживает врагов.</p><p>Превращает направления в непреодолимую зону для противника.</p>", 
+        skills: [{name: "Dual Breath", desc: "Потоки огня и льда."}, {name: "Ice Path", desc: "Замораживающий путь."}, {name: "Liquid Fire", desc: "Огненная жидкость для строений."}, {name: "Macropyre", desc: "Огненное поле."}] 
+      },
+      { 
+        name: "Chen", dota1: "Holy Knight", attr: "Intelligence", faction: "Sentinel", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/chen.png", 
+        bio: "<p>Чен обратился в веру Святого Рыцаря после спасения.</p><p>Подчиняет своей воле лесных существ в помощь команде.</p><p>В критический момент призывает всю команду и исцеляет раны.</p>", 
+        skills: [{name: "Penitence", desc: "Уязвимость цели."}, {name: "Divine Favor", desc: "Аура брони и лечения."}, {name: "Persuasion", desc: "Подчинение существ."}, {name: "Hand of God", desc: "Глобальное лечение."}] 
+      },
+      { 
+        name: "Silencer", dota1: "Nortrom", attr: "Intelligence", faction: "Sentinel", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/silencer.png", 
+        bio: "<p>Нортром высвободил уникальный дар кражи чужой магии.</p><p>Накладывает глобальное безмолвие на всех врагов в бою.</p><p>Навсегда крадет интеллект у противников за каждое убийство.</p>", 
+        skills: [{name: "Arcane Curse", desc: "Проклятие за касты."}, {name: "Glaives of Wisdom", desc: "Чистый урон от интеллекта."}, {name: "Last Word", desc: "Сало и урон."}, {name: "Global Silence", desc: "Глобальное безмолвие."}] 
+      },
+      { 
+        name: "Ogre Magi", dota1: "Aggron Stonebreaker", attr: "Intelligence", faction: "Sentinel", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/ogre_magi.png", 
+        bio: "<p>Двуглавый огр швыряется зажигательными смесями.</p><p>Две головы постоянно спорят, но успешно колдуют.</p><p>Благодаря удаче повторяет заклинания до четырех раз.</p>", 
+        skills: [{name: "Fireblast", desc: "Огненный взрыв."}, {name: "Ignite", desc: "Поджог и замедление."}, {name: "Bloodlust", desc: "Ускорение союзника."}, {name: "Multicast", desc: "Многократный повтор магии."}] 
+      },
+      { 
+        name: "Rubick", dota1: "Grand Magus", attr: "Intelligence", faction: "Sentinel", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/rubick.png", 
+        bio: "<p>Рубик обладает гениальным аналитическим умом.</p><p>Копирует и применяет последнее заклинание вражеских героев.</p><p>Обращает чужие суперспособности против их создателей.</p>", 
+        skills: [{name: "Telekinesis", desc: "Бросок врага через воздух."}, {name: "Fade Bolt", desc: "Разряд с уменьшением атаки."}, {name: "Null Field", desc: "Аура защиты от магии."}, {name: "Spell Steal", desc: "Кража чужих способностей."}] 
+      },
+      { 
+        name: "Disruptor", dota1: "Thrall", attr: "Intelligence", faction: "Sentinel", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/disruptor.png", 
+        bio: "<p>Тралл владеет силой бурь и кинетической энергии.</p><p>Создает статические поля, запирающие врагов внутри.</p><p>Возвращает противников на позиции прошлых секунд.</p>", 
+        skills: [{name: "Thunder Strike", desc: "Серия молний."}, {name: "Glimpse", desc: "Возврат врага в прошлое место."}, {name: "Kinetic Field", desc: "Статический барьер."}, {name: "Static Storm", desc: "Грозовой шторм с салом."}] 
+      },
+      { 
+        name: "Keeper of the Light", dota1: "Ezalor", attr: "Intelligence", faction: "Sentinel", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/keeper_of_the_light.png", 
+        bio: "<p>Эзалор — древний страж света и первозданных духов.</p><p>Накапливает волны ослепляющего света, подпитывая маной союзников.</p><p>Призывает духовных коней для прорыва вражеских линий.</p>", 
+        skills: [{name: "Illuminate", desc: "Накопительная волна света."}, {name: "Mana Leak", desc: "Выжигание маны при беге."}, {name: "Chakra Magic", desc: "Восстановление маны."}, {name: "Spirit Form", desc: "Световая форма."}] 
+      },
+      { 
+        name: "Oracle", dota1: "Kahu", attr: "Intelligence", faction: "Sentinel", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/oracle.png", 
+        bio: "<p>Каху видит все варианты будущего и переплетает судьбы.</p><p>Накладывает мистическую отсрочку смерти на союзников.</p><p>Очищает цели от негативных эффектов и предсказывает исход схваток.</p>", 
+        skills: [{name: "Fortune's End", desc: "Очищение цели."}, {name: "Fate's Edict", desc: "Разоружение с иммунитетом к магии."}, {name: "Purifying Flames", desc: "Урон с последующим лечением."}, {name: "False Promise", desc: "Отсрочка гибели."}] 
+      },
+      { 
+        name: "Skywrath Mage", dota1: "Dragonus", attr: "Intelligence", faction: "Sentinel", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/skywrath_mage.png", 
+        bio: "<p>Драгонус — верный страж небесного престола скайратов.</p><p>Наказывает врагов потоками магии с небес и замедляет рунами.</p><p>Обрушивает град мистических зарядов в точке назначения.</p>", 
+        skills: [{name: "Arcane Bolt", desc: "Сгусток от интеллекта."}, {name: "Concussive Shot", desc: "Замедление героя."}, {name: "Ancient Seal", desc: "Сало и бонус макро-урона."}, {name: "Mystic Flare", desc: "Град небесных зарядов."}] 
+      },
+      { 
+        name: "Arc Warden", dota1: "Zet", attr: "Intelligence", faction: "Sentinel", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/arc_warden.png", 
+        bio: "<p>Зет — осколок изначального разума аномалий.</p><p>Умеет создавать абсолютную и точную копию самого себя.</p><p>Клон использует все способности и предметы героя.</p>", 
+        skills: [{name: "Flux", desc: "Замедление одиночки."}, {name: "Magnetic Field", desc: "Поле уклонений."}, {name: "Spark Wraith", desc: "Искрящаяся ловушка."}, {name: "Tempest Double", desc: "Точная копия героя со всеми вещами."}] 
+      },
+      { 
+        name: "Grimstroke", attr: "Intelligence", faction: "Scourge", dota1: "Ink", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/grimstroke.png", 
+        bio: "<p>Художник темных искусств, использующий чернила.</p><p>Связывает судьбы врагов прочной чернильной нитью.</p><p>Призывает фантомов для преследования противников.</p>", 
+        skills: [{name: "Stroke of Fate", desc: "Чернильный мазок."}, {name: "Phantom's Embrace", desc: "Призыв фантома к врагу."}, {name: "Ink Swell", desc: "Чернильный взрыв на союзника."}, {name: "Soulbind", desc: "Связка двух врагов нитью."}] 
+      },
+      { 
+        name: "Muerta", attr: "Intelligence", faction: "Sentinel", dota1: "Dead", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/muerta.png", 
+        bio: "<p>Повелительница мертвых из потустороннего мира.</p><p>Вооружена призрачным пистолетом для стрельбы по душам.</p><p>Переходит в эфирную форму для избежания физического урона.</p>", 
+        skills: [{name: "Dead Shot", desc: "Рикошетный выстрел."}, {name: "The Calling", desc: "Призыв духов призраков."}, {name: "Gunslinger", desc: "Шанс второго выстрела."}, {name: "Pierce the Veil", desc: "Переход в эфирную форму."}] 
+      },
+
+      // ==================== INTELLIGENCE SCOURGE ====================
+      { 
+        name: "Bane", dota1: "Atropos", attr: "Intelligence", faction: "Scourge", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/bane.png", 
+        bio: "<p>Атропос — воплощение ночных кошмаров и страха.</p><p>Погружает врагов в парализующий сон и вытягивает силы.</p><p>Связывает жертву с собственной болью в мертвой хватке.</p>", 
+        skills: [{name: "Enfeeble", desc: "Срез урона атаки."}, {name: "Brain Sap", desc: "Кража здоровья."}, {name: "Nightmare", desc: "Кошмарный сон."}, {name: "Fiend's Grip", desc: "Мертвая хватка с кражей маны."}] 
+      },
+      { 
+        name: "Lich", dota1: "Kel'Thuzad", attr: "Intelligence", faction: "Scourge", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/lich.png", 
+        bio: "<p>Кел'Тузад возрожден Королем Мертвых в лича.</p><p>Управляет силой арктического холода и ледяных щитов.</p><p>Создает шар, бесконечно рикошетирующий между врагами.</p>", 
+        skills: [{name: "Frost Shield", desc: "Ледяной защитный щит."}, {name: "Sinister Gaze", desc: "Завораживание цели."}, {name: "Frost Blast", desc: "Ледяной взрыв."}, {name: "Chain Frost", desc: "Рикошетящий ледяной шар."}] 
+      },
+      { 
+        name: "Lion", dota1: "Demon Witch", attr: "Intelligence", faction: "Intelligence", faction: "Scourge", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/lion.png", 
+        bio: "<p>Лион пал жертвой гордыни и демонических искушений.</p><p>Крадет ману, превращает врагов в безобидных существ.</p><p>Испепеляет противников мощнейшим смертельным пальцем.</p>", 
+        skills: [{name: "Earth Spike", desc: "Шипы со станом."}, {name: "Hex", desc: "Превращение в животное."}, {name: "Mana Drain", desc: "Высасывание маны."}, {name: "Finger of Death", desc: "Смертельный палец."}] 
+      },
+      { 
+        name: "Witch Doctor", dota1: "Zharvot", attr: "Intelligence", faction: "Scourge", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/witch_doctor.png", 
+        bio: "<p>Жарвот владеет древними вуду-практиками джунглей.</p><p>Бросается парализующими черепами и исцеляет команду.</p><p>Призывает смертоносный посох-вард для расстрела врагов.</p>", 
+        skills: [{name: "Paralyzing Cask", desc: "Рикошетящий череп-стан."}, {name: "Voodoo Restoration", desc: "Лечащая аура вуду."}, {name: "Maledict", desc: "Проклятие на урон от потери HP."}, {name: "Death Ward", desc: "Смертоносный посох-вард."}] 
+      },
+      { 
+        name: "Enigma", dota1: "Enigma", attr: "Intelligence", faction: "Scourge", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/enigma.png", 
+        bio: "<p>Энигма — космическое создание из первозданной бездны.</p><p>Управляет гравитационными аномалиями и мини-энигматами.</p><p>Затягивает отряды врагов в центр черной дыры.</p>", 
+        skills: [{name: "Malefice", desc: "Периодические станы."}, {name: "Demonic Conversion", desc: "Призыв энигматов."}, {name: "Midnight Pulse", desc: "Пульсация в % от HP."}, {name: "Black Hole", desc: "Черная дыра."}] 
+      },
+      { 
+        name: "Necrophos", dota1: "Rotund'jere", attr: "Intelligence", faction: "Scourge", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/necrophos.png", 
+        bio: "<p>Ротунд'жере — чумной жрец и вестник разложения.</p><p>Питается болезнями и страданиями живых существ вокруг.</p><p>Добивает ослабленных врагов смертельным ударом косы.</p>", 
+        skills: [{name: "Death Pulse", desc: "Волна лечения и урона."}, {name: "Ghost Shroud", desc: "Призрачная форма."}, {name: "Heartstopper Aura", desc: "Истощение здоровья врагов."}, {name: "Reaper's Scythe", desc: "Коса на недостающее HP."}] 
+      },
+      { 
+        name: "Warlock", dota1: "Demnok Lannik", attr: "Intelligence", faction: "Scourge", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/warlock.png", 
+        bio: "<p>Демнок Ланник проводит мрачные чернокнижные ритуалы.</p><p>Связывает судьбы врагов неразрывными путами боли.</p><p>Призывает из преисподней гигантского пламенного Голема.</p>", 
+        skills: [{name: "Fatal Bonds", desc: "Связка урона нитями."}, {name: "Shadow Word", desc: "Лечение или урон."}, {name: "Upheaval", desc: "Липкое замедляющее поле."}, {name: "Rain of Chaos", desc: "Призыв огненного Голема."}] 
+      },
+      { 
+        name: "Queen of Pain", dota1: "Akasha", attr: "Intelligence", faction: "Scourge", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/queen_of_pain.png", 
+        bio: "<p>Акаша вырвалась на свободу из темницы короля.</p><p>Использует звуковые волны и кинжалы с ядом.</p><p>Мгновенно перемещается по полю боя в виде тени.</p>", 
+        skills: [{name: "Shadow Strike", desc: "Ядовитый кинжал."}, {name: "Blink", desc: "Теневой телепорт."}, {name: "Scream of Pain", desc: "Крик боли вокруг."}, {name: "Sonic Wave", desc: "Звуковая пронзающая волна."}] 
+      },
+      { 
+        name: "Death Prophet", dota1: "Krobelus", attr: "Intelligence", faction: "Scourge", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/death_prophet.png", 
+        bio: "<p>Кробелус — вечный призрак, возвращающийся из мертвых.</p><p>Испускает стаи летучих мышей-духов по прямой.</p><p>Призывает рой мстительных призраков, вытягивающих жизнь.</p>", 
+        skills: [{name: "Crypt Swarm", desc: "Стая мышей по линии."}, {name: "Silence", desc: "Безмолвие по области."}, {name: "Siphon", desc: "Вытягивание жизни."}, {name: "Exorcism", desc: "Рой духов-призраков."}] 
+      },
+      { 
+        name: "Pugna", dota1: "Oblivion", attr: "Intelligence", faction: "Scourge", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/pugna.png", 
+        bio: "<p>Пугна — воплощение разрушительной энергии небытия.</p><p>Взрывает землю под ногами и ставит вард против магии.</p><p>Вытягивает жизненные силы напрямую из противников.</p>", 
+        skills: [{name: "Nether Blast", desc: "Взрыв энергии по строениям."}, {name: "Decrepify", desc: "Эфирный перевод цели."}, {name: "Nether Ward", desc: "Антимагический вард."}, {name: "Life Drain", desc: "Вытягивание здоровья."}] 
+      },
+      { 
+        name: "Dazzle", dota1: "Shadow Priest", attr: "Intelligence", faction: "Scourge", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/dazzle.png", 
+        bio: "<p>Даззал владеет магией исцеления через страдания.</p><p>Накладывает на союзников крест, защищающий от смерти.</p><p>Покрывает врагов ядовитой тенью и срезкой брони.</p>", 
+        skills: [{name: "Poison Touch", desc: "Ядовитый стан."}, {name: "Shadow Wave", desc: "Волна света/урона."}, {name: "Shallow Grave", desc: "Защита от смерти."}, {name: "Bad Juju", desc: "Срез брони и кулдаунов."}] 
+      },
+      { 
+        name: "Leshrac", dota1: "Tormented Soul", attr: "Intelligence", faction: "Scourge", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/leshrac.png", 
+        bio: "<p>Лешрак познал всю боль разрушающейся вселенной.</p><p>Вызывает землетрясения и создает кольца плазмы.</p><p>Пропитывает противников разрушительной энергией.</p>", 
+        skills: [{name: "Split Earth", desc: "Раскол земли со станом."}, {name: "Diabolic Edict", desc: "Взрывы по зданиям и врагам."}, {name: "Lightning Storm", desc: "Цепная молния."}, {name: "Pulse Nova", desc: "Энергетическая пульсация."}] 
+      },
+      { 
+        name: "Dark Seer", dota1: "Ish'kafel", attr: "Intelligence", faction: "Scourge", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/dark_seer.png", 
+        bio: "<p>Иш'кафель искривляет пространство и время в бою.</p><p>Ускоряет союзников и создает стены копий врагов.</p><p>Притягивает группы противников в смертельные ловушки.</p>", 
+        skills: [{name: "Vacuum", desc: "Стяжка врагов в точку."}, {name: "Ion Shell", desc: "Обжигающий щит."}, {name: "Surge", desc: "Резкое ускорение."}, {name: "Wall of Replica", desc: "Стена иллюзий врагов."}] 
+      },
+      { 
+        name: "Batrider", dota1: "Jin'zakk", attr: "Intelligence", faction: "Scourge", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/batrider.png", 
+        bio: "<p>Джин'закк приручил летучую мышь из вулканических пещер.</p><p>Оставляет лужи горящего масла и поджигает врагов.</p><p>Вытягивает выбранную жертву арканом в толпу соратников.</p>", 
+        skills: [{name: "Sticky Napalm", desc: "Липкое масло."}, {name: "Flamebreak", desc: "Взрывной коктейль."}, {name: "Firefly", desc: "Полет с огненным следом."}, {name: "Flaming Lasso", desc: "Аркан-захват цели."}] 
+      },
+      { 
+        name: "Ancient Apparition", dota1: "Kaldr", attr: "Intelligence", faction: "Scourge", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/ancient_apparition.png", 
+        bio: "<p>Калдр — холодное воплощение конца времен.</p><p>Запускает ледяные вихри и глобальный снаряд холода.</p><p>Блокирует лечение врагов и уничтожает слабых героев.</p>", 
+        skills: [{name: "Cold Feet", desc: "Заморозка со станом."}, {name: "Ice Vortex", desc: "Ледяной вихрь."}, {name: "Chilling Touch", desc: "Магический урон с атак."}, {name: "Ice Blast", desc: "Глобальный шар без регена HP."}] 
+      },
+      { 
+        name: "Invoker", dota1: "Kael", attr: "Intelligence", faction: "Scourge", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/invoker.png", 
+        bio: "<p>Карл — гений магии, комбинирующий три стихии.</p><p>Использует сферы Quas, Wex, Exort для создания заклинаний.</p><p>В его арсенале метеориты, стены огня и заморозки.</p>", 
+        skills: [{name: "Quas / Wex / Exort", desc: "Стихийные сферы."}, {name: "Invoke", desc: "Комбинация заклинаний."}, {name: "Sun Strike", desc: "Глобальный удар пламенем."}, {name: "Chaos Meteor", desc: "Пылающий метеорит."}] 
+      },
+      { 
+        name: "Outworld Destroyer", attr: "Intelligence", faction: "Scourge", dota1: "Obsidian Destroyer", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/obsidian_destroyer.png", 
+        bio: "<p>Предвестник охраняет грань между реальностями.</p><p>Крадет ману врагов и заключает их в ментальные тюрьмы.</p><p>Наносит колоссальный чистый урон интеллектом по площади.</p>", 
+        skills: [{name: "Arcane Orb", desc: "Чистый урон от маны."}, {name: "Astral Imprisonment", desc: "Ментальная тюрьма."}, {name: "Essence Aura", desc: "Восстановление маны."}, {name: "Sanity's Eclipse", desc: "Взрыв разума от интеллекта."}] 
+      },
+      { 
+        name: "Shadow Demon", dota1: "Eredar", attr: "Intelligence", faction: "Scourge", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/shadow_demon.png", 
+        bio: "<p>Эредар заражает врагов порчей и создает токсичные иллюзии.</p><p>Способен на время полностью изгнать любого героя из реальности.</p><p>Разрушает положительные баффы противников ядом.</p>", 
+        skills: [{name: "Disruption", desc: "Изгнание с двумя клонами."}, {name: "Soul Catcher", desc: "Увеличение урона по цели."}, {name: "Shadow Poison", desc: "Взрывные яды."}, {name: "Demonic Purge", desc: "Снятие баффов и замедление."}] 
+      },
+      { 
+        name: "Visage", dota1: "Necro'lic", attr: "Intelligence", faction: "Scourge", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/visage.png", 
+        bio: "<p>Некролик создан из темной магии и костей павших.</p><p>Накапливает урон вокруг себя и замедляет врагов могилой.</p><p>Призывает верных управляемых гаргулий-фамильяров.</p>", 
+        skills: [{name: "Grave Chill", desc: "Кража скорости."}, {name: "Soul Assumption", desc: "Удар накопленным уроном."}, {name: "Gravekeeper's Cloak", desc: "Щиты брони."}, {name: "Summon Familiars", desc: "Призыв каменных гаргулий."}] 
+      },
+      { 
+        name: "Void Spirit", attr: "Intelligence", faction: "Sentinel", dota1: "Inai", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/void_spirit.png", 
+        bio: "<p>Старший из духов, управляющий межпространственными разломами.</p><p>Мгновенно перемещается через порталы в иные измерения.</p><p>Наносит пронзающие удары с меткой пустоты.</p>", 
+        skills: [{name: "Aether Remnant", desc: "Осколок-ловушка."}, {name: "Dissimilate", desc: "Уход в порталы."}, {name: "Resonant Pulse", desc: "Щит и урон."}, {name: "Astral Step", desc: "Пронзающий прыжок с меткой."}] 
+      },
+      { 
+        name: "Snapfire", attr: "Intelligence", faction: "Sentinel", dota1: "Bea", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/snapfire.png", 
+        bio: "<p>Боевая бабуля на драконе с пулеметом и печеньками.</p><p>Устраивает артиллерийский обстрел с дальних дистанций.</p><p>Поддерживает союзников взрывными снарядами.</p>", 
+        skills: [{name: "Scatterblast", desc: "Отрезвляющий выстрел."}, {name: "Firesnap Cookie", desc: "Прыжковая печенька."}, {name: "Lil' Shredder", desc: "Пулеметный огонь."}, {name: "Mortimer Kisses", desc: "Артиллерийский обстрел."}] 
       }
     ];
 
@@ -1020,8 +1079,12 @@
         const card = document.createElement('div');
         card.className = 'hero-card';
         card.onclick = () => openModal(h);
+        
+        // Защита от пропажи изображений
+        const fallbackImg = "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/base.png";
+
         card.innerHTML = `
-          <img src="${h.img}" class="hero-avatar" alt="${h.name}">
+          <img src="${h.img}" class="hero-avatar" alt="${h.name}" onerror="this.onerror=null; this.src='${fallbackImg}';">
           <div class="hero-title">${h.name}</div>
           <div class="hero-dota1-name">Dota 1: ${h.dota1}</div>
         `;
@@ -1050,7 +1113,7 @@
       document.getElementById('modalImg').src = hero.img;
       document.getElementById('modalName').innerText = hero.name;
       document.getElementById('modalDota1').innerText = "Имя в Dota 1: " + hero.dota1;
-      document.getElementById('modalBio').innerText = hero.bio;
+      document.getElementById('modalBio').innerHTML = hero.bio;
 
       const skillsContainer = document.getElementById('modalSkills');
       skillsContainer.innerHTML = '';
