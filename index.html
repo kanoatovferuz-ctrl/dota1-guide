@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>База Знаний Dota 1</title>
+    <!-- Подключаем скрипт Telegram WebApp -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body {
+            background-color: #0c0d12;
+            color: #d1d5db;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 16px;
+        }
+        h1 {
+            color: #d97706;
+            text-align: center;
+            font-size: 22px;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #9ca3af;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+        .card {
+            background-color: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 10px;
+            padding: 14px;
+            margin-bottom: 14px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        .card h3 {
+            margin-top: 0;
+            margin-bottom: 8px;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .str { color: #ef4444; }
+        .agi { color: #22c55e; }
+        .int { color: #3b82f6; }
+        
+        .hero-list {
+            font-size: 13px;
+            color: #9ca3af;
+            line-height: 1.5;
+        }
+        .btn-main {
+            display: block;
+            width: 100%;
+            background: linear-gradient(180deg, #d97706 0%, #b45309 100%);
+            color: #ffffff;
+            text-align: center;
+            padding: 12px 0;
+            border-radius: 8px;
+            font-weight: bold;
+            text-decoration: none;
+            margin-top: 20px;
+            font-size: 15px;
+            box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Гайды Dota 1 (Defense of the Ancients)</h1>
+    <div class="subtitle">База знаний, сборки предметов и тактики по героям</div>
+
+    <div class="card">
+        <h3 class="str">🛡️ Герои Силы (Strength)</h3>
+        <div class="hero-list">
+            Pudge (Падж), Skeleton King (Леорик), Sven (Свен), Centaur Warrunner (Кентавр), Tiny (Тини)...
+        </div>
+    </div>
+
+    <div class="card">
+        <h3 class="agi">⚡ Герои Ловкости (Agility)</h3>
+        <div class="hero-list">
+            Shadow Fiend (Невермор), Anti-Mage (Магина), Phantom Lancer (Лансер), Sniper (Снайпер)...
+        </div>
+    </div>
+
+    <div class="card">
+        <h3 class="int">🔮 Герои Интеллекта (Intelligence)</h3>
+        <div class="hero-list">
+            Invoker (Инвокер), Lina (Лина), Tinker (Тинкер), Crystal Maiden (ЦМка), Rhasta (Раста)...
+        </div>
+    </div>
+
+    <a href="#" class="btn-main" onclick="Telegram.WebApp.close();">Закрыть гайд</a>
+
+    <script>
+        // Инициализация WebApp от Telegram
+        const tg = window.Telegram.WebApp;
+        tg.expand(); // Разворачиваем на полный экран
+    </script>
+</body>
+</html>
