@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dota 1 Classic Guide — Telegram WebApp</title>
-  <!-- Подключаем красивые шрифты с поддержкой кириллицы -->
+  <!-- Подключаем шрифты с глубокой поддержкой кириллицы: Cinzel для заголовков и Lora для историй/текстов -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <style>
@@ -15,13 +15,18 @@
       box-sizing: border-box; 
       margin: 0; 
       padding: 0; 
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; 
+      font-family: 'Inter', sans-serif; 
     }
 
-    /* Придаем заголовкам, именам героев и скиллов красивый игровой стиль */
+    /* Заголовки, имена героев и скиллов в эпическом стиле */
     h1, .hero-title, .modal-info h2, .skill-name, h3 {
       font-family: 'Cinzel', serif !important;
       letter-spacing: 0.5px;
+    }
+
+    /* Красивый русский шрифт с засечками для историй и описаний */
+    .bio-text, .skill-desc, .level-row {
+      font-family: 'Lora', serif !important;
     }
 
     body { 
@@ -117,8 +122,8 @@
     .modal-header { display: flex; gap: 15px; align-items: center; margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 12px; }
     .modal-img { width: 70px; height: 70px; border-radius: 8px; object-fit: cover; }
     .modal-info h2 { font-size: 18px; color: #fff; }
-    .modal-info .dota1-title { font-size: 13px; color: #ff9d00; font-family: 'Inter', sans-serif; }
-    .bio-text { font-size: 12px; color: #ccc; line-height: 1.6; margin-bottom: 15px; background: rgba(255, 255, 255, 0.03); padding: 12px; border-radius: 8px; border-left: 3px solid #0088cc; font-family: 'Inter', sans-serif; }
+    .modal-info .dota1-title { font-size: 13px; color: #ff9d00; }
+    .bio-text { font-size: 13px; color: #dcdce6; line-height: 1.6; margin-bottom: 15px; background: rgba(255, 255, 255, 0.03); padding: 12px; border-radius: 8px; border-left: 3px solid #0088cc; }
     .bio-text p { margin-bottom: 8px; }
     
     .skill-card { background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; padding: 10px; margin-bottom: 8px; border-left: 3px solid #ff9d00; }
@@ -126,12 +131,15 @@
     .skill-icon { width: 42px; height: 42px; border-radius: 6px; border: 1px solid #ff9d00; object-fit: cover; background: #151520; }
     .skill-info-title { flex: 1; }
     .skill-name { font-size: 13px; font-weight: bold; color: #2ecc71; }
-    .skill-type { font-size: 10px; color: #ff9d00; text-transform: uppercase; font-family: 'Inter', sans-serif; }
-    .toggle-levels-btn { margin-top: 6px; background: rgba(255, 157, 0, 0.12); border: 1px solid rgba(255, 157, 0, 0.3); color: #ff9d00; font-size: 11px; padding: 5px; border-radius: 4px; cursor: pointer; width: 100%; text-align: center; font-weight: 600; font-family: 'Inter', sans-serif; }
-    .skill-levels-container { display: none; margin-top: 6px; border-top: 1px dashed rgba(255,255,255,0.15); padding-top: 6px; }
-    .level-row { display: flex; justify-content: space-between; font-size: 11px; color: #ccc; padding: 2px 0; font-family: 'Inter', sans-serif; }
+    .skill-type { font-size: 10px; color: #ff9d00; text-transform: uppercase; }
     
-    .send-tg-btn { width: 100%; padding: 12px; background: #0088cc; color: white; border: none; border-radius: 8px; font-weight: bold; margin-top: 15px; cursor: pointer; font-family: 'Inter', sans-serif; }
+    /* Кнопка уровней заглавными буквами */
+    .toggle-levels-btn { margin-top: 6px; background: rgba(255, 157, 0, 0.12); border: 1px solid rgba(255, 157, 0, 0.3); color: #ff9d00; font-size: 11px; padding: 6px; border-radius: 4px; cursor: pointer; width: 100%; text-align: center; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .skill-levels-container { display: none; margin-top: 6px; border-top: 1px dashed rgba(255,255,255,0.15); padding-top: 6px; }
+    .level-row { display: flex; justify-content: space-between; font-size: 12px; color: #ccc; padding: 3px 0; }
+    
+    .send-tg-btn { width: 100%; padding: 12px; background: #0088cc; color: white; border: none; border-radius: 8px; font-weight: bold; margin-top: 15px; cursor: pointer; }
   </style>
 </head>
 <body>
@@ -190,7 +198,7 @@
       { 
         name: "Sven", dota1: "Rogue Knight", attr: "Strength", faction: "Sentinel", 
         img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/sven.png", 
-        bio: "<p>Сын изгоя-паладина и эльфийки ночного эльфа, Свен вырос с клеймом позора и изгнания, отвергнутый обоими народами. Закаленный суровыми испытаниями, он поклялся следовать непрерывного кодексу ордена Белого Мстителя.</p><p>Однако, столкнувшись с лицемерием и предательством собственных наставников, Свен разрушил священное солнце и уничтожил орден, забрав с собой легендарный двуручный меч Месть.</p><p>Теперь этот одинокий рыцарь блуждает по полям сражений меж двух миров, полагаясь исключительно на свою ярость, стальной клинок и непоколебимую волю.</p>", 
+        bio: "<p>Сын изгоя-паладина и эльфийки ночного эльфа, Свен вырос с клеймом позора и изгнания, отвергнутый обоими народами. Закаленный суровыми испытаниями, он поклялся следовать непреклонному кодексу ордена Белого Мстителя.</p><p>Однако, столкнувшись с лицемерием и предательством собственных наставников, Свен разрушил священное солнце и уничтожил орден, забрав с собой легендарный двуручный меч Месть.</p><p>Теперь этот одинокий рыцарь блуждает по полям сражений меж двух миров, полагаясь исключительно на свою ярость, стальной клинок и непоколебимую волю.</p>", 
         skills: [
           {
             name: "Storm Bolt",
@@ -198,10 +206,10 @@
             desc: "Бросает магический молот, наносящий урон и оглушающий врагов в области.",
             isPassive: false,
             levels: [
-              { lvl: 1, mana: "110 MP", cd: "18 сек", effect: "110 урона, стан 1.4 сек" },
-              { lvl: 2, mana: "120 MP", cd: "16 сек", effect: "160 урона, стан 1.6 сек" },
-              { lvl: 3, mana: "130 MP", cd: "14 сек", effect: "210 урона, стан 1.8 сек" },
-              { lvl: 4, mana: "140 MP", cd: "12 сек", effect: "260 урона, стан 2.0 сек" }
+              { lvl: 1, mana: "110 МАНА", cd: "18 СЕК", effect: "110 урона, стан 1.4 сек" },
+              { lvl: 2, mana: "120 МАНА", cd: "16 СЕК", effect: "160 урона, стан 1.6 сек" },
+              { lvl: 3, mana: "130 МАНА", cd: "14 СЕК", effect: "210 урона, стан 1.8 сек" },
+              { lvl: 4, mana: "140 МАНА", cd: "12 СЕК", effect: "260 урона, стан 2.0 сек" }
             ]
           },
           {
@@ -210,10 +218,10 @@
             desc: "Пассивно наполняет меч силой, нанося пробивающий сплеш-урон всем стоящим рядом врагам.",
             isPassive: true,
             levels: [
-              { lvl: 1, mana: "Пассивно", cd: "0 сек", effect: "30% сплеш-урона" },
-              { lvl: 2, mana: "Пассивно", cd: "0 сек", effect: "45% сплеш-урона" },
-              { lvl: 3, mana: "Пассивно", cd: "0 сек", effect: "60% сплеш-урона" },
-              { lvl: 4, mana: "Пассивно", cd: "0 сек", effect: "75% сплеш-урона" }
+              { lvl: 1, mana: "ПАССИВНО", cd: "0 СЕК", effect: "30% сплеш-урона" },
+              { lvl: 2, mana: "ПАССИВНО", cd: "0 СЕК", effect: "45% сплеш-урона" },
+              { lvl: 3, mana: "ПАССИВНО", cd: "0 СЕК", effect: "60% сплеш-урона" },
+              { lvl: 4, mana: "ПАССИВНО", cd: "0 СЕК", effect: "75% сплеш-урона" }
             ]
           },
           {
@@ -222,10 +230,10 @@
             desc: "Боевой клич воодушевляет союзников, увеличивая их броню и скорость передвижения.",
             isPassive: false,
             levels: [
-              { lvl: 1, mana: "40 MP", cd: "32 сек", effect: "+6 брони, +8% бега" },
-              { lvl: 2, mana: "50 MP", cd: "26 сек", effect: "+9 брони, +12% бега" },
-              { lvl: 3, mana: "60 MP", cd: "20 сек", effect: "+12 брони, +16% бега" },
-              { lvl: 4, mana: "70 MP", cd: "14 сек", effect: "+15 брони, +20% бега" }
+              { lvl: 1, mana: "40 МАНА", cd: "32 СЕК", effect: "+6 брони, +8% бега" },
+              { lvl: 2, mana: "50 МАНА", cd: "26 СЕК", effect: "+9 брони, +12% бега" },
+              { lvl: 3, mana: "60 МАНА", cd: "20 СЕК", effect: "+12 брони, +16% бега" },
+              { lvl: 4, mana: "70 МАНА", cd: "14 СЕК", effect: "+15 брони, +20% бега" }
             ]
           },
           {
@@ -234,9 +242,9 @@
             desc: "Свен обращается к своей скрытой силе, многократно увеличивая базовый урон от атак.",
             isPassive: false,
             levels: [
-              { lvl: 1, mana: "100 MP", cd: "100 сек", effect: "+120% базового урона" },
-              { lvl: 2, mana: "150 MP", cd: "100 сек", effect: "+160% базового урона" },
-              { lvl: 3, mana: "200 MP", cd: "100 сек", effect: "+200% базового урона" }
+              { lvl: 1, mana: "100 МАНА", cd: "100 СЕК", effect: "+120% базового урона" },
+              { lvl: 2, mana: "150 МАНА", cd: "100 СЕК", effect: "+160% базового урона" },
+              { lvl: 3, mana: "200 МАНА", cd: "100 СЕК", effect: "+200% базового урона" }
             ]
           }
         ]
@@ -311,8 +319,8 @@
             s.levels.forEach(l => {
               levelsHtml += `
                 <div class="level-row">
-                  <span><b>Ур. ${l.lvl}:</b> ${l.effect}</span>
-                  <span style="color:#3498db;">💧 ${l.mana} | ⏱️ ${l.cd}</span>
+                  <span><b>УР. ${l.lvl}:</b> ${l.effect}</span>
+                  <span style="color:#3498db;">${l.mana} | ${l.cd}</span>
                 </div>
               `;
             });
@@ -325,8 +333,8 @@
                   <div class="skill-type">${s.isPassive ? 'Пассивная способность' : 'Активная способность'}</div>
                 </div>
               </div>
-              <div style="font-size: 11px; color: #bbb; margin-top: 6px; font-family: 'Inter', sans-serif;">${s.desc}</div>
-              <button class="toggle-levels-btn" onclick="toggleSkillLvl(${index})">📊 Уровни, мана и кулдаун</button>
+              <div style="font-size: 12px; color: #bbb; margin-top: 6px;" class="skill-desc">${s.desc}</div>
+              <button class="toggle-levels-btn" onclick="toggleSkillLvl(${index})">УРОВНИ, МАНА И КУЛДАУН</button>
               <div class="skill-levels-container" id="skillLvl_${index}">
                 ${levelsHtml}
               </div>
@@ -334,7 +342,7 @@
           } else {
             item.innerHTML = `
               <div class="skill-name">${s.name}</div>
-              <div style="font-size: 11px; color: #bbb; font-family: 'Inter', sans-serif;" class="skill-desc">${s.desc}</div>
+              <div style="font-size: 12px; color: #bbb;" class="skill-desc">${s.desc}</div>
             `;
           }
           skillsContainer.appendChild(item);
