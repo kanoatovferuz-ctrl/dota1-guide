@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Таверны Dota 1</title>
+    <title>Dota 1 Taverns</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         body {
@@ -12,7 +12,7 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             margin: 0;
             padding: 12px;
-            -webkit-tap-highlight-color: transparent; /* Убирает синюю подсветку при нажатии на телефоне */
+            -webkit-tap-highlight-color: transparent;
         }
         h1 {
             color: #f59e0b;
@@ -29,7 +29,7 @@
             margin-bottom: 12px;
         }
         
-        /* Вкладки (Табы) */
+        /* Tabs Panel */
         .tabs {
             display: flex;
             gap: 6px;
@@ -51,12 +51,13 @@
             cursor: pointer;
             text-align: center;
             outline: none;
+            transition: all 0.2s ease;
         }
         .tab-btn.active.str { background: rgba(239, 68, 68, 0.2); color: #ef4444; border: 1px solid #ef4444; }
         .tab-btn.active.agi { background: rgba(34, 197, 94, 0.2); color: #22c55e; border: 1px solid #22c55e; }
         .tab-btn.active.int { background: rgba(59, 130, 246, 0.2); color: #3b82f6; border: 1px solid #3b82f6; }
 
-        /* Контент вкладок */
+        /* Tab Content */
         .tab-content {
             display: none;
         }
@@ -64,7 +65,7 @@
             display: block;
         }
 
-        /* Карточки героев */
+        /* Hero Cards */
         .hero-card {
             background: #111827;
             border: 1px solid #1f2937;
@@ -99,4 +100,144 @@
         .story-title {
             color: #f3f4f6;
             font-weight: bold;
-            margin-bottom:
+            margin-bottom: 4px;
+        }
+        .tag {
+            display: inline-block;
+            background: #1f2937;
+            color: #fbbf24;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            margin-top: 8px;
+            border: 1px solid #374151;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Dota 1 Taverns</h1>
+    <div class="subtitle">Ancient Heroes Database</div>
+
+    <!-- TABS NAVIGATION -->
+    <div class="tabs">
+        <button class="tab-btn str active" id="btn-str" data-tab="str">🛡️ Strength</button>
+        <button class="tab-btn agi" id="btn-agi" data-tab="agi">⚡ Agility</button>
+        <button class="tab-btn int" id="btn-int" data-tab="int">🔮 Intelligence</button>
+    </div>
+
+    <!-- STRENGTH TAB -->
+    <div class="tab-content active" id="content-str">
+        <div class="hero-card" data-hero="pudge">
+            <div class="hero-header">
+                <span style="color: #ef4444;">Pudge — Butcher</span>
+                <span>▼</span>
+            </div>
+            <div class="hero-body">
+                <div class="story-title">Lore:</div>
+                In the Fields of Endless Carnage, Pudge harvests the fallen. His rotting meat hook drags victims straight into his decaying embrace.
+                <br><span class="tag">Role: Initiator / Disabler</span>
+            </div>
+        </div>
+
+        <div class="hero-card" data-hero="wk">
+            <div class="hero-header">
+                <span style="color: #ef4444;">Skeleton King — Leoric</span>
+                <span>▼</span>
+            </div>
+            <div class="hero-body">
+                <div class="story-title">Lore:</div>
+                Leoric built an empire on the bones of his enemies. Turning his own flesh to ash and bone, he gained the power to rise again from death.
+                <br><span class="tag">Role: Carry / Tank</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- AGILITY TAB -->
+    <div class="tab-content" id="content-agi">
+        <div class="hero-card" data-hero="sf">
+            <div class="hero-header">
+                <span style="color: #22c55e;">Shadow Fiend — Nevermore</span>
+                <span>▼</span>
+            </div>
+            <div class="hero-body">
+                <div class="story-title">Lore:</div>
+                Nevermore harvests the souls of the fallen. The dark magic consumed by this fiend empowers his devastating Requiem.
+                <br><span class="tag">Role: Mid Carry / Mage</span>
+            </div>
+        </div>
+
+        <div class="hero-card" data-hero="am">
+            <div class="hero-header">
+                <span style="color: #22c55e;">Anti-Mage — Magina</span>
+                <span>▼</span>
+            </div>
+            <div class="hero-body">
+                <div class="story-title">Lore:</div>
+                A survivor of the Turstarkuri monastery, sworn to eradicate all magic after demons destroyed his sanctuary.
+                <br><span class="tag">Role: Carry / Split-pusher</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- INTELLIGENCE TAB -->
+    <div class="tab-content" id="content-int">
+        <div class="hero-card" data-hero="invoker">
+            <div class="hero-header">
+                <span style="color: #3b82f6;">Invoker — Kael</span>
+                <span>▼</span>
+            </div>
+            <div class="hero-body">
+                <div class="story-title">Lore:</div>
+                A genius mage of ancient times who mastered ten powerful spells simultaneously, channeling the elemental forces of Quas, Wex, and Exort.
+                <br><span class="tag">Role: Nuker / Control</span>
+            </div>
+        </div>
+
+        <div class="hero-card" data-hero="cm">
+            <div class="hero-header">
+                <span style="color: #3b82f6;">Crystal Maiden — Rylai</span>
+                <span>▼</span>
+            </div>
+            <div class="hero-body">
+                <div class="story-title">Lore:</div>
+                Trained in the icy peaks of Blueheart Glacier, Rylai commands severe blizzards and restores mana to her allies.
+                <br><span class="tag">Role: Support / Aura</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Telegram WebApp Initialization
+        const tg = window.Telegram.WebApp;
+        tg.expand();
+
+        // Tabs switching logic
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const tabName = this.getAttribute('data-tab');
+
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active', 'str', 'agi', 'int'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+                this.classList.add('active', tabName);
+                document.getElementById('content-' + tabName).classList.add('active');
+            });
+        });
+
+        // Hero card accordion logic
+        document.querySelectorAll('.hero-card').forEach(card => {
+            const header = card.querySelector('.hero-header');
+            const body = card.querySelector('.hero-body');
+
+            header.addEventListener('click', function() {
+                const isActive = body.classList.contains('active');
+                document.querySelectorAll('.hero-body').forEach(b => b.classList.remove('active'));
+                if (!isActive) {
+                    body.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
