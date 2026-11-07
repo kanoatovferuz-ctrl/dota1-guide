@@ -1,243 +1,304 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Dota 1 Taverns</title>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <style>
-        body {
-            background-color: #0b0e14;
-            color: #d1d5db;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            margin: 0;
-            padding: 12px;
-            -webkit-tap-highlight-color: transparent;
-        }
-        h1 {
-            color: #f59e0b;
-            text-align: center;
-            font-size: 18px;
-            margin: 6px 0 2px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .subtitle {
-            text-align: center;
-            color: #6b7280;
-            font-size: 11px;
-            margin-bottom: 12px;
-        }
-        
-        /* Tabs Panel */
-        .tabs {
-            display: flex;
-            gap: 6px;
-            margin-bottom: 14px;
-            background: #111827;
-            padding: 4px;
-            border-radius: 10px;
-            border: 1px solid #1f2937;
-        }
-        .tab-btn {
-            flex: 1;
-            background: transparent;
-            border: none;
-            color: #9ca3af;
-            padding: 12px 4px;
-            font-size: 12px;
-            font-weight: bold;
-            border-radius: 8px;
-            cursor: pointer;
-            text-align: center;
-            outline: none;
-            transition: all 0.2s ease;
-        }
-        .tab-btn.active.str { background: rgba(239, 68, 68, 0.2); color: #ef4444; border: 1px solid #ef4444; }
-        .tab-btn.active.agi { background: rgba(34, 197, 94, 0.2); color: #22c55e; border: 1px solid #22c55e; }
-        .tab-btn.active.int { background: rgba(59, 130, 246, 0.2); color: #3b82f6; border: 1px solid #3b82f6; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Проект X — Гайд по Dota</title>
+  <!-- Telegram Web App SDK -->
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
 
-        /* Tab Content */
-        .tab-content {
-            display: none;
-        }
-        .tab-content.active {
-            display: block;
-        }
+    body {
+      background-color: #0b0b10;
+      color: #e1e1e6;
+      min-height: 100vh;
+      padding-bottom: 70px;
+      position: relative;
+    }
 
-        /* Hero Cards */
-        .hero-card {
-            background: #111827;
-            border: 1px solid #1f2937;
-            border-radius: 10px;
-            margin-bottom: 10px;
-            overflow: hidden;
-        }
-        .hero-header {
-            padding: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 14px;
-        }
-        .hero-header:active {
-            background: #374151;
-        }
-        .hero-body {
-            display: none;
-            padding: 14px;
-            background: #0d121b;
-            border-top: 1px solid #1f2937;
-            font-size: 13px;
-            line-height: 1.5;
-            color: #9ca3af;
-        }
-        .hero-body.active {
-            display: block;
-        }
-        .story-title {
-            color: #f3f4f6;
-            font-weight: bold;
-            margin-bottom: 4px;
-        }
-        .tag {
-            display: inline-block;
-            background: #1f2937;
-            color: #fbbf24;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 11px;
-            margin-top: 8px;
-            border: 1px solid #374151;
-        }
-    </style>
+    /* Настройка яркости и видимости фона для Samsung / AMOLED */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('Фон Сайта.jpg');
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+      opacity: 0.4; /* Оптимальная прозрачность, чтобы фон был отчетливо виден */
+      filter: brightness(1.25) contrast(1.1); /* Дополнительная яркость для тёмных экранов */
+      z-index: -1;
+    }
+
+    header {
+      background: rgba(15, 15, 23, 0.85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 15px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 20px;
+      color: #ff9d00;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+
+    .search-box {
+      width: 100%;
+      max-width: 400px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      padding: 15px 10px;
+      background: rgba(10, 10, 15, 0.6);
+    }
+
+    .tab-btn {
+      flex: 1;
+      max-width: 120px;
+      padding: 10px 0;
+      background: rgba(30, 30, 45, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #aaa;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 13px;
+    }
+
+    .tab-btn.active {
+      background: #ff9d00;
+      color: #000;
+      border-color: #ff9d00;
+      box-shadow: 0 0 12px rgba(255, 157, 0, 0.4);
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 15px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 15px;
+    }
+
+    .hero-card {
+      background: rgba(20, 20, 30, 0.8);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 12px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .hero-card:hover {
+      transform: translateY(-3px);
+      border-color: #ff9d00;
+    }
+
+    .hero-avatar {
+      width: 100%;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 6px;
+      background: #111;
+      margin-bottom: 8px;
+    }
+
+    .hero-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .hero-dota1-name {
+      font-size: 11px;
+      color: #888;
+      margin-top: 2px;
+    }
+
+    /* Модальное окно */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 100;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .modal-content {
+      background: #161622;
+      border: 1px solid #ff9d00;
+      max-width: 500px;
+      margin: 40px auto;
+      border-radius: 12px;
+      padding: 20px;
+      position: relative;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 24px;
+      color: #aaa;
+      cursor: pointer;
+    }
+
+    .send-tg-btn {
+      width: 100%;
+      padding: 12px;
+      background: #0088cc;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      margin-top: 15px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
 
-    <h1>Dota 1 Taverns</h1>
-    <div class="subtitle">Ancient Heroes Database</div>
+  <header>
+    <h1>Проект X — Dota Guide</h1>
+    <input type="text" id="search" class="search-box" placeholder="Поиск героя (Dota 1 / Dota 2)...">
+  </header>
 
-    <!-- TABS NAVIGATION -->
-    <div class="tabs">
-        <button class="tab-btn str active" id="btn-str" data-tab="str">🛡️ Strength</button>
-        <button class="tab-btn agi" id="btn-agi" data-tab="agi">⚡ Agility</button>
-        <button class="tab-btn int" id="btn-int" data-tab="int">🔮 Intelligence</button>
+  <div class="tabs">
+    <button class="tab-btn active" onclick="filterCategory('Strength', this)">Strength</button>
+    <button class="tab-btn" onclick="filterCategory('Agility', this)">Agility</button>
+    <button class="tab-btn" onclick="filterCategory('Intelligence', this)">Intelligence</button>
+  </div>
+
+  <div class="container">
+    <div class="hero-grid" id="heroGrid"></div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal" id="heroModal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <h2 id="modalTitle" style="color: #ff9d00;"></h2>
+      <p id="modalDota1" style="color: #888; font-size: 13px; margin-bottom: 10px;"></p>
+      <div id="modalBody"></div>
+      <button class="send-tg-btn" id="sendTgBtn">Выбрать героя для бота</button>
     </div>
+  </div>
 
-    <!-- STRENGTH TAB -->
-    <div class="tab-content active" id="content-str">
-        <div class="hero-card" data-hero="pudge">
-            <div class="hero-header">
-                <span style="color: #ef4444;">Pudge — Butcher</span>
-                <span>▼</span>
-            </div>
-            <div class="hero-body">
-                <div class="story-title">Lore:</div>
-                In the Fields of Endless Carnage, Pudge harvests the fallen. His rotting meat hook drags victims straight into his decaying embrace.
-                <br><span class="tag">Role: Initiator / Disabler</span>
-            </div>
-        </div>
+  <script>
+    // Инициализация Telegram WebApp SDK
+    const tg = window.Telegram ? window.Telegram.WebApp : null;
+    if (tg) {
+      tg.ready();
+      tg.expand();
+    }
 
-        <div class="hero-card" data-hero="wk">
-            <div class="hero-header">
-                <span style="color: #ef4444;">Skeleton King — Leoric</span>
-                <span>▼</span>
-            </div>
-            <div class="hero-body">
-                <div class="story-title">Lore:</div>
-                Leoric built an empire on the bones of his enemies. Turning his own flesh to ash and bone, he gained the power to rise again from death.
-                <br><span class="tag">Role: Carry / Tank</span>
-            </div>
-        </div>
-    </div>
+    const heroes = [
+      { name: "Juggernaut", dota1: "Yurnero", attr: "Agility", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/juggernaut.png", desc: "Мастер клинка, способный наносить непрерывный урон в крутилке." },
+      { name: "Sven", dota1: "Rogue Knight", attr: "Strength", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/sven.png", desc: "Мощный силовик с массовым станом и огромным уроном под ультимейтом." },
+      { name: "Invoker", dota1: "Kael", attr: "Intelligence", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/invoker.png", desc: "Властелин заклинаний, сочетающий сферы Quas, Wex и Exort." },
+      { name: "Axe", dota1: "Mogul Khan", attr: "Strength", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/axe.png", desc: "Провоцирует врагов на атаку и рубит их топором при низком здоровье." },
+      { name: "Shadow Fiend", dota1: "Nevermore", attr: "Agility", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/nevermore.png", desc: "Собирает души павших врагов для усиления собственных атак." },
+      { name: "Crystal Maiden", dota1: "Rylai", attr: "Intelligence", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/crystal_maiden.png", desc: "Маг льда, снабжающий всю команду маной." }
+    ];
 
-    <!-- AGILITY TAB -->
-    <div class="tab-content" id="content-agi">
-        <div class="hero-card" data-hero="sf">
-            <div class="hero-header">
-                <span style="color: #22c55e;">Shadow Fiend — Nevermore</span>
-                <span>▼</span>
-            </div>
-            <div class="hero-body">
-                <div class="story-title">Lore:</div>
-                Nevermore harvests the souls of the fallen. The dark magic consumed by this fiend empowers his devastating Requiem.
-                <br><span class="tag">Role: Mid Carry / Mage</span>
-            </div>
-        </div>
+    let currentAttr = 'Strength';
+    let selectedHero = null;
 
-        <div class="hero-card" data-hero="am">
-            <div class="hero-header">
-                <span style="color: #22c55e;">Anti-Mage — Magina</span>
-                <span>▼</span>
-            </div>
-            <div class="hero-body">
-                <div class="story-title">Lore:</div>
-                A survivor of the Turstarkuri monastery, sworn to eradicate all magic after demons destroyed his sanctuary.
-                <br><span class="tag">Role: Carry / Split-pusher</span>
-            </div>
-        </div>
-    </div>
+    function renderHeroes() {
+      const grid = document.getElementById('heroGrid');
+      const searchVal = document.getElementById('search').value.toLowerCase();
+      grid.innerHTML = '';
 
-    <!-- INTELLIGENCE TAB -->
-    <div class="tab-content" id="content-int">
-        <div class="hero-card" data-hero="invoker">
-            <div class="hero-header">
-                <span style="color: #3b82f6;">Invoker — Kael</span>
-                <span>▼</span>
-            </div>
-            <div class="hero-body">
-                <div class="story-title">Lore:</div>
-                A genius mage of ancient times who mastered ten powerful spells simultaneously, channeling the elemental forces of Quas, Wex, and Exort.
-                <br><span class="tag">Role: Nuker / Control</span>
-            </div>
-        </div>
+      const filtered = heroes.filter(h => 
+        h.attr === currentAttr && 
+        (h.name.toLowerCase().includes(searchVal) || h.dota1.toLowerCase().includes(searchVal))
+      );
 
-        <div class="hero-card" data-hero="cm">
-            <div class="hero-header">
-                <span style="color: #3b82f6;">Crystal Maiden — Rylai</span>
-                <span>▼</span>
-            </div>
-            <div class="hero-body">
-                <div class="story-title">Lore:</div>
-                Trained in the icy peaks of Blueheart Glacier, Rylai commands severe blizzards and restores mana to her allies.
-                <br><span class="tag">Role: Support / Aura</span>
-            </div>
-        </div>
-    </div>
+      filtered.forEach(h => {
+        const card = document.createElement('div');
+        card.className = 'hero-card';
+        card.onclick = () => openModal(h);
+        card.innerHTML = `
+          <img src="${h.img}" class="hero-avatar" alt="${h.name}">
+          <div class="hero-name">${h.name}</div>
+          <div class="hero-dota1-name">Dota 1: ${h.dota1}</div>
+        `;
+        grid.appendChild(card);
+      });
+    }
 
-    <script>
-        // Telegram WebApp Initialization
-        const tg = window.Telegram.WebApp;
-        tg.expand();
+    function filterCategory(attr, btn) {
+      currentAttr = attr;
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderHeroes();
+    }
 
-        // Tabs switching logic
-        document.querySelectorAll('.tab-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const tabName = this.getAttribute('data-tab');
+    document.getElementById('search').addEventListener('input', renderHeroes);
 
-                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active', 'str', 'agi', 'int'));
-                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    function openModal(hero) {
+      selectedHero = hero;
+      document.getElementById('modalTitle').innerText = hero.name;
+      document.getElementById('modalDota1').innerText = "В Dota 1: " + hero.dota1;
+      document.getElementById('modalBody').innerText = hero.desc;
+      document.getElementById('heroModal').style.display = 'block';
+    }
 
-                this.classList.add('active', tabName);
-                document.getElementById('content-' + tabName).classList.add('active');
-            });
-        });
+    function closeModal() {
+      document.getElementById('heroModal').style.display = 'none';
+    }
 
-        // Hero card accordion logic
-        document.querySelectorAll('.hero-card').forEach(card => {
-            const header = card.querySelector('.hero-header');
-            const body = card.querySelector('.hero-body');
+    document.getElementById('sendTgBtn').addEventListener('click', () => {
+      if (tg && selectedHero) {
+        tg.sendData(JSON.stringify(selectedHero));
+        tg.close();
+      } else {
+        alert("Выбран герой: " + selectedHero.name);
+      }
+    });
 
-            header.addEventListener('click', function() {
-                const isActive = body.classList.contains('active');
-                document.querySelectorAll('.hero-body').forEach(b => b.classList.remove('active'));
-                if (!isActive) {
-                    body.classList.add('active');
-                }
-            });
-        });
-    </script>
+    // Стартовый рендер
+    renderHeroes();
+  </script>
 </body>
 </html>
