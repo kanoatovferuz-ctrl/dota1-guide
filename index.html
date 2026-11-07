@@ -1079,6 +1079,37 @@
         const card = document.createElement('div');
         card.className = 'hero-card';
         card.onclick = () => openModal(h);
+
+        // Надежная запасная иконка на случай сбоя CDN Steam
+        const fallbackImg = "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/base.png";
+
+        card.innerHTML = `
+          <img src="${h.img}" class="hero-avatar" alt="${h.name}" loading="lazy" onerror="this.onerror=null; this.src='${fallbackImg}';">
+          <div class="hero-title">${h.name}</div>
+          <div class="hero-dota1-name">Dota 1: ${h.dota1}</div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+      const grid = document.getElementById('heroGrid');
+      const searchVal = document.getElementById('search').value.toLowerCase();
+      grid.innerHTML = '';
+
+      const filtered = heroesData.filter(h => 
+        h.attr === currentAttr && 
+        h.faction === currentFaction &&
+        (h.name.toLowerCase().includes(searchVal) || h.dota1.toLowerCase().includes(searchVal))
+      );
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `<div style="grid-column: 1/-1; text-align:center; color:#888; padding:30px;">Герои не найдены</div>`;
+        return;
+      }
+
+      filtered.forEach(h => {
+        const card = document.createElement('div');
+        card.className = 'hero-card';
+        card.onclick = () => openModal(h);
         
         // Защита от пропажи изображений
         const fallbackImg = "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/base.png";
