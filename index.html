@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dota 1 Classic Guide — Telegram WebApp</title>
-  <!-- Подключаем шрифты с глубокой поддержкой кириллицы: Cinzel для заголовков и Lora для историй/текстов -->
+  <!-- Подключаем игровой шрифт Russo One для заголовков/кнопок и Lora для текстов -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Russo+One&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <style>
@@ -18,13 +18,13 @@
       font-family: 'Inter', sans-serif; 
     }
 
-    /* Заголовки, имена героев и скиллов в эпическом стиле */
-    h1, .hero-title, .modal-info h2, .skill-name, h3 {
-      font-family: 'Cinzel', serif !important;
+    /* Все заголовки, имена, табы и кнопки переводятся на новый игровой шрифт Russo One */
+    h1, .hero-title, .modal-info h2, .skill-name, h3, .main-tab-btn, .sub-tab-btn, .toggle-levels-btn {
+      font-family: 'Russo One', sans-serif !important;
       letter-spacing: 0.5px;
     }
 
-    /* Красивый русский шрифт с засечками для историй и описаний */
+    /* Красивый шрифт с засечками для историй и описаний */
     .bio-text, .skill-desc, .level-row {
       font-family: 'Lora', serif !important;
     }
@@ -69,7 +69,6 @@
       text-transform: uppercase; 
       letter-spacing: 1px; 
       margin-bottom: 10px; 
-      font-weight: 900;
     }
 
     .search-box { 
@@ -83,6 +82,7 @@
       font-size: 14px; 
       outline: none; 
       margin-bottom: 8px; 
+      font-family: 'Inter', sans-serif;
     }
 
     .feedback-trigger-btn { 
@@ -98,23 +98,26 @@
       cursor: pointer; 
       font-size: 11px; 
       text-transform: uppercase; 
+      font-family: 'Inter', sans-serif;
     }
     
+    /* Главные вкладки классов (Strength, Agility, Intelligence) */
     .main-tabs { display: flex; justify-content: center; gap: 6px; padding: 12px 10px 6px 10px; }
-    .main-tab-btn { flex: 1; max-width: 130px; padding: 10px 0; background: rgba(25, 25, 35, 0.8); border: 1px solid rgba(255, 255, 255, 0.15); color: #aaa; font-weight: bold; border-radius: 6px; cursor: pointer; font-size: 13px; text-transform: uppercase; }
+    .main-tab-btn { flex: 1; max-width: 130px; padding: 10px 0; background: rgba(25, 25, 35, 0.8); border: 1px solid rgba(255, 255, 255, 0.15); color: #aaa; border-radius: 6px; cursor: pointer; font-size: 11px; text-transform: uppercase; }
     .main-tab-btn.active { background: #ff9d00; color: #000; border-color: #ff9d00; }
     
+    /* Вкладки фракций (SENTINEL / SCOURGE) без эмодзи и заглавными буквами */
     .sub-tabs { display: flex; justify-content: center; gap: 8px; padding: 6px 10px 14px 10px; }
-    .sub-tab-btn { padding: 6px 16px; background: rgba(15, 15, 20, 0.6); border: 1px solid rgba(255, 255, 255, 0.1); color: #888; border-radius: 20px; cursor: pointer; font-size: 12px; }
-    .sub-tab-btn.sentinel.active { background: rgba(46, 204, 113, 0.2); color: #2ecc71; border-color: #2ecc71; }
-    .sub-tab-btn.scourge.active { background: rgba(231, 76, 60, 0.2); color: #e74c3c; border-color: #e74c3c; }
+    .sub-tab-btn { padding: 8px 18px; background: rgba(15, 15, 20, 0.6); border: 1px solid rgba(255, 255, 255, 0.1); color: #888; border-radius: 20px; cursor: pointer; font-size: 11px; text-transform: uppercase; }
+    .sub-tab-btn.sentinel.active { background: rgba(46, 204, 113, 0.25); color: #2ecc71; border-color: #2ecc71; }
+    .sub-tab-btn.scourge.active { background: rgba(231, 76, 60, 0.25); color: #e74c3c; border-color: #e74c3c; }
 
     .container { max-width: 800px; margin: 0 auto; padding: 10px 15px; }
     .hero-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
     .hero-card { background: rgba(20, 20, 32, 0.85); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px; padding: 10px; text-align: center; cursor: pointer; }
     .hero-avatar { width: 100%; height: 95px; object-fit: cover; border-radius: 6px; background: #151520; margin-bottom: 8px; }
-    .hero-title { font-size: 13px; font-weight: 700; color: #fff; }
-    .hero-dota1-name { font-size: 11px; color: #ff9d00; margin-top: 2px; }
+    .hero-title { font-size: 13px; color: #fff; }
+    .hero-dota1-name { font-size: 11px; color: #ff9d00; margin-top: 2px; font-family: 'Inter', sans-serif; }
 
     .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); z-index: 100; padding: 15px; overflow-y: auto; }
     .modal-content { background: #14141e; border: 1px solid #ff9d00; max-width: 500px; margin: 20px auto; border-radius: 12px; padding: 20px; position: relative; }
@@ -122,7 +125,7 @@
     .modal-header { display: flex; gap: 15px; align-items: center; margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 12px; }
     .modal-img { width: 70px; height: 70px; border-radius: 8px; object-fit: cover; }
     .modal-info h2 { font-size: 18px; color: #fff; }
-    .modal-info .dota1-title { font-size: 13px; color: #ff9d00; }
+    .modal-info .dota1-title { font-size: 13px; color: #ff9d00; font-family: 'Inter', sans-serif; }
     .bio-text { font-size: 13px; color: #dcdce6; line-height: 1.6; margin-bottom: 15px; background: rgba(255, 255, 255, 0.03); padding: 12px; border-radius: 8px; border-left: 3px solid #0088cc; }
     .bio-text p { margin-bottom: 8px; }
     
@@ -130,21 +133,20 @@
     .skill-header { display: flex; align-items: center; gap: 10px; }
     .skill-icon { width: 42px; height: 42px; border-radius: 6px; border: 1px solid #ff9d00; object-fit: cover; background: #151520; }
     .skill-info-title { flex: 1; }
-    .skill-name { font-size: 13px; font-weight: bold; color: #2ecc71; }
-    .skill-type { font-size: 10px; color: #ff9d00; text-transform: uppercase; }
+    .skill-name { font-size: 13px; color: #2ecc71; }
+    .skill-type { font-size: 10px; color: #ff9d00; text-transform: uppercase; font-family: 'Inter', sans-serif; }
     
-    /* Кнопка уровней заглавными буквами */
-    .toggle-levels-btn { margin-top: 6px; background: rgba(255, 157, 0, 0.12); border: 1px solid rgba(255, 157, 0, 0.3); color: #ff9d00; font-size: 11px; padding: 6px; border-radius: 4px; cursor: pointer; width: 100%; text-align: center; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    .toggle-levels-btn { margin-top: 6px; background: rgba(255, 157, 0, 0.12); border: 1px solid rgba(255, 157, 0, 0.3); color: #ff9d00; font-size: 11px; padding: 6px; border-radius: 4px; cursor: pointer; width: 100%; text-align: center; text-transform: uppercase; letter-spacing: 0.5px; }
     
     .skill-levels-container { display: none; margin-top: 6px; border-top: 1px dashed rgba(255,255,255,0.15); padding-top: 6px; }
     .level-row { display: flex; justify-content: space-between; font-size: 12px; color: #ccc; padding: 3px 0; }
     
-    .send-tg-btn { width: 100%; padding: 12px; background: #0088cc; color: white; border: none; border-radius: 8px; font-weight: bold; margin-top: 15px; cursor: pointer; }
+    .send-tg-btn { width: 100%; padding: 12px; background: #0088cc; color: white; border: none; border-radius: 8px; font-weight: bold; margin-top: 15px; cursor: pointer; font-family: 'Inter', sans-serif; }
   </style>
 </head>
 <body>
   <header>
-    <h1>Dota 1 Classic Guide</h1>
+    <h1>Dota 1 Guide</h1>
     <input type="text" id="search" class="search-box" placeholder="Поиск героя (например, Sven)...">
     <button class="feedback-trigger-btn" onclick="openFeedbackModal()">✍️ Написать отзыв / Предложение</button>
   </header>
@@ -156,8 +158,8 @@
   </div>
 
   <div class="sub-tabs">
-    <button class="sub-tab-btn sentinel active" onclick="setFaction('Sentinel', this)">🌱 Sentinel (Света)</button>
-    <button class="sub-tab-btn scourge" onclick="setFaction('Scourge', this)">💀 Scourge (Тьмы)</button>
+    <button class="sub-tab-btn sentinel active" onclick="setFaction('Sentinel', this)">SENTINEL</button>
+    <button class="sub-tab-btn scourge" onclick="setFaction('Scourge', this)">SCOURGE</button>
   </div>
 
   <div class="container"><div class="hero-grid" id="heroGrid"></div></div>
@@ -185,7 +187,7 @@
     <div class="modal-content" style="max-width: 400px; margin-top: 50px;">
       <span class="close-btn" onclick="closeFeedbackModal()">&times;</span>
       <h2 style="font-size: 16px; color: #ff9d00; margin-bottom: 12px;">Обратная связь</h2>
-      <textarea id="feedbackText" placeholder="Ваше сообщение..." style="width: 100%; height: 90px; padding: 10px; border-radius: 6px; background: #0c0c12; color: #fff; border: 1px solid rgba(255,255,255,0.2); resize: none; margin-bottom: 12px; font-size: 13px;"></textarea>
+      <textarea id="feedbackText" placeholder="Ваше сообщение..." style="width: 100%; height: 90px; padding: 10px; border-radius: 6px; background: #0c0c12; color: #fff; border: 1px solid rgba(255,255,255,0.2); resize: none; margin-bottom: 12px; font-size: 13px; font-family: 'Inter', sans-serif;"></textarea>
       <button onclick="sendFeedback()" class="send-tg-btn" style="background: #2ecc71; margin-top: 0;">Отправить</button>
     </div>
   </div>
