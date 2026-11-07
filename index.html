@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Таверны Dota 1</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
@@ -12,6 +12,7 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             margin: 0;
             padding: 12px;
+            -webkit-tap-highlight-color: transparent; /* Убирает синюю подсветку при нажатии на телефоне */
         }
         h1 {
             color: #f59e0b;
@@ -43,17 +44,17 @@
             background: transparent;
             border: none;
             color: #9ca3af;
-            padding: 10px 4px;
+            padding: 12px 4px;
             font-size: 12px;
             font-weight: bold;
             border-radius: 8px;
             cursor: pointer;
             text-align: center;
-            transition: all 0.2s ease;
+            outline: none;
         }
-        .tab-btn.active.str { background: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid #ef4444; }
-        .tab-btn.active.agi { background: rgba(34, 197, 94, 0.15); color: #22c55e; border: 1px solid #22c55e; }
-        .tab-btn.active.int { background: rgba(59, 130, 246, 0.15); color: #3b82f6; border: 1px solid #3b82f6; }
+        .tab-btn.active.str { background: rgba(239, 68, 68, 0.2); color: #ef4444; border: 1px solid #ef4444; }
+        .tab-btn.active.agi { background: rgba(34, 197, 94, 0.2); color: #22c55e; border: 1px solid #22c55e; }
+        .tab-btn.active.int { background: rgba(59, 130, 246, 0.2); color: #3b82f6; border: 1px solid #3b82f6; }
 
         /* Контент вкладок */
         .tab-content {
@@ -72,7 +73,7 @@
             overflow: hidden;
         }
         .hero-header {
-            padding: 12px 14px;
+            padding: 14px;
             font-weight: 600;
             cursor: pointer;
             display: flex;
@@ -80,12 +81,12 @@
             align-items: center;
             font-size: 14px;
         }
-        .hero-header:hover {
-            background: #1f2937;
+        .hero-header:active {
+            background: #374151;
         }
         .hero-body {
             display: none;
-            padding: 12px 14px;
+            padding: 14px;
             background: #0d121b;
             border-top: 1px solid #1f2937;
             font-size: 13px;
@@ -98,85 +99,4 @@
         .story-title {
             color: #f3f4f6;
             font-weight: bold;
-            margin-bottom: 4px;
-        }
-        .tag {
-            display: inline-block;
-            background: #1f2937;
-            color: #fbbf24;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 11px;
-            margin-top: 8px;
-            border: 1px solid #374151;
-        }
-    </style>
-</head>
-<body>
-
-    <h1>Таверны Dota 1</h1>
-    <div class="subtitle">Энциклопедия древних героев</div>
-
-    <!-- ПАНЕЛЬ ВКЛАДОК -->
-    <div class="tabs">
-        <button class="tab-btn str active" onclick="switchTab('str')">🛡️ Сила</button>
-        <button class="tab-btn agi" onclick="switchTab('agi')">⚡ Ловкость</button>
-        <button class="tab-btn int" onclick="switchTab('int')">🔮 Интеллект</button>
-    </div>
-
-    <!-- ВКЛАДКА 1: СИЛА -->
-    <div class="tab-content active" id="content-str">
-        <div class="hero-card">
-            <div class="hero-header" onclick="toggleHero('pudge')">
-                <span style="color: #ef4444;">Pudge — Butcher (Падж)</span>
-                <span>▼</span>
-            </div>
-            <div class="hero-body" id="pudge">
-                <div class="story-title">История:</div>
-                На Полях Вечной Бойни Падж неустанно разбирает остатки павших воинов. Его мясницкий крюк не знает промаха, затягивая жертв прямо в смертельные объятия его гниющего тела.
-                <br><span class="tag">Роль: Инициатор / Дизейблер</span>
-            </div>
-        </div>
-
-        <div class="hero-card">
-            <div class="hero-header" onclick="toggleHero('wk')">
-                <span style="color: #ef4444;">Skeleton King — Leoric (Леорик)</span>
-                <span>▼</span>
-            </div>
-            <div class="hero-body" id="wk">
-                <div class="story-title">История:</div>
-                Король Остап строил империю на костях своих врагов. Желая править вечно, он обратил своё тело в прах и прах — в кости, обретя способность восставать из мёртвых прямо на поле боя.
-                <br><span class="tag">Роль: Керри / Танк</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- ВКЛАДКА 2: ЛОВКОСТЬ -->
-    <div class="tab-content" id="content-agi">
-        <div class="hero-card">
-            <div class="hero-header" onclick="toggleHero('sf')">
-                <span style="color: #22c55e;">Shadow Fiend — Nevermore (Невермор)</span>
-                <span>▼</span>
-            </div>
-            <div class="hero-body" id="sf">
-                <div class="story-title">История:</div>
-                Невермор собирает души павших воинов. Никто не знает, откуда прибыл этот демон, но поглощённые им души питают его темную магию и разрывают врагов изнутри мощнейшим реквиемом.
-                <br><span class="tag">Роль: Мид-керри / Маг</span>
-            </div>
-        </div>
-
-        <div class="hero-card">
-            <div class="hero-header" onclick="toggleHero('am')">
-                <span style="color: #22c55e;">Anti-Mage — Magina (Магина)</span>
-                <span>▼</span>
-            </div>
-            <div class="hero-body" id="am">
-                <div class="story-title">История:</div>
-                Служитель монастыря Турстаркури, поклявшийся истребить всю магию в мире после того, как его обитель была разрушена демонами. Его клинки выжигают ману до капли.
-                <br><span class="tag">Роль: Лейт-керри / Сплит-пушер</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- ВКЛАДКА 3: ИНТЕЛЛЕКТ -->
-    <div class="tab-content" id="content-int">
+            margin-bottom:
