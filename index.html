@@ -13,19 +13,23 @@
     h1 { font-size: 18px; color: #ff9d00; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
     .search-box { width: 100%; max-width: 400px; padding: 10px 14px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(0, 0, 0, 0.6); color: #fff; font-size: 14px; outline: none; margin-bottom: 8px; }
     .feedback-trigger-btn { display: inline-block; width: 100%; max-width: 400px; padding: 6px 10px; background: rgba(255, 157, 0, 0.15); border: 1px solid rgba(255, 157, 0, 0.4); color: #ff9d00; font-weight: 600; border-radius: 6px; cursor: pointer; font-size: 11px; text-transform: uppercase; }
+    
     .main-tabs { display: flex; justify-content: center; gap: 6px; padding: 12px 10px 6px 10px; }
     .main-tab-btn { flex: 1; max-width: 130px; padding: 10px 0; background: rgba(25, 25, 35, 0.8); border: 1px solid rgba(255, 255, 255, 0.15); color: #aaa; font-weight: bold; border-radius: 6px; cursor: pointer; font-size: 13px; text-transform: uppercase; }
     .main-tab-btn.active { background: #ff9d00; color: #000; border-color: #ff9d00; }
+    
     .sub-tabs { display: flex; justify-content: center; gap: 8px; padding: 6px 10px 14px 10px; }
     .sub-tab-btn { padding: 6px 16px; background: rgba(15, 15, 20, 0.6); border: 1px solid rgba(255, 255, 255, 0.1); color: #888; border-radius: 20px; cursor: pointer; font-size: 12px; }
     .sub-tab-btn.sentinel.active { background: rgba(46, 204, 113, 0.2); color: #2ecc71; border-color: #2ecc71; }
     .sub-tab-btn.scourge.active { background: rgba(231, 76, 60, 0.2); color: #e74c3c; border-color: #e74c3c; }
+
     .container { max-width: 800px; margin: 0 auto; padding: 10px 15px; }
     .hero-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
     .hero-card { background: rgba(20, 20, 32, 0.85); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px; padding: 10px; text-align: center; cursor: pointer; }
     .hero-avatar { width: 100%; height: 95px; object-fit: cover; border-radius: 6px; background: #151520; margin-bottom: 8px; }
     .hero-title { font-size: 13px; font-weight: bold; color: #fff; }
     .hero-dota1-name { font-size: 11px; color: #ff9d00; margin-top: 2px; }
+
     .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); z-index: 100; padding: 15px; overflow-y: auto; }
     .modal-content { background: #14141e; border: 1px solid #ff9d00; max-width: 500px; margin: 20px auto; border-radius: 12px; padding: 20px; position: relative; }
     .close-btn { position: absolute; top: 12px; right: 15px; font-size: 24px; color: #aaa; cursor: pointer; }
@@ -35,16 +39,25 @@
     .modal-info .dota1-title { font-size: 13px; color: #ff9d00; }
     .bio-text { font-size: 12px; color: #ccc; line-height: 1.6; margin-bottom: 15px; background: rgba(255, 255, 255, 0.03); padding: 12px; border-radius: 8px; border-left: 3px solid #0088cc; }
     .bio-text p { margin-bottom: 8px; }
-    .skill-item { background: rgba(255, 255, 255, 0.04); border-radius: 8px; padding: 10px; margin-bottom: 8px; border-left: 3px solid #ff9d00; }
-    .skill-name { font-size: 13px; font-weight: bold; color: #2ecc71; margin-bottom: 3px; }
-    .skill-desc { font-size: 12px; color: #bbb; }
+    
+    /* Стили для способностей нового образца */
+    .skill-card { background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; padding: 10px; margin-bottom: 8px; border-left: 3px solid #ff9d00; }
+    .skill-header { display: flex; align-items: center; gap: 10px; }
+    .skill-icon { width: 42px; height: 42px; border-radius: 6px; border: 1px solid #ff9d00; object-fit: cover; background: #151520; }
+    .skill-info-title { flex: 1; }
+    .skill-name { font-size: 13px; font-weight: bold; color: #2ecc71; }
+    .skill-type { font-size: 10px; color: #ff9d00; text-transform: uppercase; }
+    .toggle-levels-btn { margin-top: 6px; background: rgba(255, 157, 0, 0.12); border: 1px solid rgba(255, 157, 0, 0.3); color: #ff9d00; font-size: 11px; padding: 5px; border-radius: 4px; cursor: pointer; width: 100%; text-align: center; font-weight: 600; }
+    .skill-levels-container { display: none; margin-top: 6px; border-top: 1px dashed rgba(255,255,255,0.15); padding-top: 6px; }
+    .level-row { display: flex; justify-content: space-between; font-size: 11px; color: #ccc; padding: 2px 0; }
+    
     .send-tg-btn { width: 100%; padding: 12px; background: #0088cc; color: white; border: none; border-radius: 8px; font-weight: bold; margin-top: 15px; cursor: pointer; }
   </style>
 </head>
 <body>
   <header>
     <h1>Dota 1 Classic Guide (112 Heroes)</h1>
-    <input type="text" id="search" class="search-box" placeholder="Поиск героя (например, Sven, Invoker)...">
+    <input type="text" id="search" class="search-box" placeholder="Поиск героя (например, Sven)...">
     <button class="feedback-trigger-btn" onclick="openFeedbackModal()">✍️ Написать отзыв / Предложение</button>
   </header>
 
@@ -61,6 +74,7 @@
 
   <div class="container"><div class="hero-grid" id="heroGrid"></div></div>
 
+  <!-- Модальное окно героя -->
   <div class="modal" id="heroModal">
     <div class="modal-content">
       <span class="close-btn" onclick="closeModal()">&times;</span>
@@ -72,12 +86,13 @@
         </div>
       </div>
       <div id="modalBio" class="bio-text"></div>
-      <h3 style="font-size: 13px; color: #ff9d00; margin-bottom: 8px;">Способности:</h3>
+      <h3 style="font-size: 13px; color: #ff9d00; margin-bottom: 8px; text-transform: uppercase;">Способности:</h3>
       <div class="skills-list" id="modalSkills"></div>
       <button class="send-tg-btn" onclick="closeModal()">Закрыть</button>
     </div>
   </div>
 
+  <!-- Модальное окно отзыва -->
   <div class="modal" id="feedbackModal">
     <div class="modal-content" style="max-width: 400px; margin-top: 50px;">
       <span class="close-btn" onclick="closeFeedbackModal()">&times;</span>
@@ -92,10 +107,62 @@
     if (tg) { tg.ready(); tg.expand(); }
 
     const heroesData = [
-      { name: "Sven", dota1: "Rogue Knight", attr: "Strength", faction: "Sentinel", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/sven.png", bio: "<p>Сын изгоя-паладина и эльфийки ночного эльфа, Свен вырос с клеймом позора и изгнания, отвергнутый обоими народами. Закаленный суровыми испытаниями, он поклялся следовать непреклонному кодексу ордена Белого Мстителя.</p><p>Однако, столкнувшись с лицемерием и предательством собственных наставников, Свен разрушил священное солнце и уничтожил орден, забрав с собой легендарный двуручный меч Месть.</p><p>Теперь этот одинокий рыцарь блуждает по полям сражений меж двух миров, полагаясь исключительно на свою ярость, стальной клинок и непоколебимую волю.</p>", skills: [{name: "Storm Bolt", desc: "Молот с уроном и станом."}, {name: "Great Cleave", desc: "Пассивный сплеш-урон."}, {name: "Warcry", desc: "Боевой клич на броню и скорость."}, {name: "God's Strength", desc: "Увеличение базового урона."}] },
-      { name: "Tiny", dota1: "Stone Giant", attr: "Strength", faction: "Sentinel", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/tiny.png", bio: "<p>Родившись в результате катаклизмов из живой скалы, крошечный голем Тайни изначально был лишь ничтожным осколком горного массива.</p><p>С годами он путешествует, впитывая обломки пород и минералы, становясь всё массивнее и сильнее.</p><p>Его цель — узнать своё истинное происхождение и найти свои корни.</p>", skills: [{name: "Avalanche", desc: "Камнепад по площади."}, {name: "Toss", desc: "Бросок юнита."}, {name: "Tree Grab", desc: "Удар деревом."}, {name: "Grow", desc: "Рост размера и урона."}] },
-      { name: "Kunkka", dota1: "Admiral", attr: "Strength", faction: "Sentinel", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/kunkka.png", bio: "<p>Легендарный адмирал флота людей, чья армада пала у проклятого Водоворота.</p><p>Кункка теперь — призрачный фантом прошлых штормов.</p><p>Он вызывает духи кораблей и цунами, чтобы отомстить Scourge.</p>", skills: [{name: "Torrent", desc: "Гейзер воды."}, {name: "Tidebringer", desc: "Удар меча."}, {name: "X Marks the Spot", desc: "Метка возврата."}, {name: "Ghost Ship", desc: "Призрачный корабль."}] },
-      { name: "Invoker", dota1: "Kael", attr: "Intelligence", faction: "Scourge", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/invoker.png", bio: "<p>Гений магии, комбинирующий сферы Quas, Wex и Exort.</p><p>Его память хранит десятки мощнейших заклинаний.</p><p>Обрушивает метеориты и солнечные лучи на врагов.</p>", skills: [{name: "Quas/Wex/Exort", desc: "Сферы магии."}, {name: "Invoke", desc: "Синтез магии."}, {name: "Sun Strike", desc: "Солнечный луч."}, {name: "Chaos Meteor", desc: "Метеорит."}] }
+      { 
+        name: "Sven", dota1: "Rogue Knight", attr: "Strength", faction: "Sentinel", 
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/sven.png", 
+        bio: "<p>Сын изгоя-паладина и эльфийки ночного эльфа, Свен вырос с клеймом позора и изгнания, отвергнутый обоими народами. Закаленный суровыми испытаниями, он поклялся следовать непреклонному кодексу ордена Белого Мстителя.</p><p>Однако, столкнувшись с лицемерием и предательством собственных наставников, Свен разрушил священное солнце и уничтожил орден, забрав с собой легендарный двуручный меч Месть.</p><p>Теперь этот одинокий рыцарь блуждает по полям сражений меж двух миров, полагаясь исключительно на свою ярость, стальной клинок и непоколебимую волю.</p>", 
+        skills: [
+          {
+            name: "Storm Bolt",
+            img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/sven_storm_bolt.png",
+            desc: "Бросает магический молот, наносящий урон и оглушающий врагов в области.",
+            isPassive: false,
+            levels: [
+              { lvl: 1, mana: "110 MP", cd: "18 сек", effect: "110 урона, стан 1.4 сек" },
+              { lvl: 2, mana: "120 MP", cd: "16 сек", effect: "160 урона, стан 1.6 сек" },
+              { lvl: 3, mana: "130 MP", cd: "14 сек", effect: "210 урона, стан 1.8 сек" },
+              { lvl: 4, mana: "140 MP", cd: "12 сек", effect: "260 урона, стан 2.0 сек" }
+            ]
+          },
+          {
+            name: "Great Cleave",
+            img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/sven_great_cleave.png",
+            desc: "Пассивно наполняет меч силой, нанося пробивающий сплеш-урон всем стоящим рядом врагам.",
+            isPassive: true,
+            levels: [
+              { lvl: 1, mana: "Пассивно", cd: "0 сек", effect: "30% сплеш-урона" },
+              { lvl: 2, mana: "Пассивно", cd: "0 сек", effect: "45% сплеш-урона" },
+              { lvl: 3, mana: "Пассивно", cd: "0 сек", effect: "60% сплеш-урона" },
+              { lvl: 4, mana: "Пассивно", cd: "0 сек", effect: "75% сплеш-урона" }
+            ]
+          },
+          {
+            name: "Warcry",
+            img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/sven_warcry.png",
+            desc: "Боевой клич воодушевляет союзников, увеличивая их броню и скорость передвижения.",
+            isPassive: false,
+            levels: [
+              { lvl: 1, mana: "40 MP", cd: "32 сек", effect: "+6 брони, +8% бега" },
+              { lvl: 2, mana: "50 MP", cd: "26 сек", effect: "+9 брони, +12% бега" },
+              { lvl: 3, mana: "60 MP", cd: "20 сек", effect: "+12 брони, +16% бега" },
+              { lvl: 4, mana: "70 MP", cd: "14 сек", effect: "+15 брони, +20% бега" }
+            ]
+          },
+          {
+            name: "God's Strength",
+            img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/sven_gods_strength.png",
+            desc: "Свен обращается к своей скрытой силе, многократно увеличивая базовый урон от атак.",
+            isPassive: false,
+            levels: [
+              { lvl: 1, mana: "100 MP", cd: "100 сек", effect: "+120% базового урона" },
+              { lvl: 2, mana: "150 MP", cd: "100 сек", effect: "+160% базового урона" },
+              { lvl: 3, mana: "200 MP", cd: "100 сек", effect: "+200% базового урона" }
+            ]
+          }
+        ]
+      },
+      { name: "Tiny", dota1: "Stone Giant", attr: "Strength", faction: "Sentinel", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/tiny.png", bio: "<p>Родившись в результате катаклизмов из живой скалы, крошечный голем Тайни изначально был лишь ничтожным осколком горного массива.</p><p>С годами он путешествует, впитывая обломки пород и минералы, становясь всё массивнее и сильнее.</p>", skills: [{name: "Avalanche", desc: "Камнепад по площади."}, {name: "Toss", desc: "Бросок юнита."}] },
+      { name: "Invoker", dota1: "Kael", attr: "Intelligence", faction: "Scourge", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/invoker.png", bio: "<p>Гений магии, комбинирующий сферы Quas, Wex и Exort.</p><p>Его память хранит десятки мощнейших заклинаний.</p>", skills: [{name: "Quas/Wex/Exort", desc: "Сферы магии."}, {name: "Invoke", desc: "Синтез магии."}] }
     ];
 
     let currentAttr = 'Strength', currentFaction = 'Sentinel', selectedHero = null;
@@ -151,12 +218,54 @@
       document.getElementById('modalName').innerText = hero.name;
       document.getElementById('modalDota1').innerText = "Dota 1: " + hero.dota1;
       document.getElementById('modalBio').innerHTML = hero.bio;
+      
       const skillsContainer = document.getElementById('modalSkills');
       skillsContainer.innerHTML = '';
-      hero.skills.forEach(s => {
-        skillsContainer.innerHTML += `<div class="skill-item"><div class="skill-name">${s.name}</div><div class="skill-desc">${s.desc}</div></div>`;
+
+      hero.skills.forEach((s, index) => {
+        const item = document.createElement('div');
+        item.className = 'skill-card';
+
+        if (s.levels) {
+          let levelsHtml = '';
+          s.levels.forEach(l => {
+            levelsHtml += `
+              <div class="level-row">
+                <span><b>Ур. ${l.lvl}:</b> ${l.effect}</span>
+                <span style="color:#3498db;">💧 ${l.mana} | ⏱️ ${l.cd}</span>
+              </div>
+            `;
+          });
+
+          item.innerHTML = `
+            <div class="skill-header">
+              <img src="${s.img}" class="skill-icon" alt="${s.name}" onerror="this.src='https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/base.png';">
+              <div class="skill-info-title">
+                <div class="skill-name">${s.name}</div>
+                <div class="skill-type">${s.isPassive ? 'Пассивная способность' : 'Активная способность'}</div>
+              </div>
+            </div>
+            <div style="font-size: 11px; color: #bbb; margin-top: 6px;">${s.desc}</div>
+            <button class="toggle-levels-btn" onclick="toggleSkillLvl(${index})">📊 Уровни, мана и кулдаун</button>
+            <div class="skill-levels-container" id="skillLvl_${index}">
+              ${levelsHtml}
+            </div>
+          `;
+        } else {
+          item.innerHTML = `
+            <div class="skill-name">${s.name}</div>
+            <div class="skill-desc">${s.desc}</div>
+          `;
+        }
+        skillsContainer.appendChild(item);
       });
+
       document.getElementById('heroModal').style.display = 'block';
+    }
+
+    function toggleSkillLvl(index) {
+      const container = document.getElementById(`skillLvl_${index}`);
+      container.style.display = container.style.display === 'block' ? 'none' : 'block';
     }
 
     function closeModal() { document.getElementById('heroModal').style.display = 'none'; }
