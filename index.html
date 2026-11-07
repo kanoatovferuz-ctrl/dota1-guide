@@ -4,15 +4,96 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dota 1 Classic Guide — Telegram WebApp</title>
+  <!-- Подключаем красивые шрифты с поддержкой кириллицы -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
-    body { background-color: #0c0c12; color: #e1e1e6; min-height: 100vh; padding-bottom: 40px; position: relative; }
-    body::before { content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('bg.jpg'); background-size: cover; background-position: center top; opacity: 0.4; filter: brightness(1.25) contrast(1.1); z-index: -1; }
-    header { background: rgba(15, 15, 25, 0.9); backdrop-filter: blur(10px); padding: 15px; position: sticky; top: 0; z-index: 10; border-bottom: 1px solid rgba(255, 157, 0, 0.3); text-align: center; }
-    h1 { font-size: 18px; color: #ff9d00; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
-    .search-box { width: 100%; max-width: 400px; padding: 10px 14px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(0, 0, 0, 0.6); color: #fff; font-size: 14px; outline: none; margin-bottom: 8px; }
-    .feedback-trigger-btn { display: inline-block; width: 100%; max-width: 400px; padding: 6px 10px; background: rgba(255, 157, 0, 0.15); border: 1px solid rgba(255, 157, 0, 0.4); color: #ff9d00; font-weight: 600; border-radius: 6px; cursor: pointer; font-size: 11px; text-transform: uppercase; }
+    * { 
+      box-sizing: border-box; 
+      margin: 0; 
+      padding: 0; 
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; 
+    }
+
+    /* Придаем заголовкам, именам героев и скиллов красивый игровой стиль */
+    h1, .hero-title, .modal-info h2, .skill-name, h3 {
+      font-family: 'Cinzel', serif !important;
+      letter-spacing: 0.5px;
+    }
+
+    body { 
+      background-color: #0c0c12; 
+      color: #e1e1e6; 
+      min-height: 100vh; 
+      padding-bottom: 40px; 
+      position: relative; 
+    }
+
+    body::before { 
+      content: ""; 
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 100%; 
+      background-image: url('bg.jpg'); 
+      background-size: cover; 
+      background-position: center top; 
+      opacity: 0.4; 
+      filter: brightness(1.25) contrast(1.1); 
+      z-index: -1; 
+    }
+
+    header { 
+      background: rgba(15, 15, 25, 0.9); 
+      backdrop-filter: blur(10px); 
+      padding: 15px; 
+      position: sticky; 
+      top: 0; 
+      z-index: 10; 
+      border-bottom: 1px solid rgba(255, 157, 0, 0.3); 
+      text-align: center; 
+    }
+
+    h1 { 
+      font-size: 18px; 
+      color: #ff9d00; 
+      text-transform: uppercase; 
+      letter-spacing: 1px; 
+      margin-bottom: 10px; 
+      font-weight: 900;
+    }
+
+    .search-box { 
+      width: 100%; 
+      max-width: 400px; 
+      padding: 10px 14px; 
+      border-radius: 8px; 
+      border: 1px solid rgba(255, 255, 255, 0.2); 
+      background: rgba(0, 0, 0, 0.6); 
+      color: #fff; 
+      font-size: 14px; 
+      outline: none; 
+      margin-bottom: 8px; 
+    }
+
+    .feedback-trigger-btn { 
+      display: inline-block; 
+      width: 100%; 
+      max-width: 400px; 
+      padding: 6px 10px; 
+      background: rgba(255, 157, 0, 0.15); 
+      border: 1px solid rgba(255, 157, 0, 0.4); 
+      color: #ff9d00; 
+      font-weight: 600; 
+      border-radius: 6px; 
+      cursor: pointer; 
+      font-size: 11px; 
+      text-transform: uppercase; 
+    }
     
     .main-tabs { display: flex; justify-content: center; gap: 6px; padding: 12px 10px 6px 10px; }
     .main-tab-btn { flex: 1; max-width: 130px; padding: 10px 0; background: rgba(25, 25, 35, 0.8); border: 1px solid rgba(255, 255, 255, 0.15); color: #aaa; font-weight: bold; border-radius: 6px; cursor: pointer; font-size: 13px; text-transform: uppercase; }
@@ -27,7 +108,7 @@
     .hero-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
     .hero-card { background: rgba(20, 20, 32, 0.85); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px; padding: 10px; text-align: center; cursor: pointer; }
     .hero-avatar { width: 100%; height: 95px; object-fit: cover; border-radius: 6px; background: #151520; margin-bottom: 8px; }
-    .hero-title { font-size: 13px; font-weight: bold; color: #fff; }
+    .hero-title { font-size: 13px; font-weight: 700; color: #fff; }
     .hero-dota1-name { font-size: 11px; color: #ff9d00; margin-top: 2px; }
 
     .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); z-index: 100; padding: 15px; overflow-y: auto; }
@@ -36,27 +117,26 @@
     .modal-header { display: flex; gap: 15px; align-items: center; margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 12px; }
     .modal-img { width: 70px; height: 70px; border-radius: 8px; object-fit: cover; }
     .modal-info h2 { font-size: 18px; color: #fff; }
-    .modal-info .dota1-title { font-size: 13px; color: #ff9d00; }
-    .bio-text { font-size: 12px; color: #ccc; line-height: 1.6; margin-bottom: 15px; background: rgba(255, 255, 255, 0.03); padding: 12px; border-radius: 8px; border-left: 3px solid #0088cc; }
+    .modal-info .dota1-title { font-size: 13px; color: #ff9d00; font-family: 'Inter', sans-serif; }
+    .bio-text { font-size: 12px; color: #ccc; line-height: 1.6; margin-bottom: 15px; background: rgba(255, 255, 255, 0.03); padding: 12px; border-radius: 8px; border-left: 3px solid #0088cc; font-family: 'Inter', sans-serif; }
     .bio-text p { margin-bottom: 8px; }
     
-    /* Стили для способностей нового образца */
     .skill-card { background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; padding: 10px; margin-bottom: 8px; border-left: 3px solid #ff9d00; }
     .skill-header { display: flex; align-items: center; gap: 10px; }
     .skill-icon { width: 42px; height: 42px; border-radius: 6px; border: 1px solid #ff9d00; object-fit: cover; background: #151520; }
     .skill-info-title { flex: 1; }
     .skill-name { font-size: 13px; font-weight: bold; color: #2ecc71; }
-    .skill-type { font-size: 10px; color: #ff9d00; text-transform: uppercase; }
-    .toggle-levels-btn { margin-top: 6px; background: rgba(255, 157, 0, 0.12); border: 1px solid rgba(255, 157, 0, 0.3); color: #ff9d00; font-size: 11px; padding: 5px; border-radius: 4px; cursor: pointer; width: 100%; text-align: center; font-weight: 600; }
+    .skill-type { font-size: 10px; color: #ff9d00; text-transform: uppercase; font-family: 'Inter', sans-serif; }
+    .toggle-levels-btn { margin-top: 6px; background: rgba(255, 157, 0, 0.12); border: 1px solid rgba(255, 157, 0, 0.3); color: #ff9d00; font-size: 11px; padding: 5px; border-radius: 4px; cursor: pointer; width: 100%; text-align: center; font-weight: 600; font-family: 'Inter', sans-serif; }
     .skill-levels-container { display: none; margin-top: 6px; border-top: 1px dashed rgba(255,255,255,0.15); padding-top: 6px; }
-    .level-row { display: flex; justify-content: space-between; font-size: 11px; color: #ccc; padding: 2px 0; }
+    .level-row { display: flex; justify-content: space-between; font-size: 11px; color: #ccc; padding: 2px 0; font-family: 'Inter', sans-serif; }
     
-    .send-tg-btn { width: 100%; padding: 12px; background: #0088cc; color: white; border: none; border-radius: 8px; font-weight: bold; margin-top: 15px; cursor: pointer; }
+    .send-tg-btn { width: 100%; padding: 12px; background: #0088cc; color: white; border: none; border-radius: 8px; font-weight: bold; margin-top: 15px; cursor: pointer; font-family: 'Inter', sans-serif; }
   </style>
 </head>
 <body>
   <header>
-    <h1>Dota 1 Classic Guide (112 Heroes)</h1>
+    <h1>Dota 1 Classic Guide</h1>
     <input type="text" id="search" class="search-box" placeholder="Поиск героя (например, Sven)...">
     <button class="feedback-trigger-btn" onclick="openFeedbackModal()">✍️ Написать отзыв / Предложение</button>
   </header>
@@ -110,7 +190,7 @@
       { 
         name: "Sven", dota1: "Rogue Knight", attr: "Strength", faction: "Sentinel", 
         img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/sven.png", 
-        bio: "<p>Сын изгоя-паладина и эльфийки ночного эльфа, Свен вырос с клеймом позора и изгнания, отвергнутый обоими народами. Закаленный суровыми испытаниями, он поклялся следовать непреклонному кодексу ордена Белого Мстителя.</p><p>Однако, столкнувшись с лицемерием и предательством собственных наставников, Свен разрушил священное солнце и уничтожил орден, забрав с собой легендарный двуручный меч Месть.</p><p>Теперь этот одинокий рыцарь блуждает по полям сражений меж двух миров, полагаясь исключительно на свою ярость, стальной клинок и непоколебимую волю.</p>", 
+        bio: "<p>Сын изгоя-паладина и эльфийки ночного эльфа, Свен вырос с клеймом позора и изгнания, отвергнутый обоими народами. Закаленный суровыми испытаниями, он поклялся следовать непрерывного кодексу ордена Белого Мстителя.</p><p>Однако, столкнувшись с лицемерием и предательством собственных наставников, Свен разрушил священное солнце и уничтожил орден, забрав с собой легендарный двуручный меч Месть.</p><p>Теперь этот одинокий рыцарь блуждает по полям сражений меж двух миров, полагаясь исключительно на свою ярость, стальной клинок и непоколебимую волю.</p>", 
         skills: [
           {
             name: "Storm Bolt",
@@ -161,8 +241,7 @@
           }
         ]
       },
-      { name: "Tiny", dota1: "Stone Giant", attr: "Strength", faction: "Sentinel", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/tiny.png", bio: "<p>Родившись в результате катаклизмов из живой скалы, крошечный голем Тайни изначально был лишь ничтожным осколком горного массива.</p><p>С годами он путешествует, впитывая обломки пород и минералы, становясь всё массивнее и сильнее.</p>", skills: [{name: "Avalanche", desc: "Камнепад по площади."}, {name: "Toss", desc: "Бросок юнита."}] },
-      { name: "Invoker", dota1: "Kael", attr: "Intelligence", faction: "Scourge", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/invoker.png", bio: "<p>Гений магии, комбинирующий сферы Quas, Wex и Exort.</p><p>Его память хранит десятки мощнейших заклинаний.</p>", skills: [{name: "Quas/Wex/Exort", desc: "Сферы магии."}, {name: "Invoke", desc: "Синтез магии."}] }
+      { name: "Tiny", dota1: "Stone Giant", attr: "Strength", faction: "Sentinel", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/tiny.png", bio: "<p>Родившись в результате катаклизмов из живой скалы, крошечный голем Тайни изначально был лишь ничтожным осколком горного массива.</p>", skills: [{name: "Avalanche", desc: "Камнепад по площади."}] }
     ];
 
     let currentAttr = 'Strength', currentFaction = 'Sentinel', selectedHero = null;
@@ -222,43 +301,45 @@
       const skillsContainer = document.getElementById('modalSkills');
       skillsContainer.innerHTML = '';
 
-      hero.skills.forEach((s, index) => {
-        const item = document.createElement('div');
-        item.className = 'skill-card';
+      if (hero.skills) {
+        hero.skills.forEach((s, index) => {
+          const item = document.createElement('div');
+          item.className = 'skill-card';
 
-        if (s.levels) {
-          let levelsHtml = '';
-          s.levels.forEach(l => {
-            levelsHtml += `
-              <div class="level-row">
-                <span><b>Ур. ${l.lvl}:</b> ${l.effect}</span>
-                <span style="color:#3498db;">💧 ${l.mana} | ⏱️ ${l.cd}</span>
+          if (s.levels) {
+            let levelsHtml = '';
+            s.levels.forEach(l => {
+              levelsHtml += `
+                <div class="level-row">
+                  <span><b>Ур. ${l.lvl}:</b> ${l.effect}</span>
+                  <span style="color:#3498db;">💧 ${l.mana} | ⏱️ ${l.cd}</span>
+                </div>
+              `;
+            });
+
+            item.innerHTML = `
+              <div class="skill-header">
+                <img src="${s.img}" class="skill-icon" alt="${s.name}" onerror="this.src='https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/base.png';">
+                <div class="skill-info-title">
+                  <div class="skill-name">${s.name}</div>
+                  <div class="skill-type">${s.isPassive ? 'Пассивная способность' : 'Активная способность'}</div>
+                </div>
+              </div>
+              <div style="font-size: 11px; color: #bbb; margin-top: 6px; font-family: 'Inter', sans-serif;">${s.desc}</div>
+              <button class="toggle-levels-btn" onclick="toggleSkillLvl(${index})">📊 Уровни, мана и кулдаун</button>
+              <div class="skill-levels-container" id="skillLvl_${index}">
+                ${levelsHtml}
               </div>
             `;
-          });
-
-          item.innerHTML = `
-            <div class="skill-header">
-              <img src="${s.img}" class="skill-icon" alt="${s.name}" onerror="this.src='https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/base.png';">
-              <div class="skill-info-title">
-                <div class="skill-name">${s.name}</div>
-                <div class="skill-type">${s.isPassive ? 'Пассивная способность' : 'Активная способность'}</div>
-              </div>
-            </div>
-            <div style="font-size: 11px; color: #bbb; margin-top: 6px;">${s.desc}</div>
-            <button class="toggle-levels-btn" onclick="toggleSkillLvl(${index})">📊 Уровни, мана и кулдаун</button>
-            <div class="skill-levels-container" id="skillLvl_${index}">
-              ${levelsHtml}
-            </div>
-          `;
-        } else {
-          item.innerHTML = `
-            <div class="skill-name">${s.name}</div>
-            <div class="skill-desc">${s.desc}</div>
-          `;
-        }
-        skillsContainer.appendChild(item);
-      });
+          } else {
+            item.innerHTML = `
+              <div class="skill-name">${s.name}</div>
+              <div style="font-size: 11px; color: #bbb; font-family: 'Inter', sans-serif;" class="skill-desc">${s.desc}</div>
+            `;
+          }
+          skillsContainer.appendChild(item);
+        });
+      }
 
       document.getElementById('heroModal').style.display = 'block';
     }
