@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dota 1 Classic Guide — Telegram WebApp</title>
-  <!-- Подключаем игровой шрифт Russo One для заголовков/кнопок и Lora для текстов -->
+  <title>Dota 2 Classic Guide — Telegram WebApp</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Russo+One&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -18,13 +17,11 @@
       font-family: 'Inter', sans-serif; 
     }
 
-    /* Все заголовки, имена, табы и кнопки переводятся на новый игровой шрифт Russo One */
     h1, .hero-title, .modal-info h2, .skill-name, h3, .main-tab-btn, .sub-tab-btn, .toggle-levels-btn {
       font-family: 'Russo One', sans-serif !important;
       letter-spacing: 0.5px;
     }
 
-    /* Красивый шрифт с засечками для историй и описаний */
     .bio-text, .skill-desc, .level-row {
       font-family: 'Lora', serif !important;
     }
@@ -55,7 +52,7 @@
     header { 
       background: rgba(15, 15, 25, 0.9); 
       backdrop-filter: blur(10px); 
-      padding: 15px; 
+      padding: 15px 15px 20px 15px; 
       position: sticky; 
       top: 0; 
       z-index: 10; 
@@ -63,14 +60,16 @@
       text-align: center; 
     }
 
+    /* Название крупнее (увеличено еще на 5px) */
     h1 { 
-      font-size: 18px; 
+      font-size: 24px; 
       color: #ff9d00; 
       text-transform: uppercase; 
       letter-spacing: 1px; 
-      margin-bottom: 10px; 
+      margin-bottom: 14px; 
     }
 
+    /* Поиск смещен ниже */
     .search-box { 
       width: 100%; 
       max-width: 400px; 
@@ -81,15 +80,17 @@
       color: #fff; 
       font-size: 14px; 
       outline: none; 
-      margin-bottom: 8px; 
+      margin-top: 4px;
+      margin-bottom: 10px; 
       font-family: 'Inter', sans-serif;
     }
 
+    /* Кнопка отзыва смещена ниже */
     .feedback-trigger-btn { 
       display: inline-block; 
       width: 100%; 
       max-width: 400px; 
-      padding: 6px 10px; 
+      padding: 7px 10px; 
       background: rgba(255, 157, 0, 0.15); 
       border: 1px solid rgba(255, 157, 0, 0.4); 
       color: #ff9d00; 
@@ -101,12 +102,10 @@
       font-family: 'Inter', sans-serif;
     }
     
-    /* Главные вкладки классов (Strength, Agility, Intelligence) */
     .main-tabs { display: flex; justify-content: center; gap: 6px; padding: 12px 10px 6px 10px; }
     .main-tab-btn { flex: 1; max-width: 130px; padding: 10px 0; background: rgba(25, 25, 35, 0.8); border: 1px solid rgba(255, 255, 255, 0.15); color: #aaa; border-radius: 6px; cursor: pointer; font-size: 11px; text-transform: uppercase; }
     .main-tab-btn.active { background: #ff9d00; color: #000; border-color: #ff9d00; }
     
-    /* Вкладки фракций (SENTINEL / SCOURGE) без эмодзи и заглавными буквами */
     .sub-tabs { display: flex; justify-content: center; gap: 8px; padding: 6px 10px 14px 10px; }
     .sub-tab-btn { padding: 8px 18px; background: rgba(15, 15, 20, 0.6); border: 1px solid rgba(255, 255, 255, 0.1); color: #888; border-radius: 20px; cursor: pointer; font-size: 11px; text-transform: uppercase; }
     .sub-tab-btn.sentinel.active { background: rgba(46, 204, 113, 0.25); color: #2ecc71; border-color: #2ecc71; }
@@ -146,7 +145,7 @@
 </head>
 <body>
   <header>
-    <h1>Dota 1 Guide</h1>
+    <h1>Dota 2 Guide</h1>
     <input type="text" id="search" class="search-box" placeholder="Поиск героя (например, Sven)...">
     <button class="feedback-trigger-btn" onclick="openFeedbackModal()">✍️ Написать отзыв / Предложение</button>
   </header>
