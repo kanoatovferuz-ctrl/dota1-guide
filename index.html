@@ -3,104 +3,206 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>База Знаний Dota 1</title>
-    <!-- Подключаем скрипт Telegram WebApp -->
+    <title>Таверны Dota 1 — База Знаний</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         body {
-            background-color: #0c0d12;
+            background-color: #0b0e14;
             color: #d1d5db;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             margin: 0;
-            padding: 16px;
+            padding: 12px;
         }
         h1 {
-            color: #d97706;
+            color: #f59e0b;
             text-align: center;
-            font-size: 22px;
-            margin-bottom: 6px;
+            font-size: 20px;
+            margin: 10px 0 4px;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
         .subtitle {
             text-align: center;
-            color: #9ca3af;
-            font-size: 13px;
-            margin-bottom: 20px;
+            color: #6b7280;
+            font-size: 12px;
+            margin-bottom: 16px;
         }
-        .card {
-            background-color: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 10px;
-            padding: 14px;
-            margin-bottom: 14px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        .tavern-section {
+            background: #111827;
+            border: 1px solid #1f2937;
+            border-radius: 12px;
+            padding: 12px;
+            margin-bottom: 16px;
         }
-        .card h3 {
-            margin-top: 0;
-            margin-bottom: 8px;
-            font-size: 16px;
+        .tavern-title {
+            font-size: 15px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #1f2937;
             display: flex;
             align-items: center;
             gap: 8px;
         }
-        .str { color: #ef4444; }
-        .agi { color: #22c55e; }
-        .int { color: #3b82f6; }
-        
-        .hero-list {
-            font-size: 13px;
-            color: #9ca3af;
-            line-height: 1.5;
-        }
-        .btn-main {
-            display: block;
-            width: 100%;
-            background: linear-gradient(180deg, #d97706 0%, #b45309 100%);
-            color: #ffffff;
-            text-align: center;
-            padding: 12px 0;
+        .str-title { color: #ef4444; }
+        .agi-title { color: #22c55e; }
+        .int-title { color: #3b82f6; }
+
+        .hero-card {
+            background: #1f2937;
             border-radius: 8px;
+            margin-bottom: 8px;
+            overflow: hidden;
+            border: 1px solid #374151;
+        }
+        .hero-header {
+            padding: 10px 12px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+        .hero-header:hover {
+            background: #374151;
+        }
+        .hero-body {
+            display: none;
+            padding: 12px;
+            background: #111827;
+            border-top: 1px solid #374151;
+            font-size: 13px;
+            line-height: 1.5;
+            color: #9ca3af;
+        }
+        .hero-body.active {
+            display: block;
+        }
+        .story-title {
+            color: #f3f4f6;
             font-weight: bold;
-            text-decoration: none;
-            margin-top: 20px;
-            font-size: 15px;
-            box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
+            margin-bottom: 4px;
+        }
+        .tag {
+            display: inline-block;
+            background: #374151;
+            color: #fbbf24;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 11px;
+            margin-top: 6px;
         }
     </style>
 </head>
 <body>
 
-    <h1>Гайды Dota 1 (Defense of the Ancients)</h1>
-    <div class="subtitle">База знаний, сборки предметов и тактики по героям</div>
+    <h1>Таверны Dota 1</h1>
+    <div class="subtitle">Выбери героя из таверны, чтобы прочитать его историю</div>
 
-    <div class="card">
-        <h3 class="str">🛡️ Герои Силы (Strength)</h3>
-        <div class="hero-list">
-            Pudge (Падж), Skeleton King (Леорик), Sven (Свен), Centaur Warrunner (Кентавр), Tiny (Тини)...
+    <!-- ТАВЕРНА СИЛЫ -->
+    <div class="tavern-section">
+        <div class="tavern-title str-title">🛡️ Таверна Силы (Strength)</div>
+
+        <div class="hero-card">
+            <div class="hero-header" onclick="toggleHero('pudge')">
+                <span>Pudge — Butcher (Падж)</span>
+                <span>▼</span>
+            </div>
+            <div class="hero-body" id="pudge">
+                <div class="story-title">История:</div>
+                На Полях Вечной Бойни Падж неустанно разбирает остатки павших воинов. Его мясницкий крюк не знает промаха, затягивая жертв прямо в смертельные объятия его гниющего тела.
+                <br><span class="tag">Роль: Инициатор / Дизейблер</span>
+            </div>
+        </div>
+
+        <div class="hero-card">
+            <div class="hero-header" onclick="toggleHero('wk')">
+                <span>Skeleton King — Leoric (Леорик)</span>
+                <span>▼</span>
+            </div>
+            <div class="hero-body" id="wk">
+                <div class="story-title">История:</div>
+                Король Остап строил империю на костях своих врагов. Желая править вечно, он обратил своё тело в прах и прах — в кости, обретя способность восставать из мёртвых прямо на поле боя.
+                <br><span class="tag">Роль: Керри / Танк</span>
+            </div>
         </div>
     </div>
 
-    <div class="card">
-        <h3 class="agi">⚡ Герои Ловкости (Agility)</h3>
-        <div class="hero-list">
-            Shadow Fiend (Невермор), Anti-Mage (Магина), Phantom Lancer (Лансер), Sniper (Снайпер)...
+    <!-- ТАВЕРНА ЛОВКОСТИ -->
+    <div class="tavern-section">
+        <div class="tavern-title agi-title">⚡ Таверна Ловкости (Agility)</div>
+
+        <div class="hero-card">
+            <div class="hero-header" onclick="toggleHero('sf')">
+                <span>Shadow Fiend — Nevermore (Невермор)</span>
+                <span>▼</span>
+            </div>
+            <div class="hero-body" id="sf">
+                <div class="story-title">История:</div>
+                Невермор собирает души павших воинов. Никто не знает, откуда прибыл этот демон, но поглощённые им души питают его темную магию и разрывают врагов изнутри мощнейшим реквиемом.
+                <br><span class="tag">Роль: Мид-керри / Маг</span>
+            </div>
+        </div>
+
+        <div class="hero-card">
+            <div class="hero-header" onclick="toggleHero('am')">
+                <span>Anti-Mage — Magina (Магина)</span>
+                <span>▼</span>
+            </div>
+            <div class="hero-body" id="am">
+                <div class="story-title">История:</div>
+                Служитель монастыря Турстаркури, поклявшийся истребить всю магию в мире после того, как его обитель была разрушена демонами. Его клинки выжигают ману до капли.
+                <br><span class="tag">Роль: Лейт-керри / Сплит-пушер</span>
+            </div>
         </div>
     </div>
 
-    <div class="card">
-        <h3 class="int">🔮 Герои Интеллекта (Intelligence)</h3>
-        <div class="hero-list">
-            Invoker (Инвокер), Lina (Лина), Tinker (Тинкер), Crystal Maiden (ЦМка), Rhasta (Раста)...
+    <!-- ТАВЕРНА ИНТЕЛЛЕКТА -->
+    <div class="tavern-section">
+        <div class="tavern-title int-title">🔮 Таверна Интеллекта (Intelligence)</div>
+
+        <div class="hero-card">
+            <div class="hero-header" onclick="toggleHero('invoker')">
+                <span>Invoker — Kael (Инвокер)</span>
+                <span>▼</span>
+            </div>
+            <div class="hero-body" id="invoker">
+                <div class="story-title">История:</div>
+                Гениальный маг древности, запомнивший не одно или два заклинания, а целых десять мощнейших чар одновременно. Его разум хранит тайны стихий сферы Огня, Льда и Молнии.
+                <br><span class="tag">Роль: Прокастер / Контроль</span>
+            </div>
+        </div>
+
+        <div class="hero-card">
+            <div class="hero-header" onclick="toggleHero('cm')">
+                <span>Crystal Maiden — Rylai (ЦМка)</span>
+                <span>▼</span>
+            </div>
+            <div class="hero-body" id="cm">
+                <div class="story-title">История:</div>
+                Обученная магии льда на вершине ледника, Рилай повелевает сибирскими морозами. Её присутствие восстанавливает ману всем союзникам, а замораживающее поле уничтожает армии.
+                <br><span class="tag">Роль: Саппорт / Аура</span>
+            </div>
         </div>
     </div>
-
-    <a href="#" class="btn-main" onclick="Telegram.WebApp.close();">Закрыть гайд</a>
 
     <script>
-        // Инициализация WebApp от Telegram
         const tg = window.Telegram.WebApp;
-        tg.expand(); // Разворачиваем на полный экран
+        tg.expand();
+
+        function toggleHero(id) {
+            const body = document.getElementById(id);
+            const isVisible = body.classList.contains('active');
+            
+            // Закрываем другие карточки
+            document.querySelectorAll('.hero-body').forEach(el => el.classList.remove('active'));
+
+            // Открываем текущую, если была закрыта
+            if (!isVisible) {
+                body.classList.add('active');
+            }
+        }
     </script>
 </body>
 </html>
