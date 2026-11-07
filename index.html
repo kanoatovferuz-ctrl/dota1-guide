@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Таверны Dota 1 — База Знаний</title>
+    <title>Таверны Dota 1</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         body {
@@ -16,47 +16,63 @@
         h1 {
             color: #f59e0b;
             text-align: center;
-            font-size: 20px;
-            margin: 10px 0 4px;
+            font-size: 18px;
+            margin: 6px 0 2px;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
         .subtitle {
             text-align: center;
             color: #6b7280;
-            font-size: 12px;
-            margin-bottom: 16px;
+            font-size: 11px;
+            margin-bottom: 12px;
         }
-        .tavern-section {
+        
+        /* Вкладки (Табы) */
+        .tabs {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 14px;
+            background: #111827;
+            padding: 4px;
+            border-radius: 10px;
+            border: 1px solid #1f2937;
+        }
+        .tab-btn {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: #9ca3af;
+            padding: 10px 4px;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+        .tab-btn.active.str { background: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid #ef4444; }
+        .tab-btn.active.agi { background: rgba(34, 197, 94, 0.15); color: #22c55e; border: 1px solid #22c55e; }
+        .tab-btn.active.int { background: rgba(59, 130, 246, 0.15); color: #3b82f6; border: 1px solid #3b82f6; }
+
+        /* Контент вкладок */
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Карточки героев */
+        .hero-card {
             background: #111827;
             border: 1px solid #1f2937;
-            border-radius: 12px;
-            padding: 12px;
-            margin-bottom: 16px;
-        }
-        .tavern-title {
-            font-size: 15px;
-            font-weight: bold;
+            border-radius: 10px;
             margin-bottom: 10px;
-            padding-bottom: 6px;
-            border-bottom: 1px solid #1f2937;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .str-title { color: #ef4444; }
-        .agi-title { color: #22c55e; }
-        .int-title { color: #3b82f6; }
-
-        .hero-card {
-            background: #1f2937;
-            border-radius: 8px;
-            margin-bottom: 8px;
             overflow: hidden;
-            border: 1px solid #374151;
         }
         .hero-header {
-            padding: 10px 12px;
+            padding: 12px 14px;
             font-weight: 600;
             cursor: pointer;
             display: flex;
@@ -65,13 +81,13 @@
             font-size: 14px;
         }
         .hero-header:hover {
-            background: #374151;
+            background: #1f2937;
         }
         .hero-body {
             display: none;
-            padding: 12px;
-            background: #111827;
-            border-top: 1px solid #374151;
+            padding: 12px 14px;
+            background: #0d121b;
+            border-top: 1px solid #1f2937;
             font-size: 13px;
             line-height: 1.5;
             color: #9ca3af;
@@ -86,27 +102,33 @@
         }
         .tag {
             display: inline-block;
-            background: #374151;
+            background: #1f2937;
             color: #fbbf24;
-            padding: 2px 6px;
+            padding: 2px 8px;
             border-radius: 4px;
             font-size: 11px;
-            margin-top: 6px;
+            margin-top: 8px;
+            border: 1px solid #374151;
         }
     </style>
 </head>
 <body>
 
     <h1>Таверны Dota 1</h1>
-    <div class="subtitle">Выбери героя из таверны, чтобы прочитать его историю</div>
+    <div class="subtitle">Энциклопедия древних героев</div>
 
-    <!-- ТАВЕРНА СИЛЫ -->
-    <div class="tavern-section">
-        <div class="tavern-title str-title">🛡️ Таверна Силы (Strength)</div>
+    <!-- ПАНЕЛЬ ВКЛАДОК -->
+    <div class="tabs">
+        <button class="tab-btn str active" onclick="switchTab('str')">🛡️ Сила</button>
+        <button class="tab-btn agi" onclick="switchTab('agi')">⚡ Ловкость</button>
+        <button class="tab-btn int" onclick="switchTab('int')">🔮 Интеллект</button>
+    </div>
 
+    <!-- ВКЛАДКА 1: СИЛА -->
+    <div class="tab-content active" id="content-str">
         <div class="hero-card">
             <div class="hero-header" onclick="toggleHero('pudge')">
-                <span>Pudge — Butcher (Падж)</span>
+                <span style="color: #ef4444;">Pudge — Butcher (Падж)</span>
                 <span>▼</span>
             </div>
             <div class="hero-body" id="pudge">
@@ -118,7 +140,7 @@
 
         <div class="hero-card">
             <div class="hero-header" onclick="toggleHero('wk')">
-                <span>Skeleton King — Leoric (Леорик)</span>
+                <span style="color: #ef4444;">Skeleton King — Leoric (Леорик)</span>
                 <span>▼</span>
             </div>
             <div class="hero-body" id="wk">
@@ -129,13 +151,11 @@
         </div>
     </div>
 
-    <!-- ТАВЕРНА ЛОВКОСТИ -->
-    <div class="tavern-section">
-        <div class="tavern-title agi-title">⚡ Таверна Ловкости (Agility)</div>
-
+    <!-- ВКЛАДКА 2: ЛОВКОСТЬ -->
+    <div class="tab-content" id="content-agi">
         <div class="hero-card">
             <div class="hero-header" onclick="toggleHero('sf')">
-                <span>Shadow Fiend — Nevermore (Невермор)</span>
+                <span style="color: #22c55e;">Shadow Fiend — Nevermore (Невермор)</span>
                 <span>▼</span>
             </div>
             <div class="hero-body" id="sf">
@@ -147,7 +167,7 @@
 
         <div class="hero-card">
             <div class="hero-header" onclick="toggleHero('am')">
-                <span>Anti-Mage — Magina (Магина)</span>
+                <span style="color: #22c55e;">Anti-Mage — Magina (Магина)</span>
                 <span>▼</span>
             </div>
             <div class="hero-body" id="am">
@@ -158,51 +178,5 @@
         </div>
     </div>
 
-    <!-- ТАВЕРНА ИНТЕЛЛЕКТА -->
-    <div class="tavern-section">
-        <div class="tavern-title int-title">🔮 Таверна Интеллекта (Intelligence)</div>
-
-        <div class="hero-card">
-            <div class="hero-header" onclick="toggleHero('invoker')">
-                <span>Invoker — Kael (Инвокер)</span>
-                <span>▼</span>
-            </div>
-            <div class="hero-body" id="invoker">
-                <div class="story-title">История:</div>
-                Гениальный маг древности, запомнивший не одно или два заклинания, а целых десять мощнейших чар одновременно. Его разум хранит тайны стихий сферы Огня, Льда и Молнии.
-                <br><span class="tag">Роль: Прокастер / Контроль</span>
-            </div>
-        </div>
-
-        <div class="hero-card">
-            <div class="hero-header" onclick="toggleHero('cm')">
-                <span>Crystal Maiden — Rylai (ЦМка)</span>
-                <span>▼</span>
-            </div>
-            <div class="hero-body" id="cm">
-                <div class="story-title">История:</div>
-                Обученная магии льда на вершине ледника, Рилай повелевает сибирскими морозами. Её присутствие восстанавливает ману всем союзникам, а замораживающее поле уничтожает армии.
-                <br><span class="tag">Роль: Саппорт / Аура</span>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        const tg = window.Telegram.WebApp;
-        tg.expand();
-
-        function toggleHero(id) {
-            const body = document.getElementById(id);
-            const isVisible = body.classList.contains('active');
-            
-            // Закрываем другие карточки
-            document.querySelectorAll('.hero-body').forEach(el => el.classList.remove('active'));
-
-            // Открываем текущую, если была закрыта
-            if (!isVisible) {
-                body.classList.add('active');
-            }
-        }
-    </script>
-</body>
-</html>
+    <!-- ВКЛАДКА 3: ИНТЕЛЛЕКТ -->
+    <div class="tab-content" id="content-int">
