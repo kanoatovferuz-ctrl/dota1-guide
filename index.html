@@ -17,12 +17,12 @@
       font-family: 'Inter', sans-serif; 
     }
 
-    h1, .hero-title, .modal-info h2, .skill-name, h3, .main-tab-btn, .sub-tab-btn, .toggle-levels-btn {
+    h1, .hero-title, .modal-info h2, .skill-name, h3, .main-tab-btn, .sub-tab-btn, .toggle-levels-btn, .toggle-guide-btn {
       font-family: 'Russo One', sans-serif !important;
       letter-spacing: 0.5px;
     }
 
-    .bio-text, .skill-desc, .level-row {
+    .bio-text, .skill-desc, .level-row, .guide-content-box {
       font-family: 'Lora', serif !important;
     }
 
@@ -60,7 +60,6 @@
       text-align: center; 
     }
 
-    /* Название крупнее (увеличено еще на 5px) */
     h1 { 
       font-size: 24px; 
       color: #ff9d00; 
@@ -69,7 +68,6 @@
       margin-bottom: 14px; 
     }
 
-    /* Поиск смещен ниже */
     .search-box { 
       width: 100%; 
       max-width: 400px; 
@@ -85,7 +83,6 @@
       font-family: 'Inter', sans-serif;
     }
 
-    /* Кнопка отзыва смещена ниже */
     .feedback-trigger-btn { 
       display: inline-block; 
       width: 100%; 
@@ -125,9 +122,21 @@
     .modal-img { width: 70px; height: 70px; border-radius: 8px; object-fit: cover; }
     .modal-info h2 { font-size: 18px; color: #fff; }
     .modal-info .dota1-title { font-size: 13px; color: #ff9d00; font-family: 'Inter', sans-serif; }
-    .bio-text { font-size: 13px; color: #dcdce6; line-height: 1.6; margin-bottom: 15px; background: rgba(255, 255, 255, 0.03); padding: 12px; border-radius: 8px; border-left: 3px solid #0088cc; }
+    
+    .bio-text { font-size: 13px; color: #dcdce6; line-height: 1.6; margin-bottom: 12px; background: rgba(255, 255, 255, 0.03); padding: 12px; border-radius: 8px; border-left: 3px solid #0088cc; }
     .bio-text p { margin-bottom: 8px; }
     
+    /* Интерактивные кнопки-аккордеоны для сборок и контрпиков */
+    .guide-dropdown-card { background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 157, 0, 0.3); border-radius: 8px; padding: 10px; margin-bottom: 8px; }
+    .toggle-guide-btn { background: rgba(255, 157, 0, 0.15); border: 1px solid rgba(255, 157, 0, 0.4); color: #ff9d00; font-size: 11px; padding: 8px; border-radius: 4px; cursor: pointer; width: 100%; text-align: center; text-transform: uppercase; letter-spacing: 0.5px; }
+    .guide-content-box { display: none; margin-top: 8px; border-top: 1px dashed rgba(255,255,255,0.2); padding-top: 8px; font-size: 12px; color: #ccc; line-height: 1.5; }
+    
+    /* Стили для иконок предметов */
+    .item-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+    .item-icon { width: 32px; height: 32px; border-radius: 4px; border: 1px solid #888; object-fit: cover; background: #000; }
+    .stage-title { font-size: 12px; font-weight: bold; color: #ff9d00; margin: 6px 0 3px 0; text-transform: uppercase; }
+
+    /* Стили для способностей */
     .skill-card { background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; padding: 10px; margin-bottom: 8px; border-left: 3px solid #ff9d00; }
     .skill-header { display: flex; align-items: center; gap: 10px; }
     .skill-icon { width: 42px; height: 42px; border-radius: 6px; border: 1px solid #ff9d00; object-fit: cover; background: #151520; }
@@ -136,7 +145,6 @@
     .skill-type { font-size: 10px; color: #ff9d00; text-transform: uppercase; font-family: 'Inter', sans-serif; }
     
     .toggle-levels-btn { margin-top: 6px; background: rgba(255, 157, 0, 0.12); border: 1px solid rgba(255, 157, 0, 0.3); color: #ff9d00; font-size: 11px; padding: 6px; border-radius: 4px; cursor: pointer; width: 100%; text-align: center; text-transform: uppercase; letter-spacing: 0.5px; }
-    
     .skill-levels-container { display: none; margin-top: 6px; border-top: 1px dashed rgba(255,255,255,0.15); padding-top: 6px; }
     .level-row { display: flex; justify-content: space-between; font-size: 12px; color: #ccc; padding: 3px 0; }
     
@@ -174,9 +182,25 @@
           <div id="modalDota1" class="dota1-title"></div>
         </div>
       </div>
+      
+      <!-- Блок истории -->
       <div id="modalBio" class="bio-text"></div>
-      <h3 style="font-size: 13px; color: #ff9d00; margin-bottom: 8px; text-transform: uppercase;">Способности:</h3>
+
+      <!-- Кнопка: Сборка предметов -->
+      <div class="guide-dropdown-card">
+        <button class="toggle-guide-btn" onclick="toggleGuideSection('itemsBox')">⚔️ Сборка предметов (Build)</button>
+        <div class="guide-content-box" id="itemsBox"></div>
+      </div>
+
+      <!-- Кнопка: Контрпики и советы -->
+      <div class="guide-dropdown-card" style="border-color: rgba(46, 204, 113, 0.4);">
+        <button class="toggle-guide-btn" style="background: rgba(46, 204, 113, 0.15); border-color: rgba(46, 204, 113, 0.4); color: #2ecc71;" onclick="toggleGuideSection('countersBox')">🛡️ Контрпики и советы</button>
+        <div class="guide-content-box" id="countersBox"></div>
+      </div>
+
+      <h3 style="font-size: 13px; color: #ff9d00; margin: 12px 0 8px 0; text-transform: uppercase;">Способности:</h3>
       <div class="skills-list" id="modalSkills"></div>
+      
       <button class="send-tg-btn" onclick="closeModal()">Закрыть</button>
     </div>
   </div>
@@ -199,7 +223,36 @@
       { 
         name: "Sven", dota1: "Rogue Knight", attr: "Strength", faction: "Sentinel", 
         img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/sven.png", 
-        bio: "<p>Сын изгоя-паладина и эльфийки ночного эльфа, Свен вырос с клеймом позора и изгнания, отвергнутый обоими народами. Закаленный суровыми испытаниями, он поклялся следовать непреклонному кодексу ордена Белого Мстителя.</p><p>Однако, столкнувшись с лицемерием и предательством собственных наставников, Свен разрушил священное солнце и уничтожил орден, забрав с собой легендарный двуручный меч Месть.</p><p>Теперь этот одинокий рыцарь блуждает по полям сражений меж двух миров, полагаясь исключительно на свою ярость, стальной клинок и непоколебимую волю.</p>", 
+        bio: "<p>Сын изгоя-паладина и эльфийки ночного эльфа, Свен вырос с клеймом позора и изгнания, отвергнутый обоими народами. Закаленный суровыми испытаниями, он поклялся следовать непреклонному кодексу ордена Белого Мстителя.</p><p>Однако, столкнувшись с лицемерием и предательством собственных наставников, Свен разрушил священное солнце и уничтожил орден, забрав с собой легендарный двуручный меч Месть.</p>", 
+        
+        // Структура сборок с иконками предметов из Dota 2 CDN
+        itemsBuild: {
+          early: [
+            { name: "Tango", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/tango.png" },
+            { name: "Healing Salve", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/flask.png" },
+            { name: "Quelling Blade", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/quelling_blade.png" },
+            { name: "Bracer", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/bracer.png" }
+          ],
+          mid: [
+            { name: "Power Treads", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/power_treads.png" },
+            { name: "Echo Sabre", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/echo_sabre.png" },
+            { name: "Blink Dagger", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/blink.png" }
+          ],
+          late: [
+            { name: "Black King Bar (BKB)", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/black_king_bar.png" },
+            { name: "Daedalus", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/daedalus.png" },
+            { name: "Satanic", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/satanic.png" },
+            { name: "Assault Cuirass", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/assault.png" }
+          ]
+        },
+
+        // Структура контрпиков и линий
+        countersInfo: `
+          <div style="margin-bottom:6px;"><b style="color:#2ecc71;">Силен на линии с:</b> Crystal Maiden, Ogre Magi, Lion (герои с мощными станами и замедлениями).</div>
+          <div style="margin-bottom:6px;"><b style="color:#3498db;">Силен против:</b> Героев с плотным расположением в группе и иллюзионистов (благодаря сплешу Great Cleave).</div>
+          <div><b style="color:#e74c3c;">Контрят (уязвим к):</b> Bane, Shadow Demon (дизейблы сквозь BKB), а также Ghost Scepter и Eul's Scepter.</div>
+        `,
+
         skills: [
           {
             name: "Storm Bolt",
@@ -250,7 +303,7 @@
           }
         ]
       },
-      { name: "Tiny", dota1: "Stone Giant", attr: "Strength", faction: "Sentinel", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/tiny.png", bio: "<p>Родившись в результате катаклизмов из живой скалы, крошечный голем Тайни изначально был лишь ничтожным осколком горного массива.</p>", skills: [{name: "Avalanche", desc: "Камнепад по площади."}] }
+      { name: "Tiny", dota1: "Stone Giant", attr: "Strength", faction: "Sentinel", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/tiny.png", bio: "<p>Родившись в результате катаклизмов из живой скалы, крошечный голем Тайни изначально был лишь ничтожным осколком горного массива.</p>", itemsBuild: { early: [], mid: [], late: [] }, countersInfo: "Скоро появится.", skills: [{name: "Avalanche", desc: "Камнепад по площади."}] }
     ];
 
     let currentAttr = 'Strength', currentFaction = 'Sentinel', selectedHero = null;
@@ -307,6 +360,36 @@
       document.getElementById('modalDota1').innerText = "Dota 1: " + hero.dota1;
       document.getElementById('modalBio').innerHTML = hero.bio;
       
+      // Рендерим сборку предметов с иконками по этапам
+      const itemsBox = document.getElementById('itemsBox');
+      if (hero.itemsBuild) {
+        let itemsHtml = `<div class="stage-title">🌱 Начало игры (Early Game)</div>`;
+        hero.itemsBuild.early.forEach(item => {
+          itemsHtml += `<div class="item-row"><img src="${item.img}" class="item-icon" onerror="this.src='https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/base.png';"><span>${item.name}</span></div>`;
+        });
+        
+        itemsHtml += `<div class="stage-title">⚡ Середина игры (Mid Game)</div>`;
+        hero.itemsBuild.mid.forEach(item => {
+          itemsHtml += `<div class="item-row"><img src="${item.img}" class="item-icon" onerror="this.src='https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/base.png';"><span>${item.name}</span></div>`;
+        });
+
+        itemsHtml += `<div class="stage-title">👑 Поздняя игра / Лейт (Late Game)</div>`;
+        hero.itemsBuild.late.forEach(item => {
+          itemsHtml += `<div class="item-row"><img src="${item.img}" class="item-icon" onerror="this.src='https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/base.png';"><span>${item.name}</span></div>`;
+        });
+        itemsBox.innerHTML = itemsHtml;
+      } else {
+        itemsBox.innerHTML = "Сборка скоро появится.";
+      }
+
+      // Рендерим контрпики
+      document.getElementById('countersBox').innerHTML = hero.countersInfo || "Информация скоро появится.";
+
+      // Сбрасываем видимость выпадающих блоков при открытии нового героя
+      document.getElementById('itemsBox').style.display = 'none';
+      document.getElementById('countersBox').style.display = 'none';
+
+      // Рендерим способности
       const skillsContainer = document.getElementById('modalSkills');
       skillsContainer.innerHTML = '';
 
@@ -356,6 +439,11 @@
     function toggleSkillLvl(index) {
       const container = document.getElementById(`skillLvl_${index}`);
       container.style.display = container.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function toggleGuideSection(boxId) {
+      const box = document.getElementById(boxId);
+      box.style.display = box.style.display === 'block' ? 'none' : 'block';
     }
 
     function closeModal() { document.getElementById('heroModal').style.display = 'none'; }
