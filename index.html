@@ -235,8 +235,8 @@
       <div class="bio-text" id="itemModalDesc"></div>
 
       <div class="guide-dropdown-card">
-        <div style="font-size: 11px; color: #ff9d00; margin-bottom: 4px; text-transform: uppercase;">Рецепт (Компоненты):</div>
-        <div id="itemModalRecipe" style="font-size: 11px; color: #ccc;"></div>
+        <div style="font-size: 11px; color: #ff9d00; margin-bottom: 6px; text-transform: uppercase;">Рецепт (Компоненты):</div>
+        <div id="itemModalRecipe" class="items-grid"></div>
       </div>
 
       <div class="guide-dropdown-card" style="border-color: rgba(52, 152, 219, 0.4);">
@@ -269,142 +269,116 @@
 
     let currentSection = 'heroes';
 
-    // Полная база данных предметов Dota 2
+    // Полная база предметов Dota 2
     const itemsData = [
       {
-        name: "Black King Bar",
-        cost: "Цена: 4050 золота",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/black_king_bar.png",
-        desc: "Дает бонус к силе и урону. Дает временную невосприимчивость к магии (Avatar), полностью защищая владельца от большинства заклинаний и контроля.",
-        recipe: "Ogre Axe (1000) + Mithril Hammer (1600) + Рецепт (1450)",
-        heroes: "Отлично подходит всем керри-героям (Sven, Phantom Assassin, Juggernaut), которым необходимо безопасно бить врагов в драке.",
-        counters: "Идеально против команд с огромным количеством магического урона и станов."
+        name: "Tango",
+        cost: "Цена: 90 золота",
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/tango.png",
+        desc: "Поедает дерево, постепенно восстанавливая здоровье в течение 16 секунд.",
+        recipeItems: [],
+        heroes: "Обязателен почти для всех героев в начале игры на линии.",
+        counters: "Позволяет пережить ранний размен уроном."
       },
       {
-        name: "Daedalus",
-        cost: "Цена: 5100 золота",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/greater_crit.png",
-        desc: "Значительно увеличивает урон от атак. Дает пассивную способность Critical Strike: шанс нанести критический урон в размере 225%.",
-        recipe: "Crystalys (2000) + Demon Edge (2200) + Рецепт (900)",
-        heroes: "Основные бойцы и физические керри (Sven, Sniper, Wraith King).",
-        counters: "Против плотных героев и жирных танков с высоким запасом здоровья."
+        name: "Healing Salve",
+        cost: "Цена: 100 золота",
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/flask.png",
+        desc: "Восстанавливает 400 HP цели за 10 секунд. Сбивается при получении урона от героев или башен.",
+        recipeItems: [],
+        heroes: "Лейнеры и саппорты для быстрого отхила керри.",
+        counters: "Быстро возвращает в строй после тяжелого размена."
       },
       {
         name: "Blink Dagger",
         cost: "Цена: 2250 золота",
         img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/blink.png",
-        desc: "Позволяет мгновенно телепортироваться на короткое расстояние в указанную точку.",
-        recipe: "Покупается целиком в лавке за 2250 золота.",
-        heroes: "Инициаторы и герои с сильными массовыми станами (Sven, Tiny, Axe, Sand King).",
-        counters: "Против героев с дальней атакой и позиционных персонажей."
+        desc: "Мгновенно телепортирует героя на расстояние до 1200 единиц. Сбивается на 3 секунды при получении урона.",
+        recipeItems: [],
+        heroes: "Инициаторы: Axe, Tiny, Sven, Sand King, Tidehunter, Magnus.",
+        counters: "Против героев с дальней атакой и позиционных кастеров."
       },
       {
-        name: "Satanic",
-        cost: "Цена: 5050 золота",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/satanic.png",
-        desc: "Дает огромный бонус к силе и урону. Активная способность увеличивает вампиризм до 275%.",
-        recipe: "Morbid Mask (900) + Claymore (1350) + Reaver (2800)",
-        heroes: "Сильные керри-герои ближнего боя (Sven, Ursa, Lifestealer).",
-        counters: "Против команд с высоким физическим уроном и в затяжных драках."
+        name: "Gem of True Sight",
+        cost: "Цена: 900 золота",
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/gem.png",
+        desc: "Дает раскрытие невидимости (True Sight) в радиусе 900. Выпадает при смерти владельца!",
+        recipeItems: [],
+        heroes: "Танки, саппорты и инициаторы во второй половине игры.",
+        counters: "Полностью контрит невидимых героев (Riki, Bounty Hunter, Clinkz, Shadow Blade)."
       },
       {
-        name: "Assault Cuirass",
-        cost: "Цена: 5125 золота",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/assault.png",
-        desc: "Увеличивает броню и скорость атаки союзников, аурой снижает броню врагам.",
-        recipe: "Hyperstone (2000) + Platemail (1400) + Chainmail (550) + Рецепт (1175)",
-        heroes: "Танки, пушеры и оффлейнеры.",
-        counters: "Против физического урона и для быстрого сноса базы."
+        name: "Quelling Blade",
+        cost: "Цена: 100 золота",
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/quelling_blade.png",
+        desc: "Увеличивает урон по крипам для героев ближнего/дальнего боя. Позволяет срубать деревья.",
+        recipeItems: [],
+        heroes: "Все керри ближнего боя для удобного добивания крипов (ластхита).",
+        counters: "Помогает вылезать из спрея деревьев (Sprout у Nature's Prophet)."
       },
       {
-        name: "Heart of Tarrasque",
-        cost: "Цена: 5000 золота",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/heart.png",
-        desc: "Дает огромный прирост к силе и здоровью, а также мощную пассивную регенерацию HP вне боя.",
-        recipe: "Vitality Booster (1100) + Energy Booster (800) + Reaver (2800) + Рецепт (300)",
-        heroes: "Главные танки и герои, зависящие от максимального запаса здоровья (Pudge, Centaur, Axe, Bristleback).",
-        counters: "Против долгого фокуса и постоянного урона в долгих сражениях."
+        name: "Shadow Blade",
+        cost: "Цена: 3000 золота",
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/invis_sword.png",
+        desc: "Делает владельца невидимым на 14 секунд, увеличивает скорость передвижения. Атака из невидимости наносит +175 доп. урона.",
+        recipeItems: [
+          { name: "Shadow Amulet", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/shadow_amulet.png" },
+          { name: "Claymore", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/claymore.png" }
+        ],
+        heroes: "Sniper, Shadow Fiend, Slark, Dragon Knight, Drow Ranger.",
+        counters: "Эффективен для неожиданного нападения и сейва при отсутствии у врагов вардов."
       },
       {
-        name: "Butterfly",
-        cost: "Цена: 4975 золота",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/butterfly.png",
-        desc: "Дает огромную скорость атаки, урон и шанс уклониться от вражеских физических атак (Evasion).",
-        recipe: "Eaglesong (4725) + Quarterstaff (875) — *включая старые компоненты*.",
-        heroes: "Ловкие керри-герои (Phantom Assassin, Juggernaut, Anti-Mage, Drow Ranger).",
-        counters: "Идеально против вражеских героев с сильным физическим уроном с руки (без MKB)."
+        name: "Black King Bar",
+        cost: "Цена: 4050 золота",
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/black_king_bar.png",
+        desc: "Дает невосприимчивость к магии и 100% сопротивление магическому урону на несколько секунд.",
+        recipeItems: [
+          { name: "Ogre Axe", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/ogre_axe.png" },
+          { name: "Mithril Hammer", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/mithril_hammer.png" },
+          { name: "Recipe", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/recipe.png" }
+        ],
+        heroes: "Мастхэв для большинства физических керри: Sven, PA, Juggernaut, SF, Ursa.",
+        counters: "Контрит массовые станы и магический урон."
       },
       {
-        name: "MKB (Monkey King Bar)",
-        cost: "Цена: 4900 золота",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/monkey_king_bar.png",
-        desc: "Атаки не могут промахнуться (пробивают уклонение) и наносят дополнительный магический урон.",
-        recipe: "Javelin (900) + Demon Edge (2200) + Quarterstaff (875) + Рецепт (925)",
-        heroes: "Физические керри, которым нужно контрить уклонения.",
-        counters: "Против героев с Butterfly, уклонением Падры (Blur) или ослеплениями."
+        name: "Daedalus",
+        cost: "Цена: 5100 золота",
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/greater_crit.png",
+        desc: "Дает +88 к урону и 30% шанс нанести критический удар в 225% урона.",
+        recipeItems: [
+          { name: "Crystalys", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/lesser_crit.png" },
+          { name: "Demon Edge", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/demon_edge.png" },
+          { name: "Recipe", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/recipe.png" }
+        ],
+        heroes: "Sven, Kunkka, Sniper, Phantom Assassin, Drow Ranger.",
+        counters: "Против плотных танков, когда требуется максимальный физический урон."
       },
       {
         name: "Manta Style",
         cost: "Цена: 4600 золота",
         img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/manta.png",
-        desc: "Создает две иллюзии управляемого героя. Активная способность снимает большинство отрицательных эффектов (дебафов) и снарядов.",
-        recipe: "Yasha (2050) + Ultimate Orb (2050) + Рецепт (500)",
-        heroes: "Герои с иллюзиями или те, кому нужен сброс дебафов (Anti-Mage, Luna, Terrorblade, Faceless Void).",
-        counters: "Против сильных одиночных заклинаний, сайленсов и замедлений."
+        desc: "При использовании призывает 2 иллюзии и сбрасывает с героя большинство негативных эффектов.",
+        recipeItems: [
+          { name: "Yasha", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/yasha.png" },
+          { name: "Ultimate Orb", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/ultimate_orb.png" },
+          { name: "Recipe", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/recipe.png" }
+        ],
+        heroes: "Anti-Mage, Terrorblade, Luna, Phantom Lancer, Medusa, Faceless Void.",
+        counters: "Сбрасывает молчание (Silence), замедления и помогает запутать врагов в драке."
       },
       {
-        name: "Aghanim's Scepter",
-        cost: "Цена: 4200 золота",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/ultimate_scepter.png",
-        desc: "Улучшает ультимативную способность героя (или добавляет новую способность), давая колоссальное преимущество.",
-        recipe: "Point Booster (1200) + Staff of Wizardry (1000) + Blade of Alacrity (1000) + Ogre Axe (1000)",
-        heroes: "Большинство магов, инициаторов и героев, чья ульта зависит от бафа.",
-        counters: "Универсальный предмет для усиления магического потенциала команды."
-      },
-      {
-        name: "Refresher Orb",
-        cost: "Цена: 5000 золота",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/refresher.png",
-        desc: "Сбрасывает перезарядку всех способностей и предметов владельца.",
-        recipe: "Perseverance (1400) + Perseverance (1400) + Рецепт (2200)",
-        heroes: "Маги и герои с мощными ультимейтами, чей повторный каст решает исход игры (Tidehunter, Enigma, Warlock, Zeus).",
-        counters: "Против врагов, когда нужно дать две глобальные ульты подряд в одной драке."
-      },
-      {
-        name: "Octarine Core",
-        cost: "Цена: 4775 золота",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/octarine_core.png",
-        desc: "Уменьшает перезарядку всех способностей и предметов на 25%, дает здоровье и ману.",
-        recipe: "Soul Booster (3000) + Mystic Staff (2800)",
-        heroes: "Кастеры и маги, постоянно спамящие заклинаниями (Leshrac, Storm Spirit, Lina).",
-        counters: "Для уменьшения пауз между ключевыми способностями контроля."
-      },
-      {
-        name: "Boots of Travel",
-        cost: "Цена: 2500 золота",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/travel_boots.png",
-        desc: "Дает самую высокую скорость передвижения и позволяет телепортироваться на любые дружественные постройки или крипов без траты свитков ТП.",
-        recipe: "Boots of Speed (500) + Рецепт (2000)",
-        heroes: "Сплитпушеры, фармилы и глобальные герои (Anti-Mage, Nature's Prophet, Tinker).",
-        counters: "Для быстрого перемещения по карте и экономии слотов под свитки."
-      },
-      {
-        name: "Eul's Scepter",
-        cost: "Цена: 2725 золота",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/cyclone.png",
-        desc: "Поднимает цель (или себя) в смерч на 2.5 секунды, делая неуязвимым и обездвиживая.",
-        recipe: "Staff of Wizardry (1000) + Void Stone (825) + Wind Lace (250) + Рецепт (650)",
-        heroes: "Саппорты и кастеры для контроля врагов или спасения от фокуса.",
-        counters: "Идеально против быстрых героев, ультимейтов с ченнелингом (Enigma, Witch Doctor) или вражеских керри."
-      },
-      {
-        name: "Shadow Blade",
-        cost: "Цена: 3000 золота",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/shadow_blade.png",
-        desc: "Делает владельца невидимым и дает бонус к скорости передвижения и урону от внезапной атаки.",
-        recipe: "Shadow amulet (1000) + Claymore (1350) + Рецепт (650)",
-        heroes: "Ганкеры и физические бойцы (Sniper, Shadow Fiend, Lycan, Slark).",
-        counters: "Для внезапных нападений и скрытного перемещения по вражеской территории."
+        name: "Satanic",
+        cost: "Цена: 5050 золота",
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/satanic.png",
+        desc: "Дает +38 к урону, +25 к силе и 30% пассивного вампиризма. Активация дает 175% вампиризма на 6 секунд.",
+        recipeItems: [
+          { name: "Morbid Mask", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/lifesteal.png" },
+          { name: "Blade of Alacrity", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/blade_of_alacrity.png" },
+          { name: "Reaver", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/reaver.png" }
+        ],
+        heroes: "Sven, Ursa, Gyrocopter, Luna, Shadow Fiend, PA.",
+        counters: "Позволяет за пару ударов полностью восстановить HP под фокусом врагов."
       }
     ];
 
@@ -630,7 +604,26 @@
       document.getElementById('itemModalName').innerText = item.name;
       document.getElementById('itemModalCost').innerText = item.cost;
       document.getElementById('itemModalDesc').innerText = item.desc;
-      document.getElementById('itemModalRecipe').innerText = item.recipe;
+      
+      const recipeContainer = document.getElementById('itemModalRecipe');
+      const recipeCard = recipeContainer.parentElement;
+
+      // Если предмет крафтовый — показываем компоненты, если базовый — скрываем блок рецепта
+      if (item.recipeItems && item.recipeItems.length > 0) {
+        recipeCard.style.display = 'block';
+        recipeContainer.innerHTML = '';
+        item.recipeItems.forEach(comp => {
+          recipeContainer.innerHTML += `
+            <div class="item-card-mini">
+              <img src="${comp.img}" class="item-icon" onerror="this.src='https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png';">
+              <div class="item-name-mini">${comp.name}</div>
+            </div>
+          `;
+        });
+      } else {
+        recipeCard.style.display = 'none';
+      }
+
       document.getElementById('itemModalHeroes').innerText = item.heroes;
       document.getElementById('itemModalCounters').innerText = item.counters;
       document.getElementById('itemModal').style.display = 'block';
