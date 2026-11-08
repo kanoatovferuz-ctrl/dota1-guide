@@ -669,7 +669,7 @@ const heroesData = [
         ]
       }
     ]
-  }
+  },
   // --- СИЛА (STRENGTH) — SCOURGE ---
   {
     name: "Pudge", dota1: "Butcher", attr: "Strength", faction: "Scourge",
