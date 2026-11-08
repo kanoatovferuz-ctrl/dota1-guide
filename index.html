@@ -89,12 +89,10 @@
       text-transform: uppercase; 
     }
 
-    /* Главные вкладки разделов сайта */
     .nav-tabs { display: flex; justify-content: center; gap: 8px; padding: 12px 10px; background: rgba(10, 10, 18, 0.95); border-bottom: 1px solid rgba(255,255,255,0.1); }
     .nav-btn { flex: 1; max-width: 130px; padding: 10px 4px; background: rgba(35, 35, 50, 0.9); border: 2px solid rgba(255, 157, 0, 0.4); color: #ccc; border-radius: 6px; cursor: pointer; font-size: 11px; text-transform: uppercase; text-align: center; transition: all 0.2s; }
     .nav-btn.active { background: #ff9d00; color: #000; border-color: #ff9d00; box-shadow: 0 0 10px rgba(255,157,0,0.4); }
 
-    /* Вкладки атрибутов героев */
     .main-tabs { display: flex; justify-content: center; gap: 6px; padding: 10px 10px 4px 10px; }
     .main-tab-btn { flex: 1; max-width: 130px; padding: 8px 0; background: rgba(25, 25, 35, 0.8); border: 1px solid rgba(255, 255, 255, 0.15); color: #aaa; border-radius: 6px; cursor: pointer; font-size: 10px; text-transform: uppercase; }
     .main-tab-btn.active { background: #3498db; color: #fff; border-color: #3498db; }
@@ -105,15 +103,11 @@
     .sub-tab-btn.scourge.active { background: rgba(231, 76, 60, 0.25); color: #e74c3c; border-color: #e74c3c; }
 
     .container { max-width: 800px; margin: 0 auto; padding: 10px 15px; }
-    
     .hero-grid, .items-catalog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; }
     .hero-card { background: rgba(20, 20, 32, 0.85); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px; padding: 10px; text-align: center; cursor: pointer; }
-    
     .item-catalog-card { background: rgba(20, 20, 32, 0.85); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px; padding: 8px; text-align: center; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; }
     .hero-avatar { width: 100%; height: 95px; object-fit: cover; border-radius: 6px; background: #151520; margin-bottom: 8px; }
-    
     .item-catalog-img { width: 54px; height: 54px; object-fit: contain; background: #000; border: 1px solid rgba(255, 157, 0, 0.4); border-radius: 6px; margin-bottom: 6px; display: block; }
-    
     .hero-title, .item-catalog-title { font-size: 11px; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%; }
     .hero-dota1-name, .item-catalog-cost { font-size: 9px; color: #ff9d00; margin-top: 2px; }
 
@@ -159,14 +153,12 @@
     <button class="feedback-trigger-btn" onclick="openFeedbackModal()">НАПИСАТЬ ОТЗЫВ / ПРЕДЛОЖЕНИЕ</button>
   </header>
 
-  <!-- Главные кнопки навигации -->
   <div class="nav-tabs">
     <button class="nav-btn active" id="navHeroes" onclick="switchSection('heroes')">ГЕРОИ</button>
     <button class="nav-btn" id="navItems" onclick="switchSection('items')">ПРЕДМЕТЫ</button>
     <button class="nav-btn" id="navFuture" onclick="switchSection('future')">БУДУЩЕЕ</button>
   </div>
 
-  <!-- Фильтры классов героев -->
   <div id="heroesFilters">
     <div class="main-tabs">
       <button class="main-tab-btn active" onclick="setAttr('Strength', this)">STRENGTH</button>
@@ -180,7 +172,6 @@
     </div>
   </div>
 
-  <!-- Основной контейнер сетки -->
   <div class="container">
     <div class="hero-grid" id="heroGrid"></div>
     <div class="items-catalog-grid" id="itemsGrid" style="display: none;"></div>
@@ -189,7 +180,6 @@
     </div>
   </div>
 
-  <!-- Модалка Героя -->
   <div class="modal" id="heroModal">
     <div class="modal-content">
       <span class="close-btn" onclick="closeModal()">&times;</span>
@@ -220,7 +210,6 @@
     </div>
   </div>
 
-  <!-- Модалка Предмета -->
   <div class="modal" id="itemModal">
     <div class="modal-content">
       <span class="close-btn" onclick="closeItemModal()">&times;</span>
@@ -253,7 +242,6 @@
     </div>
   </div>
 
-  <!-- Модалка отзыва -->
   <div class="modal" id="feedbackModal">
     <div class="modal-content" style="max-width: 400px; margin-top: 50px;">
       <span class="close-btn" onclick="closeFeedbackModal()">&times;</span>
@@ -263,332 +251,15 @@
     </div>
   </div>
 
+  <!-- Подключаем наш файл с данными -->
+  <script src="data.js"></script>
+
+  <!-- Логика работы приложения -->
   <script>
     const tg = window.Telegram ? window.Telegram.WebApp : null;
     if (tg) { tg.ready(); tg.expand(); }
 
     let currentSection = 'heroes';
-
-    // ВЫВЕРЕННАЯ БАЗА ПРЕДМЕТОВ (ТОЧНЫЕ ИКОНКИ STEAM CDN)
-    const itemsData = [
-      {
-        name: "Tango", cost: "Цена: 90 золота",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/tango.png",
-        desc: "Поедает выбранное дерево, постепенно восстанавливая 115 HP за 16 секунд.",
-        recipeItems: [], heroes: "Все герои на стадии лайнинга.", counters: "Быстрый размен на линии."
-      },
-      {
-        name: "Healing Salve", cost: "Цена: 100 золота",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/flask.png",
-        desc: "Восстанавливает 400 HP цели за 10 секунд. Сбивается уроном вражеских героев.",
-        recipeItems: [], heroes: "Лейнеры и саппорты.", counters: "Быстрый отхил после тяжелой драки."
-      },
-      {
-        name: "Quelling Blade", cost: "Цена: 100 золота",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/quelling_blade.png",
-        desc: "Дает +8 урона по крипам для героев ближнего боя. Позволяет срубать деревья.",
-        recipeItems: [], heroes: "Керри ближнего боя (Sven, PA, AM, Juggernaut).", counters: "Против Sprout у Nature's Prophet."
-      },
-      {
-        name: "Blink Dagger", cost: "Цена: 2250 золота",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/blink.png",
-        desc: "Телепортирует на расстояние до 1200 единиц. Сбивается при получении урона от героев на 3 сек.",
-        recipeItems: [], heroes: "Axe, Sven, Tiny, Centaur, Sand King, Tidehunter.", counters: "Для мгновенной инициации."
-      },
-      {
-        name: "Shadow Blade", cost: "Цена: 3000 золота",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/invis_sword.png",
-        desc: "Делает невидимым на 14 секунд (+20% скорости). Первая атака наносит +175 доп. урона.",
-        recipeItems: [
-          { name: "Shadow Amulet", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/shadow_amulet.png" },
-          { name: "Claymore", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/claymore.png" }
-        ],
-        heroes: "Sniper, Shadow Fiend, Slark, Dragon Knight, Drow Ranger.", counters: "Для внезапных нападений и выхода из боя."
-      },
-      {
-        name: "Black King Bar", cost: "Цена: 4050 золота",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/black_king_bar.png",
-        desc: "Дает невосприимчивость к магии (Avatar) и 100% сопротивление магическому урону.",
-        recipeItems: [
-          { name: "Ogre Axe", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/ogre_axe.png" },
-          { name: "Mithril Hammer", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/mithril_hammer.png" },
-          { name: "Recipe", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/recipe.png" }
-        ],
-        heroes: "Sven, PA, Juggernaut, SF, Ursa, Gyrocopter.", counters: "Контрит магов и контролеров (Lion, Lina, CM)."
-      },
-      {
-        name: "Daedalus", cost: "Цена: 5100 золота",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/greater_crit.png",
-        desc: "Дает +88 к урону и 30% шанс нанести критический удар в размере 225%.",
-        recipeItems: [
-          { name: "Crystalys", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/lesser_crit.png" },
-          { name: "Demon Edge", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/demon_edge.png" },
-          { name: "Recipe", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/recipe.png" }
-        ],
-        heroes: "Sven, Kunkka, Sniper, PA, Drow Ranger.", counters: "Против жирных танков с огромным HP."
-      },
-      {
-        name: "Manta Style", cost: "Цена: 4600 золота",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/manta.png",
-        desc: "Призывает 2 иллюзии и сбрасывает негативные эффекты (сайленс, замедление).",
-        recipeItems: [
-          { name: "Yasha", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/yasha.png" },
-          { name: "Ultimate Orb", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/ultimate_orb.png" },
-          { name: "Recipe", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/recipe.png" }
-        ],
-        heroes: "Anti-Mage, Terrorblade, Luna, Phantom Lancer, Medusa.", counters: "Сбрасывает орчид, молчание и замедления."
-      },
-      {
-        name: "Satanic", cost: "Цена: 5050 золота",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/satanic.png",
-        desc: "Дает +38 урона, +25 силы и 30% вампиризма. Активация увеличивает вампиризм до 175% на 6 сек.",
-        recipeItems: [
-          { name: "Morbid Mask", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/lifesteal.png" },
-          { name: "Blade of Alacrity", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/blade_of_alacrity.png" },
-          { name: "Reaver", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/reaver.png" }
-        ],
-        heroes: "Sven, Ursa, Gyrocopter, Luna, PA.", counters: "Выживаемость под плотным фокусом."
-      },
-      {
-        name: "Heart of Tarrasque", cost: "Цена: 5000 золота",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/heart.png",
-        desc: "Дает +40 к силе, +250 к HP и восстановление 1.6% от максимального здоровья в секунду вне боя.",
-        recipeItems: [
-          { name: "Vitality Booster", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/vitality_booster.png" },
-          { name: "Energy Booster", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/energy_booster.png" },
-          { name: "Reaver", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/reaver.png" },
-          { name: "Recipe", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/recipe.png" }
-        ],
-        heroes: "Pudge, Centaur, Axe, Bristleback, Spectre.", counters: "Против затяжных атак и периодического урона."
-      }
-    ];
-
-    // ПОЛНАЯ БАЗА ГЕРОЕВ (SENTINEL & SCOURGE С ПОЛНЫМИ НАБОРАМИ НАВЫКОВ)
-    const heroesData = [
-      // --- STRENGTH / SENTINEL ---
-      {
-        name: "Sven", dota1: "Rogue Knight", attr: "Strength", faction: "Sentinel",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/sven.png",
-        bio: "<p>Сын изгоя-паладина и эльфийки, Свен прошел суровую школу и поклялся следовать непреклонному кодексу мстителя.</p>",
-        itemsBuild: {
-          early: [
-            { name: "Tango", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/tango.png" },
-            { name: "Salve", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/flask.png" },
-            { name: "Quelling", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/quelling_blade.png" }
-          ],
-          mid: [
-            { name: "Power Treads", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/power_treads.png" },
-            { name: "Echo Sabre", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/echo_sabre.png" },
-            { name: "Blink Dagger", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/blink.png" }
-          ],
-          late: [
-            { name: "BKB", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/black_king_bar.png" },
-            { name: "Daedalus", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/greater_crit.png" },
-            { name: "Satanic", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/satanic.png" }
-          ]
-        },
-        countersInfo: "<b>Силен с:</b> Crystal Maiden, Lion.<br><b>Контрят:</b> Bane, Ghost Scepter.",
-        skills: [
-          {
-            name: "Storm Bolt", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/sven_storm_bolt.png",
-            desc: "Бросает магический молот, наносящий урон и оглушающий всех врагов вокруг цели.", isPassive: false,
-            levels: [
-              { lvl: 1, mana: "110 МАНА", cd: "18 СЕК", effect: "110 урона, стан 1.4 сек" },
-              { lvl: 2, mana: "120 МАНА", cd: "16 СЕК", effect: "160 урона, стан 1.6 сек" },
-              { lvl: 3, mana: "130 МАНА", cd: "14 СЕК", effect: "210 урона, стан 1.8 сек" },
-              { lvl: 4, mana: "140 МАНА", cd: "12 СЕК", effect: "260 урона, стан 2.0 сек" }
-            ]
-          },
-          {
-            name: "Great Cleave", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/sven_great_cleave.png",
-            desc: "Пассивно наносит сплеш-урон всем стоящим рядом врагам при атаке.", isPassive: true,
-            levels: [
-              { lvl: 1, mana: "ПАССИВНО", cd: "0 СЕК", effect: "30% сплеш-урона" },
-              { lvl: 2, mana: "ПАССИВНО", cd: "0 СЕК", effect: "45% сплеш-урона" },
-              { lvl: 3, mana: "ПАССИВНО", cd: "0 СЕК", effect: "60% сплеш-урона" },
-              { lvl: 4, mana: "ПАССИВНО", cd: "0 СЕК", effect: "75% сплеш-урона" }
-            ]
-          },
-          {
-            name: "God's Strength", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/sven_gods_strength.png",
-            desc: "Увеличивает базовый урон от атак Свена на 25 секунд.", isPassive: false,
-            levels: [
-              { lvl: 1, mana: "100 МАНА", cd: "100 СЕК", effect: "+120% базового урона" },
-              { lvl: 2, mana: "150 МАНА", cd: "100 СЕК", effect: "+160% базового урона" },
-              { lvl: 3, mana: "200 МАНА", cd: "100 СЕК", effect: "+200% базового урона" }
-            ]
-          }
-        ]
-      },
-      {
-        name: "Centaur Warrunner", dota1: "Bradwarden", attr: "Strength", faction: "Sentinel",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/centaur.png",
-        bio: "<p>Непобедимый гладиатор арены Кентавров, чье тело покрыто шрамами от сотен турнирных побед.</p>",
-        itemsBuild: {
-          early: [
-            { name: "Tango", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/tango.png" },
-            { name: "Bracer", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/bracer.png" }
-          ],
-          mid: [
-            { name: "Phase Boots", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/phase_boots.png" },
-            { name: "Blink Dagger", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/blink.png" }
-          ],
-          late: [
-            { name: "Heart of Tarrasque", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/heart.png" },
-            { name: "Blade Mail", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/blade_mail.png" }
-          ]
-        },
-        countersInfo: "<b>Силен против:</b> Физических керри.<br><b>Контрят:</b> Lifestealer, Necrophos.",
-        skills: [
-          {
-            name: "Hoof Stomp", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/centaur_hoof_stomp.png",
-            desc: "Топает копытом по земле, оглушая врагов и нанося урон.", isPassive: false,
-            levels: [
-              { lvl: 1, mana: "100 МАНА", cd: "15 СЕК", effect: "120 урона, оглушение 1.6 сек" },
-              { lvl: 2, mana: "110 МАНА", cd: "14 СЕК", effect: "180 урона, оглушение 1.9 сек" },
-              { lvl: 3, mana: "120 МАНА", cd: "13 СЕК", effect: "240 урона, оглушение 2.2 сек" },
-              { lvl: 4, mana: "130 МАНА", cd: "12 СЕК", effect: "300 урона, оглушение 2.5 сек" }
-            ]
-          },
-          {
-            name: "Double Edge", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/centaur_double_edge.png",
-            desc: "Наносит мощный урон цели и самому Кентавру.", isPassive: false,
-            levels: [
-              { lvl: 1, mana: "0 МАНА", cd: "3.5 СЕК", effect: "120 урона" },
-              { lvl: 2, mana: "0 МАНА", cd: "3.5 СЕК", effect: "180 урона" },
-              { lvl: 3, mana: "0 МАНА", cd: "3.5 СЕК", effect: "240 урона" },
-              { lvl: 4, mana: "0 МАНА", cd: "3.5 СЕК", effect: "300 урона" }
-            ]
-          }
-        ]
-      },
-
-      // --- STRENGTH / SCOURGE ---
-      {
-        name: "Pudge", dota1: "Butcher", attr: "Strength", faction: "Scourge",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/pudge.png",
-        bio: "<p>Жуткий мясник с полей вечной резни, утягивающий жертв окровавленным хуком.</p>",
-        itemsBuild: {
-          early: [{ name: "Tango", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/tango.png" }],
-          mid: [{ name: "Blink Dagger", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/blink.png" }],
-          late: [{ name: "Aghanim's Scepter", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/ultimate_scepter.png" }]
-        },
-        countersInfo: "<b>Силен против:</b> Хилых магов.<br><b>Контрят:</b> Lifestealer, Ursa.",
-        skills: [
-          {
-            name: "Meat Hook", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/pudge_meat_hook.png",
-            desc: "Бросает стальной крюк, притягивающий попавшегося юнита к Пуджу.", isPassive: false,
-            levels: [
-              { lvl: 1, mana: "110 МАНА", cd: "18 СЕК", effect: "150 чистого урона" },
-              { lvl: 2, mana: "120 МАНА", cd: "16 СЕК", effect: "220 чистого урона" },
-              { lvl: 3, mana: "130 МАНА", cd: "14 СЕК", effect: "290 чистого урона" },
-              { lvl: 4, mana: "140 МАНА", cd: "12 СЕК", effect: "360 чистого урона" }
-            ]
-          }
-        ]
-      },
-
-      // --- AGILITY / SENTINEL ---
-      {
-        name: "Phantom Assassin", dota1: "Mortred", attr: "Agility", faction: "Sentinel",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/phantom_assassin.png",
-        bio: "<p>Мортред — неуловимый убийца из ордена Сестер Вуали, наносящая смертельные критические удары.</p>",
-        itemsBuild: {
-          early: [{ name: "Quelling", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/quelling_blade.png" }],
-          mid: [{ name: "Desolator", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/desolator.png" }],
-          late: [{ name: "BKB", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/black_king_bar.png" }]
-        },
-        countersInfo: "<b>Силен против:</b> Хилых героев.<br><b>Контрят:</b> MKB, Razor.",
-        skills: [
-          {
-            name: "Stifling Dagger", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/phantom_assassin_stifling_dagger.png",
-            desc: "Бросает кинжал, замедляющий цель и наносящий урон от атаки.", isPassive: false,
-            levels: [
-              { lvl: 1, mana: "30 МАНА", cd: "6 СЕК", effect: "65+60% урона, замедление 50%" },
-              { lvl: 2, mana: "30 МАНА", cd: "6 СЕК", effect: "65+70% урона, замедление 50%" },
-              { lvl: 3, mana: "30 МАНА", cd: "6 СЕК", effect: "65+80% урона, замедление 50%" },
-              { lvl: 4, mana: "30 МАНА", cd: "6 СЕК", effect: "65+90% урона, замедление 50%" }
-            ]
-          }
-        ]
-      },
-
-      // --- AGILITY / SCOURGE ---
-      {
-        name: "Shadow Fiend", dota1: "Nevermore", attr: "Agility", faction: "Scourge",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/nevermore.png",
-        bio: "<p>Невермор поглощает души поверженных врагов, высвобождая их в разрушительном разгроме.</p>",
-        itemsBuild: {
-          early: [{ name: "Tango", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/tango.png" }],
-          mid: [{ name: "Shadow Blade", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/invis_sword.png" }],
-          late: [{ name: "BKB", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/black_king_bar.png" }]
-        },
-        countersInfo: "<b>Силен против:</b> Героев без блинка.<br><b>Контрят:</b> Templar Assassin, Tinker.",
-        skills: [
-          {
-            name: "Shadowraze", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/nevermore_shadowraze1.png",
-            desc: "Взрывает землю перед собой, нанося магический урон по области.", isPassive: false,
-            levels: [
-              { lvl: 1, mana: "75 МАНА", cd: "10 СЕК", effect: "90 магического урона" },
-              { lvl: 2, mana: "75 МАНА", cd: "10 СЕК", effect: "160 магического урона" },
-              { lvl: 3, mana: "75 МАНА", cd: "10 СЕК", effect: "230 магического урона" },
-              { lvl: 4, mana: "75 МАНА", cd: "10 СЕК", effect: "300 магического урона" }
-            ]
-          }
-        ]
-      },
-
-      // --- INTELLIGENCE / SENTINEL ---
-      {
-        name: "Crystal Maiden", dota1: "Rylai", attr: "Intelligence", faction: "Sentinel",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/crystal_maiden.png",
-        bio: "<p>Маг льда, снабжающий команду маной и замораживающая врагов ледяными заклинаниями.</p>",
-        itemsBuild: {
-          early: [{ name: "Tango", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/tango.png" }],
-          mid: [{ name: "Glimmer Cape", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/glimmer_cape.png" }],
-          late: [{ name: "Blink Dagger", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/blink.png" }]
-        },
-        countersInfo: "<b>Силен с:</b> Sven, Juggernaut.<br><b>Контрят:</b> BKB, Clockwerk.",
-        skills: [
-          {
-            name: "Crystal Nova", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/crystal_maiden_crystal_nova.png",
-            desc: "Создает ледяной взрыв, наносящий урон и замедляющий врагов.", isPassive: false,
-            levels: [
-              { lvl: 1, mana: "115 МАНА", cd: "12 СЕК", effect: "130 урона, замедление 20%" },
-              { lvl: 2, mana: "130 МАНА", cd: "11 СЕК", effect: "180 урона, замедление 30%" },
-              { lvl: 3, mana: "145 МАНА", cd: "10 СЕК", effect: "240 урона, замедление 40%" },
-              { lvl: 4, mana: "160 МАНА", cd: "9 СЕК", effect: "300 урона, замедление 50%" }
-            ]
-          }
-        ]
-      },
-
-      // --- INTELLIGENCE / SCOURGE ---
-      {
-        name: "Lion", dota1: "Demon Witch", attr: "Intelligence", faction: "Scourge",
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/lion.png",
-        bio: "<p>Демонический маг с мощнейшим одиночным контролем и возможностью стирать врагов ультимейтом.</p>",
-        itemsBuild: {
-          early: [{ name: "Tango", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/tango.png" }],
-          mid: [{ name: "Blink Dagger", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/blink.png" }],
-          late: [{ name: "Aghanim's Scepter", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/ultimate_scepter.png" }]
-        },
-        countersInfo: "<b>Силен против:</b> Инициаторов без BKB.<br><b>Контрят:</b> Rubick, Lotus Orb.",
-        skills: [
-          {
-            name: "Earthspike", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/lion_impale.png",
-            desc: "Пробивает шипами землю по линии, оглушая врагов.", isPassive: false,
-            levels: [
-              { lvl: 1, mana: "85 МАНА", cd: "12 СЕК", effect: "95 урона, стан 1.4 сек" },
-              { lvl: 2, mana: "100 МАНА", cd: "12 СЕК", effect: "160 урона, стан 1.8 сек" },
-              { lvl: 3, mana: "115 МАНА", cd: "12 СЕК", effect: "225 урона, стан 2.2 сек" },
-              { lvl: 4, mana: "130 МАНА", cd: "12 СЕК", effect: "290 урона, стан 2.6 сек" }
-            ]
-          }
-        ]
-      }
-    ];
-
     let currentAttr = 'Strength', currentFaction = 'Sentinel';
 
     function switchSection(section) {
@@ -700,7 +371,7 @@
       document.getElementById('modalBio').innerHTML = hero.bio;
       
       const itemsBox = document.getElementById('itemsBox');
-      if (hero.itemsBuild && hero.itemsBuild.early.length > 0) {
+      if (hero.itemsBuild && hero.itemsBuild.early && hero.itemsBuild.early.length > 0) {
         let itemsHtml = `<div class="stage-title">Начало игры</div><div class="items-grid">`;
         hero.itemsBuild.early.forEach(item => {
           itemsHtml += `<div class="item-card-mini"><img src="${item.img}" class="item-icon" onerror="this.src='https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png';"><div class="item-name-mini">${item.name}</div></div>`;
@@ -716,10 +387,10 @@
         itemsHtml += `</div>`;
         itemsBox.innerHTML = itemsHtml;
       } else {
-        itemsBox.innerHTML = "Сборка скоро появится.";
+        itemsBox.innerHTML = "Сборка заполняется.";
       }
 
-      document.getElementById('countersBox').innerHTML = hero.countersInfo || "Информация скоро появится.";
+      document.getElementById('countersBox').innerHTML = hero.countersInfo || "Информация заполняется.";
       document.getElementById('itemsBox').style.display = 'none';
       document.getElementById('countersBox').style.display = 'none';
 
