@@ -88,77 +88,103 @@
       font-size: 11px; 
       text-transform: uppercase; 
     }
+
+    /* Главные вкладки разделов (отличаются от остальных более ярким дизайном) */
+    .nav-tabs { display: flex; justify-content: center; gap: 8px; padding: 12px 10px; background: rgba(10, 10, 18, 0.95); border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .nav-btn { flex: 1; max-width: 130px; padding: 10px 4px; background: rgba(35, 35, 50, 0.9); border: 2px solid rgba(255, 157, 0, 0.4); color: #ccc; border-radius: 6px; cursor: pointer; font-size: 11px; text-transform: uppercase; text-align: center; transition: all 0.2s; }
+    .nav-btn.active { background: #ff9d00; color: #000; border-color: #ff9d00; box-shadow: 0 0 10px rgba(255,157,0,0.4); }
+
+    /* Второстепенные вкладки героев (атрибуты) */
+    .main-tabs { display: flex; justify-content: center; gap: 6px; padding: 10px 10px 4px 10px; }
+    .main-tab-btn { flex: 1; max-width: 130px; padding: 8px 0; background: rgba(25, 25, 35, 0.8); border: 1px solid rgba(255, 255, 255, 0.15); color: #aaa; border-radius: 6px; cursor: pointer; font-size: 10px; text-transform: uppercase; }
+    .main-tab-btn.active { background: #3498db; color: #fff; border-color: #3498db; }
     
-    .main-tabs { display: flex; justify-content: center; gap: 6px; padding: 12px 10px 6px 10px; }
-    .main-tab-btn { flex: 1; max-width: 130px; padding: 10px 0; background: rgba(25, 25, 35, 0.8); border: 1px solid rgba(255, 255, 255, 0.15); color: #aaa; border-radius: 6px; cursor: pointer; font-size: 11px; text-transform: uppercase; }
-    .main-tab-btn.active { background: #ff9d00; color: #000; border-color: #ff9d00; }
-    
-    .sub-tabs { display: flex; justify-content: center; gap: 8px; padding: 6px 10px 14px 10px; }
-    .sub-tab-btn { padding: 8px 18px; background: rgba(15, 15, 20, 0.6); border: 1px solid rgba(255, 255, 255, 0.1); color: #888; border-radius: 20px; cursor: pointer; font-size: 11px; text-transform: uppercase; }
+    .sub-tabs { display: flex; justify-content: center; gap: 8px; padding: 4px 10px 12px 10px; }
+    .sub-tab-btn { padding: 6px 16px; background: rgba(15, 15, 20, 0.6); border: 1px solid rgba(255, 255, 255, 0.1); color: #888; border-radius: 20px; cursor: pointer; font-size: 10px; text-transform: uppercase; }
     .sub-tab-btn.sentinel.active { background: rgba(46, 204, 113, 0.25); color: #2ecc71; border-color: #2ecc71; }
     .sub-tab-btn.scourge.active { background: rgba(231, 76, 60, 0.25); color: #e74c3c; border-color: #e74c3c; }
 
     .container { max-width: 800px; margin: 0 auto; padding: 10px 15px; }
-    .hero-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
-    .hero-card { background: rgba(20, 20, 32, 0.85); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px; padding: 10px; text-align: center; cursor: pointer; }
-    .hero-avatar { width: 100%; height: 95px; object-fit: cover; border-radius: 6px; background: #151520; margin-bottom: 8px; }
-    .hero-title { font-size: 13px; color: #fff; }
-    .hero-dota1-name { font-size: 11px; color: #ff9d00; margin-top: 2px; }
+    
+    /* Сетки для героев и предметов */
+    .hero-grid, .items-catalog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
+    .hero-card, .item-catalog-card { background: rgba(20, 20, 32, 0.85); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px; padding: 10px; text-align: center; cursor: pointer; }
+    .hero-avatar, .item-catalog-img { width: 100%; height: 95px; object-fit: cover; border-radius: 6px; background: #151520; margin-bottom: 8px; }
+    .item-catalog-img { height: 75px; object-fit: contain; background: #000; border: 1px solid #444; }
+    .hero-title, .item-catalog-title { font-size: 12px; color: #fff; }
+    .hero-dota1-name, .item-catalog-cost { font-size: 10px; color: #ff9d00; margin-top: 2px; }
 
     .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); z-index: 100; padding: 15px; overflow-y: auto; }
     .modal-content { background: #14141e; border: 1px solid #ff9d00; max-width: 500px; margin: 20px auto; border-radius: 12px; padding: 20px; position: relative; }
     .close-btn { position: absolute; top: 12px; right: 15px; font-size: 24px; color: #aaa; cursor: pointer; }
     .modal-header { display: flex; gap: 15px; align-items: center; margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 12px; }
     .modal-img { width: 70px; height: 70px; border-radius: 8px; object-fit: cover; }
-    .modal-info h2 { font-size: 18px; color: #fff; }
-    .modal-info .dota1-title { font-size: 13px; color: #ff9d00; }
+    .modal-info h2 { font-size: 16px; color: #fff; }
+    .modal-info .dota1-title { font-size: 11px; color: #ff9d00; }
     
-    .bio-text { font-size: 12px; color: #dcdce6; line-height: 1.6; margin-bottom: 12px; background: rgba(255, 255, 255, 0.03); padding: 12px; border-radius: 8px; border-left: 3px solid #0088cc; }
+    .bio-text { font-size: 11px; color: #dcdce6; line-height: 1.6; margin-bottom: 12px; background: rgba(255, 255, 255, 0.03); padding: 10px; border-radius: 8px; border-left: 3px solid #0088cc; }
     .bio-text p { margin-bottom: 8px; }
     
     .guide-dropdown-card { background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 157, 0, 0.3); border-radius: 8px; padding: 10px; margin-bottom: 8px; }
-    .toggle-guide-btn { background: rgba(255, 157, 0, 0.15); border: 1px solid rgba(255, 157, 0, 0.4); color: #ff9d00; font-size: 11px; padding: 8px; border-radius: 4px; cursor: pointer; width: 100%; text-align: center; text-transform: uppercase; }
+    .toggle-guide-btn { background: rgba(255, 157, 0, 0.15); border: 1px solid rgba(255, 157, 0, 0.4); color: #ff9d00; font-size: 10px; padding: 8px; border-radius: 4px; cursor: pointer; width: 100%; text-align: center; text-transform: uppercase; }
     .guide-content-box { display: none; margin-top: 8px; border-top: 1px dashed rgba(255,255,255,0.2); padding-top: 8px; font-size: 11px; color: #ccc; line-height: 1.5; }
     
     .items-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 8px; }
     .item-card-mini { background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; padding: 5px; text-align: center; }
     .item-icon { width: 36px; height: 36px; border-radius: 4px; border: 1px solid #888; object-fit: cover; background: #000; margin-bottom: 3px; display: block; margin-left: auto; margin-right: auto; }
     .item-name-mini { font-size: 9px; color: #ddd; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .stage-title { font-size: 11px; font-weight: bold; color: #ff9d00; margin: 8px 0 4px 0; text-transform: uppercase; }
+    .stage-title { font-size: 10px; font-weight: bold; color: #ff9d00; margin: 8px 0 4px 0; text-transform: uppercase; }
 
     .skill-card { background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; padding: 10px; margin-bottom: 8px; border-left: 3px solid #ff9d00; }
     .skill-header { display: flex; align-items: center; gap: 10px; }
     .skill-icon { width: 42px; height: 42px; border-radius: 6px; border: 1px solid #ff9d00; object-fit: cover; background: #151520; }
     .skill-info-title { flex: 1; }
-    .skill-name { font-size: 13px; color: #2ecc71; }
+    .skill-name { font-size: 12px; color: #2ecc71; }
     .skill-type { font-size: 10px; color: #ff9d00; text-transform: uppercase; }
     
-    .toggle-levels-btn { margin-top: 6px; background: rgba(255, 157, 0, 0.12); border: 1px solid rgba(255, 157, 0, 0.3); color: #ff9d00; font-size: 11px; padding: 6px; border-radius: 4px; cursor: pointer; width: 100%; text-align: center; text-transform: uppercase; }
+    .toggle-levels-btn { margin-top: 6px; background: rgba(255, 157, 0, 0.12); border: 1px solid rgba(255, 157, 0, 0.3); color: #ff9d00; font-size: 10px; padding: 6px; border-radius: 4px; cursor: pointer; width: 100%; text-align: center; text-transform: uppercase; }
     .skill-levels-container { display: none; margin-top: 6px; border-top: 1px dashed rgba(255,255,255,0.15); padding-top: 6px; }
-    .level-row { display: flex; justify-content: space-between; font-size: 11px; color: #ccc; padding: 3px 0; }
+    .level-row { display: flex; justify-content: space-between; font-size: 10px; color: #ccc; padding: 3px 0; }
     
-    .send-tg-btn { width: 100%; padding: 12px; background: #0088cc; color: white; border: none; border-radius: 8px; font-weight: bold; margin-top: 15px; cursor: pointer; }
+    .send-tg-btn { width: 100%; padding: 12px; background: #0088cc; color: white; border: none; border-radius: 8px; font-weight: bold; margin-top: 15px; cursor: pointer; text-transform: uppercase; font-size: 11px; }
   </style>
 </head>
 <body>
   <header>
-    <h1>Dota 2 Guide</h1>
-    <input type="text" id="search" class="search-box" placeholder="Поиск героя (например, Sven)...">
-    <button class="feedback-trigger-btn" onclick="openFeedbackModal()">✍️ Написать отзыв / Предложение</button>
+    <h1 id="headerTitle">Dota 2 Guide</h1>
+    <input type="text" id="search" class="search-box" placeholder="Поиск (герой или предмет)...">
+    <button class="feedback-trigger-btn" onclick="openFeedbackModal()">НАПИСАТЬ ОТЗЫВ / ПРЕДЛОЖЕНИЕ</button>
   </header>
 
-  <div class="main-tabs">
-    <button class="main-tab-btn active" onclick="setAttr('Strength', this)">Strength</button>
-    <button class="main-tab-btn" onclick="setAttr('Agility', this)">Agility</button>
-    <button class="main-tab-btn" onclick="setAttr('Intelligence', this)">Intelligence</button>
+  <!-- Главные переключатели разделов (без иконок, выделяются стилем) -->
+  <div class="nav-tabs">
+    <button class="nav-btn active" id="navHeroes" onclick="switchSection('heroes')">ГЕРОИ</button>
+    <button class="nav-btn" id="navItems" onclick="switchSection('items')">ПРЕДМЕТЫ</button>
+    <button class="nav-btn" id="navFuture" onclick="switchSection('future')">БУДУЩЕЕ</button>
   </div>
 
-  <div class="sub-tabs">
-    <button class="sub-tab-btn sentinel active" onclick="setFaction('Sentinel', this)">SENTINEL</button>
-    <button class="sub-tab-btn scourge" onclick="setFaction('Scourge', this)">SCOURGE</button>
+  <!-- Фильтры для раздела героев -->
+  <div id="heroesFilters">
+    <div class="main-tabs">
+      <button class="main-tab-btn active" onclick="setAttr('Strength', this)">STRENGTH</button>
+      <button class="main-tab-btn" onclick="setAttr('Agility', this)">AGILITY</button>
+      <button class="main-tab-btn" onclick="setAttr('Intelligence', this)">INTELLIGENCE</button>
+    </div>
+
+    <div class="sub-tabs">
+      <button class="sub-tab-btn sentinel active" onclick="setFaction('Sentinel', this)">SENTINEL</button>
+      <button class="sub-tab-btn scourge" onclick="setFaction('Scourge', this)">SCOURGE</button>
+    </div>
   </div>
 
-  <div class="container"><div class="hero-grid" id="heroGrid"></div></div>
+  <!-- Основной контейнер (списки героев или предметов) -->
+  <div class="container">
+    <div class="hero-grid" id="heroGrid"></div>
+    <div class="items-catalog-grid" id="itemsGrid" style="display: none;"></div>
+    <div id="futureView" style="display: none; text-align: center; color: #888; padding: 40px; font-size: 14px; text-transform: uppercase;">
+      Этот раздел находится в разработке...
+    </div>
+  </div>
 
   <!-- Модальное окно героя -->
   <div class="modal" id="heroModal">
@@ -174,22 +200,53 @@
       
       <div id="modalBio" class="bio-text"></div>
 
-      <!-- Кнопка: Сборка предметов -->
       <div class="guide-dropdown-card">
-        <button class="toggle-guide-btn" onclick="toggleGuideSection('itemsBox')">⚔️ Сборка предметов (Build)</button>
+        <button class="toggle-guide-btn" onclick="toggleGuideSection('itemsBox')">СБОРКА ПРЕДМЕТОВ (BUILD)</button>
         <div class="guide-content-box" id="itemsBox"></div>
       </div>
 
-      <!-- Кнопка: Контрпики и советы -->
       <div class="guide-dropdown-card" style="border-color: rgba(46, 204, 113, 0.4);">
-        <button class="toggle-guide-btn" style="background: rgba(46, 204, 113, 0.15); border-color: rgba(46, 204, 113, 0.4); color: #2ecc71;" onclick="toggleGuideSection('countersBox')">🛡️ Контрпики и советы</button>
+        <button class="toggle-guide-btn" style="background: rgba(46, 204, 113, 0.15); border-color: rgba(46, 204, 113, 0.4); color: #2ecc71;" onclick="toggleGuideSection('countersBox')">КОНТРПИКИ И СОВЕТЫ</button>
         <div class="guide-content-box" id="countersBox"></div>
       </div>
 
-      <h3 style="font-size: 13px; color: #ff9d00; margin: 12px 0 8px 0; text-transform: uppercase;">Способности:</h3>
+      <h3 style="font-size: 12px; color: #ff9d00; margin: 12px 0 8px 0; text-transform: uppercase;">СПОСОБНОСТИ:</h3>
       <div class="skills-list" id="modalSkills"></div>
       
-      <button class="send-tg-btn" onclick="closeModal()">Закрыть</button>
+      <button class="send-tg-btn" onclick="closeModal()">ЗАКРЫТЬ</button>
+    </div>
+  </div>
+
+  <!-- Модальное окно предмета (информация, рецепт, кому собирать, против кого) -->
+  <div class="modal" id="itemModal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeItemModal()">&times;</span>
+      <div class="modal-header">
+        <img id="itemModalImg" class="modal-img" src="" alt="" style="object-fit: contain; background: #000;">
+        <div class="modal-info">
+          <h2 id="itemModalName"></h2>
+          <div id="itemModalCost" class="dota1-title"></div>
+        </div>
+      </div>
+      
+      <div class="bio-text" id="itemModalDesc"></div>
+
+      <div class="guide-dropdown-card">
+        <div style="font-size: 11px; color: #ff9d00; margin-bottom: 4px; text-transform: uppercase;">Рецепт (Компоненты):</div>
+        <div id="itemModalRecipe" style="font-size: 11px; color: #ccc;"></div>
+      </div>
+
+      <div class="guide-dropdown-card" style="border-color: rgba(52, 152, 219, 0.4);">
+        <div style="font-size: 11px; color: #3498db; margin-bottom: 4px; text-transform: uppercase;">Кому подходит (Лучшие герои):</div>
+        <div id="itemModalHeroes" style="font-size: 11px; color: #ccc;"></div>
+      </div>
+
+      <div class="guide-dropdown-card" style="border-color: rgba(231, 76, 60, 0.4);">
+        <div style="font-size: 11px; color: #e74c3c; margin-bottom: 4px; text-transform: uppercase;">Против кого эффективен:</div>
+        <div id="itemModalCounters" style="font-size: 11px; color: #ccc;"></div>
+      </div>
+      
+      <button class="send-tg-btn" onclick="closeItemModal()">ЗАКРЫТЬ</button>
     </div>
   </div>
 
@@ -197,9 +254,9 @@
   <div class="modal" id="feedbackModal">
     <div class="modal-content" style="max-width: 400px; margin-top: 50px;">
       <span class="close-btn" onclick="closeFeedbackModal()">&times;</span>
-      <h2 style="font-size: 16px; color: #ff9d00; margin-bottom: 12px;">Обратная связь</h2>
-      <textarea id="feedbackText" placeholder="Ваше сообщение..." style="width: 100%; height: 90px; padding: 10px; border-radius: 6px; background: #0c0c12; color: #fff; border: 1px solid rgba(255,255,255,0.2); resize: none; margin-bottom: 12px; font-size: 13px;"></textarea>
-      <button onclick="sendFeedback()" class="send-tg-btn" style="background: #2ecc71; margin-top: 0;">Отправить</button>
+      <h2 style="font-size: 14px; color: #ff9d00; margin-bottom: 12px; text-transform: uppercase;">Обратная связь</h2>
+      <textarea id="feedbackText" placeholder="Ваше сообщение..." style="width: 100%; height: 90px; padding: 10px; border-radius: 6px; background: #0c0c12; color: #fff; border: 1px solid rgba(255,255,255,0.2); resize: none; margin-bottom: 12px; font-size: 12px;"></textarea>
+      <button onclick="sendFeedback()" class="send-tg-btn" style="background: #2ecc71; margin-top: 0;">ОТПРАВИТЬ</button>
     </div>
   </div>
 
@@ -207,12 +264,62 @@
     const tg = window.Telegram ? window.Telegram.WebApp : null;
     if (tg) { tg.ready(); tg.expand(); }
 
+    let currentSection = 'heroes'; // heroes, items, future
+
+    // База данных предметов с детальной информацией
+    const itemsData = [
+      {
+        name: "Black King Bar",
+        cost: "Цена: 4050 золота",
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/black_king_bar.png",
+        desc: "Дает бонус к силе и урону. Дает временную невосприимчивость к магии (Avatar), полностью защищая владельца от большинства заклинаний и контроля.",
+        recipe: "Ogre Axe (1000) + Mithril Hammer (1600) + Рецепт (1450)",
+        heroes: "Отлично подходит всем керри-героям (Sven, Phantom Assassin, Juggernaut), которым необходимо безопасно бить врагов в драке без страха получить дизейбл.",
+        counters: "Идеально против команд с огромным количеством магического урона и станов (Lion, Lina, Crystal Maiden, Tidehunter)."
+      },
+      {
+        name: "Daedalus",
+        cost: "Цена: 5100 золота",
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/greater_crit.png",
+        desc: "Значительно увеличивает урон от атак. Дает пассивную способность Critical Strike: шанс нанести критический урон в размере 225% от обычной атаки.",
+        recipe: "Crystalys (2000) + Demon Edge (2200) + Рецепт (900)",
+        heroes: "Основные бойцы и физические керри (Sven, Sniper, Wraith King), максимизирующие урон с руки в поздней игре.",
+        counters: "Против плотных героев и жирных танков с высоким запасом здоровья, когда обычного урона не хватает."
+      },
+      {
+        name: "Blink Dagger",
+        cost: "Цена: 2250 золота",
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/blink.png",
+        desc: "Позволяет мгновенно телепортироваться на короткое упреждающее расстояние в указанную точку. При получении урона уходит на перезарядку на 3 секунды.",
+        recipe: "Покупается целиком в лавке за 2250 золота.",
+        heroes: "Инициаторы и герои с сильными массовыми станами или способностями ближнего боя (Sven, Tiny, Axe, Sand King, Tidehunter).",
+        counters: "Против героев с дальней атакой и позиционных персонажей, чтобы мгновенно сократить дистанцию и инициировать бой."
+      },
+      {
+        name: "Satanic",
+        cost: "Цена: 5050 золота",
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/satanic.png",
+        desc: "Дает огромный бонус к силе и урону. Активная способность Unholy Lifesteal на 6 секунд увеличивает вампиризм до 275%, позволяя полностью восстановить здоровье за несколько ударов.",
+        recipe: "Morbid Mask (900) + Claymore (1350) + Reaver (2800)",
+        heroes: "Сильные керри-герои ближнего боя, которые дерутся лицом к лицу и нуждаются в выживаемости (Sven, Ursa, Lifestealer).",
+        counters: "Против команд с высоким физическим уроном и в затяжных драках, где нужно пережить фокус."
+      },
+      {
+        name: "Assault Cuirass",
+        cost: "Цена: 5125 золота",
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/assault.png",
+        desc: "Увеличивает броню и скорость атаки владельца и ближайших союзников, а также аурой снижает броню врагам.",
+        recipe: "Hyperstone (2000) + Platemail (1400) + Chainmail (550) + Рецепт (1175)",
+        heroes: "Танки, пушеры и оффлейнеры, а также физические керри в долгих играх.",
+        counters: "Против героев с высоким физическим уроном и построек (для быстрого сноса базы)."
+      }
+    ];
+
     const heroesData = [
       { 
         name: "Sven", dota1: "Rogue Knight", attr: "Strength", faction: "Sentinel", 
         img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/sven.png", 
-        bio: "<p>Сын изгоя-паладина и эльфийки ночного эльфа, Свен вырос с клеймом позора и изгнания, отвергнутый обоими народами. Закаленный суровыми испытаниями, он поклялся следовать непреклонному кодексу ордена Белого Мстителя.</p><p>Однако, столкнувшись с лицемерием и предательством собственных наставников, Свен разрушил священное солнце и уничтожил орден, забрав с собой легендарный двуручный меч Месть.</p>", 
-        
+        bio: "<p>Сын изгоя-паладина и эльфийки ночного эльфа, Свен вырос с клеймом позора и изгнания, отвергнутый обоими народами. Закаленный суровыми испытаниями, он поклялся следовать непреклонному кодексу ордена Белого Мстителя.</p>", 
         itemsBuild: {
           early: [
             { name: "Tango", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/tango.png" },
@@ -238,18 +345,16 @@
             { name: "Travel Boots", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/travel_boots.png" }
           ]
         },
-
         countersInfo: `
-          <div style="margin-bottom:6px;"><b style="color:#2ecc71;">Силен на линии с:</b> Crystal Maiden, Ogre Magi, Lion (герои с мощными станами и замедлениями).</div>
-          <div style="margin-bottom:6px;"><b style="color:#3498db;">Силен против:</b> Героев с плотным расположением в группе и иллюзионистами (благодаря сплешу Great Cleave).</div>
-          <div><b style="color:#e74c3c;">Контрят (уязвим к):</b> Bane, Shadow Demon (дизейблы сквозь BKB), а также Ghost Scepter и Eul's Scepter.</div>
+          <div style="margin-bottom:6px;"><b style="color:#2ecc71;">Силен на линии с:</b> Crystal Maiden, Ogre Magi, Lion.</div>
+          <div style="margin-bottom:6px;"><b style="color:#3498db;">Силен против:</b> Героев с плотным расположением и иллюзионистов.</div>
+          <div><b style="color:#e74c3c;">Контрят:</b> Bane, Shadow Demon, Ghost Scepter.</div>
         `,
-
         skills: [
           {
             name: "Storm Bolt",
             img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/sven_storm_bolt.png",
-            desc: "Бросает магический молот, наносящий урон и оглушающий врагов в области.",
+            desc: "Бросает магический молот, наносящий урон и оглушающий врагов.",
             isPassive: false,
             levels: [
               { lvl: 1, mana: "110 МАНА", cd: "18 СЕК", effect: "110 урона, стан 1.4 сек" },
@@ -257,48 +362,42 @@
               { lvl: 3, mana: "130 МАНА", cd: "14 СЕК", effect: "210 урона, стан 1.8 сек" },
               { lvl: 4, mana: "140 МАНА", cd: "12 СЕК", effect: "260 урона, стан 2.0 сек" }
             ]
-          },
-          {
-            name: "Great Cleave",
-            img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/sven_great_cleave.png",
-            desc: "Пассивно наполняет меч силой, нанося пробивающий сплеш-урон всем стоящим рядом врагам.",
-            isPassive: true,
-            levels: [
-              { lvl: 1, mana: "ПАССИВНО", cd: "0 СЕК", effect: "30% сплеш-урона" },
-              { lvl: 2, mana: "ПАССИВНО", cd: "0 СЕК", effect: "45% сплеш-урона" },
-              { lvl: 3, mana: "ПАССИВНО", cd: "0 СЕК", effect: "60% сплеш-урона" },
-              { lvl: 4, mana: "ПАССИВНО", cd: "0 СЕК", effect: "75% сплеш-урона" }
-            ]
-          },
-          {
-            name: "Warcry",
-            img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/sven_warcry.png",
-            desc: "Боевой клич воодушевляет союзников, увеличивая их броню и скорость передвижения.",
-            isPassive: false,
-            levels: [
-              { lvl: 1, mana: "40 МАНА", cd: "32 СЕК", effect: "+6 брони, +8% бега" },
-              { lvl: 2, mana: "50 МАНА", cd: "26 СЕК", effect: "+9 брони, +12% бега" },
-              { lvl: 3, mana: "60 МАНА", cd: "20 СЕК", effect: "+12 брони, +16% бега" },
-              { lvl: 4, mana: "70 МАНА", cd: "14 СЕК", effect: "+15 брони, +20% бега" }
-            ]
-          },
-          {
-            name: "God's Strength",
-            img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/sven_gods_strength.png",
-            desc: "Свен обращается к своей скрытой силе, многократно увеличивая базовый урон от атак.",
-            isPassive: false,
-            levels: [
-              { lvl: 1, mana: "100 МАНА", cd: "100 СЕК", effect: "+120% базового урона" },
-              { lvl: 2, mana: "150 МАНА", cd: "100 СЕК", effect: "+160% базового урона" },
-              { lvl: 3, mana: "200 МАНА", cd: "100 СЕК", effect: "+200% базового урона" }
-            ]
           }
         ]
       },
-      { name: "Tiny", dota1: "Stone Giant", attr: "Strength", faction: "Sentinel", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/tiny.png", bio: "<p>Родившись в результате катаклизмов из живой скалы, крошечный голем Тайни изначально был лишь ничтожным осколком горного массива.</p>", itemsBuild: { early: [], mid: [], late: [] }, countersInfo: "Скоро появится.", skills: [{name: "Avalanche", desc: "Камнепад по площади."}] }
+      { name: "Tiny", dota1: "Stone Giant", attr: "Strength", faction: "Sentinel", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/tiny.png", bio: "<p>Каменный гигант.</p>", itemsBuild: { early: [], mid: [], late: [] }, countersInfo: "Скоро появится.", skills: [] }
     ];
 
-    let currentAttr = 'Strength', currentFaction = 'Sentinel', selectedHero = null;
+    let currentAttr = 'Strength', currentFaction = 'Sentinel';
+
+    function switchSection(section) {
+      currentSection = section;
+      document.getElementById('navHeroes').classList.remove('active');
+      document.getElementById('navItems').classList.remove('active');
+      document.getElementById('navFuture').classList.remove('active');
+
+      document.getElementById('heroGrid').style.display = 'none';
+      document.getElementById('itemsGrid').style.display = 'none';
+      document.getElementById('futureView').style.display = 'none';
+      document.getElementById('heroesFilters').style.display = 'none';
+
+      if (section === 'heroes') {
+        document.getElementById('navHeroes').classList.add('active');
+        document.getElementById('heroGrid').style.display = 'grid';
+        document.getElementById('heroesFilters').style.display = 'block';
+        document.getElementById('headerTitle').innerText = "Dota 2 Guide";
+        renderHeroes();
+      } else if (section === 'items') {
+        document.getElementById('navItems').classList.add('active');
+        document.getElementById('itemsGrid').style.display = 'grid';
+        document.getElementById('headerTitle').innerText = "База предметов";
+        renderItems();
+      } else if (section === 'future') {
+        document.getElementById('navFuture').classList.add('active');
+        document.getElementById('futureView').style.display = 'block';
+        document.getElementById('headerTitle').innerText = "Будущий раздел";
+      }
+    }
 
     function renderHeroes() {
       const grid = document.getElementById('heroGrid');
@@ -329,6 +428,31 @@
       });
     }
 
+    function renderItems() {
+      const grid = document.getElementById('itemsGrid');
+      const searchVal = document.getElementById('search').value.toLowerCase();
+      grid.innerHTML = '';
+
+      const filtered = itemsData.filter(i => i.name.toLowerCase().includes(searchVal));
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `<div style="grid-column: 1/-1; text-align:center; color:#888; padding:30px;">Предметы не найдены</div>`;
+        return;
+      }
+
+      filtered.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'item-catalog-card';
+        card.onclick = () => openItemModal(item);
+        card.innerHTML = `
+          <img src="${item.img}" class="item-catalog-img" alt="${item.name}" loading="lazy" onerror="this.src='https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png';">
+          <div class="item-catalog-title">${item.name}</div>
+          <div class="item-catalog-cost">${item.cost}</div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
     function setAttr(attr, btn) {
       currentAttr = attr;
       document.querySelectorAll('.main-tab-btn').forEach(b => b.classList.remove('active'));
@@ -343,7 +467,10 @@
       renderHeroes();
     }
 
-    document.getElementById('search').addEventListener('input', renderHeroes);
+    document.getElementById('search').addEventListener('input', () => {
+      if (currentSection === 'heroes') renderHeroes();
+      else if (currentSection === 'items') renderItems();
+    });
 
     function openModal(hero) {
       selectedHero = hero;
@@ -353,79 +480,67 @@
       document.getElementById('modalBio').innerHTML = hero.bio;
       
       const itemsBox = document.getElementById('itemsBox');
-      if (hero.itemsBuild && (hero.itemsBuild.early.length > 0 || hero.itemsBuild.mid.length > 0 || hero.itemsBuild.late.length > 0)) {
-        let itemsHtml = `<div class="stage-title">🌱 Начало игры (Early Game)</div><div class="items-grid">`;
+      if (hero.itemsBuild && hero.itemsBuild.early.length > 0) {
+        let itemsHtml = `<div class="stage-title">Начало игры</div><div class="items-grid">`;
         hero.itemsBuild.early.forEach(item => {
           itemsHtml += `<div class="item-card-mini"><img src="${item.img}" class="item-icon" onerror="this.src='https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png';"><div class="item-name-mini">${item.name}</div></div>`;
         });
-        itemsHtml += `</div>`;
-        
-        itemsHtml += `<div class="stage-title">⚡ Середина игры (Mid Game)</div><div class="items-grid">`;
+        itemsHtml += `</div><div class="stage-title">Середина игры</div><div class="items-grid">`;
         hero.itemsBuild.mid.forEach(item => {
           itemsHtml += `<div class="item-card-mini"><img src="${item.img}" class="item-icon" onerror="this.src='https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png';"><div class="item-name-mini">${item.name}</div></div>`;
         });
-        itemsHtml += `</div>`;
-
-        itemsHtml += `<div class="stage-title">👑 Лейт / 6 Слотов (Late Game)</div><div class="items-grid">`;
+        itemsHtml += `</div><div class="stage-title">Лейт / 6 Слотов</div><div class="items-grid">`;
         hero.itemsBuild.late.forEach(item => {
           itemsHtml += `<div class="item-card-mini"><img src="${item.img}" class="item-icon" onerror="this.src='https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png';"><div class="item-name-mini">${item.name}</div></div>`;
         });
         itemsHtml += `</div>`;
-        
         itemsBox.innerHTML = itemsHtml;
       } else {
         itemsBox.innerHTML = "Сборка скоро появится.";
       }
 
       document.getElementById('countersBox').innerHTML = hero.countersInfo || "Информация скоро появится.";
-
       document.getElementById('itemsBox').style.display = 'none';
       document.getElementById('countersBox').style.display = 'none';
 
       const skillsContainer = document.getElementById('modalSkills');
       skillsContainer.innerHTML = '';
-
       if (hero.skills) {
         hero.skills.forEach((s, index) => {
           const item = document.createElement('div');
           item.className = 'skill-card';
-
-          if (s.levels) {
-            let levelsHtml = '';
-            s.levels.forEach(l => {
-              levelsHtml += `
-                <div class="level-row">
-                  <span><b>УР. ${l.lvl}:</b> ${l.effect}</span>
-                  <span style="color:#3498db;">${l.mana} | ${l.cd}</span>
-                </div>
-              `;
-            });
-
-            item.innerHTML = `
-              <div class="skill-header">
-                <img src="${s.img}" class="skill-icon" alt="${s.name}" onerror="this.src='https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/base.png';">
-                <div class="skill-info-title">
-                  <div class="skill-name">${s.name}</div>
-                  <div class="skill-type">${s.isPassive ? 'Пассивная способность' : 'Активная способность'}</div>
-                </div>
+          let levelsHtml = '';
+          s.levels.forEach(l => {
+            levelsHtml += `<div class="level-row"><span><b>УР. ${l.lvl}:</b> ${l.effect}</span><span style="color:#3498db;">${l.mana} | ${l.cd}</span></div>`;
+          });
+          item.innerHTML = `
+            <div class="skill-header">
+              <img src="${s.img}" class="skill-icon" alt="${s.name}" onerror="this.src='https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/base.png';">
+              <div class="skill-info-title">
+                <div class="skill-name">${s.name}</div>
+                <div class="skill-type">${s.isPassive ? 'Пассивная способность' : 'Активная способность'}</div>
               </div>
-              <div style="font-size: 11px; color: #bbb; margin-top: 6px;" class="skill-desc">${s.desc}</div>
-              <button class="toggle-levels-btn" onclick="toggleSkillLvl(${index})">УРОВНИ, МАНА И КУЛДАУН</button>
-              <div class="skill-levels-container" id="skillLvl_${index}">
-                ${levelsHtml}
-              </div>
-            `;
-          } else {
-            item.innerHTML = `
-              <div class="skill-name">${s.name}</div>
-              <div style="font-size: 11px; color: #bbb;" class="skill-desc">${s.desc}</div>
-            `;
-          }
+            </div>
+            <div style="font-size: 11px; color: #bbb; margin-top: 6px;">${s.desc}</div>
+            <button class="toggle-levels-btn" onclick="toggleSkillLvl(${index})">УРОВНИ, МАНА И КУЛДАУН</button>
+            <div class="skill-levels-container" id="skillLvl_${index}">${levelsHtml}</div>
+          `;
           skillsContainer.appendChild(item);
         });
       }
 
       document.getElementById('heroModal').style.display = 'block';
+    }
+
+    function openItemModal(item) {
+      document.getElementById('itemModalImg').src = item.img;
+      document.getElementById('itemModalName').innerText = item.name;
+      document.getElementById('itemModalCost').innerText = item.cost;
+      document.getElementById('itemModalDesc').innerText = item.desc;
+      document.getElementById('itemModalRecipe').innerText = item.recipe;
+      document.getElementById('itemModalHeroes').innerText = item.heroes;
+      document.getElementById('itemModalCounters').innerText = item.counters;
+      document.getElementById('itemModal').style.display = 'block';
     }
 
     function toggleSkillLvl(index) {
@@ -439,6 +554,7 @@
     }
 
     function closeModal() { document.getElementById('heroModal').style.display = 'none'; }
+    function closeItemModal() { document.getElementById('itemModal').style.display = 'none'; }
     function openFeedbackModal() { document.getElementById('feedbackModal').style.display = 'block'; }
     function closeFeedbackModal() { document.getElementById('feedbackModal').style.display = 'none'; }
 
