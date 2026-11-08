@@ -106,15 +106,12 @@
 
     .container { max-width: 800px; margin: 0 auto; padding: 10px 15px; }
     
-    /* Сетки для героев и предметов */
     .hero-grid, .items-catalog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; }
     .hero-card { background: rgba(20, 20, 32, 0.85); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px; padding: 10px; text-align: center; cursor: pointer; }
     
-    /* Карточка предмета с рамкой под размер иконки */
     .item-catalog-card { background: rgba(20, 20, 32, 0.85); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px; padding: 8px; text-align: center; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; }
     .hero-avatar { width: 100%; height: 95px; object-fit: cover; border-radius: 6px; background: #151520; margin-bottom: 8px; }
     
-    /* Точный размер иконки и рамки предмета */
     .item-catalog-img { width: 54px; height: 54px; object-fit: contain; background: #000; border: 1px solid rgba(255, 157, 0, 0.4); border-radius: 6px; margin-bottom: 6px; display: block; }
     
     .hero-title, .item-catalog-title { font-size: 11px; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%; }
@@ -272,6 +269,7 @@
 
     let currentSection = 'heroes';
 
+    // Полная база данных предметов Dota 2
     const itemsData = [
       {
         name: "Black King Bar",
@@ -317,6 +315,96 @@
         recipe: "Hyperstone (2000) + Platemail (1400) + Chainmail (550) + Рецепт (1175)",
         heroes: "Танки, пушеры и оффлейнеры.",
         counters: "Против физического урона и для быстрого сноса базы."
+      },
+      {
+        name: "Heart of Tarrasque",
+        cost: "Цена: 5000 золота",
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/heart.png",
+        desc: "Дает огромный прирост к силе и здоровью, а также мощную пассивную регенерацию HP вне боя.",
+        recipe: "Vitality Booster (1100) + Energy Booster (800) + Reaver (2800) + Рецепт (300)",
+        heroes: "Главные танки и герои, зависящие от максимального запаса здоровья (Pudge, Centaur, Axe, Bristleback).",
+        counters: "Против долгого фокуса и постоянного урона в долгих сражениях."
+      },
+      {
+        name: "Butterfly",
+        cost: "Цена: 4975 золота",
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/butterfly.png",
+        desc: "Дает огромную скорость атаки, урон и шанс уклониться от вражеских физических атак (Evasion).",
+        recipe: "Eaglesong (4725) + Quarterstaff (875) — *включая старые компоненты*.",
+        heroes: "Ловкие керри-герои (Phantom Assassin, Juggernaut, Anti-Mage, Drow Ranger).",
+        counters: "Идеально против вражеских героев с сильным физическим уроном с руки (без MKB)."
+      },
+      {
+        name: "MKB (Monkey King Bar)",
+        cost: "Цена: 4900 золота",
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/monkey_king_bar.png",
+        desc: "Атаки не могут промахнуться (пробивают уклонение) и наносят дополнительный магический урон.",
+        recipe: "Javelin (900) + Demon Edge (2200) + Quarterstaff (875) + Рецепт (925)",
+        heroes: "Физические керри, которым нужно контрить уклонения.",
+        counters: "Против героев с Butterfly, уклонением Падры (Blur) или ослеплениями."
+      },
+      {
+        name: "Manta Style",
+        cost: "Цена: 4600 золота",
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/manta.png",
+        desc: "Создает две иллюзии управляемого героя. Активная способность снимает большинство отрицательных эффектов (дебафов) и снарядов.",
+        recipe: "Yasha (2050) + Ultimate Orb (2050) + Рецепт (500)",
+        heroes: "Герои с иллюзиями или те, кому нужен сброс дебафов (Anti-Mage, Luna, Terrorblade, Faceless Void).",
+        counters: "Против сильных одиночных заклинаний, сайленсов и замедлений."
+      },
+      {
+        name: "Aghanim's Scepter",
+        cost: "Цена: 4200 золота",
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/ultimate_scepter.png",
+        desc: "Улучшает ультимативную способность героя (или добавляет новую способность), давая колоссальное преимущество.",
+        recipe: "Point Booster (1200) + Staff of Wizardry (1000) + Blade of Alacrity (1000) + Ogre Axe (1000)",
+        heroes: "Большинство магов, инициаторов и героев, чья ульта зависит от бафа.",
+        counters: "Универсальный предмет для усиления магического потенциала команды."
+      },
+      {
+        name: "Refresher Orb",
+        cost: "Цена: 5000 золота",
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/refresher.png",
+        desc: "Сбрасывает перезарядку всех способностей и предметов владельца.",
+        recipe: "Perseverance (1400) + Perseverance (1400) + Рецепт (2200)",
+        heroes: "Маги и герои с мощными ультимейтами, чей повторный каст решает исход игры (Tidehunter, Enigma, Warlock, Zeus).",
+        counters: "Против врагов, когда нужно дать две глобальные ульты подряд в одной драке."
+      },
+      {
+        name: "Octarine Core",
+        cost: "Цена: 4775 золота",
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/octarine_core.png",
+        desc: "Уменьшает перезарядку всех способностей и предметов на 25%, дает здоровье и ману.",
+        recipe: "Soul Booster (3000) + Mystic Staff (2800)",
+        heroes: "Кастеры и маги, постоянно спамящие заклинаниями (Leshrac, Storm Spirit, Lina).",
+        counters: "Для уменьшения пауз между ключевыми способностями контроля."
+      },
+      {
+        name: "Boots of Travel",
+        cost: "Цена: 2500 золота",
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/travel_boots.png",
+        desc: "Дает самую высокую скорость передвижения и позволяет телепортироваться на любые дружественные постройки или крипов без траты свитков ТП.",
+        recipe: "Boots of Speed (500) + Рецепт (2000)",
+        heroes: "Сплитпушеры, фармилы и глобальные герои (Anti-Mage, Nature's Prophet, Tinker).",
+        counters: "Для быстрого перемещения по карте и экономии слотов под свитки."
+      },
+      {
+        name: "Eul's Scepter",
+        cost: "Цена: 2725 золота",
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/cyclone.png",
+        desc: "Поднимает цель (или себя) в смерч на 2.5 секунды, делая неуязвимым и обездвиживая.",
+        recipe: "Staff of Wizardry (1000) + Void Stone (825) + Wind Lace (250) + Рецепт (650)",
+        heroes: "Саппорты и кастеры для контроля врагов или спасения от фокуса.",
+        counters: "Идеально против быстрых героев, ультимейтов с ченнелингом (Enigma, Witch Doctor) или вражеских керри."
+      },
+      {
+        name: "Shadow Blade",
+        cost: "Цена: 3000 золота",
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/shadow_blade.png",
+        desc: "Делает владельца невидимым и дает бонус к скорости передвижения и урону от внезапной атаки.",
+        recipe: "Shadow amulet (1000) + Claymore (1350) + Рецепт (650)",
+        heroes: "Ганкеры и физические бойцы (Sniper, Shadow Fiend, Lycan, Slark).",
+        counters: "Для внезапных нападений и скрытного перемещения по вражеской территории."
       }
     ];
 
