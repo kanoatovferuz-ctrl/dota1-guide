@@ -89,10 +89,12 @@
       text-transform: uppercase; 
     }
 
+    /* Главные вкладки разделов */
     .nav-tabs { display: flex; justify-content: center; gap: 8px; padding: 12px 10px; background: rgba(10, 10, 18, 0.95); border-bottom: 1px solid rgba(255,255,255,0.1); }
     .nav-btn { flex: 1; max-width: 130px; padding: 10px 4px; background: rgba(35, 35, 50, 0.9); border: 2px solid rgba(255, 157, 0, 0.4); color: #ccc; border-radius: 6px; cursor: pointer; font-size: 11px; text-transform: uppercase; text-align: center; transition: all 0.2s; }
     .nav-btn.active { background: #ff9d00; color: #000; border-color: #ff9d00; box-shadow: 0 0 10px rgba(255,157,0,0.4); }
 
+    /* Второстепенные вкладки атрибутов героев */
     .main-tabs { display: flex; justify-content: center; gap: 6px; padding: 10px 10px 4px 10px; }
     .main-tab-btn { flex: 1; max-width: 130px; padding: 8px 0; background: rgba(25, 25, 35, 0.8); border: 1px solid rgba(255, 255, 255, 0.15); color: #aaa; border-radius: 6px; cursor: pointer; font-size: 10px; text-transform: uppercase; }
     .main-tab-btn.active { background: #3498db; color: #fff; border-color: #3498db; }
@@ -103,11 +105,15 @@
     .sub-tab-btn.scourge.active { background: rgba(231, 76, 60, 0.25); color: #e74c3c; border-color: #e74c3c; }
 
     .container { max-width: 800px; margin: 0 auto; padding: 10px 15px; }
+    
     .hero-grid, .items-catalog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; }
     .hero-card { background: rgba(20, 20, 32, 0.85); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px; padding: 10px; text-align: center; cursor: pointer; }
+    
     .item-catalog-card { background: rgba(20, 20, 32, 0.85); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px; padding: 8px; text-align: center; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; }
     .hero-avatar { width: 100%; height: 95px; object-fit: cover; border-radius: 6px; background: #151520; margin-bottom: 8px; }
+    
     .item-catalog-img { width: 54px; height: 54px; object-fit: contain; background: #000; border: 1px solid rgba(255, 157, 0, 0.4); border-radius: 6px; margin-bottom: 6px; display: block; }
+    
     .hero-title, .item-catalog-title { font-size: 11px; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%; }
     .hero-dota1-name, .item-catalog-cost { font-size: 9px; color: #ff9d00; margin-top: 2px; }
 
@@ -153,12 +159,14 @@
     <button class="feedback-trigger-btn" onclick="openFeedbackModal()">НАПИСАТЬ ОТЗЫВ / ПРЕДЛОЖЕНИЕ</button>
   </header>
 
+  <!-- Главные переключатели разделов -->
   <div class="nav-tabs">
     <button class="nav-btn active" id="navHeroes" onclick="switchSection('heroes')">ГЕРОИ</button>
     <button class="nav-btn" id="navItems" onclick="switchSection('items')">ПРЕДМЕТЫ</button>
     <button class="nav-btn" id="navFuture" onclick="switchSection('future')">БУДУЩЕЕ</button>
   </div>
 
+  <!-- Фильтры для раздела героев -->
   <div id="heroesFilters">
     <div class="main-tabs">
       <button class="main-tab-btn active" onclick="setAttr('Strength', this)">STRENGTH</button>
@@ -172,14 +180,16 @@
     </div>
   </div>
 
+  <!-- Основной контейнер -->
   <div class="container">
     <div class="hero-grid" id="heroGrid"></div>
     <div class="items-catalog-grid" id="itemsGrid" style="display: none;"></div>
     <div id="futureView" style="display: none; text-align: center; color: #888; padding: 40px; font-size: 14px; text-transform: uppercase;">
-      Раздел находится в разработке...
+      Этот раздел находится в разработке...
     </div>
   </div>
 
+  <!-- Модальное окно героя -->
   <div class="modal" id="heroModal">
     <div class="modal-content">
       <span class="close-btn" onclick="closeModal()">&times;</span>
@@ -210,6 +220,7 @@
     </div>
   </div>
 
+  <!-- Модальное окно предмета -->
   <div class="modal" id="itemModal">
     <div class="modal-content">
       <span class="close-btn" onclick="closeItemModal()">&times;</span>
@@ -242,6 +253,7 @@
     </div>
   </div>
 
+  <!-- Модальное окно отзыва -->
   <div class="modal" id="feedbackModal">
     <div class="modal-content" style="max-width: 400px; margin-top: 50px;">
       <span class="close-btn" onclick="closeFeedbackModal()">&times;</span>
@@ -251,10 +263,10 @@
     </div>
   </div>
 
-  <!-- Подключаем наш файл с данными -->
+  <!-- Подключение файла с данными -->
   <script src="data.js"></script>
 
-  <!-- Логика работы приложения -->
+  <!-- Логика управления сайтом -->
   <script>
     const tg = window.Telegram ? window.Telegram.WebApp : null;
     if (tg) { tg.ready(); tg.expand(); }
@@ -296,6 +308,11 @@
       const searchVal = document.getElementById('search').value.toLowerCase();
       grid.innerHTML = '';
 
+      if (typeof heroesData === 'undefined') {
+        grid.innerHTML = `<div style="grid-column: 1/-1; text-align:center; color:#ff9d00; padding:30px;">Файл data.js не подключен или пуст!</div>`;
+        return;
+      }
+
       const filtered = heroesData.filter(h => 
         h.attr === currentAttr && h.faction === currentFaction &&
         (h.name.toLowerCase().includes(searchVal) || (h.dota1 && h.dota1.toLowerCase().includes(searchVal)))
@@ -324,6 +341,11 @@
       const grid = document.getElementById('itemsGrid');
       const searchVal = document.getElementById('search').value.toLowerCase();
       grid.innerHTML = '';
+
+      if (typeof itemsData === 'undefined') {
+        grid.innerHTML = `<div style="grid-column: 1/-1; text-align:center; color:#ff9d00; padding:30px;">Файл data.js не подключен или пуст!</div>`;
+        return;
+      }
 
       const filtered = itemsData.filter(i => i.name.toLowerCase().includes(searchVal));
 
