@@ -89,12 +89,12 @@
       text-transform: uppercase; 
     }
 
-    /* Главные вкладки разделов (отличаются от остальных более ярким дизайном) */
+    /* Главные вкладки разделов */
     .nav-tabs { display: flex; justify-content: center; gap: 8px; padding: 12px 10px; background: rgba(10, 10, 18, 0.95); border-bottom: 1px solid rgba(255,255,255,0.1); }
     .nav-btn { flex: 1; max-width: 130px; padding: 10px 4px; background: rgba(35, 35, 50, 0.9); border: 2px solid rgba(255, 157, 0, 0.4); color: #ccc; border-radius: 6px; cursor: pointer; font-size: 11px; text-transform: uppercase; text-align: center; transition: all 0.2s; }
     .nav-btn.active { background: #ff9d00; color: #000; border-color: #ff9d00; box-shadow: 0 0 10px rgba(255,157,0,0.4); }
 
-    /* Второстепенные вкладки героев (атрибуты) */
+    /* Второстепенные вкладки героев */
     .main-tabs { display: flex; justify-content: center; gap: 6px; padding: 10px 10px 4px 10px; }
     .main-tab-btn { flex: 1; max-width: 130px; padding: 8px 0; background: rgba(25, 25, 35, 0.8); border: 1px solid rgba(255, 255, 255, 0.15); color: #aaa; border-radius: 6px; cursor: pointer; font-size: 10px; text-transform: uppercase; }
     .main-tab-btn.active { background: #3498db; color: #fff; border-color: #3498db; }
@@ -107,12 +107,18 @@
     .container { max-width: 800px; margin: 0 auto; padding: 10px 15px; }
     
     /* Сетки для героев и предметов */
-    .hero-grid, .items-catalog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
-    .hero-card, .item-catalog-card { background: rgba(20, 20, 32, 0.85); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px; padding: 10px; text-align: center; cursor: pointer; }
-    .hero-avatar, .item-catalog-img { width: 100%; height: 95px; object-fit: cover; border-radius: 6px; background: #151520; margin-bottom: 8px; }
-    .item-catalog-img { height: 75px; object-fit: contain; background: #000; border: 1px solid #444; }
-    .hero-title, .item-catalog-title { font-size: 12px; color: #fff; }
-    .hero-dota1-name, .item-catalog-cost { font-size: 10px; color: #ff9d00; margin-top: 2px; }
+    .hero-grid, .items-catalog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; }
+    .hero-card { background: rgba(20, 20, 32, 0.85); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px; padding: 10px; text-align: center; cursor: pointer; }
+    
+    /* Карточка предмета с рамкой под размер иконки */
+    .item-catalog-card { background: rgba(20, 20, 32, 0.85); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px; padding: 8px; text-align: center; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .hero-avatar { width: 100%; height: 95px; object-fit: cover; border-radius: 6px; background: #151520; margin-bottom: 8px; }
+    
+    /* Точный размер иконки и рамки предмета */
+    .item-catalog-img { width: 54px; height: 54px; object-fit: contain; background: #000; border: 1px solid rgba(255, 157, 0, 0.4); border-radius: 6px; margin-bottom: 6px; display: block; }
+    
+    .hero-title, .item-catalog-title { font-size: 11px; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%; }
+    .hero-dota1-name, .item-catalog-cost { font-size: 9px; color: #ff9d00; margin-top: 2px; }
 
     .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); z-index: 100; padding: 15px; overflow-y: auto; }
     .modal-content { background: #14141e; border: 1px solid #ff9d00; max-width: 500px; margin: 20px auto; border-radius: 12px; padding: 20px; position: relative; }
@@ -156,7 +162,7 @@
     <button class="feedback-trigger-btn" onclick="openFeedbackModal()">НАПИСАТЬ ОТЗЫВ / ПРЕДЛОЖЕНИЕ</button>
   </header>
 
-  <!-- Главные переключатели разделов (без иконок, выделяются стилем) -->
+  <!-- Главные переключатели разделов -->
   <div class="nav-tabs">
     <button class="nav-btn active" id="navHeroes" onclick="switchSection('heroes')">ГЕРОИ</button>
     <button class="nav-btn" id="navItems" onclick="switchSection('items')">ПРЕДМЕТЫ</button>
@@ -177,7 +183,7 @@
     </div>
   </div>
 
-  <!-- Основной контейнер (списки героев или предметов) -->
+  <!-- Основной контейнер -->
   <div class="container">
     <div class="hero-grid" id="heroGrid"></div>
     <div class="items-catalog-grid" id="itemsGrid" style="display: none;"></div>
@@ -217,12 +223,12 @@
     </div>
   </div>
 
-  <!-- Модальное окно предмета (информация, рецепт, кому собирать, против кого) -->
+  <!-- Модальное окно предмета -->
   <div class="modal" id="itemModal">
     <div class="modal-content">
       <span class="close-btn" onclick="closeItemModal()">&times;</span>
       <div class="modal-header">
-        <img id="itemModalImg" class="modal-img" src="" alt="" style="object-fit: contain; background: #000;">
+        <img id="itemModalImg" class="modal-img" src="" alt="" style="width: 54px; height: 54px; object-fit: contain; background: #000; border: 1px solid #ff9d00; border-radius: 6px;">
         <div class="modal-info">
           <h2 id="itemModalName"></h2>
           <div id="itemModalCost" class="dota1-title"></div>
@@ -264,9 +270,8 @@
     const tg = window.Telegram ? window.Telegram.WebApp : null;
     if (tg) { tg.ready(); tg.expand(); }
 
-    let currentSection = 'heroes'; // heroes, items, future
+    let currentSection = 'heroes';
 
-    // База данных предметов с детальной информацией
     const itemsData = [
       {
         name: "Black King Bar",
@@ -274,44 +279,44 @@
         img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/black_king_bar.png",
         desc: "Дает бонус к силе и урону. Дает временную невосприимчивость к магии (Avatar), полностью защищая владельца от большинства заклинаний и контроля.",
         recipe: "Ogre Axe (1000) + Mithril Hammer (1600) + Рецепт (1450)",
-        heroes: "Отлично подходит всем керри-героям (Sven, Phantom Assassin, Juggernaut), которым необходимо безопасно бить врагов в драке без страха получить дизейбл.",
-        counters: "Идеально против команд с огромным количеством магического урона и станов (Lion, Lina, Crystal Maiden, Tidehunter)."
+        heroes: "Отлично подходит всем керри-героям (Sven, Phantom Assassin, Juggernaut), которым необходимо безопасно бить врагов в драке.",
+        counters: "Идеально против команд с огромным количеством магического урона и станов."
       },
       {
         name: "Daedalus",
         cost: "Цена: 5100 золота",
         img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/greater_crit.png",
-        desc: "Значительно увеличивает урон от атак. Дает пассивную способность Critical Strike: шанс нанести критический урон в размере 225% от обычной атаки.",
+        desc: "Значительно увеличивает урон от атак. Дает пассивную способность Critical Strike: шанс нанести критический урон в размере 225%.",
         recipe: "Crystalys (2000) + Demon Edge (2200) + Рецепт (900)",
-        heroes: "Основные бойцы и физические керри (Sven, Sniper, Wraith King), максимизирующие урон с руки в поздней игре.",
-        counters: "Против плотных героев и жирных танков с высоким запасом здоровья, когда обычного урона не хватает."
+        heroes: "Основные бойцы и физические керри (Sven, Sniper, Wraith King).",
+        counters: "Против плотных героев и жирных танков с высоким запасом здоровья."
       },
       {
         name: "Blink Dagger",
         cost: "Цена: 2250 золота",
         img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/blink.png",
-        desc: "Позволяет мгновенно телепортироваться на короткое упреждающее расстояние в указанную точку. При получении урона уходит на перезарядку на 3 секунды.",
+        desc: "Позволяет мгновенно телепортироваться на короткое расстояние в указанную точку.",
         recipe: "Покупается целиком в лавке за 2250 золота.",
-        heroes: "Инициаторы и герои с сильными массовыми станами или способностями ближнего боя (Sven, Tiny, Axe, Sand King, Tidehunter).",
-        counters: "Против героев с дальней атакой и позиционных персонажей, чтобы мгновенно сократить дистанцию и инициировать бой."
+        heroes: "Инициаторы и герои с сильными массовыми станами (Sven, Tiny, Axe, Sand King).",
+        counters: "Против героев с дальней атакой и позиционных персонажей."
       },
       {
         name: "Satanic",
         cost: "Цена: 5050 золота",
         img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/satanic.png",
-        desc: "Дает огромный бонус к силе и урону. Активная способность Unholy Lifesteal на 6 секунд увеличивает вампиризм до 275%, позволяя полностью восстановить здоровье за несколько ударов.",
+        desc: "Дает огромный бонус к силе и урону. Активная способность увеличивает вампиризм до 275%.",
         recipe: "Morbid Mask (900) + Claymore (1350) + Reaver (2800)",
-        heroes: "Сильные керри-герои ближнего боя, которые дерутся лицом к лицу и нуждаются в выживаемости (Sven, Ursa, Lifestealer).",
-        counters: "Против команд с высоким физическим уроном и в затяжных драках, где нужно пережить фокус."
+        heroes: "Сильные керри-герои ближнего боя (Sven, Ursa, Lifestealer).",
+        counters: "Против команд с высоким физическим уроном и в затяжных драках."
       },
       {
         name: "Assault Cuirass",
         cost: "Цена: 5125 золота",
         img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/assault.png",
-        desc: "Увеличивает броню и скорость атаки владельца и ближайших союзников, а также аурой снижает броню врагам.",
+        desc: "Увеличивает броню и скорость атаки союзников, аурой снижает броню врагам.",
         recipe: "Hyperstone (2000) + Platemail (1400) + Chainmail (550) + Рецепт (1175)",
-        heroes: "Танки, пушеры и оффлейнеры, а также физические керри в долгих играх.",
-        counters: "Против героев с высоким физическим уроном и построек (для быстрого сноса базы)."
+        heroes: "Танки, пушеры и оффлейнеры.",
+        counters: "Против физического урона и для быстрого сноса базы."
       }
     ];
 
@@ -319,7 +324,7 @@
       { 
         name: "Sven", dota1: "Rogue Knight", attr: "Strength", faction: "Sentinel", 
         img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/sven.png", 
-        bio: "<p>Сын изгоя-паладина и эльфийки ночного эльфа, Свен вырос с клеймом позора и изгнания, отвергнутый обоими народами. Закаленный суровыми испытаниями, он поклялся следовать непреклонному кодексу ордена Белого Мстителя.</p>", 
+        bio: "<p>Сын изгоя-паладина и эльфийки ночного эльфа, Свен вырос с клеймом позора и изгнания, отвергнутый обоими народами.</p>", 
         itemsBuild: {
           early: [
             { name: "Tango", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/tango.png" },
@@ -347,7 +352,7 @@
         },
         countersInfo: `
           <div style="margin-bottom:6px;"><b style="color:#2ecc71;">Силен на линии с:</b> Crystal Maiden, Ogre Magi, Lion.</div>
-          <div style="margin-bottom:6px;"><b style="color:#3498db;">Силен против:</b> Героев с плотным расположением и иллюзионистов.</div>
+          <div style="margin-bottom:6px;"><b style="color:#3498db;">Силен против:</b> Героев с плотным расположением и иллюзионистами.</div>
           <div><b style="color:#e74c3c;">Контрят:</b> Bane, Shadow Demon, Ghost Scepter.</div>
         `,
         skills: [
