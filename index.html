@@ -6,7 +6,7 @@
   <title>Dota 2 Classic Guide — Telegram WebApp</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Russo+One&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
   
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <style>
@@ -14,16 +14,8 @@
       box-sizing: border-box; 
       margin: 0; 
       padding: 0; 
-      font-family: 'Inter', sans-serif; 
-    }
-
-    h1, .hero-title, .modal-info h2, .skill-name, h3, .main-tab-btn, .sub-tab-btn, .toggle-levels-btn, .toggle-guide-btn {
-      font-family: 'Russo One', sans-serif !important;
+      font-family: 'Russo One', sans-serif !important; 
       letter-spacing: 0.5px;
-    }
-
-    .bio-text, .skill-desc, .level-row, .guide-content-box {
-      font-family: 'Lora', serif !important;
     }
 
     body { 
@@ -80,7 +72,6 @@
       outline: none; 
       margin-top: 4px;
       margin-bottom: 10px; 
-      font-family: 'Inter', sans-serif;
     }
 
     .feedback-trigger-btn { 
@@ -96,7 +87,6 @@
       cursor: pointer; 
       font-size: 11px; 
       text-transform: uppercase; 
-      font-family: 'Inter', sans-serif;
     }
     
     .main-tabs { display: flex; justify-content: center; gap: 6px; padding: 12px 10px 6px 10px; }
@@ -113,7 +103,7 @@
     .hero-card { background: rgba(20, 20, 32, 0.85); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px; padding: 10px; text-align: center; cursor: pointer; }
     .hero-avatar { width: 100%; height: 95px; object-fit: cover; border-radius: 6px; background: #151520; margin-bottom: 8px; }
     .hero-title { font-size: 13px; color: #fff; }
-    .hero-dota1-name { font-size: 11px; color: #ff9d00; margin-top: 2px; font-family: 'Inter', sans-serif; }
+    .hero-dota1-name { font-size: 11px; color: #ff9d00; margin-top: 2px; }
 
     .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); z-index: 100; padding: 15px; overflow-y: auto; }
     .modal-content { background: #14141e; border: 1px solid #ff9d00; max-width: 500px; margin: 20px auto; border-radius: 12px; padding: 20px; position: relative; }
@@ -121,34 +111,33 @@
     .modal-header { display: flex; gap: 15px; align-items: center; margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 12px; }
     .modal-img { width: 70px; height: 70px; border-radius: 8px; object-fit: cover; }
     .modal-info h2 { font-size: 18px; color: #fff; }
-    .modal-info .dota1-title { font-size: 13px; color: #ff9d00; font-family: 'Inter', sans-serif; }
+    .modal-info .dota1-title { font-size: 13px; color: #ff9d00; }
     
-    .bio-text { font-size: 13px; color: #dcdce6; line-height: 1.6; margin-bottom: 12px; background: rgba(255, 255, 255, 0.03); padding: 12px; border-radius: 8px; border-left: 3px solid #0088cc; }
+    .bio-text { font-size: 12px; color: #dcdce6; line-height: 1.6; margin-bottom: 12px; background: rgba(255, 255, 255, 0.03); padding: 12px; border-radius: 8px; border-left: 3px solid #0088cc; }
     .bio-text p { margin-bottom: 8px; }
     
-    /* Интерактивные кнопки-аккордеоны для сборок и контрпиков */
     .guide-dropdown-card { background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 157, 0, 0.3); border-radius: 8px; padding: 10px; margin-bottom: 8px; }
-    .toggle-guide-btn { background: rgba(255, 157, 0, 0.15); border: 1px solid rgba(255, 157, 0, 0.4); color: #ff9d00; font-size: 11px; padding: 8px; border-radius: 4px; cursor: pointer; width: 100%; text-align: center; text-transform: uppercase; letter-spacing: 0.5px; }
-    .guide-content-box { display: none; margin-top: 8px; border-top: 1px dashed rgba(255,255,255,0.2); padding-top: 8px; font-size: 12px; color: #ccc; line-height: 1.5; }
+    .toggle-guide-btn { background: rgba(255, 157, 0, 0.15); border: 1px solid rgba(255, 157, 0, 0.4); color: #ff9d00; font-size: 11px; padding: 8px; border-radius: 4px; cursor: pointer; width: 100%; text-align: center; text-transform: uppercase; }
+    .guide-content-box { display: none; margin-top: 8px; border-top: 1px dashed rgba(255,255,255,0.2); padding-top: 8px; font-size: 11px; color: #ccc; line-height: 1.5; }
     
-    /* Стили для иконок предметов */
-    .item-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
-    .item-icon { width: 32px; height: 32px; border-radius: 4px; border: 1px solid #888; object-fit: cover; background: #000; }
-    .stage-title { font-size: 12px; font-weight: bold; color: #ff9d00; margin: 6px 0 3px 0; text-transform: uppercase; }
+    .items-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 8px; }
+    .item-card-mini { background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; padding: 5px; text-align: center; }
+    .item-icon { width: 36px; height: 36px; border-radius: 4px; border: 1px solid #888; object-fit: cover; background: #000; margin-bottom: 3px; display: block; margin-left: auto; margin-right: auto; }
+    .item-name-mini { font-size: 9px; color: #ddd; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .stage-title { font-size: 11px; font-weight: bold; color: #ff9d00; margin: 8px 0 4px 0; text-transform: uppercase; }
 
-    /* Стили для способностей */
     .skill-card { background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; padding: 10px; margin-bottom: 8px; border-left: 3px solid #ff9d00; }
     .skill-header { display: flex; align-items: center; gap: 10px; }
     .skill-icon { width: 42px; height: 42px; border-radius: 6px; border: 1px solid #ff9d00; object-fit: cover; background: #151520; }
     .skill-info-title { flex: 1; }
     .skill-name { font-size: 13px; color: #2ecc71; }
-    .skill-type { font-size: 10px; color: #ff9d00; text-transform: uppercase; font-family: 'Inter', sans-serif; }
+    .skill-type { font-size: 10px; color: #ff9d00; text-transform: uppercase; }
     
-    .toggle-levels-btn { margin-top: 6px; background: rgba(255, 157, 0, 0.12); border: 1px solid rgba(255, 157, 0, 0.3); color: #ff9d00; font-size: 11px; padding: 6px; border-radius: 4px; cursor: pointer; width: 100%; text-align: center; text-transform: uppercase; letter-spacing: 0.5px; }
+    .toggle-levels-btn { margin-top: 6px; background: rgba(255, 157, 0, 0.12); border: 1px solid rgba(255, 157, 0, 0.3); color: #ff9d00; font-size: 11px; padding: 6px; border-radius: 4px; cursor: pointer; width: 100%; text-align: center; text-transform: uppercase; }
     .skill-levels-container { display: none; margin-top: 6px; border-top: 1px dashed rgba(255,255,255,0.15); padding-top: 6px; }
-    .level-row { display: flex; justify-content: space-between; font-size: 12px; color: #ccc; padding: 3px 0; }
+    .level-row { display: flex; justify-content: space-between; font-size: 11px; color: #ccc; padding: 3px 0; }
     
-    .send-tg-btn { width: 100%; padding: 12px; background: #0088cc; color: white; border: none; border-radius: 8px; font-weight: bold; margin-top: 15px; cursor: pointer; font-family: 'Inter', sans-serif; }
+    .send-tg-btn { width: 100%; padding: 12px; background: #0088cc; color: white; border: none; border-radius: 8px; font-weight: bold; margin-top: 15px; cursor: pointer; }
   </style>
 </head>
 <body>
@@ -183,7 +172,6 @@
         </div>
       </div>
       
-      <!-- Блок истории -->
       <div id="modalBio" class="bio-text"></div>
 
       <!-- Кнопка: Сборка предметов -->
@@ -210,7 +198,7 @@
     <div class="modal-content" style="max-width: 400px; margin-top: 50px;">
       <span class="close-btn" onclick="closeFeedbackModal()">&times;</span>
       <h2 style="font-size: 16px; color: #ff9d00; margin-bottom: 12px;">Обратная связь</h2>
-      <textarea id="feedbackText" placeholder="Ваше сообщение..." style="width: 100%; height: 90px; padding: 10px; border-radius: 6px; background: #0c0c12; color: #fff; border: 1px solid rgba(255,255,255,0.2); resize: none; margin-bottom: 12px; font-size: 13px; font-family: 'Inter', sans-serif;"></textarea>
+      <textarea id="feedbackText" placeholder="Ваше сообщение..." style="width: 100%; height: 90px; padding: 10px; border-radius: 6px; background: #0c0c12; color: #fff; border: 1px solid rgba(255,255,255,0.2); resize: none; margin-bottom: 12px; font-size: 13px;"></textarea>
       <button onclick="sendFeedback()" class="send-tg-btn" style="background: #2ecc71; margin-top: 0;">Отправить</button>
     </div>
   </div>
@@ -225,31 +213,35 @@
         img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/sven.png", 
         bio: "<p>Сын изгоя-паладина и эльфийки ночного эльфа, Свен вырос с клеймом позора и изгнания, отвергнутый обоими народами. Закаленный суровыми испытаниями, он поклялся следовать непреклонному кодексу ордена Белого Мстителя.</p><p>Однако, столкнувшись с лицемерием и предательством собственных наставников, Свен разрушил священное солнце и уничтожил орден, забрав с собой легендарный двуручный меч Месть.</p>", 
         
-        // Структура сборок с иконками предметов из Dota 2 CDN
         itemsBuild: {
           early: [
             { name: "Tango", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/tango.png" },
             { name: "Healing Salve", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/flask.png" },
             { name: "Quelling Blade", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/quelling_blade.png" },
-            { name: "Bracer", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/bracer.png" }
+            { name: "Bracer", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/bracer.png" },
+            { name: "Iron Branch", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png" },
+            { name: "Iron Branch", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png" }
           ],
           mid: [
             { name: "Power Treads", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/power_treads.png" },
             { name: "Echo Sabre", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/echo_sabre.png" },
-            { name: "Blink Dagger", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/blink.png" }
+            { name: "Blink Dagger", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/blink.png" },
+            { name: "Mask of Madness", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/mask_of_madness.png" },
+            { name: "Magic Wand", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/magic_wand.png" }
           ],
           late: [
-            { name: "Black King Bar (BKB)", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/black_king_bar.png" },
+            { name: "Black King Bar", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/black_king_bar.png" },
             { name: "Daedalus", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/daedalus.png" },
             { name: "Satanic", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/satanic.png" },
-            { name: "Assault Cuirass", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/assault.png" }
+            { name: "Assault Cuirass", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/assault.png" },
+            { name: "Heart", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/heart.png" },
+            { name: "Travel Boots", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/travel_boots.png" }
           ]
         },
 
-        // Структура контрпиков и линий
         countersInfo: `
           <div style="margin-bottom:6px;"><b style="color:#2ecc71;">Силен на линии с:</b> Crystal Maiden, Ogre Magi, Lion (герои с мощными станами и замедлениями).</div>
-          <div style="margin-bottom:6px;"><b style="color:#3498db;">Силен против:</b> Героев с плотным расположением в группе и иллюзионистов (благодаря сплешу Great Cleave).</div>
+          <div style="margin-bottom:6px;"><b style="color:#3498db;">Силен против:</b> Героев с плотным расположением в группе и иллюзионистами (благодаря сплешу Great Cleave).</div>
           <div><b style="color:#e74c3c;">Контрят (уязвим к):</b> Bane, Shadow Demon (дизейблы сквозь BKB), а также Ghost Scepter и Eul's Scepter.</div>
         `,
 
@@ -360,36 +352,36 @@
       document.getElementById('modalDota1').innerText = "Dota 1: " + hero.dota1;
       document.getElementById('modalBio').innerHTML = hero.bio;
       
-      // Рендерим сборку предметов с иконками по этапам
       const itemsBox = document.getElementById('itemsBox');
-      if (hero.itemsBuild) {
-        let itemsHtml = `<div class="stage-title">🌱 Начало игры (Early Game)</div>`;
+      if (hero.itemsBuild && (hero.itemsBuild.early.length > 0 || hero.itemsBuild.mid.length > 0 || hero.itemsBuild.late.length > 0)) {
+        let itemsHtml = `<div class="stage-title">🌱 Начало игры (Early Game)</div><div class="items-grid">`;
         hero.itemsBuild.early.forEach(item => {
-          itemsHtml += `<div class="item-row"><img src="${item.img}" class="item-icon" onerror="this.src='https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/base.png';"><span>${item.name}</span></div>`;
+          itemsHtml += `<div class="item-card-mini"><img src="${item.img}" class="item-icon" onerror="this.src='https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png';"><div class="item-name-mini">${item.name}</div></div>`;
         });
+        itemsHtml += `</div>`;
         
-        itemsHtml += `<div class="stage-title">⚡ Середина игры (Mid Game)</div>`;
+        itemsHtml += `<div class="stage-title">⚡ Середина игры (Mid Game)</div><div class="items-grid">`;
         hero.itemsBuild.mid.forEach(item => {
-          itemsHtml += `<div class="item-row"><img src="${item.img}" class="item-icon" onerror="this.src='https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/base.png';"><span>${item.name}</span></div>`;
+          itemsHtml += `<div class="item-card-mini"><img src="${item.img}" class="item-icon" onerror="this.src='https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png';"><div class="item-name-mini">${item.name}</div></div>`;
         });
+        itemsHtml += `</div>`;
 
-        itemsHtml += `<div class="stage-title">👑 Поздняя игра / Лейт (Late Game)</div>`;
+        itemsHtml += `<div class="stage-title">👑 Лейт / 6 Слотов (Late Game)</div><div class="items-grid">`;
         hero.itemsBuild.late.forEach(item => {
-          itemsHtml += `<div class="item-row"><img src="${item.img}" class="item-icon" onerror="this.src='https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/base.png';"><span>${item.name}</span></div>`;
+          itemsHtml += `<div class="item-card-mini"><img src="${item.img}" class="item-icon" onerror="this.src='https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png';"><div class="item-name-mini">${item.name}</div></div>`;
         });
+        itemsHtml += `</div>`;
+        
         itemsBox.innerHTML = itemsHtml;
       } else {
         itemsBox.innerHTML = "Сборка скоро появится.";
       }
 
-      // Рендерим контрпики
       document.getElementById('countersBox').innerHTML = hero.countersInfo || "Информация скоро появится.";
 
-      // Сбрасываем видимость выпадающих блоков при открытии нового героя
       document.getElementById('itemsBox').style.display = 'none';
       document.getElementById('countersBox').style.display = 'none';
 
-      // Рендерим способности
       const skillsContainer = document.getElementById('modalSkills');
       skillsContainer.innerHTML = '';
 
@@ -417,7 +409,7 @@
                   <div class="skill-type">${s.isPassive ? 'Пассивная способность' : 'Активная способность'}</div>
                 </div>
               </div>
-              <div style="font-size: 12px; color: #bbb; margin-top: 6px;" class="skill-desc">${s.desc}</div>
+              <div style="font-size: 11px; color: #bbb; margin-top: 6px;" class="skill-desc">${s.desc}</div>
               <button class="toggle-levels-btn" onclick="toggleSkillLvl(${index})">УРОВНИ, МАНА И КУЛДАУН</button>
               <div class="skill-levels-container" id="skillLvl_${index}">
                 ${levelsHtml}
@@ -426,7 +418,7 @@
           } else {
             item.innerHTML = `
               <div class="skill-name">${s.name}</div>
-              <div style="font-size: 12px; color: #bbb;" class="skill-desc">${s.desc}</div>
+              <div style="font-size: 11px; color: #bbb;" class="skill-desc">${s.desc}</div>
             `;
           }
           skillsContainer.appendChild(item);
