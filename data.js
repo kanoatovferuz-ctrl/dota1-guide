@@ -2864,6 +2864,371 @@ const heroesData = [
     ]
   },
   {
+    name: "Vengeful Spirit", dota1: "Shendelzare", attr: "Agility", faction: "Sentinel",
+    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/vengefulspirit.png",
+    bio: "<p>Преданная сестра короля, превратившаяся в дух отмщения и способная менять местами врагов и союзников на поле боя.</p>",
+    itemsBuild: {
+      early: [
+        { name: "Tango", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/tango.png" },
+        { name: "Salve", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/flask.png" },
+        { name: "Magic Wand", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/magic_wand.png" },
+        { name: "Branch", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png" },
+        { name: "Branch", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png" },
+        { name: "Wind Lace", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/wind_lace.png" }
+      ],
+      mid: [
+        { name: "Arcane Boots", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/arcane_boots.png" },
+        { name: "Force Staff", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/force_staff.png" },
+        { name: "Solar Crest", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/solar_crest.png" },
+        { name: "Aghanim's Shard", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/aghanims_shard.png" },
+        { name: "Aghanim", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/ultimate_scepter.png" },
+        { name: "BKB", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/black_king_bar.png" }
+      ],
+      late: [
+        { name: "Aghanim", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/ultimate_scepter.png" },
+        { name: "Refresher Orb", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/refresher.png" },
+        { name: "Assault Cuirass", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/assault.png" },
+        { name: "Butterfly", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/butterfly.png" },
+        { name: "BKB", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/black_king_bar.png" },
+        { name: "Travel Boots", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/travel_boots.png" }
+      ]
+    },
+    countersInfo: "<b>Силен с:</b> Физическими керри (Sven, PA, Ursa).<br><b>Контрят:</b> Linken's Sphere, Silencer, Rubick.",
+    skills: [
+      {
+        name: "Magic Missile", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/vengefulspirit_magic_missile.png",
+        desc: "Бросает магический снаряд, оглушающий цель и наносящий урон.", isPassive: false,
+        levels: [
+          { lvl: 1, mana: "100 МАНА", cd: "13 СЕК", effect: "90 урона, стан 1.2 сек" },
+          { lvl: 2, mana: "110 МАНА", cd: "12 СЕК", effect: "160 урона, стан 1.4 сек" },
+          { lvl: 3, mana: "120 МАНА", cd: "11 СЕК", effect: "230 урона, стан 1.6 сек" },
+          { lvl: 4, mana: "130 МАНА", cd: "10 СЕК", effect: "300 урона, стан 1.8 сек" }
+        ]
+      },
+      {
+        name: "Wave of Terror", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/vengefulspirit_wave_of_terror.png",
+        desc: "Пускает устрашающую волну, которая дает обзор перед собой, снижает броню врагов и урон.", isPassive: false,
+        levels: [
+          { lvl: 1, mana: "40 МАНА", cd: "15 СЕК", effect: "60 урона, -3 брони" },
+          { lvl: 2, mana: "40 МАНА", cd: "14 СЕК", effect: "85 урона, -4 брони" },
+          { lvl: 3, mana: "40 МАНА", cd: "13 СЕК", effect: "110 урона, -5 брони" },
+          { lvl: 4, mana: "40 МАНА", cd: "12 СЕК", effect: "135 урона, -6 брони" }
+        ]
+      },
+      {
+        name: "Vengeance Aura", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/vengefulspirit_command_aura.png",
+        desc: "Пассивно увеличивает базовый урон всех союзников неподалеку.", isPassive: true,
+        levels: [
+          { lvl: 1, mana: "ПАССИВНО", cd: "0 СЕК", effect: "+12% базового урона" },
+          { lvl: 2, mana: "ПАССИВНО", cd: "0 СЕК", effect: "+16% базового урона" },
+          { lvl: 3, mana: "ПАССИВНО", cd: "0 СЕК", effect: "+20% базового урона" },
+          { lvl: 4, mana: "ПАССИВНО", cd: "0 СЕК", effect: "+24% базового урона" }
+        ]
+      },
+      {
+        name: "Nether Swap", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/vengefulspirit_nether_swap.png",
+        desc: "Мгновенно меняет местами положение Vengeful Spirit и выбранного союзника или врага.", isPassive: false,
+        levels: [
+          { lvl: 1, mana: "100 МАНА", cd: "60 СЕК", effect: "Дальность 900" },
+          { lvl: 2, mana: "150 МАНА", cd: "45 СЕК", effect: "Дальность 900" },
+          { lvl: 3, mana: "200 МАНА", cd: "30 СЕК", effect: "Дальность 900" }
+        ]
+      }
+    ]
+  },
+  {
+    name: "Riki", dota1: "Riki Maru", attr: "Agility", faction: "Sentinel",
+    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/riki.png",
+    bio: "<p>Неуловимый стелс-ассасин, наносящий смертельные удары со спины и запирающий врагов в облаке дыма.</p>",
+    itemsBuild: {
+      early: [
+        { name: "Tango", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/tango.png" },
+        { name: "Salve", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/flask.png" },
+        { name: "Quelling", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/quelling_blade.png" },
+        { name: "Wraith Band", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/wraith_band.png" },
+        { name: "Branch", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png" },
+        { name: "Wand", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/magic_wand.png" }
+      ],
+      mid: [
+        { name: "Power Treads", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/power_treads.png" },
+        { name: "Diffusal Blade", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/diffusal_blade.png" },
+        { name: "Manta Style", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/manta.png" },
+        { name: "BKB", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/black_king_bar.png" },
+        { name: "Basher", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/basher.png" },
+        { name: "Aghanim's Shard", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/aghanims_shard.png" }
+      ],
+      late: [
+        { name: "Abyssal Blade", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/abyssal_blade.png" },
+        { name: "Nullifier", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/nullifier.png" },
+        { name: "Butterfly", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/butterfly.png" },
+        { name: "BKB", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/black_king_bar.png" },
+        { name: "Skadi", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/skadi.png" },
+        { name: "Travel Boots", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/travel_boots.png" }
+      ]
+    },
+    countersInfo: "<b>Силен против:</b> Одиночных магов и саппортов (Sniper, Crystal Maiden).<br><b>Контрят:</b> Gem of True Sight, Sentry Wards, Slardar, Bounty Hunter.",
+    skills: [
+      {
+        name: "Smoke Screen", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/riki_smoke_screen.png",
+        desc: "Бросает дымовую завесу, накладывая безмолвие, замедление и шанс промаха по атакам.", isPassive: false,
+        levels: [
+          { lvl: 1, mana: "75 МАНА", cd: "11 СЕК", effect: "Промах 40%, замедление 25%" },
+          { lvl: 2, mana: "80 МАНА", cd: "10 СЕК", effect: "Промах 50%, замедление 30%" },
+          { lvl: 3, mana: "85 МАНА", cd: "9 СЕК", effect: "Промах 60%, замедление 35%" },
+          { lvl: 4, mana: "90 МАНА", cd: "8 СЕК", effect: "Промах 70%, замедление 40%" }
+        ]
+      },
+      {
+        name: "Blink Strike", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/riki_blink_strike.png",
+        desc: "Телепортируется за спину цели, нанося дополнительный урон (если это враг).", isPassive: false,
+        levels: [
+          { lvl: 1, mana: "40 МАНА", cd: "6.0 СЕК", effect: "+40 доп. урона" },
+          { lvl: 2, mana: "40 МАНА", cd: "5.0 СЕК", effect: "+70 доп. урона" },
+          { lvl: 3, mana: "40 МАНА", cd: "4.0 СЕК", effect: "+100 доп. урона" },
+          { lvl: 4, mana: "40 МАНА", cd: "3.0 СЕК", effect: "+130 доп. урона" }
+        ]
+      },
+      {
+        name: "Backstab", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/riki_backstab.png",
+        desc: "Пассивно наносит дополнительный чистый урон при атаке со спины, пропорциональный ловкости.", isPassive: true,
+        levels: [
+          { lvl: 1, mana: "ПАССИВНО", cd: "0 СЕК", effect: "Урон = 0.8x ловкости" },
+          { lvl: 2, mana: "ПАССИВНО", cd: "0 СЕК", effect: "1.0x ловкости" },
+          { lvl: 3, mana: "ПАССИВНО", cd: "0 СЕК", effect: "1.2x ловкости" },
+          { lvl: 4, mana: "ПАССИВНО", cd: "0 СЕК", effect: "1.4x ловкости" }
+        ]
+      },
+      {
+        name: "Tricks of the Trade", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/riki_tricks_of_the_trade.png",
+        desc: "Исчезает из виду, нанося серию быстрых атак по всем врагам в выбранной области из невидимости.", isPassive: false,
+        levels: [
+          { lvl: 1, mana: "85 МАНА", cd: "21 СЕК", effect: "Длительность 4 сек" },
+          { lvl: 2, mana: "100 МАНА", cd: "18 СЕК", effect: "Длительность 4 сек" },
+          { lvl: 3, mana: "115 МАНА", cd: "15 СЕК", effect: "Длительность 4 сек" }
+        ]
+      }
+    ]
+  },
+  {
+    name: "Sniper", dota1: "Kardel Sharpeye", attr: "Agility", faction: "Sentinel",
+    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/sniper.png",
+    bio: "<p>Гениальный стрелок из Кэз Модана с самой большой дальностью стрельбы в игре, разносящий врагов из снайперской винтовки.</p>",
+    itemsBuild: {
+      early: [
+        { name: "Tango", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/tango.png" },
+        { name: "Salve", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/flask.png" },
+        { name: "Wraith Band", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/wraith_band.png" },
+        { name: "Branch", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png" },
+        { name: "Branch", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png" },
+        { name: "Wand", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/magic_wand.png" }
+      ],
+      mid: [
+        { name: "Power Treads", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/power_treads.png" },
+        { name: "Dragon Lance", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/dragon_lance.png" },
+        { name: "Maelstrom", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/maelstrom.png" },
+        { name: "BKB", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/black_king_bar.png" },
+        { name: "Manta Style", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/manta.png" },
+        { name: "Aghanim's Shard", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/aghanims_shard.png" }
+      ],
+      late: [
+        { name: "Mjollnir", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/mjollnir.png" },
+        { name: "Daedalus", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/greater_crit.png" },
+        { name: "Hurricane Pike", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/hurricane_pike.png" },
+        { name: "BKB", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/black_king_bar.png" },
+        { name: "Satanic", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/satanic.png" },
+        { name: "Travel Boots", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/travel_boots.png" }
+      ]
+    },
+    countersInfo: "<b>Силен против:</b> Медленных героев ближнего боя.<br><b>Контрят:</b> Clockwerk, Spirit Breaker, Phantom Assassin, Riki.",
+    skills: [
+      {
+        name: "Shrapnel", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/sniper_shrapnel.png",
+        desc: "Запускает снаряд шрапнели, поливая область искрами, замедляя врагов и нанося им урон.", isPassive: false,
+        levels: [
+          { lvl: 1, mana: "80 МАНА", cd: "35 СЕК", effect: "15 урона в сек, замедление 15%" },
+          { lvl: 2, mana: "90 МАНА", cd: "35 СЕК", effect: "30 урона в сек, замедление 20%" },
+          { lvl: 3, mana: "100 МАНА", cd: "35 СЕК", effect: "45 урона в сек, замедление 25%" },
+          { lvl: 4, mana: "110 МАНА", cd: "35 СЕК", effect: "60 урона в сек, замедление 30%" }
+        ]
+      },
+      {
+        name: "Headshot", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/sniper_headshot.png",
+        desc: "Пассивный шанс нанести дополнительный урон и мини-стан при атаке.", isPassive: true,
+        levels: [
+          { lvl: 1, mana: "ПАССИВНО", cd: "0 СЕК", effect: "40% шанс, +30 урона, мини-стан" },
+          { lvl: 2, mana: "ПАССИВНО", cd: "0 СЕК", effect: "40% шанс, +70 урона, мини-стан" },
+          { lvl: 3, mana: "ПАССИВНО", cd: "0 СЕК", effect: "40% шанс, +110 урона, мини-стан" },
+          { lvl: 4, mana: "ПАССИВНО", cd: "0 СЕК", effect: "40% шанс, +150 урона, мини-стан" }
+        ]
+      },
+      {
+        name: "Take Aim", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/sniper_take_aim.png",
+        desc: "Увеличивает дальность атаки героя (активная способность дает огромный бонус на короткое время).", isPassive: false,
+        levels: [
+          { lvl: 1, mana: "50 МАНА", cd: "25 СЕК", effect: "+100 дальности атак" },
+          { lvl: 2, mana: "50 МАНА", cd: "22 СЕК", effect: "+200 дальности атак" },
+          { lvl: 3, mana: "50 МАНА", cd: "19 СЕК", effect: "+300 дальности атак" },
+          { lvl: 4, mana: "50 МАНА", cd: "16 СЕК", effect: "+400 дальности атак" }
+        ]
+      },
+      {
+        name: "Assassinate", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/sniper_assassinate.png",
+        desc: "Целится из винтовки с огромного расстояния и производит смертельный выстрел по выбранной цели.", isPassive: false,
+        levels: [
+          { lvl: 1, mana: "175 МАНА", cd: "20 СЕК", effect: "320 урона" },
+          { lvl: 2, mana: "275 МАНА", cd: "15 СЕК", effect: "450 урона" },
+          { lvl: 3, mana: "375 МАНА", cd: "10 СЕК", effect: "580 урона" }
+        ]
+      }
+    ]
+  },
+  {
+    name: "Templar Assassin", dota1: "Lanaya", attr: "Agility", faction: "Sentinel",
+    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/templar_assassin.png",
+    bio: "<p>Адепт Тайного Храма, использующая психические клинки и защитные преломления для неуязвимости.</p>",
+    itemsBuild: {
+      early: [
+        { name: "Tango", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/tango.png" },
+        { name: "Salve", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/flask.png" },
+        { name: "Blight Stone", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/blight_stone.png" },
+        { name: "Branch", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png" },
+        { name: "Branch", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png" },
+        { name: "Wand", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/magic_wand.png" }
+      ],
+      mid: [
+        { name: "Power Treads", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/power_treads.png" },
+        { name: "Desolator", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/desolator.png" },
+        { name: "Dragon Lance", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/dragon_lance.png" },
+        { name: "BKB", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/black_king_bar.png" },
+        { name: "Meld", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/blink.png" },
+        { name: "Aghanim's Shard", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/aghanims_shard.png" }
+      ],
+      late: [
+        { name: "Daedalus", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/greater_crit.png" },
+        { name: "Butterfly", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/greater_crit.png" },
+        { name: "BKB", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/black_king_bar.png" },
+        { name: "Nullifier", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/nullifier.png" },
+        { name: "Satanic", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/satanic.png" },
+        { name: "Travel Boots", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/travel_boots.png" }
+      ]
+    },
+    countersInfo: "<b>Силен против:</b> Одиночных героев с сильными единичными атаками.<br><b>Контрят:</b> Viper, Venomancer, Batrider, Radiance-носители.",
+    skills: [
+      {
+        name: "Refraction", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/templar_assassin_refraction.png",
+        desc: "Создает защитные щиты, полностью поглощающие урон от атак и заклинаний, и повышающие урон.", isPassive: false,
+        levels: [
+          { lvl: 1, mana: "85 МАНА", cd: "17 СЕК", effect: "3 заряда щита, +20 урона" },
+          { lvl: 2, mana: "85 МАНА", cd: "17 СЕК", effect: "4 заряда щита, +40 урона" },
+          { lvl: 3, mana: "85 МАНА", cd: "17 СЕК", effect: "5 зарядов щита, +60 урона" },
+          { lvl: 4, mana: "85 МАНА", cd: "17 СЕК", effect: "6 зарядов щита, +80 урона" }
+        ]
+      },
+      {
+        name: "Meld", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/templar_assassin_meld.png",
+        desc: "Уходит в невидимость на месте. Следующая атака из невидимости наносит бонусный урон и снижает броню.", isPassive: false,
+        levels: [
+          { lvl: 1, mana: "50 МАНА", cd: "5.0 СЕК", effect: "+80 урона, -2 брони" },
+          { lvl: 2, mana: "50 МАНА", cd: "5.0 СЕК", effect: "+140 урона, -4 брони" },
+          { lvl: 3, mana: "50 МАНА", cd: "5.0 СЕК", effect: "+200 урона, -6 брони" },
+          { lvl: 4, mana: "50 МАНА", cd: "5.0 СЕК", effect: "+260 урона, -8 брони" }
+        ]
+      },
+      {
+        name: "Psi Blades", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/templar_assassin_psi_blades.png",
+        desc: "Увеличивает дальность атаки и пробивает психической энергией врагов позади основной цели.", isPassive: true,
+        levels: [
+          { lvl: 1, mana: "ПАССИВНО", cd: "0 СЕК", effect: "+60 дальности атаки" },
+          { lvl: 2, mana: "ПАССИВНО", cd: "0 СЕК", effect: "+140 дальности атаки" },
+          { lvl: 3, mana: "ПАССИВНО", cd: "0 СЕК", effect: "+220 дальности атаки" },
+          { lvl: 4, mana: "ПАССИВНО", cd: "0 СЕК", effect: "+300 дальности атаки" }
+        ]
+      },
+      {
+        name: "Psionic Trap", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/templar_assassin_psionic_trap.png",
+        desc: "Устанавливает невидимые ловушки, которые дают обзор и замедляют врагов при активации.", isPassive: false,
+        levels: [
+          { lvl: 1, mana: "15 МАНА", cd: "11 СЕК", effect: "Замедление до 30%" },
+          { lvl: 2, mana: "15 МАНА", cd: "8 СЕК", effect: "Замедление до 45%" },
+          { lvl: 3, mana: "15 МАНА", cd: "5 СЕК", effect: "Замедление до 60%" }
+        ]
+      }
+    ]
+  },
+  {
+    name: "Luna", dota1: "Moon Rider", attr: "Agility", faction: "Sentinel",
+    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/luna.png",
+    bio: "<p>Бывшая предводительница Темного Оружия, нашедшая свет луны и карающая врагов палящими глефами.</p>",
+    itemsBuild: {
+      early: [
+        { name: "Tango", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/tango.png" },
+        { name: "Salve", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/flask.png" },
+        { name: "Wraith Band", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/wraith_band.png" },
+        { name: "Branch", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png" },
+        { name: "Branch", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png" },
+        { name: "Wand", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/magic_wand.png" }
+      ],
+      mid: [
+        { name: "Power Treads", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/power_treads.png" },
+        { name: "Manta Style", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/manta.png" },
+        { name: "Helm of the Dominator", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/helm_of_the_dominator.png" },
+        { name: "BKB", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/black_king_bar.png" },
+        { name: "Aghanim", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/ultimate_scepter.png" },
+        { name: "Butterfly", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/butterfly.png" }
+      ],
+      late: [
+        { name: "Satanic", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/satanic.png" },
+        { name: "Butterfly", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/butterfly.png" },
+        { name: "Skadi", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/skadi.png" },
+        { name: "BKB", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/black_king_bar.png" },
+        { name: "Daedalus", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/greater_crit.png" },
+        { name: "Travel Boots", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/travel_boots.png" }
+      ]
+    },
+    countersInfo: "<b>Силен против:</b> Иллюзионистов и крипов (быстрый пуш).<br><b>Контрят:</b> Nyx Assassin, Phantom Assassin, Faceless Void.",
+    skills: [
+      {
+        name: "Lucent Beam", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/luna_lucent_beam.png",
+        desc: "Обрушивает лунный луч на врага, оглушая его и нанося магический урон.", isPassive: false,
+        levels: [
+          { lvl: 1, mana: "90 МАНА", cd: "6 СЕК", effect: "75 урона, стан 0.8 сек" },
+          { lvl: 2, mana: "100 МАНА", cd: "6 СЕК", effect: "150 урона, стан 0.8 сек" },
+          { lvl: 3, mana: "110 МАНА", cd: "6 СЕК", effect: "225 урона, стан 0.8 сек" },
+          { lvl: 4, mana: "120 МАНА", cd: "6 СЕК", effect: "300 урона, стан 0.8 сек" }
+        ]
+      },
+      {
+        name: "Moon Glaives", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/luna_moon_glaive.png",
+        desc: "Атаки героя метают глефы, которые рикошетят во врагов поблизости.", isPassive: true,
+        levels: [
+          { lvl: 1, mana: "ПАССИВНО", cd: "0 СЕК", effect: "1 рикошет (урон снижен)" },
+          { lvl: 2, mana: "ПАССИВНО", cd: "0 СЕК", effect: "2 рикошета (урон снижен)" },
+          { lvl: 3, mana: "ПАССИВНО", cd: "0 СЕК", effect: "3 рикошета (урон снижен)" },
+          { lvl: 4, mana: "ПАССИВНО", cd: "0 СЕК", effect: "4 рикошета (урон снижен)" }
+        ]
+      },
+      {
+        name: "Lunar Blessing", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/luna_lunar_blessing.png",
+        desc: "Пассивно увеличивает урон союзников и дает им дополнительный ночной обзор.", isPassive: true,
+        levels: [
+          { lvl: 1, mana: "ПАССИВНО", cd: "0 СЕК", effect: "+15 урона" },
+          { lvl: 2, mana: "ПАССИВНО", cd: "0 СЕК", effect: "+20 урона" },
+          { lvl: 3, mana: "ПАССИВНО", cd: "0 СЕК", effect: "+25 урона" },
+          { lvl: 4, mana: "ПАССИВНО", cd: "0 СЕК", effect: "+30 урона" }
+        ]
+      },
+      {
+        name: "Eclipse", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/luna_eclipse.png",
+        desc: "Вызывает шквал лунных лучей по случайным врагам вокруг Луны.", isPassive: false,
+        levels: [
+          { lvl: 1, mana: "150 МАНА", cd: "140 СЕК", effect: "4 луча" },
+          { lvl: 2, mana: "200 МАНА", cd: "130 СЕК", effect: "7 лучей" },
+          { lvl: 3, mana: "250 МАНА", cd: "120 СЕК", effect: "10 лучей" }
+        ]
+      }
+    ]
+  },
+  {
     name: "Mirana", dota1: "Priestess of the Moon", attr: "Agility", faction: "Sentinel",
     img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/mirana.png",
     bio: "<p>Жрица Луны, верхом на гигантском белом тигре поражающая врагов издалека священными стрелами и звездопадом.</p>",
