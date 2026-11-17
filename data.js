@@ -1694,7 +1694,7 @@ const heroesData = [
     ]
   },
    {
-    name: "Axe", dota1: "Mogul Khan", attr: "Strength", faction: "Sentinel",
+    name: "Axe", dota1: "Mogul Khan", attr: "Strength", faction: "Scourge",
     img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/axe.png",
     bio: "<p>Яростный военачальник орков, который бросает вызов врагам и крушит их своим тяжелым топором.</p>",
     itemsBuild: {
@@ -1767,7 +1767,7 @@ const heroesData = [
     ]
   },
    {
-    name: "Sand King", dota1: "Crixalis", attr: "Strength", faction: "Sentinel",
+    name: "Sand King", dota1: "Crixalis", attr: "Strength", faction: "Scourge",
     img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/sand_king.png",
     bio: "<p>Грозный скорпион из пустынь Калреха, способный скрываться в песчаной буре и вызывать разрушительное землетрясение.</p>",
     itemsBuild: {
