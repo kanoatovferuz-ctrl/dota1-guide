@@ -660,6 +660,152 @@ const heroesData = [
         ]
       },
       {
+    name: "Dragon Knight", dota1: "Sir Davion", attr: "Strength", faction: "Sentinel",
+    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/dragon_knight.png",
+    bio: "<p>Рыцарь, принявший кровь древнего дракона. В бою превращается в огнедышащего крылатого монстра.</p>",
+    itemsBuild: {
+      early: [
+        { name: "Tango", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/tango.png" },
+        { name: "Salve", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/flask.png" },
+        { name: "Quelling", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/quelling_blade.png" },
+        { name: "Branch", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png" },
+        { name: "Branch", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png" },
+        { name: "Wand", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/magic_wand.png" }
+      ],
+      mid: [
+        { name: "Power Treads", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/power_treads.png" },
+        { name: "Armlet", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/armlet.png" },
+        { name: "Blink Dagger", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/blink.png" },
+        { name: "BKB", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/black_king_bar.png" },
+        { name: "Shadow Blade", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/invis_sword.png" },
+        { name: "Aghanim", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/ultimate_scepter.png" }
+      ],
+      late: [
+        { name: "BKB", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/black_king_bar.png" },
+        { name: "Daedalus", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/greater_crit.png" },
+        { name: "Satanic", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/satanic.png" },
+        { name: "Assault Cuirass", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/assault.png" },
+        { name: "Heart", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/heart.png" },
+        { name: "Travel Boots", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/travel_boots.png" }
+      ]
+    },
+    countersInfo: "<b>Силен с:</b> Crystal Maiden, Vengeful Spirit.<br><b>Контрят:</b> Viper, OD.",
+    skills: [
+      {
+        name: "Breathe Fire", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/dragon_knight_breathe_fire.png",
+        desc: "Выдыхает огонь перед собой, нанося урон и снижая атаку врагов.", isPassive: false,
+        levels: [
+          { lvl: 1, mana: "100 МАНА", cd: "16 СЕК", effect: "90 урона, -20% атаки" },
+          { lvl: 2, mana: "110 МАНА", cd: "16 СЕК", effect: "170 урона, -25% атаки" },
+          { lvl: 3, mana: "120 МАНА", cd: "16 СЕК", effect: "250 урона, -30% атаки" },
+          { lvl: 4, mana: "130 МАНА", cd: "16 СЕК", effect: "330 урона, -35% атаки" }
+        ]
+      },
+      {
+        name: "Dragon Tail", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/dragon_knight_dragon_tail.png",
+        desc: "Бьет врага щитом вплотную, оглушая его и нанося урон.", isPassive: false,
+        levels: [
+          { lvl: 1, mana: "70 МАНА", cd: "16 СЕК", effect: "70 урона, стан 2.25 сек" },
+          { lvl: 2, mana: "80 МАНА", cd: "14 СЕК", effect: "100 урона, стан 2.5 сек" },
+          { lvl: 3, mana: "90 МАНА", cd: "12 СЕК", effect: "130 урона, стан 2.75 сек" },
+          { lvl: 4, mana: "100 МАНА", cd: "10 СЕК", effect: "160 урона, стан 3.0 сек" }
+        ]
+      },
+      {
+        name: "Dragon Blood", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/dragon_knight_dragon_blood.png",
+        desc: "Пассивно увеличивает броню и регенерацию здоровья рыцаря.", isPassive: true,
+        levels: [
+          { lvl: 1, mana: "ПАССИВНО", cd: "0 СЕК", effect: "+3 брони, +2.5 HP/сек" },
+          { lvl: 2, mana: "ПАССИВНО", cd: "0 СЕК", effect: "+6 брони, +5.0 HP/сек" },
+          { lvl: 3, mana: "ПАССИВНО", cd: "0 СЕК", effect: "+9 брони, +7.5 HP/сек" },
+          { lvl: 4, mana: "ПАССИВНО", cd: "0 СЕК", effect: "+12 брони, +10.0 HP/сек" }
+        ]
+      },
+      {
+        name: "Elder Dragon Form", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/dragon_knight_elder_dragon_form.png",
+        desc: "Превращает героя в могучего дракона с дальнобойной атакой и эффектами от стихий.", isPassive: false,
+        levels: [
+          { lvl: 1, mana: "50 МАНА", cd: "115 СЕК", effect: "Зеленый дракон (яд)" },
+          { lvl: 2, mana: "50 МАНА", cd: "115 СЕК", effect: "Красный дракон (сплеш)" },
+          { lvl: 3, mana: "50 МАНА", cd: "115 СЕК", effect: "Синий дракон (мороз и стан)" }
+        ]
+      }
+    ]
+  },
+  {
+    name: "Kunkka", dota1: "Admiral", attr: "Strength", faction: "Sentinel",
+    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/kunkka.png",
+    bio: "<p>Легендарный адмирал флота людей, владеющий мистической силой приливов и призрачного корабля.</p>",
+    itemsBuild: {
+      early: [
+        { name: "Tango", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/tango.png" },
+        { name: "Salve", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/flask.png" },
+        { name: "Gauntlets", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/gauntlets.png" },
+        { name: "Branch", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png" },
+        { name: "Branch", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png" },
+        { name: "Bottle", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/bottle.png" }
+      ],
+      mid: [
+        { name: "Phase Boots", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/phase_boots.png" },
+        { name: "Drum of Endurance", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/drum.png" },
+        { name: "Blink Dagger", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/blink.png" },
+        { name: "Crystalys", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/lesser_crit.png" },
+        { name: "BKB", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/black_king_bar.png" },
+        { name: "Aghanim", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/ultimate_scepter.png" }
+      ],
+      late: [
+        { name: "Daedalus", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/greater_crit.png" },
+        { name: "BKB", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/black_king_bar.png" },
+        { name: "Heart", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/heart.png" },
+        { name: "Assault Cuirass", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/assault.png" },
+        { name: "Divine Rapier", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/rapier.png" },
+        { name: "Travel Boots", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/travel_boots.png" }
+      ]
+    },
+    countersInfo: "<b>Силен против:</b> Групп врагов (сплеш с Tidebringer).<br><b>Контрят:</b> Линка, BKB.",
+    skills: [
+      {
+        name: "Torrent", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/kunkka_torrent.png",
+        desc: "Создает гейзер в указанной точке, который взрывается через задержку, подбрасывая врагов.", isPassive: false,
+        levels: [
+          { lvl: 1, mana: "90 МАНА", cd: "16 СЕК", effect: "75 урона, стан 1.6 сек" },
+          { lvl: 2, mana: "100 МАНА", cd: "14 СЕК", effect: "150 урона, стан 2.0 сек" },
+          { lvl: 3, mana: "110 МАНА", cd: "12 СЕК", effect: "225 урона, стан 2.4 сек" },
+          { lvl: 4, mana: "120 МАНА", cd: "10 СЕК", effect: "300 урона, стан 2.8 сек" }
+        ]
+      },
+      {
+        name: "Tidebringer", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/kunkka_tidebringer.png",
+        desc: "Заряжает меч силой океана, увеличивая урон по площади при следующей атаке.", isPassive: false,
+        levels: [
+          { lvl: 1, mana: "0 МАНА", cd: "13 СЕК", effect: "+25 урона, сплеш" },
+          { lvl: 2, mana: "0 МАНА", cd: "10 СЕК", effect: "+50 урона, сплеш" },
+          { lvl: 3, mana: "0 МАНА", cd: "7 СЕК", effect: "+75 урона, сплеш" },
+          { lvl: 4, mana: "0 МАНА", cd: "4 СЕК", effect: "+100 урона, сплеш" }
+        ]
+      },
+      {
+        name: "X Marks the Spot", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/kunkka_x_marks_the_spot.png",
+        desc: "Отмечает точку на земле под целью. Через время цель возвращается обратно.", isPassive: false,
+        levels: [
+          { lvl: 1, mana: "50 МАНА", cd: "26 СЕК", effect: "Длительность 4 сек" },
+          { lvl: 2, mana: "50 МАНА", cd: "22 СЕК", effect: "Длительность 6 сек" },
+          { lvl: 3, mana: "50 МАНА", cd: "18 СЕК", effect: "Длительность 8 сек" },
+          { lvl: 4, mana: "50 МАНА", cd: "14 СЕК", effect: "Длительность 10 сек" }
+        ]
+      },
+      {
+        name: "Ghost Ship", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/kunkka_ghost_ship.png",
+        desc: "Призывает призрачный корабль, который врезается в землю, оглушая врагов и бафая союзников.", isPassive: false,
+        levels: [
+          { lvl: 1, mana: "150 МАНА", cd: "80 СЕК", effect: "400 урона, ром баф" },
+          { lvl: 2, mana: "200 МАНА", cd: "60 СЕК", effect: "500 урона, ром баф" },
+          { lvl: 3, mana: "250 МАНА", cd: "40 СЕК", effect: "600 урона, ром баф" }
+        ]
+      }
+    ]
+   },
+       {
         name: "Epicenter", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/sandking_epicenter.png",
         desc: "Вызывает подземные толчки, создающие серию разрушительных волн вокруг героя.", isPassive: false,
         levels: [
