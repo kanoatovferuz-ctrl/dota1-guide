@@ -7216,7 +7216,7 @@ const heroesData = [
     ]
   },
   {
-    name: "Arc Warden", dota1: "Zet", attr: "All", faction: "Sentinel",
+    name: "Arc Warden", dota1: "Zet", attr: "Intelligence", faction: "Sentinel",
     img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/arc_warden.png",
     bio: "<p>Расколотый осколок древнего разума Сет, способный создавать абсолютную копию себя вместе со всеми предметами и способностями, управляя потоками энергии и искр.</p>",
     itemsBuild: {
@@ -7288,7 +7288,7 @@ const heroesData = [
     ]
   },
   {
-    name: "Bane", dota1: "Atropos", attr: "All", faction: "Scourge",
+    name: "Bane", dota1: "Atropos", attr: "Intelligence", faction: "Scourge",
     img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/bane.png",
     bio: "<p>Демон кошмаров Атропос, способный усыплять врагов, красть их урон и полностью парализовать смертельным ночным ультимейтом.</p>",
     itemsBuild: {
@@ -7360,7 +7360,7 @@ const heroesData = [
     ]
   },
   {
-    name: "Batrider", dota1: "Jin'zrak", attr: "All", faction: "Scourge",
+    name: "Batrider", dota1: "Jin'zrak", attr: "Intelligence", faction: "Scourge",
     img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/batrider.png",
     bio: "<p>Наездник на летучей мыши Джин'зрак, сеющий пламя, покрывающий врагов вязким напалмом и утаскивающий их в самую гущу своей команды.</p>",
     itemsBuild: {
@@ -7432,7 +7432,7 @@ const heroesData = [
     ]
   },
   {
-    name: "Marci", dota1: "Marci", attr: "All", faction: "Sentinel",
+    name: "Marci", dota1: "Marci", attr: "Intelligence", faction: "Sentinel",
     img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/marci.png",
     bio: "<p>Верная телохранительница Марси, обладающая невероятной физической силой, скоростью ударов и акробатическими способностями.</p>",
     itemsBuild: {
@@ -7504,7 +7504,7 @@ const heroesData = [
     ]
   },
   {
-    name: "Pangolier", dota1: "Donte Panlin", attr: "All", faction: "Sentinel",
+    name: "Pangolier", dota1: "Donte Panlin", attr: "Intelligence", faction: "Sentinel",
     img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/pangolier.png",
     bio: "<p>Галантный фехтовальщик Донте Панлин, протыкающий врагов шпагой, парирующий атаки и превращающийся в неудержимый рикошетящий шар.</p>",
     itemsBuild: {
@@ -7576,7 +7576,7 @@ const heroesData = [
     ]
   },
   {
-    name: "Snapfire", dota1: "Beatrix Snapfire", attr: "All", faction: "Sentinel",
+    name: "Snapfire", dota1: "Beatrix Snapfire", attr: "Intelligence", faction: "Sentinel",
     img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/snapfire.png",
     bio: "<p>Бабуля Беатрикс Снапфайр верхом на дракончике Морти, стреляющая из пубовика печеньем, дробовиком и извергающая град ларящих снарядов.</p>",
     itemsBuild: {
@@ -7648,7 +7648,7 @@ const heroesData = [
     ]
   },
   {
-    name: "Techies", dota1: "Squee, Spleen, and Spoon", attr: "All", faction: "Sentinel",
+    name: "Techies", dota1: "Squee, Spleen, and Spoon", attr: "Intelligence", faction: "Sentinel",
     img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/techies.png",
     bio: "<p>Трио подрывников Скви, Сплин и Спун, сеющих хаос с помощью мин, клейких зарядов, детонаций и ракетных прыжков.</p>",
     itemsBuild: {
@@ -7720,7 +7720,7 @@ const heroesData = [
     ]
   },
   {
-    name: "Void Spirit", dota1: "Inai", attr: "All", faction: "Sentinel",
+    name: "Void Spirit", dota1: "Inai", attr: "Intelligence", faction: "Sentinel",
     img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/void_spirit.png",
     bio: "<p>Дух пустоты Инаи, владеющий тайными измерениями, способный растворяться в пространстве, создавать щиты и стремительно нападать из ниоткуда.</p>",
     itemsBuild: {
@@ -7792,7 +7792,7 @@ const heroesData = [
     ]
   },
   {
-    name: "Windranger", dota1: "Alleria", attr: "All", faction: "Sentinel",
+    name: "Windranger", dota1: "Alleria", attr: "Intelligence", faction: "Sentinel",
     img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/windrunner.png",
     bio: "<p>Меткая лучница Аллерия, повелевающая силами ветра, способная приковывать врагов к деревьям и обрушивать град из сотен стрел.</p>",
     itemsBuild: {
@@ -8513,78 +8513,6 @@ const heroesData = [
     ]
   },
   {
-    name: "Lion", dota1: "Demon Witch", attr: "Intelligence", faction: "Scourge",
-    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/lion.png",
-    bio: "<p>Демон-колдун Лион, владеющий искусством высасывания маны, превращения врагов в живность испепеляющим пальцем смерти.</p>",
-    itemsBuild: {
-      early: [
-        { name: "Tango", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/tango.png" },
-        { name: "Salve", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/flask.png" },
-        { name: "Null Talisman", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/null_talisman.png" },
-        { name: "Branch", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png" },
-        { name: "Wand", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/magic_wand.png" }
-      ],
-      mid: [
-        { name: "Arcane Boots", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/arcane_boots.png" },
-        { name: "Blink Dagger", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/blink.png" },
-        { name: "Aether Lens", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/aether_lens.png" },
-        { name: "Aghanim's Shard", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/aghanims_shard.png" },
-        { name: "Aghanim", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/ultimate_scepter.png" },
-        { name: "BKB", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/black_king_bar.png" }
-      ],
-      late: [
-        { name: "Aghanim", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/ultimate_scepter.png" },
-        { name: "Octarine Core", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/octarine_core.png" },
-        { name: "Shiva's Guard", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/shivas_guard.png" },
-        { name: "BKB", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/black_king_bar.png" },
-        { name: "Scythe of Vyse", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/sheepstick.png" },
-        { name: "Travel Boots", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/travel_boots.png" }
-      ]
-    },
-    countersInfo: "<b>Силен против:</b> Одиночных целей и героев с каналами заклинаний.<br><b>Контрят:</b> Anti-Mage, Lifestealer, Abaddon, Nyx Assassin, Rubick.",
-    skills: [
-      {
-        name: "Earth Spike", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/lion_impale.png",
-        desc: "Пускает шипы из-под земли по линии, подбрасывая врагов в воздух и оглушая их.", isPassive: false,
-        levels: [
-          { lvl: 1, mana: "100 МАНА", cd: "12 СЕК", effect: "Стан 1.1 сек, 85 урона" },
-          { lvl: 2, mana: "120 МАНА", cd: "11 СЕК", effect: "Стан 1.6 сек, 160 урона" },
-          { lvl: 3, mana: "140 МАНА", cd: "10 СЕК", effect: "Стан 2.1 сек, 235 урона" },
-          { lvl: 4, mana: "160 МАНА", cd: "9 СЕК", effect: "Стан 2.6 сек, 310 урона" }
-        ]
-      },
-      {
-        name: "Hex", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/lion_voodoo.png",
-        desc: "Превращает вражеского героя в безобидную лягушку, отменяя все его способности и пассивные эффекты.", isPassive: false,
-        levels: [
-          { lvl: 1, mana: "70 МАНА", cd: "15 СЕК", effect: "Превращение 2.25 сек" },
-          { lvl: 2, mana: "120 МАНА", cd: "12 СЕК", effect: "Превращение 2.75 сек" },
-          { lvl: 3, mana: "170 МАНА", cd: "9 СЕК", effect: "Превращение 3.25 сек" },
-          { lvl: 4, mana: "220 МАНА", cd: "6 СЕК", effect: "Превращение 3.75 сек" }
-        ]
-      },
-      {
-        name: "Mana Drain", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/lion_mana_drain.png",
-        desc: "Высасывает ману у вражеского юнита, замедляя его скорость передвижения.", isPassive: false,
-        levels: [
-          { lvl: 1, mana: "10 МАНА", cd: "15 СЕК", effect: "Высас 120 маны в сек" },
-          { lvl: 2, mana: "10 МАНА", cd: "12 СЕК", effect: "Высас 180 маны в сек" },
-          { lvl: 3, mana: "10 МАНА", cd: "9 СЕК", effect: "Высас 240 маны в сек" },
-          { lvl: 4, mana: "10 МАНА", cd: "6 СЕК", effect: "Высас 300 маны в сек" }
-        ]
-      },
-      {
-        name: "Finger of Death", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/lion_finger_of_death.png",
-        desc: "Обрушивает смертоносный энергетический луч на врага, нанося колоссальный урон (накапливает урон при убийствах).", isPassive: false,
-        levels: [
-          { lvl: 1, mana: "200 МАНА", cd: "160 СЕК", effect: "600 магического урона" },
-          { lvl: 2, mana: "420 МАНА", cd: "100 СЕК", effect: "775 магического урона" },
-          { lvl: 3, mana: "650 МАНА", cd: "40 СЕК", effect: "950 магического урона" }
-        ]
-      }
-    ]
-  },
-  {
     name: "Shadow Demon", dota1: "Azhakir", attr: "Intelligence", faction: "Scourge",
     img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/shadow_demon.png",
     bio: "<p>Демон теней Ажакир, мастер создания идеальных иллюзий-искушений, тюремных изгнаний и разрушительных ядовитых проклятий.</p>",
@@ -8728,8 +8656,6 @@ const heroesData = [
       }
     ]
   },
-  
-
   // --- ИНТЕЛЛЕКТ (INTELLIGENCE) — SCOURGE ---
   {
     name: "Lion", dota1: "Demon Witch", attr: "Intelligence", faction: "Scourge",
