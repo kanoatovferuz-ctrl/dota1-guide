@@ -6065,8 +6065,80 @@ const heroesData = [
     ]
   },
   {
+    name: "Ringmaster", dota1: "Ringmaster", attr: "Intelligence", faction: "Scourge",
+    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/ringmaster.png",
+    bio: "<p>Зловещий распорязитель карнавала и кукольного театра, использующий механические ловушки, смертоносные фокусы и гипнотические колеса.</p>",
+    itemsBuild: {
+      early: [
+        { name: "Tango", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/tango.png" },
+        { name: "Salve", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/flask.png" },
+        { name: "Null Talisman", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/null_talisman.png" },
+        { name: "Branch", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png" },
+        { name: "Wand", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/magic_wand.png" }
+      ],
+      mid: [
+        { name: "Arcane Boots", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/arcane_boots.png" },
+        { name: "Aether Lens", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/aether_lens.png" },
+        { name: "Force Staff", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/force_staff.png" },
+        { name: "Aghanim's Shard", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/aghanims_shard.png" },
+        { name: "BKB", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/black_king_bar.png" },
+        { name: "Witch Blade", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/witch_blade.png" }
+      ],
+      late: [
+        { name: "Aghanim", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/ultimate_scepter.png" },
+        { name: "Octarine Core", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/octarine_core.png" },
+        { name: "Shiva's Guard", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/shivas_guard.png" },
+        { name: "BKB", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/black_king_bar.png" },
+        { name: "Scythe of Vyse", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/sheepstick.png" },
+        { name: "Travel Boots", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/travel_boots.png" }
+      ]
+    },
+    countersInfo: "<b>Силен против:</b> Героев ближнего боя и неподвижных целей.<br><b>Контрят:</b> Rubick, Silencer, Anti-Mage, Lifestealer.",
+    skills: [
+      {
+        name: "Tamber / Tamer Trick", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/ringmaster_tether.png",
+        desc: "Бросает кинжал или ловушку, нанося урон и замедляя противников.", isPassive: false,
+        levels: [
+          { lvl: 1, mana: "90 МАНА", cd: "12 СЕК", effect: "Урон 90, замедление" },
+          { lvl: 2, mana: "100 МАНА", cd: "11 СЕК", effect: "Урон 160, замедление" },
+          { lvl: 3, mana: "110 МАНА", cd: "10 СЕК", effect: "Урон 230, замедление" },
+          { lvl: 4, mana: "120 МАНА", cd: "9 СЕК", effect: "Урон 300, замедление" }
+        ]
+      },
+      {
+        name: "Impalement Arts", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/ringmaster_impalement.png",
+        desc: "Запускает летящие клинки, которые наносят урон задетым врагам на линии.", isPassive: false,
+        levels: [
+          { lvl: 1, mana: "85 МАНА", cd: "10 СЕК", effect: "80 урона" },
+          { lvl: 2, mana: "95 МАНА", cd: "9 СЕК", effect: "140 урона" },
+          { lvl: 3, mana: "105 МАНА", cd: "8 СЕК", effect: "200 урона" },
+          { lvl: 4, mana: "115 МАНА", cd: "7 СЕК", effect: "260 урона" }
+        ]
+      },
+      {
+        name: "Escape Act", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/ringmaster_the_box.png",
+        desc: "Прячет себя или союзника в ящик фокусника, защищая от урона и позволяя перемещаться.", isPassive: false,
+        levels: [
+          { lvl: 1, mana: "100 МАНА", cd: "24 СЕК", effect: "Защита и скрытие 2.5 сек" },
+          { lvl: 2, mana: "110 МАНА", cd: "21 СЕК", effect: "Защита и скрытие 3.0 сек" },
+          { lvl: 3, mana: "120 МАНА", cd: "18 СЕК", effect: "Защита и скрытие 3.5 сек" },
+          { lvl: 4, mana: "130 МАНА", cd: "15 СЕК", effect: "Защита и скрытие 4.0 сек" }
+        ]
+      },
+      {
+        name: "Spotlight / Wheel", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/ringmaster_wheel.png",
+        desc: "Призывает гипнотическое колесо, которое приковывает врагов к центру и наносит урон.", isPassive: false,
+        levels: [
+          { lvl: 1, mana: "150 МАНА", cd: "120 СЕК", effect: "Притяжение и урон" },
+          { lvl: 2, mana: "200 МАНА", cd: "100 СЕК", effect: "Притяжение и урон" },
+          { lvl: 3, mana: "250 МАНА", cd: "80 СЕК", effect: "Притяжение и урон" }
+        ]
+      }
+    ]
+  },
+  {
     name: "Zeus", dota1: "Lord of Olympia", attr: "Intelligence", faction: "Sentinel",
-    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/zeus.png",
+    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/zuus.png",
     bio: "<p>Владыка небесного пантеона Зевс, поражающий врагов молниями из самого грозового облака.</p>",
     itemsBuild: {
       early: [
