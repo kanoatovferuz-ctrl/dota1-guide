@@ -60,7 +60,7 @@ const itemsData = [
     name: "Observer Ward",
     category: "Consumables",
     cost: 0,
-    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/observer_ward.png",
+    img: "cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/observer_ward.png",
     desc: "Наблюдательный вард",
     usage: "Устанавливается на возвышенности или ключевые точки для обзора территории.",
     effects: "Дает широкий постоянный обзор вокруг точки установки в течение длительного времени.",
