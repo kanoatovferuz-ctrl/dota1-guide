@@ -151,68 +151,6 @@
     
     .send-tg-btn { width: 100%; padding: 12px; background: #0088cc; color: white; border: none; border-radius: 8px; font-weight: bold; margin-top: 15px; cursor: pointer; text-transform: uppercase; font-size: 11px; }
   </style>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dota 1 Guide</title>
-    <style>
-        body {
-            background-color: #0c0c12;
-            color: #e1e1e6;
-            font-family: sans-serif;
-            padding: 20px;
-            margin: 0;
-        }
-        h1 {
-            text-align: center;
-            color: #ffcc00;
-        }
-        /* Вкладки атрибутов */
-        .nav-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-        .tab-btn {
-            background-color: #1a1a24;
-            color: #fff;
-            border: 1px solid #333;
-            padding: 10px 20px;
-            cursor: pointer;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: 0.2s;
-        }
-        .tab-btn.active, .tab-btn:hover {
-            background-color: #ffcc00;
-            color: #000;
-        }
-        /* Сетка героев */
-        .heroes-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            gap: 15px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        .hero-card {
-            background: #16161f;
-            border: 1px solid #2a2a3b;
-            border-radius: 8px;
-            text-align: center;
-            padding: 10px;
-            cursor: pointer;
-        }
-        .hero-card img {
-            width: 100%;
-            border-radius: 4px;
-        }
-        .hero-card p {
-            margin: 8px 0 0 0;
-            font-size: 14px;
-        }
-    </style>
 </head>
 <body>
   <header>
@@ -241,7 +179,6 @@
       <button class="sub-tab-btn scourge" onclick="setFaction('Scourge', this)">SCOURGE</button>
     </div>
   </div>
-    <h1>Dota 1 Guide</h1>
 
   <!-- Основной контейнер -->
   <div class="container">
@@ -249,12 +186,6 @@
     <div class="items-catalog-grid" id="itemsGrid" style="display: none;"></div>
     <div id="futureView" style="display: none; text-align: center; color: #888; padding: 40px; font-size: 14px; text-transform: uppercase;">
       Этот раздел находится в разработке...
-    <!-- Кнопки переключения атрибутов (включая All для новых героев) -->
-    <div class="nav-tabs">
-        <button class="tab-btn active" onclick="filterHeroes('Strength', this)">Strength</button>
-        <button class="tab-btn" onclick="filterHeroes('Agility', this)">Agility</button>
-        <button class="tab-btn" onclick="filterHeroes('Intelligence', this)">Intelligence</button>
-        <button class="tab-btn" onclick="filterHeroes('All', this)">All</button>
     </div>
   </div>
 
@@ -495,41 +426,6 @@
           if (s.levels) {
             s.levels.forEach(l => {
               levelsHtml += `<div class="level-row"><span><b>УР. ${l.lvl}:</b> ${l.effect}</span><span style="color:#3498db;">${l.mana} | ${l.cd}</span></div>`;
-    <!-- Контейнер, куда будут выводиться герои -->
-    <div class="heroes-grid" id="heroesGrid"></div>
-
-    <!-- Подключаем наш файл с данными data.js -->
-    <script src="data.js"></script>
-
-    <script>
-        // Функция отрисовки героев
-        function renderHeroes(attrFilter) {
-            const grid = document.getElementById('heroesGrid');
-            grid.innerHTML = '';
-
-            // Проверяем, подключился ли массив heroesData из data.js
-            if (typeof heroesData === 'undefined') {
-                grid.innerHTML = '<p style="text-align:center; color:red;">Ошибка: файл data.js не найден или массив heroesData пуст!</p>';
-                return;
-            }
-
-            // Фильтруем героев по выбранному атрибуту
-            const filtered = heroesData.filter(hero => hero.attr === attrFilter);
-
-            if (filtered.length === 0) {
-                grid.innerHTML = '<p style="text-align:center;">В этой категории пока нет героев.</p>';
-                return;
-            }
-
-            // Создаем карточки для каждого героя
-            filtered.forEach(hero => {
-                const card = document.createElement('div');
-                card.className = 'hero-card';
-                card.innerHTML = `
-                    <img src="${hero.img}" alt="${hero.name}" onerror="this.src='https://via.placeholder.com/120x68?text=No+Image'">
-                    <p>${hero.name}</p>
-                `;
-                grid.appendChild(card);
             });
           }
           item.innerHTML = `
@@ -605,19 +501,5 @@
 
     renderHeroes();
   </script>
-        }
-
-        // Обработка кликов по вкладкам
-        function filterHeroes(attr, buttonElement) {
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            buttonElement.classList.add('active');
-            renderHeroes(attr);
-        }
-
-        // При загрузке страницы показываем Силу по умолчанию
-        window.onload = function() {
-            renderHeroes('Strength');
-        };
-    </script>
 </body>
 </html>
