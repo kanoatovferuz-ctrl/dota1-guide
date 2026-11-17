@@ -350,7 +350,7 @@
       });
     }
 
-   unction renderItems(filterCategory = 'All') {
+ function renderItems(filterCategory = 'All') {
     const grid = document.getElementById('itemsGrid');
     grid.innerHTML = '';
 
@@ -375,19 +375,19 @@
         `;
         grid.appendChild(card);
     });
-}
+ }
 
-// Функция фильтрации по кнопкам
-function filterItems(category, btnElement) {
-    // Переключаем активную кнопку в меню фильтров предметов
+     // Функция фильтрации по кнопкам
+ function filterItems(category, btnElement) {
+     // Переключаем активную кнопку в меню фильтров предметов
     const buttons = document.querySelectorAll('#itemsFilters .main-tab-btn');
-    buttons.forEach(btn => btn.classList.remove('active'));
-    btnElement.classList.add('active');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      btnElement.classList.add('active');
 
-    // Перерисовываем сетку с учетом выбранной категории
+     // Перерисовываем сетку с учетом выбранной категории
     renderItems(category);
-}
-
+    }
+  
     function setAttr(attr, btn) {
       currentAttr = attr;
       document.querySelectorAll('.main-tab-btn').forEach(b => b.classList.remove('active'));
