@@ -7216,6 +7216,78 @@ const heroesData = [
     ]
   },
   {
+    name: "Muerta", dota1: "Muerta", attr: "Intelligence", faction: "Scourge",
+    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/muerta.png",
+    bio: "<p>Призрачный стрелок Муэрта, владеющая потусторонними пистолетами, способная превращаться в неуязвимый для физических атак дух и сеять страх.</p>",
+    itemsBuild: {
+      early: [
+        { name: "Tango", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/tango.png" },
+        { name: "Salve", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/flask.png" },
+        { name: "Null Talisman", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/null_talisman.png" },
+        { name: "Branch", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png" },
+        { name: "Wand", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/magic_wand.png" }
+      ],
+      mid: [
+        { name: "Power Treads", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/power_treads.png" },
+        { name: "Maelstrom", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/maelstrom.png" },
+        { name: "Dragon Lance", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/dragon_lance.png" },
+        { name: "Aghanim's Shard", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/aghanims_shard.png" },
+        { name: "BKB", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/black_king_bar.png" },
+        { name: "Mjollnir", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/mjollnir.png" }
+      ],
+      late: [
+        { name: "Daedalus", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/greater_crit.png" },
+        { name: "Satanic", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/satanic.png" },
+        { name: "BKB", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/black_king_bar.png" },
+        { name: "Hurricane Pike", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/hurricane_pike.png" },
+        { name: "Aghanim", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/ultimate_scepter.png" },
+        { name: "Travel Boots", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/travel_boots.png" }
+      ]
+    },
+    countersInfo: "<b>Силен против:</b> Физических керри и героев без защиты от магии.<br><b>Контрят:</b> Anti-Mage, Silencer, Nyx Assassin, Pugna, Rubick.",
+    skills: [
+      {
+        name: "Dead Shot", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/muerta_dead_shot.png",
+        desc: "Выстреливает призрачной пулей по юниту или дереву, нанося урон, замедляя цель и отбрасывая её в сторону с эффектом страха.", isPassive: false,
+        levels: [
+          { lvl: 1, mana: "70 МАНА", cd: "16 СЕК", effect: "Урон 75, страх 1.0 сек" },
+          { lvl: 2, mana: "90 МАНА", cd: "14 СЕК", effect: "Урон 150, страх 1.25 сек" },
+          { lvl: 3, mana: "110 МАНА", cd: "12 СЕК", effect: "Урон 225, страх 1.5 сек" },
+          { lvl: 4, mana: "130 МАНА", cd: "10 СЕК", effect: "Урон 300, страх 1.75 сек" }
+        ]
+      },
+      {
+        name: "The Calling", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/muerta_the_calling.png",
+        desc: "Призывает призраков, которые кружат по области, замедляя врагов, накладывая безмолвие и нанося урон.", isPassive: false,
+        levels: [
+          { lvl: 1, mana: "140 МАНА", cd: "30 СЕК", effect: "Замедление, сайленс" },
+          { lvl: 2, mana: "160 МАНА", cd: "27 СЕК", effect: "Замедление, сайленс" },
+          { lvl: 3, mana: "180 МАНА", cd: "24 СЕК", effect: "Замедление, сайленс" },
+          { lvl: 4, mana: "200 МАНА", cd: "21 СЕК", effect: "Замедление, сайленс" }
+        ]
+      },
+      {
+        name: "Gunslinger", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/muerta_gunslinger.png",
+        desc: "Пассивно дает шанс выстрелить вторым патроном по случайной второй цели в радиусе атаки.", isPassive: true,
+        levels: [
+          { lvl: 1, mana: "ПАССИВНО", cd: "0 СЕК", effect: "Шанс двойного выстрела 20%" },
+          { lvl: 2, mana: "ПАССИВНО", cd: "0 СЕК", effect: "Шанс двойного выстрела 25%" },
+          { lvl: 3, mana: "ПАССИВНО", cd: "0 СЕК", effect: "Шанс двойного выстрела 30%" },
+          { lvl: 4, mana: "ПАССИВНО", cd: "0 СЕК", effect: "Шанс двойного выстрела 35%" }
+        ]
+      },
+      {
+        name: "Pierce the Veil", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/muerta_pierce_the_veil.png",
+        desc: "Превращается в дух: получает полный иммунитет к физическому урону, превращает атаки в магические и усиливает их.", isPassive: false,
+        levels: [
+          { lvl: 1, mana: "150 МАНА", cd: "50 СЕК", effect: "Длительность 6 сек, +50 урона" },
+          { lvl: 2, mana: "200 МАНА", cd: "45 СЕК", effect: "Длительность 7 сек, +100 урона" },
+          { lvl: 3, mana: "250 МАНА", cd: "40 СЕК", effect: "Длительность 8 сек, +150 урона" }
+        ]
+      }
+    ]
+  },
+   {
     name: "Enigma", dota1: "Darchrow", attr: "Intelligence", faction: "Scourge",
     img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/enigma.png",
     bio: "<p>Загадочный вестник хаоса и гравитации, способный создавать черные дыры, призывать живой распад и подчинять себе лесных эйдолонов.</p>",
