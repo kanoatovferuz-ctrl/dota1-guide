@@ -3156,6 +3156,79 @@ const heroesData = [
     ]
   },
   {
+    name: "Monkey King", dota1: "Monkey King", attr: "Agility", faction: "Sentinel",
+    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/monkey_king.png",
+    bio: "<p>Царь Обезьян, способный прыгать по деревьям, создавать армию своих клонов и внезапно нападать из засады.</p>",
+    itemsBuild: {
+      early: [
+        { name: "Tango", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/tango.png" },
+        { name: "Salve", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/flask.png" },
+        { name: "Quelling", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/quelling_blade.png" },
+        { name: "Orb of Venom", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/orb_of_venom.png" },
+        { name: "Branch", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png" },
+        { name: "Wand", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/magic_wand.png" }
+      ],
+      mid: [
+        { name: "Phase Boots", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/phase_boots.png" },
+        { name: "Echo Sabre", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/echo_sabre.png" },
+        { name: "Desolator", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/desolator.png" },
+        { name: "BKB", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/black_king_bar.png" },
+        { name: "Aghanim's Shard", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/aghanims_shard.png" },
+        { name: "Basher", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/basher.png" }
+      ],
+      late: [
+        { name: "Abyssal Blade", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/abyssal_blade.png" },
+        { name: "Skadi", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/skadi.png" },
+        { name: "Satanic", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/satanic.png" },
+        { name: "BKB", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/black_king_bar.png" },
+        { name: "Assault Cuirass", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/assault.png" },
+        { name: "Travel Boots", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/travel_boots.png" }
+      ]
+    },
+    countersInfo: "<b>Силен против:</b> Героев ближнего боя и неподвижных целей.<br><b>Контрят:</b> Batrider, Timbersaw, Clockwerk, Venomancer, Zeus (срубают деревья).",
+    skills: [
+      {
+        name: "Boundless Strike", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/monkey_king_boundless_strike.png",
+        desc: "Увеличивает свой шест и бьет им о землю, оглушая всех врагов на линии и нанося критический урон от атаки.", isPassive: false,
+        levels: [
+          { lvl: 1, mana: "100 МАНА", cd: "22 СЕК", effect: "Крит 120%, стан 1.0 сек" },
+          { lvl: 2, mana: "100 МАНА", cd: "20 СЕК", effect: "Крит 150%, стан 1.3 сек" },
+          { lvl: 3, mana: "100 МАНА", cd: "18 СЕК", effect: "Крит 180%, стан 1.6 сек" },
+          { lvl: 4, mana: "100 МАНА", cd: "16 СЕК", effect: "Крит 210%, стан 1.9 сек" }
+        ]
+      },
+      {
+        name: "Tree Dance", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/monkey_king_tree_dance.png",
+        desc: "Позволяет запрыгнуть на вершину дерева и осматривать окрестности с безопасной высоты.", isPassive: false,
+        levels: [
+          { lvl: 1, mana: "0 МАНА", cd: "1.4 СЕК", effect: "Прыжок на дерево" },
+          { lvl: 2, mana: "0 МАНА", cd: "1.2 СЕК", effect: "Прыжок на дерево" },
+          { lvl: 3, mana: "0 МАНА", cd: "1.0 СЕК", effect: "Прыжок на дерево" },
+          { lvl: 4, mana: "0 МАНА", cd: "0.8 СЕК", effect: "Прыжок на дерево" }
+        ]
+      },
+      {
+        name: "Jingu Mastery", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/monkey_king_jingu_mastery.png",
+        desc: "Накапливает заряды при атаках по вражескому герою; после 4 ударов накладывает мощный бафф на бонусный урон и вампиризм.", isPassive: true,
+        levels: [
+          { lvl: 1, mana: "ПАССИВНО", cd: "0 СЕК", effect: "+70 урона, 4 зарядов баффа" },
+          { lvl: 2, mana: "ПАССИВНО", cd: "0 СЕК", effect: "+100 урона, 4 зарядов баффа" },
+          { lvl: 3, mana: "ПАССИВНО", cd: "0 СЕК", effect: "+130 урона, 4 зарядов баффа" },
+          { lvl: 4, mana: "ПАССИВНО", cd: "0 СЕК", effect: "+160 урона, 4 зарядов баффа" }
+        ]
+      },
+      {
+        name: "Wukong's Command", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/monkey_king_wukongs_command.png",
+        desc: "Создает круг из солдат-клонов, которые атакуют вместе с героем в указанной области.", isPassive: false,
+        levels: [
+          { lvl: 1, mana: "100 МАНА", cd: "100 СЕК", effect: "Кольцо воинов, длительность 13 сек" },
+          { lvl: 2, mana: "100 МАНА", cd: "85 СЕК", effect: "Кольцо воинов, длительность 14 сек" },
+          { lvl: 3, mana: "100 МАНА", cd: "70 СЕК", effect: "Кольцо воинов, длительность 15 сек" }
+        ]
+      }
+    ]
+  },
+  {
     name: "Ember Spirit", dota1: "Xin", attr: "Agility", faction: "Sentinel",
     img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/ember_spirit.png",
     bio: "<p>Мастер боевых искусств и стихии огня, способный мгновенно перемещаться по всей карте с помощью своих огненных копий-остатков.</p>",
