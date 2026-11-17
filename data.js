@@ -1,158 +1,202 @@
 //ХРАНИЛИЩЕ ДАННЫХ «ПРОЕКТ X» — DOTA 1 / DOTA 2 GUIDE
 
 const itemsData = [
-  // РАСХОДНИКИ И БАЗОВЫЕ
+  // --- КОЛОНКА 1: РАСХОДНИКИ И СВИТКИ ---
   {
-    name: "Tango", cost: "Цена: 90 золота",
-    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/tango.png",
-    desc: "Поедает выбранное дерево, постепенно восстанавливая 115 HP за 16 секунд.",
-    recipeItems: [], heroes: "Все герои на стадии лайнинга.", counters: "Быстрый размен на линии."
+    name: "Town Portal Scroll",
+    cost: 100,
+    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/tpscroll.png",
+    desc: "Позволяет телепортироваться к союзным постройкам.",
+    components: "Нет",
+    suitability: "Всем героям"
   },
   {
-    name: "Healing Salve", cost: "Цена: 100 золота",
+    name: "Healing Salve",
+    cost: 100,
     img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/flask.png",
-    desc: "Восстанавливает 400 HP цели за 10 секунд. Сбивается уроном вражеских героев.",
-    recipeItems: [], heroes: "Лейнеры и саппорты.", counters: "Быстрый отхил после драки."
+    desc: "Восстанавливает здоровье в течение времени.",
+    components: "Нет",
+    suitability: "Герои на линии"
   },
   {
-    name: "Quelling Blade", cost: "Цена: 100 золота",
-    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/quelling_blade.png",
-    desc: "Дает +8 урона по крипам для героев ближнего боя. Позволяет срубать деревья.",
-    recipeItems: [], heroes: "Керри ближнего боя (Sven, PA, AM, Juggernaut).", counters: "Против Sprout у Nature's Prophet."
+    name: "Tango",
+    cost: 90,
+    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/tango.png",
+    desc: "Поедание дерева для восстановления HP.",
+    components: "Нет",
+    suitability: "Всем героям"
   },
   {
-    name: "Iron Branch", cost: "Цена: 50 золота",
+    name: "Observer & Sentry Ward",
+    cost: 50,
+    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/observer_ward.png",
+    desc: "Дает обзор или обнаруживает невидимость.",
+    components: "Нет",
+    suitability: "Саппорты"
+  },
+  {
+    name: "Dust of Appearance",
+    cost: 80,
+    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/dust.png",
+    desc: "Обнаруживает невидимых врагов поблизости.",
+    components: "Нет",
+    suitability: "Для контры инвиза"
+  },
+  {
+    name: "Smoke of Deceit",
+    cost: 50,
+    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/smoke_of_deceit.png",
+    desc: "Скрывает всю команду от вражеских вардов и башен.",
+    components: "Нет",
+    suitability: "Для гангов"
+  },
+  {
+    name: "Enchanted Mango",
+    cost: 65,
+    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/enchanted_mango.png",
+    desc: "Мгновенно восполняет запас маны при использовании.",
+    components: "Нет",
+    suitability: "Кастерам"
+  },
+  {
+    name: "Healing Lotus",
+    cost: 0,
+    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/faerie_fire.png",
+    desc: "Небольшое восстановление здоровья и урона.",
+    components: "Нет",
+    suitability: "Начальный затар"
+  },
+
+  // --- КОЛОНКА 2: АТРИБУТЫ И СТАТЫ ---
+  {
+    name: "Iron Branch",
+    cost: 50,
     img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png",
-    desc: "Дает +1 ко всем атрибутам. Можно посадить дерево, съев его Танго.",
-    recipeItems: [], heroes: "Все герои для старта.", counters: "Универсальный начальный предмет."
+    desc: "+1 ко всем атрибутам.",
+    components: "Нет",
+    suitability: "Всем героям"
   },
   {
-    name: "Magic Wand", cost: "Цена: 450 золота",
-    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/magic_wand.png",
-    desc: "Накапливает заряды, когда враги используют заклинания. Восстанавливает здоровье и ману.",
-    recipeItems: [
-      { name: "Magic Stick", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/magic_stick.png" },
-      { name: "Iron Branch", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png" },
-      { name: "Iron Branch", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png" },
-      { name: "Recipe", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/recipe.png" }
-    ],
-    heroes: "Все герои на линии.", counters: "Против спамеров заклинаниями."
+    name: "Gauntlets of Strength",
+    cost: 145,
+    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/gauntlets.png",
+    desc: "+3 к силе.",
+    components: "Нет",
+    suitability: "Силовики"
   },
   {
-    name: "Power Treads", cost: "Цена: 1400 золота",
-    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/power_treads.png",
-    desc: "Дает скорость атаки, передвижения и переключаемый бонус к атрибуту.",
-    recipeItems: [
-      { name: "Boots of Speed", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/boots.png" },
-      { name: "Gloves of Haste", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/gloves.png" },
-      { name: "Band of Elvenskin", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/boots_of_elves.png" }
-    ],
-    heroes: "Большинство керри и универсалов.", counters: "Для мобильности и статов."
+    name: "Slippers of Agility",
+    cost: 145,
+    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/slippers.png",
+    desc: "+3 к ловкости.",
+    components: "Нет",
+    suitability: "Ловкачи"
   },
   {
-    name: "Blink Dagger", cost: "Цена: 2250 золота",
-    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/blink.png",
-    desc: "Телепортирует на расстояние до 1200 единиц. Сбивается при получении урона от героев на 3 сек.",
-    recipeItems: [], heroes: "Axe, Sven, Tiny, Centaur, Sand King, Tidehunter.", counters: "Для мгновенной инициации."
+    name: "Mantle of Intelligence",
+    cost: 145,
+    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/mantle.png",
+    desc: "+3 к интеллекту.",
+    components: "Нет",
+    suitability: "Маги"
   },
   {
-    name: "Shadow Blade", cost: "Цена: 3000 золота",
-    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/invis_sword.png",
-    desc: "Делает невидимым на 14 секунд (+20% скорости). Первая атака наносит +175 доп. урона.",
-    recipeItems: [
-      { name: "Shadow Amulet", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/shadow_amulet.png" },
-      { name: "Claymore", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/claymore.png" }
-    ],
-    heroes: "Sniper, Shadow Fiend, Slark, Dragon Knight, Drow Ranger.", counters: "Для внезапных нападений."
+    name: "Circlet",
+    cost: 155,
+    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/circlet.png",
+    desc: "+2 ко всем атрибутам.",
+    components: "Нет",
+    suitability: "Для универсальных героев"
   },
   {
-    name: "Black King Bar", cost: "Цена: 4050 золота",
-    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/black_king_bar.png",
-    desc: "Дает невосприимчивость к магии (Avatar) и 100% сопротивление магическому урону.",
-    recipeItems: [
-      { name: "Ogre Axe", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/ogre_axe.png" },
-      { name: "Mithril Hammer", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/mithril_hammer.png" },
-      { name: "Recipe", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/recipe.png" }
-    ],
-    heroes: "Sven, PA, Juggernaut, SF, Ursa, Gyrocopter.", counters: "Контрит магов и контролеров."
+    name: "Belt of Strength",
+    cost: 450,
+    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/belt_of_strength.png",
+    desc: "+6 к силе.",
+    components: "Нет",
+    suitability: "Компонент предметов"
   },
   {
-    name: "Daedalus", cost: "Цена: 5100 золота",
-    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/greater_crit.png",
-    desc: "Дает +88 к урону и 30% шанс нанести критический удар в размере 225%.",
-    recipeItems: [
-      { name: "Crystalys", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/lesser_crit.png" },
-      { name: "Demon Edge", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/demon_edge.png" },
-      { name: "Recipe", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/recipe.png" }
-    ],
-    heroes: "Sven, Kunkka, Sniper, PA, Drow Ranger.", counters: "Против плотных танков с огромным HP."
+    name: "Band of Elvenskin",
+    cost: 450,
+    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/band_of_elvenskin.png",
+    desc: "+6 к ловкости.",
+    components: "Нет",
+    suitability: "Компонент предметов"
   },
   {
-    name: "Manta Style", cost: "Цена: 4600 золота",
-    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/manta.png",
-    desc: "Призывает 2 иллюзии и сбрасывает негативные эффекты (сайленс, замедление).",
-    recipeItems: [
-      { name: "Yasha", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/yasha.png" },
-      { name: "Ultimate Orb", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/ultimate_orb.png" },
-      { name: "Recipe", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/recipe.png" }
-    ],
-    heroes: "Anti-Mage, Terrorblade, Luna, Phantom Lancer, Medusa.", counters: "Сбрасывает сайленс и дебафы."
+    name: "Robe of the Magi",
+    cost: 450,
+    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/robe.png",
+    desc: "+6 к интеллекту.",
+    components: "Нет",
+    suitability: "Компонент предметов"
+  },
+
+  // --- КОЛОНКА 3: ОРУЖИЕ И КОМПОНЕНТЫ УРОНА ---
+  {
+    name: "Quelling Blade",
+    cost: 100,
+    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/quelling_blade.png",
+    desc: "Дополнительный урон по крипам.",
+    components: "Нет",
+    suitability: "Керри ближнего боя"
   },
   {
-    name: "Satanic", cost: "Цена: 5050 золота",
-    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/satanic.png",
-    desc: "Дает +38 урона, +25 силы и 30% вампиризма. Активация увеличивает вампиризм до 175% на 6 сек.",
-    recipeItems: [
-      { name: "Morbid Mask", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/lifesteal.png" },
-      { name: "Blade of Alacrity", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/blade_of_alacrity.png" },
-      { name: "Reaver", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/reaver.png" }
-    ],
-    heroes: "Sven, Ursa, Gyrocopter, Luna, PA.", counters: "Выживаемость под плотным фокусом."
+    name: "Blades of Attack",
+    cost: 450,
+    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/blades_of_attack.png",
+    desc: "+9 к урону.",
+    components: "Нет",
+    suitability: "Компонент"
   },
   {
-    name: "Heart of Tarrasque", cost: "Цена: 5000 золота",
-    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/heart.png",
-    desc: "Дает +40 к силе, +250 к HP и восстановление 1.6% от максимального здоровья в секунду вне боя.",
-    recipeItems: [
-      { name: "Vitality Booster", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/vitality_booster.png" },
-      { name: "Energy Booster", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/energy_booster.png" },
-      { name: "Reaver", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/reaver.png" },
-      { name: "Recipe", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/recipe.png" }
-    ],
-    heroes: "Pudge, Centaur, Axe, Bristleback, Spectre.", counters: "Против затяжных атак."
+    name: "Chainmail",
+    cost: 550,
+    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/chainmail.png",
+    desc: "+5 к броне.",
+    components: "Нет",
+    suitability: "Компонент защиты"
   },
   {
-    name: "Desolator", cost: "Цена: 3500 золота",
-    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/desolator.png",
-    desc: "Атаки уменьшают бронь цели на 6 единиц и наносят дополнительный урон.",
-    recipeItems: [
-      { name: "Mithril Hammer", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/mithril_hammer.png" },
-      { name: "Mithril Hammer", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/mithril_hammer.png" },
-      { name: "Blades of Attack", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/blades_of_attack.png" }
-    ],
-    heroes: "Phantom Assassin, Clinkz, TA, Weaver.", counters: "Снос брони и зданий."
+    name: "Helm of Iron Will",
+    cost: 975,
+    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/helm_of_iron_will.png",
+    desc: "+6 к броне и регенерация HP.",
+    components: "Нет",
+    suitability: "Танки"
   },
   {
-    name: "Glimmer Cape", cost: "Цена: 1950 золота",
-    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/glimmer_cape.png",
-    desc: "Накладывает невидимость и щит с защитой от магии на себя или союзника.",
-    recipeItems: [
-      { name: "Shadow Amulet", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/shadow_amulet.png" },
-      { name: "Cloak", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/cloak.png" }
-    ],
-    heroes: "Crystal Maiden, Lion, Support heroes.", counters: "Спасение от магии."
+    name: "Broadsword",
+    cost: 1000,
+    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/broadsword.png",
+    desc: "+15 к урону.",
+    components: "Нет",
+    suitability: "Компонент"
   },
   {
-    name: "Aghanim's Scepter", cost: "Цена: 4200 золота",
-    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/ultimate_scepter.png",
-    desc: "Улучшает ультимативную способность героя или дает новую способность.",
-    recipeItems: [
-      { name: "Point Booster", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/point_booster.png" },
-      { name: "Staff of Wizardry", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/staff_of_wizardry.png" },
-      { name: "Ogre Axe", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/ogre_axe.png" },
-      { name: "Blade of Alacrity", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/blade_of_alacrity.png" }
-    ],
-    heroes: "Lion, Pudge, Lina, Invoker.", counters: "Усиление потенциала героя."
+    name: "Quarterstaff",
+    cost: 875,
+    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/quarterstaff.png",
+    desc: "+10 к урону и скорости атаки.",
+    components: "Нет",
+    suitability: "Компонент"
+  },
+  {
+    name: "Claymore",
+    cost: 1350,
+    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/claymore.png",
+    desc: "+20 к урону.",
+    components: "Нет",
+    suitability: "Компонент"
+  },
+  {
+    name: "Mithril Hammer",
+    cost: 1600,
+    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/mithril_hammer.png",
+    desc: "+24 к урону.",
+    components: "Нет",
+    suitability: "Компонент мощных артефактов"
   }
 ];
 
