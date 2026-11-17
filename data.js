@@ -1840,6 +1840,444 @@ const heroesData = [
     ]
   },
   {
+    name: "Undying", dota1: "Dirge", attr: "Strength", faction: "Scourge",
+    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/undying.png",
+    bio: "<p>Некромант-пожиратель душ, способный призывать гниющие зомби-томбы и превращаться в жуткого монстра.</p>",
+    itemsBuild: {
+      early: [
+        { name: "Tango", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/tango.png" },
+        { name: "Salve", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/flask.png" },
+        { name: "Soul Ring", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/soul_ring.png" },
+        { name: "Branch", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png" },
+        { name: "Branch", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png" },
+        { name: "Magic Wand", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/magic_wand.png" }
+      ],
+      mid: [
+        { name: "Arcane Boots", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/arcane_boots.png" },
+        { name: "Hand of Midas", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/hand_of_midas.png" },
+        { name: "Pipe of Insight", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/pipe.png" },
+        { name: "Crimson Guard", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/crimson_guard.png" },
+        { name: "Aghanim", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/ultimate_scepter.png" },
+        { name: "Shiva's Guard", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/shivas_guard.png" }
+      ],
+      late: [
+        { name: "Guardian Greaves", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/guardian_greaves.png" },
+        { name: "Heart", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/heart.png" },
+        { name: "Aghanim", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/ultimate_scepter.png" },
+        { name: "Refresher Orb", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/refresher.png" },
+        { name: "Octarine Core", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/octarine_core.png" },
+        { name: "Travel Boots", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/travel_boots.png" }
+      ]
+    },
+    countersInfo: "<b>Силен против:</b> Героев ближнего боя на линии (Axe, Centaur).<br><b>Контрят:</b> Gyrocopter, Medusa, Luna, Quelling Blade (на могилу).",
+    skills: [
+      {
+        name: "Decay", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/undying_decay.png",
+        desc: "Вытягивает силу у врагов в указанной области, нанося урон и временно забирая их очки силы.", isPassive: false,
+        levels: [
+          { lvl: 1, mana: "85 МАНА", cd: "10 СЕК", effect: "Крадет 4 силы, урон 80" },
+          { lvl: 2, mana: "90 МАНА", cd: "8 СЕК", effect: "Крадет 4 силы, урон 140" },
+          { lvl: 3, mana: "95 МАНА", cd: "6 СЕК", effect: "Крадет 4 силы, урон 200" },
+          { lvl: 4, mana: "100 МАНА", cd: "4 СЕК", effect: "Крадет 4 силы, урон 260" }
+        ]
+      },
+      {
+        name: "Soul Rip", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/undying_soul_rip.png",
+        desc: "Вырывает духов из юнитов поблизости, нанося урон врагам или исцеляя союзников в зависимости от числа юнитов.", isPassive: false,
+        levels: [
+          { lvl: 1, mana: "80 МАНА", cd: "19 СЕК", effect: "Урон/хил 25 за юнита" },
+          { lvl: 2, mana: "90 МАНА", cd: "16 СЕК", effect: "Урон/хил 35 за юнита" },
+          { lvl: 3, mana: "100 МАНА", cd: "13 СЕК", effect: "Урон/хил 45 за юнита" },
+          { lvl: 4, mana: "110 МАНА", cd: "10 СЕК", effect: "Урон/хил 55 за юнита" }
+        ]
+      },
+      {
+        name: "Tombstone", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/undying_tombstone.png",
+        desc: "Призывает надгробный камень, который создает зомби возле каждого врага с пониженным здоровьем.", isPassive: false,
+        levels: [
+          { lvl: 1, mana: "120 МАНА", cd: "85 СЕК", effect: "Зомби замедляют атаку" },
+          { lvl: 2, mana: "130 МАНА", cd: "80 СЕК", effect: "Зомби замедляют атаку" },
+          { lvl: 3, mana: "140 МАНА", cd: "75 СЕК", effect: "Зомби замедляют атаку" },
+          { lvl: 4, mana: "150 МАНА", cd: "70 СЕК", effect: "Зомби замедляют атаку" }
+        ]
+      },
+      {
+        name: "Flesh Golem", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/undying_flesh_golem.png",
+        desc: "Превращает героя в чудовищного голема, увеличивая здоровье и распространяя чуму вокруг.", isPassive: false,
+        levels: [
+          { lvl: 1, mana: "100 МАНА", cd: "120 СЕК", effect: "+400 HP, вампиризм от атак" },
+          { lvl: 2, mana: "150 МАНА", cd: "110 СЕК", effect: "+700 HP, вампиризм от атак" },
+          { lvl: 3, mana: "200 МАНА", cd: "100 СЕК", effect: "+1000 HP, вампиризм от атак" }
+        ]
+      }
+    ]
+  },
+  {
+    name: "Skeleton King", dota1: "Leoric", attr: "Strength", faction: "Scourge",
+    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/wraith_king.png",
+    bio: "<p>Бессмертный монарх Тьмы, который после гибели всегда восстает из пепла благодаря силе реинкарнации.</p>",
+    itemsBuild: {
+      early: [
+        { name: "Tango", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/tango.png" },
+        { name: "Salve", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/flask.png" },
+        { name: "Quelling", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/quelling_blade.png" },
+        { name: "Bracer", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/bracer.png" },
+        { name: "Branch", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png" },
+        { name: "Wand", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/magic_wand.png" }
+      ],
+      mid: [
+        { name: "Power Treads", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/power_treads.png" },
+        { name: "Armlet", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/armlet.png" },
+        { name: "Echo Sabre", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/echo_sabre.png" },
+        { name: "Radiance", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/radiance.png" },
+        { name: "BKB", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/black_king_bar.png" },
+        { name: "Aghanim", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/ultimate_scepter.png" }
+      ],
+      late: [
+        { name: "Assault Cuirass", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/assault.png" },
+        { name: "Daedalus", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/greater_crit.png" },
+        { name: "Satanic", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/satanic.png" },
+        { name: "BKB", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/black_king_bar.png" },
+        { name: "Heart", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/heart.png" },
+        { name: "Travel Boots", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/travel_boots.png" }
+      ]
+    },
+    countersInfo: "<b>Силен с:</b> Омега-керри за счет вампиризма и станов.<br><b>Контрят:</b> Diffusal Blade, Invoker, Anti-Mage (сжигание маны).",
+    skills: [
+      {
+        name: "Wraithfire Blast", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/skeleton_king_hellfire_blast.png",
+        desc: "Выпускает сгусток адского пламени, оглушающий цель и наносящий урон со временем.", isPassive: false,
+        levels: [
+          { lvl: 1, mana: "95 МАНА", cd: "14 СЕК", effect: "70 урона, стан 1.1 сек" },
+          { lvl: 2, mana: "110 МАНА", cd: "12 СЕК", effect: "140 урона, стан 1.4 сек" },
+          { lvl: 3, mana: "125 МАНА", cd: "10 СЕК", effect: "210 урона, стан 1.7 сек" },
+          { lvl: 4, mana: "140 МАНА", cd: "8 СЕК", effect: "280 урона, стан 2.0 сек" }
+        ]
+      },
+      {
+        name: "Vampiric Spirit", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/skeleton_king_vampiric_aura.png",
+        desc: "Пассивно дает вампиризм атакам и накапливает заряды скелетов для призыва в бой.", isPassive: true,
+        levels: [
+          { lvl: 1, mana: "ПАССИВНО", cd: "0 СЕК", effect: "15% вампиризма, макс 2 скелета" },
+          { lvl: 2, mana: "ПАССИВНО", cd: "0 СЕК", effect: "20% вампиризма, макс 4 скелета" },
+          { lvl: 3, mana: "ПАССИВНО", cd: "0 СЕК", effect: "25% вампиризма, макс 6 скелетов" },
+          { lvl: 4, mana: "ПАССИВНО", cd: "0 СЕК", effect: "30% вампиризма, макс 8 скелетов" }
+        ]
+      },
+      {
+        name: "Mortal Strike", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/skeleton_king_mortal_strike.png",
+        desc: "Шанс нанести сокрушительный критический удар по врагам.", isPassive: true,
+        levels: [
+          { lvl: 1, mana: "ПАССИВНО", cd: "4.0 СЕК", effect: "Крит 150%" },
+          { lvl: 2, mana: "ПАССИВНО", cd: "3.5 СЕК", effect: "Крит 190%" },
+          { lvl: 3, mana: "ПАССИВНО", cd: "3.0 СЕК", effect: "Крит 230%" },
+          { lvl: 4, mana: "ПАССИВНО", cd: "2.5 СЕК", effect: "Крит 270%" }
+        ]
+      },
+      {
+        name: "Reincarnation", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/skeleton_king_reincarnation.png",
+        desc: "При смерти героя автоматически возвращает его к жизни на том же месте при наличии маны.", isPassive: false,
+        levels: [
+          { lvl: 1, mana: "160 МАНА", cd: "200 СЕК", effect: "Возрождение через 5.0 сек" },
+          { lvl: 2, mana: "160 МАНА", cd: "140 СЕК", effect: "Возрождение через 5.0 сек" },
+          { lvl: 3, mana: "160 МАНА", cd: "80 СЕК", effect: "Возрождение через 5.0 сек" }
+        ]
+      }
+    ]
+  },
+  {
+    name: "Slardar", dota1: "Slithereen Guard", attr: "Strength", faction: "Scourge",
+    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/slardar.png",
+    bio: "<p>Чешуйчатый страж океанских глубин, способный оглушать врагов ударами хвоста и лишать их брони.</p>",
+    itemsBuild: {
+      early: [
+        { name: "Tango", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/tango.png" },
+        { name: "Salve", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/flask.png" },
+        { name: "Quelling", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/quelling_blade.png" },
+        { name: "Bracer", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/bracer.png" },
+        { name: "Branch", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png" },
+        { name: "Wand", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/magic_wand.png" }
+      ],
+      mid: [
+        { name: "Power Treads", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/power_treads.png" },
+        { name: "Blink Dagger", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/blink.png" },
+        { name: "BKB", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/black_king_bar.png" },
+        { name: "Echo Sabre", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/echo_sabre.png" },
+        { name: "Assault Cuirass", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/assault.png" },
+        { name: "Aghanim", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/ultimate_scepter.png" }
+      ],
+      late: [
+        { name: "Assault Cuirass", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/assault.png" },
+        { name: "BKB", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/black_king_bar.png" },
+        { name: "Abyssal Blade", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/abyssal_blade.png" },
+        { name: "Satanic", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/satanic.png" },
+        { name: "Heart", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/heart.png" },
+        { name: "Travel Boots", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/travel_boots.png" }
+      ]
+    },
+    countersInfo: "<b>Силен против:</b> Невидимок и героев с низкой броней (Riki, Bounty Hunter).<br><b>Контрят:</b> Lifestealer, Ursa, Slark.",
+    skills: [
+      {
+        name: "Sprint", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/slardar_sprint.png",
+        desc: "Значительно увеличивает скорость передвижения и позволяет проходить сквозь юнитов.", isPassive: false,
+        levels: [
+          { lvl: 1, mana: "25 МАНА", cd: "23 СЕК", effect: "+17% скорости на 20 сек" },
+          { lvl: 2, mana: "25 МАНА", cd: "21 СЕК", effect: "+23% скорости на 20 сек" },
+          { lvl: 3, mana: "25 МАНА", cd: "19 СЕК", effect: "+29% скорости на 20 сек" },
+          { lvl: 4, mana: "25 МАНА", cd: "17 СЕК", effect: "+35% скорости на 20 сек" }
+        ]
+      },
+      {
+        name: "Slithereen Crush", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/slardar_slithereen_crush.png",
+        desc: "Бьет хвостом по земле, оглушая и замедляя всех врагов поблизости.", isPassive: false,
+        levels: [
+          { lvl: 1, mana: "80 МАНА", cd: "8 СЕК", effect: "70 урона, стан 1.0 сек" },
+          { lvl: 2, mana: "90 МАНА", cd: "8 СЕК", effect: "130 урона, стан 1.3 сек" },
+          { lvl: 3, mana: "100 МАНА", cd: "8 СЕК", effect: "190 урона, стан 1.6 сек" },
+          { lvl: 4, mana: "110 МАНА", cd: "8 СЕК", effect: "250 урона, стан 1.9 сек" }
+        ]
+      },
+      {
+        name: "Bash of the Deep", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/slardar_bash_of_the_deep.png",
+        desc: "Каждая четвертая атака наносит дополнительный урон и оглушает цель.", isPassive: true,
+        levels: [
+          { lvl: 1, mana: "ПАССИВНО", cd: "0 СЕК", effect: "60 урона, стан 1.0 сек" },
+          { lvl: 2, mana: "ПАССИВНО", cd: "0 СЕК", effect: "80 урона, стан 1.1 сек" },
+          { lvl: 3, mana: "ПАССИВНО", cd: "0 СЕК", effect: "100 урона, стан 1.2 сек" },
+          { lvl: 4, mana: "ПАССИВНО", cd: "0 СЕК", effect: "120 урона, стан 1.3 сек" }
+        ]
+      },
+      {
+        name: "Corrosive Haze", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/slardar_amplify_damage.png",
+        desc: "Освещает цель, лишая ее брони и раскрывая невидимость.", isPassive: false,
+        levels: [
+          { lvl: 1, mana: "25 МАНА", cd: "5 СЕК", effect: "-10 брони" },
+          { lvl: 2, mana: "25 МАНА", cd: "5 СЕК", effect: "-15 брони" },
+          { lvl: 3, mana: "25 МАНА", cd: "5 СЕК", effect: "-20 брони" }
+        ]
+      }
+    ]
+  },
+  {
+    name: "Spirit Breaker", dota1: "Bara", attr: "Strength", faction: "Scourge",
+    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/spirit_breaker.png",
+    bio: "<p>Грозный космический баратрум, способный мчаться сквозь всю карту и сносить врагов сокрушительным ударом.</p>",
+    itemsBuild: {
+      early: [
+        { name: "Tango", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/tango.png" },
+        { name: "Salve", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/flask.png" },
+        { name: "Urn", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/urn.png" },
+        { name: "Branch", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png" },
+        { name: "Branch", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png" },
+        { name: "Wand", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/magic_wand.png" }
+      ],
+      mid: [
+        { name: "Phase Boots", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/phase_boots.png" },
+        { name: "Drum of Endurance", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/drum.png" },
+        { name: "Shadow Blade", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/invis_sword.png" },
+        { name: "BKB", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/black_king_bar.png" },
+        { name: "Aghanim", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/ultimate_scepter.png" },
+        { name: "Harpoon", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/harpoon.png" }
+      ],
+      late: [
+        { name: "Silver Edge", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/silver_edge.png" },
+        { name: "Assault Cuirass", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/assault.png" },
+        { name: "BKB", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/black_king_bar.png" },
+        { name: "Heart", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/heart.png" },
+        { name: "Monkey King Bar", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/monkey_king_bar.png" },
+        { name: "Travel Boots", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/travel_boots.png" }
+      ]
+    },
+    countersInfo: "<b>Силен против:</b> Одиночных целей и сплитпушеров (Sniper, Tinker).<br><b>Контрят:</b> Linken's Sphere, Windwaker, Counter Helix.",
+    skills: [
+      {
+        name: "Charge of Darkness", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/spirit_breaker_charge_of_darkness.png",
+        desc: "Набирает скорость, устремляясь сквозь всю карту к выбранному врагу для оглушения.", isPassive: false,
+        levels: [
+          { lvl: 1, mana: "100 МАНА", cd: "17 СЕК", effect: "Стан 1.2 сек" },
+          { lvl: 2, mana: "100 МАНА", cd: "15 СЕК", effect: "Стан 1.6 сек" },
+          { lvl: 3, mana: "100 МАНА", cd: "13 СЕК", effect: "Стан 2.0 сек" },
+          { lvl: 4, mana: "100 МАНА", cd: "11 СЕК", effect: "Стан 2.4 сек" }
+        ]
+      },
+      {
+        name: "Empowering Haste", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/spirit_breaker_empowering_haste.png",
+        desc: "Пассивно увеличивает скорость передвижения героя и дает бонус союзникам.", isPassive: true,
+        levels: [
+          { lvl: 1, mana: "ПАССИВНО", cd: "0 СЕК", effect: "+6% скорости передвижения" },
+          { lvl: 2, mana: "ПАССИВНО", cd: "0 СЕК", effect: "+10% скорости передвижения" },
+          { lvl: 3, mana: "ПАССИВНО", cd: "0 СЕК", effect: "+14% скорости передвижения" },
+          { lvl: 4, mana: "ПАССИВНО", cd: "0 СЕК", effect: "+18% скорости передвижения" }
+        ]
+      },
+      {
+        name: "Greater Bash", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/spirit_breaker_greater_bash.png",
+        desc: "Шанс при атаке нанести дополнительный урон от скорости и отбросить врага назад.", isPassive: true,
+        levels: [
+          { lvl: 1, mana: "ПАССИВНО", cd: "1.5 СЕК", effect: "17% шанс, урон от скорости 15%" },
+          { lvl: 2, mana: "ПАССИВНО", cd: "1.5 СЕК", effect: "17% шанс, урон от скорости 20%" },
+          { lvl: 3, mana: "ПАССИВНО", cd: "1.5 СЕК", effect: "17% шанс, урон от скорости 25%" },
+          { lvl: 4, mana: "ПАССИВНО", cd: "1.5 СЕК", effect: "17% шанс, урон от скорости 30%" }
+        ]
+      },
+      {
+        name: "Nether Strike", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/spirit_breaker_nether_strike.png",
+        desc: "Телепортируется за спину врага вблых из пустоты, нанося сокрушительный бафнутый баш.", isPassive: false,
+        levels: [
+          { lvl: 1, mana: "125 МАНА", cd: "100 СЕК", effect: "150 урона" },
+          { lvl: 2, mana: "175 МАНА", cd: "80 СЕК", effect: "250 урона" },
+          { lvl: 3, mana: "225 МАНА", cd: "60 СЕК", effect: "350 урона" }
+        ]
+      }
+    ]
+  },
+  {
+    name: "Tidehunter", dota1: "Leviathan", attr: "Strength", faction: "Scourge",
+    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/tidehunter.png",
+    bio: "<p>Левиафан из темных глубин океана, способный вызывать разрушительные цунами и сбрасывать негативные эффекты.</p>",
+    itemsBuild: {
+      early: [
+        { name: "Tango", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/tango.png" },
+        { name: "Salve", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/flask.png" },
+        { name: "Stout Shield", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/stout_shield.png" },
+        { name: "Branch", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png" },
+        { name: "Branch", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png" },
+        { name: "Magic Wand", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/magic_wand.png" }
+      ],
+      mid: [
+        { name: "Arcane Boots", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/arcane_boots.png" },
+        { name: "Blink Dagger", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/blink.png" },
+        { name: "Pipe of Insight", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/pipe.png" },
+        { name: "Shiva's Guard", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/shivas_guard.png" },
+        { name: "Refresher Orb", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/refresher.png" },
+        { name: "Aghanim", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/ultimate_scepter.png" }
+      ],
+      late: [
+        { name: "Refresher Orb", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/refresher.png" },
+        { name: "Shiva's Guard", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/shivas_guard.png" },
+        { name: "Heart", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/heart.png" },
+        { name: "Assault Cuirass", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/assault.png" },
+        { name: "Octarine Core", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/octarine_core.png" },
+        { name: "Travel Boots", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/travel_boots.png" }
+      ]
+    },
+    countersInfo: "<b>Силен против:</b> Физических керри (PA, Troll Warlord).<br><b>Контрят:</b> Rubick, Silencer, BKB.",
+    skills: [
+      {
+        name: "Gush", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/tidehunter_gush.png",
+        desc: "Выпускает струю воды во врага, снижая его броню и скорость передвижения.", isPassive: false,
+        levels: [
+          { lvl: 1, mana: "90 МАНА", cd: "12 СЕК", effect: "110 урона, -3 брони" },
+          { lvl: 2, mana: "100 МАНА", cd: "10 СЕК", effect: "160 урона, -4 брони" },
+          { lvl: 3, mana: "110 МАНА", cd: "8 СЕК", effect: "210 урона, -5 брони" },
+          { lvl: 4, mana: "120 МАНА", cd: "6 СЕК", effect: "260 урона, -6 брони" }
+        ]
+      },
+      {
+        name: "Kraken Shell", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/tidehunter_kraken_shell.png",
+        desc: "Пассивно блокирует урон от атак и автоматически сбрасывает негативные эффекты при накоплении урона.", isPassive: true,
+        levels: [
+          { lvl: 1, mana: "ПАССИВНО", cd: "0 СЕК", effect: "Блокирует 12 урона" },
+          { lvl: 2, mana: "ПАССИВНО", cd: "0 СЕК", effect: "Блокирует 24 урона" },
+          { lvl: 3, mana: "ПАССИВНО", cd: "0 СЕК", effect: "Блокирует 36 урона" },
+          { lvl: 4, mana: "ПАССИВНО", cd: "0 СЕК", effect: "Блокирует 48 урона" }
+        ]
+      },
+      {
+        name: "Anchor Smash", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/tidehunter_anchor_smash.png",
+        desc: "Размахивает тяжелым якорем, нанося урон всем врагам вокруг и снижая их атаку.", isPassive: false,
+        levels: [
+          { lvl: 1, mana: "30 МАНА", cd: "7 СЕК", effect: "85 урона, -30% атаки" },
+          { lvl: 2, mana: "40 МАНА", cd: "6 СЕК", effect: "140 урона, -40% атаки" },
+          { lvl: 3, mana: "50 МАНА", cd: "5 СЕК", effect: "195 урона, -50% атаки" },
+          { lvl: 4, mana: "60 МАНА", cd: "4 СЕК", effect: "250 урона, -60% атаки" }
+        ]
+      },
+      {
+        name: "Ravage", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/tidehunter_ravage.png",
+        desc: "Бьет щупальцами из-под земли во все стороны, оглушая всех врагов вокруг.", isPassive: false,
+        levels: [
+          { lvl: 1, mana: "150 МАНА", cd: "150 СЕК", effect: "200 урона, стан 2.0 сек" },
+          { lvl: 2, mana: "225 МАНА", cd: "130 СЕК", effect: "300 урона, стан 2.4 сек" },
+          { lvl: 3, mana: "300 МАНА", cd: "110 СЕК", effect: "400 урона, стан 2.8 сек" }
+        ]
+      }
+    ]
+  },
+  {
+    name: "Timbersaw", dota1: "Rizzrak", attr: "Strength", faction: "Scourge",
+    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/shredder.png",
+    bio: "<p>Одержимый гоблин в механическом костюме с пилами и огнеметами, ненавидящий лес и деревья.</p>",
+    itemsBuild: {
+      early: [
+        { name: "Tango", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/tango.png" },
+        { name: "Soul Ring", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/soul_ring.png" },
+        { name: "Stout Shield", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/stout_shield.png" },
+        { name: "Branch", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png" },
+        { name: "Branch", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png" },
+        { name: "Bottle", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/bottle.png" }
+      ],
+      mid: [
+        { name: "Arcane Boots", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/arcane_boots.png" },
+        { name: "Kaya and Sange", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/kaya_and_sange.png" },
+        { name: "Eul's Scepter", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/cyclone.png" },
+        { name: "Aghanim", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/ultimate_scepter.png" },
+        { name: "BKB", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/black_king_bar.png" },
+        { name: "Shiva's Guard", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/shivas_guard.png" }
+      ],
+      late: [
+        { name: "Shiva's Guard", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/shivas_guard.png" },
+        { name: "Octarine Core", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/octarine_core.png" },
+        { name: "BKB", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/black_king_bar.png" },
+        { name: "Heart", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/heart.png" },
+        { name: "Refresher Orb", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/refresher.png" },
+        { name: "Travel Boots", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/travel_boots.png" }
+      ]
+    },
+    countersInfo: "<b>Силен против:</b> Сильных физ-керри с броней (Sven, Phantom Assassin).<br><b>Контрят:</b> Silencer, Doom, Anti-Mage.",
+    skills: [
+      {
+        name: "Whirling Death", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/shredder_whirling_death.png",
+        desc: "Кружится в вихре лезвий, нанося урон врагам и срезая их основной атрибут (если рядом есть дерево — рубит его).", isPassive: false,
+        levels: [
+          { lvl: 1, mana: "80 МАНА", cd: "6 СЕК", effect: "100 урона, -15% атрибута" },
+          { lvl: 2, mana: "90 МАНА", cd: "6 СЕК", effect: "150 урона, -15% атрибута" },
+          { lvl: 3, mana: "100 МАНА", cd: "6 СЕК", effect: "200 урона, -15% атрибута" },
+          { lvl: 4, mana: "110 МАНА", cd: "6 СЕК", effect: "250 урона, -15% атрибута" }
+        ]
+      },
+      {
+        name: "Timber Chain", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/shredder_timber_chain.png",
+        desc: "Запускает цепь в дерево, притягивая к нему гоблина и нанося урон на пути.", isPassive: false,
+        levels: [
+          { lvl: 1, mana: "60 МАНА", cd: "4.0 СЕК", effect: "60 урона" },
+          { lvl: 2, mana: "70 МАНА", cd: "4.0 СЕК", effect: "120 урона" },
+          { lvl: 3, mana: "80 МАНА", cd: "4.0 СЕК", effect: "180 урона" },
+          { lvl: 4, mana: "90 МАНА", cd: "4.0 СЕК", effect: "240 урона" }
+        ]
+      },
+      {
+        name: "Reactive Armor", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/shredder_reactive_armor.png",
+        desc: "Пассивно увеличивает регенерацию здоровья и броню при получении атак от врагов.", isPassive: true,
+        levels: [
+          { lvl: 1, mana: "ПАССИВНО", cd: "0 СЕК", effect: "+1 брони и +0.5 HP за стек" },
+          { lvl: 2, mana: "ПАССИВНО", cd: "0 СЕК", effect: "+1 брони и +0.75 HP за стек" },
+          { lvl: 3, mana: "ПАССИВНО", cd: "0 СЕК", effect: "+1 брони и +1.0 HP за стек" },
+          { lvl: 4, mana: "ПАССИВНО", cd: "0 СЕК", effect: "+1 брони и +1.25 HP за стек" }
+        ]
+      },
+      {
+        name: "Chakram", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/shredder_chakram.png",
+        desc: "Запускает циркулярную пилу в указанную точку, которая режет врагов и замедляет их за счет маны.", isPassive: false,
+        levels: [
+          { lvl: 1, mana: "100 МАНА", cd: "8 СЕК", effect: "100 урона в сек" },
+          { lvl: 2, mana: "150 МАНА", cd: "7 СЕК", effect: "140 урона в сек" },
+          { lvl: 3, mana: "200 МАНА", cd: "6 СЕК", effect: "180 урона в сек" }
+        ]
+      }
+    ]
+  },
+  {
     name: "Chaos Knight", dota1: "Nessaj", attr: "Strength", faction: "Scourge",
     img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/chaos_knight.png",
     bio: "<p>Древний всадник хаоса, чьи удары непредсказуемы, а армия иллюзий способна стереть любого врага за секунду.</p>",
