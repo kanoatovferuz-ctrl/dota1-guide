@@ -469,43 +469,30 @@
       document.getElementById('heroModal').style.display = 'block';
     }
 
-   function openItemModal(item) {
-    // 1. Заполняем основные данные предмета
-    document.getElementById('itemModalImg').src = item.img;
-    document.getElementById('itemModalName').innerText = item.name;
-    document.getElementById('itemModalCost').innerText = "Цена: " + item.cost + " золота";
-    
-    document.getElementById('itemModalDesc').innerText = item.desc || "Описание отсутствует";
+    function openItemModal(item) {
+      document.getElementById('itemModalImg').src = item.img;
+      document.getElementById('itemModalName').innerText = item.name;
+      document.getElementById('itemModalCost').innerText = item.cost;
+      document.getElementById('itemModalDesc').innerText = item.desc;
+      
+      const recipeContainer = document.getElementById('itemModalRecipe');
+      const recipeCardBox = document.getElementById('recipeCardBox');
 
-    // 2. Блок с компонентами и рецептами
-    const recipeContainer = document.getElementById('itemModalRecipe');
-    const recipeCardBox = document.getElementById('recipeCardBox');
-
-    if (item.recipeItems && item.recipeItems.length > 0) {
+      if (item.recipeItems && item.recipeItems.length > 0) {
         recipeCardBox.style.display = 'block';
         recipeContainer.innerHTML = '';
         item.recipeItems.forEach(comp => {
-            recipeContainer.innerHTML += `
-                <div class="item-card-mini">
-                    <img src="${comp.img}" class="item-icon" onerror="this.src='https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png';">
-                    <div class="item-name-mini">${comp.name}</div>
-                </div>
-            `;
+          recipeContainer.innerHTML += `
+            <div class="item-card-mini">
+              <img src="${comp.img}" class="item-icon" onerror="this.src='https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png';">
+              <div class="item-name-mini">${comp.name}</div>
+            </div>
+          `;
         });
-    } else {
+      } else {
         recipeCardBox.style.display = 'none';
-    }
+      }
 
-    // 3. Заполняем дополнительные поля (герои и контртигра)
-    document.getElementById('itemModalHeroes').innerText = item.heroes || "Универсальный предмет.";
-    document.getElementById('itemModalCounters').innerText = item.counters || "По ситуации.";
-
-    // 4. Показываем само модальное окно (один раз, в конце)
-    document.getElementById('itemModal').style.display = 'flex';
-}
-
-    // 3. Показываем само модальное окно
-      document.getElementById('itemModal').style.display = 'flex';
       document.getElementById('itemModalHeroes').innerText = item.heroes || "Универсальный предмет.";
       document.getElementById('itemModalCounters').innerText = item.counters || "По ситуации.";
       document.getElementById('itemModal').style.display = 'block';
