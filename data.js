@@ -2132,7 +2132,7 @@ const heroesData = [
     ]
   },
   {
-    name: "Timbersaw", dota1: "Rizzrak", attr: "Strength", faction: "Scourge",
+    name: "Timbersaw", dota1: "Rizzrak", attr: "Strength", faction: "Sentinel",
     img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/shredder.png",
     bio: "<p>Одержимый гоблин в механическом костюме с пилами и огнеметами, ненавидящий лес и деревья.</p>",
     itemsBuild: {
@@ -2278,7 +2278,7 @@ const heroesData = [
     ]
   },
   {
-    name: "Dawnbreaker", dota1: "Valora", attr: "Strength", faction: "Scourge",
+    name: "Dawnbreaker", dota1: "Valora", attr: "Strength", faction: "Sentinel",
     img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/dawnbreaker.png",
     bio: "<p>Небесная воительница с боевым молотом, способная обрушиться с неба в любую точку сражения.</p>",
     itemsBuild: {
