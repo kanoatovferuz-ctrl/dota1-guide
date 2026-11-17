@@ -475,11 +475,9 @@
     document.getElementById('itemModalName').innerText = item.name;
     document.getElementById('itemModalCost').innerText = "Цена: " + item.cost + " золота";
     
-    // Если у тебя в объекте предмета есть подробное описание, используем его:
-    // (Или можешь вывести item.usage, item.effects и т.д., если они у тебя так записаны)
     document.getElementById('itemModalDesc').innerText = item.desc || "Описание отсутствует";
 
-    // 2. Блок с компонентами и рецептами (тот самый, что у тебя на скриншоте)
+    // 2. Блок с компонентами и рецептами
     const recipeContainer = document.getElementById('itemModalRecipe');
     const recipeCardBox = document.getElementById('recipeCardBox');
 
@@ -498,10 +496,16 @@
         recipeCardBox.style.display = 'none';
     }
 
-    // 3. Показываем само модальное окно
+    // 3. Заполняем дополнительные поля (герои и контртигра)
+    document.getElementById('itemModalHeroes').innerText = item.heroes || "Универсальный предмет.";
+    document.getElementById('itemModalCounters').innerText = item.counters || "По ситуации.";
+
+    // 4. Показываем само модальное окно (один раз, в конце)
     document.getElementById('itemModal').style.display = 'flex';
 }
 
+    // 3. Показываем само модальное окно
+      document.getElementById('itemModal').style.display = 'flex';
       document.getElementById('itemModalHeroes').innerText = item.heroes || "Универсальный предмет.";
       document.getElementById('itemModalCounters').innerText = item.counters || "По ситуации.";
       document.getElementById('itemModal').style.display = 'block';
