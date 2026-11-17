@@ -305,74 +305,74 @@ const heroesData = [
     ]
   },
   {
-    name: "Pit Lord", dota1: "Azgalor", attr: "Strength", faction: "Sentinel",
-    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/underlord.png",
-    bio: "<p>Повелитель бездны, управляющий пространством и порталами для мгновенного перемещения армии.</p>",
+    name: "Underlord", dota1: "Pit Lord", attr: "Strength", faction: "Scourge",
+    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/abyssal_underlord.png",
+    bio: "<p>Ужасный демон из Преисподней, способный призывать огненные штормы и телепортировать всю свою команду в любую точку карты.</p>",
     itemsBuild: {
       early: [
         { name: "Tango", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/tango.png" },
         { name: "Salve", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/flask.png" },
-        { name: "Ring of Basilius", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/ring_of_basilius.png" },
+        { name: "Stout Shield", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/stout_shield.png" },
         { name: "Branch", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png" },
         { name: "Branch", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png" },
-        { name: "Magic Wand", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/magic_wand.png" }
+        { name: "Wand", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/magic_wand.png" }
       ],
       mid: [
         { name: "Arcane Boots", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/arcane_boots.png" },
-        { name: "Mekansm", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/mekansm.png" },
         { name: "Pipe of Insight", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/pipe.png" },
         { name: "Crimson Guard", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/crimson_guard.png" },
-        { name: "Aghanim", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/ultimate_scepter.png" },
+        { name: "Aghanim's Shard", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/aghanims_shard.png" },
+        { name: "BKB", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/black_king_bar.png" },
         { name: "Shiva's Guard", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/shivas_guard.png" }
       ],
       late: [
-        { name: "Guardian Greaves", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/guardian_greaves.png" },
+        { name: "Shiva's Guard", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/shivas_guard.png" },
         { name: "Assault Cuirass", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/assault.png" },
         { name: "Heart", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/heart.png" },
+        { name: "BKB", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/black_king_bar.png" },
         { name: "Refresher Orb", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/refresher.png" },
-        { name: "Octarine Core", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/octarine_core.png" },
         { name: "Travel Boots", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/travel_boots.png" }
       ]
     },
-    countersInfo: "<b>Силен против:</b> Крипов и пушащих героев.<br><b>Контрят:</b> Silencer, Anti-Mage.",
+    countersInfo: "<b>Силен против:</b> Героев ближнего боя и пушеров.<br><b>Контрят:</b> Silencer, Disruptor, Anti-Mage.",
     skills: [
       {
         name: "Firestorm", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/abyssal_underlord_firestorm.png",
-        desc: "Вызывает волны огня в указанной области, нанося урон со временем.", isPassive: false,
+        desc: "Вызывает волны огненного шторма в указанной области, нанося урон в процентах от здоровья целей.", isPassive: false,
         levels: [
-          { lvl: 1, mana: "100 МАНА", cd: "14 СЕК", effect: "Урон в % от здоровья цели" },
-          { lvl: 2, mana: "110 МАНА", cd: "13 СЕК", effect: "Урон в % от здоровья цели" },
-          { lvl: 3, mana: "120 МАНА", cd: "12 СЕК", effect: "Урон в % от здоровья цели" },
-          { lvl: 4, mana: "130 МАНА", cd: "11 СЕК", effect: "Урон в % от здоровья цели" }
+          { lvl: 1, mana: "100 МАНА", cd: "13 СЕК", effect: "Урон волны + горение от HP" },
+          { lvl: 2, mana: "110 МАНА", cd: "12 СЕК", effect: "Урон волны + горение от HP" },
+          { lvl: 3, mana: "120 МАНА", cd: "11 СЕК", effect: "Урон волны + горение от HP" },
+          { lvl: 4, mana: "130 МАНА", cd: "10 СЕК", effect: "Урон волны + горение от HP" }
         ]
       },
       {
         name: "Pit of Malice", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/abyssal_underlord_pit_of_malice.png",
-        desc: "Создает смертоносную яму, которая ловит и удерживает наступающих на нее врагов.", isPassive: false,
+        desc: "Создает зловонную яму: любой враг, ступивший в неё, получает урон и оказывается обездвижен.", isPassive: false,
         levels: [
-          { lvl: 1, mana: "80 МАНА", cd: "30 СЕК", effect: "Удержание 1.2 сек" },
-          { lvl: 2, mana: "90 МАНА", cd: "26 СЕК", effect: "Удержание 1.4 сек" },
-          { lvl: 3, mana: "100 МАНА", cd: "22 СЕК", effect: "Удержание 1.6 сек" },
-          { lvl: 4, mana: "110 МАНА", cd: "18 СЕК", effect: "Удержание 1.8 сек" }
+          { lvl: 1, mana: "80 МАНА", cd: "30 СЕК", effect: "Обездвиживание 1.2 сек" },
+          { lvl: 2, mana: "90 МАНА", cd: "26 СЕК", effect: "Обездвиживание 1.4 сек" },
+          { lvl: 3, mana: "100 МАНА", cd: "22 СЕК", effect: "Обездвиживание 1.6 сек" },
+          { lvl: 4, mana: "110 МАНА", cd: "18 СЕК", effect: "Обездвиживание 1.8 сек" }
         ]
       },
       {
         name: "Atrophy Aura", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/abyssal_underlord_atrophy_aura.png",
-        desc: "Пассивно уменьшает урон врагов поблизости и временно повышает урон самого героя за смерть юнитов.", isPassive: true,
+        desc: "Пассивно уменьшает базовый урон врагов поблизости и временно усиливает Underlord, когда юниты погибают рядом.", isPassive: true,
         levels: [
-          { lvl: 1, mana: "ПАССИВНО", cd: "0 СЕК", effect: "-7% урона врагов" },
-          { lvl: 2, mana: "ПАССИВНО", cd: "0 СЕК", effect: "-14% урона врагов" },
-          { lvl: 3, mana: "ПАССИВНО", cd: "0 СЕК", effect: "-21% урона врагов" },
-          { lvl: 4, mana: "ПАССИВНО", cd: "0 СЕК", effect: "-28% урона врагов" }
+          { lvl: 1, mana: "ПАССИВНО", cd: "0 СЕК", effect: "-7% урон врагов" },
+          { lvl: 2, mana: "ПАССИВНО", cd: "0 СЕК", effect: "-14% урон врагов" },
+          { lvl: 3, mana: "ПАССИВНО", cd: "0 СЕК", effect: "-21% урон врагов" },
+          { lvl: 4, mana: "ПАССИВНО", cd: "0 СЕК", effect: "-28% урон врагов" }
         ]
       },
       {
-        name: "Fiend's Gate", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/abyssal_underlord_warp_rift.png",
-        desc: "Открывает врата для перемещения себя и союзников в указанную точку карты.", isPassive: false,
+        name: "Fiend's Gate", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/abyssal_underlord_dark_rift.png",
+        desc: "Открывает порталы, через которые Underlord и союзники могут быстро переместиться к союзному строению или герою.", isPassive: false,
         levels: [
-          { lvl: 1, mana: "50 МАНА", cd: "50 СЕК", effect: "Создание портала" },
-          { lvl: 2, mana: "50 МАНА", cd: "40 СЕК", effect: "Создание портала" },
-          { lvl: 3, mana: "50 МАНА", cd: "30 СЕК", effect: "Создание портала" }
+          { lvl: 1, mana: "100 МАНА", cd: "130 СЕК", effect: "Телепортация через врата" },
+          { lvl: 2, mana: "150 МАНА", cd: "110 СЕК", effect: "Телепортация через врата" },
+          { lvl: 3, mana: "200 МАНА", cd: "90 СЕК", effect: "Телепортация через врата" }
         ]
       }
     ]
