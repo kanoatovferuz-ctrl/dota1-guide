@@ -292,6 +292,7 @@
       document.getElementById('navFuture').classList.remove('active');
 
       document.getElementById('heroGrid').style.display = 'none';
+      document.getElementById('itemsFilters').style.display = 'none';
       document.getElementById('itemsGrid').style.display = 'none';
       document.getElementById('futureView').style.display = 'none';
       document.getElementById('heroesFilters').style.display = 'none';
@@ -304,6 +305,7 @@
         renderHeroes();
       } else if (section === 'items') {
         document.getElementById('navItems').classList.add('active');
+        document.getElementById('itemsFilters').style.display = 'block';
         document.getElementById('itemsGrid').style.display = 'grid';
         document.getElementById('headerTitle').innerText = "База предметов";
         renderItems();
