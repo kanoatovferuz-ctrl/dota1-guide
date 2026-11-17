@@ -1912,61 +1912,61 @@ const heroesData = [
       }
     ]
   },
-  {
-    name: "Skeleton King", dota1: "Leoric", attr: "Strength", faction: "Scourge",
-    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/wraith_king.png",
-    bio: "<p>Бессмертный монарх Тьмы, который после гибели всегда восстает из пепла благодаря силе реинкарнации.</p>",
+ {
+    name: "Wraith King", dota1: "Skeleton King", attr: "Strength", faction: "Scourge",
+    img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/skeleton_king.png",
+    bio: "<p>Владыка призраков и костей, обладающий бессмертием и способный возрождаться после гибели на поле боя.</p>",
     itemsBuild: {
       early: [
         { name: "Tango", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/tango.png" },
         { name: "Salve", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/flask.png" },
         { name: "Quelling", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/quelling_blade.png" },
-        { name: "Bracer", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/bracer.png" },
+        { name: "Stout Shield", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/stout_shield.png" },
         { name: "Branch", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png" },
         { name: "Wand", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/magic_wand.png" }
       ],
       mid: [
         { name: "Power Treads", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/power_treads.png" },
         { name: "Armlet", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/armlet.png" },
-        { name: "Echo Sabre", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/echo_sabre.png" },
         { name: "Radiance", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/radiance.png" },
         { name: "BKB", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/black_king_bar.png" },
-        { name: "Aghanim", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/ultimate_scepter.png" }
+        { name: "Aghanim's Shard", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/aghanims_shard.png" },
+        { name: "Assault Cuirass", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/assault.png" }
       ],
       late: [
         { name: "Assault Cuirass", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/assault.png" },
-        { name: "Daedalus", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/greater_crit.png" },
+        { name: "Abyssal Blade", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/abyssal_blade.png" },
         { name: "Satanic", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/satanic.png" },
         { name: "BKB", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/black_king_bar.png" },
         { name: "Heart", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/heart.png" },
         { name: "Travel Boots", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/travel_boots.png" }
       ]
     },
-    countersInfo: "<b>Силен с:</b> Омега-керри за счет вампиризма и станов.<br><b>Контрят:</b> Diffusal Blade, Invoker, Anti-Mage (сжигание маны).",
+    countersInfo: "<b>Силен против:</b> Одиночных героев и целей без контроля маны.<br><b>Контрят:</b> Anti-Mage, Invoker, Lion, Diffusal Blade, Phantom Lancer.",
     skills: [
       {
         name: "Wraithfire Blast", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/skeleton_king_hellfire_blast.png",
-        desc: "Выпускает сгусток адского пламени, оглушающий цель и наносящий урон со временем.", isPassive: false,
+        desc: "Выпускает сгусток призрачного пламени, наносящий урон, замедляющий и оглушающий цель.", isPassive: false,
         levels: [
-          { lvl: 1, mana: "95 МАНА", cd: "14 СЕК", effect: "70 урона, стан 1.1 сек" },
-          { lvl: 2, mana: "110 МАНА", cd: "12 СЕК", effect: "140 урона, стан 1.4 сек" },
-          { lvl: 3, mana: "125 МАНА", cd: "10 СЕК", effect: "210 урона, стан 1.7 сек" },
-          { lvl: 4, mana: "140 МАНА", cd: "8 СЕК", effect: "280 урона, стан 2.0 сек" }
+          { lvl: 1, mana: "95 МАНА", cd: "14 СЕК", effect: "Урон 60, стан 1.1 сек" },
+          { lvl: 2, mana: "110 МАНА", cd: "12 СЕК", effect: "Урон 90, стан 1.4 сек" },
+          { lvl: 3, mana: "125 МАНА", cd: "10 СЕК", effect: "Урон 120, стан 1.7 сек" },
+          { lvl: 4, mana: "140 МАНА", cd: "8 СЕК", effect: "Урон 150, стан 2.0 сек" }
         ]
       },
       {
         name: "Vampiric Spirit", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/skeleton_king_vampiric_aura.png",
-        desc: "Пассивно дает вампиризм атакам и накапливает заряды скелетов для призыва в бой.", isPassive: true,
+        desc: "Пассивно дает вампиризм от атак и накапливает скелетов, которых можно призвать на помощь.", isPassive: true,
         levels: [
-          { lvl: 1, mana: "ПАССИВНО", cd: "0 СЕК", effect: "15% вампиризма, макс 2 скелета" },
-          { lvl: 2, mana: "ПАССИВНО", cd: "0 СЕК", effect: "20% вампиризма, макс 4 скелета" },
-          { lvl: 3, mana: "ПАССИВНО", cd: "0 СЕК", effect: "25% вампиризма, макс 6 скелетов" },
-          { lvl: 4, mana: "ПАССИВНО", cd: "0 СЕК", effect: "30% вампиризма, макс 8 скелетов" }
+          { lvl: 1, mana: "ПАССИВНО", cd: "50 СЕК", effect: "Вампиризм 15%, запас 2 скелета" },
+          { lvl: 2, mana: "ПАССИВНО", cd: "45 СЕК", effect: "Вампиризм 20%, запас 4 скелета" },
+          { lvl: 3, mana: "ПАССИВНО", cd: "40 СЕК", effect: "Вампиризм 25%, запас 6 скелетов" },
+          { lvl: 4, mana: "ПАССИВНО", cd: "35 СЕК", effect: "Вампиризм 30%, запас 8 скелетов" }
         ]
       },
       {
         name: "Mortal Strike", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/skeleton_king_mortal_strike.png",
-        desc: "Шанс нанести сокрушительный критический удар по врагам.", isPassive: true,
+        desc: "Пассивный шанс нанести критический урон по врагам.", isPassive: true,
         levels: [
           { lvl: 1, mana: "ПАССИВНО", cd: "4.0 СЕК", effect: "Крит 150%" },
           { lvl: 2, mana: "ПАССИВНО", cd: "3.5 СЕК", effect: "Крит 190%" },
@@ -1976,11 +1976,11 @@ const heroesData = [
       },
       {
         name: "Reincarnation", img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/skeleton_king_reincarnation.png",
-        desc: "При смерти героя автоматически возвращает его к жизни на том же месте при наличии маны.", isPassive: false,
+        desc: "При смерти героя автоматически возвращает его к жизни в той же точке с замедлением вокруг.", isPassive: false,
         levels: [
-          { lvl: 1, mana: "160 МАНА", cd: "200 СЕК", effect: "Возрождение через 5.0 сек" },
-          { lvl: 2, mana: "160 МАНА", cd: "140 СЕК", effect: "Возрождение через 5.0 сек" },
-          { lvl: 3, mana: "160 МАНА", cd: "80 СЕК", effect: "Возрождение через 5.0 сек" }
+          { lvl: 1, mana: "160 МАНА", cd: "200 СЕК", effect: "Возрождение (задержка 5 сек)" },
+          { lvl: 2, mana: "160 МАНА", cd: "140 СЕК", effect: "Возрождение (задержка 5 сек)" },
+          { lvl: 3, mana: "160 МАНА", cd: "80 СЕК", effect: "Возрождение (задержка 5 сек)" }
         ]
       }
     ]
