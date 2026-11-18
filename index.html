@@ -350,6 +350,31 @@
       });
     }
 
+    <script>
+    // 1. Массив данных предметов
+    const itemsData = [
+        {
+            name: "Town Portal Scroll",
+            category: "Расходные материалы",
+            cost: 100,
+            img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/tpscroll.png",
+            forWhat: "Позволяет телепортироваться к любой союзной постройке (вышке или зданию).",
+            effect: "Channelling-заклинание (3 секунды телепортации), уходит на перезарядку при прерывании.",
+            counter: "Полезен против любых героев с глобальным давлением или сплит-пушем.",
+            whoNeeds: "Абсолютно всем героям в игре с первой до последней минуты."
+        },
+        {
+            name: "Bottle",
+            category: "Расходные материалы",
+            cost: 650,
+            img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/bottle.png",
+            forWhat: "Восстанавливает здоровье и ману. Можно подбирать руны для перезарядки и сохранения.",
+            effect: "Дает по 125 здоровья и 75 маны за каждый заряд. При использовании руны полностью восполняет 3 заряда.",
+            counter: "Эффективна в ранней игре для затяжных стычек на линии.",
+            whoNeeds: "Мидерам, роумерам и героям, активно играющим через руны."
+        }
+    ];
+    
 function renderItems(categoryFilter = "ВСЕ") {
     const container = document.getElementById("heroes-container"); // или твой контейнер для карточек
     if (!container) return;
@@ -381,6 +406,14 @@ function renderItems(categoryFilter = "ВСЕ") {
         container.appendChild(card);
     });
 }
+    // 3. Вот сюда вставляется третий код (привязка к кнопкам)
+    document.querySelectorAll('.sub-category-btn').forEach(button => {
+        button.addEventListener('click', (e) => {
+            const categoryName = e.target.textContent.trim();
+            renderItems(categoryName);
+        });
+    });
+
      // Функция фильтрации по кнопкам
  function filterItems(category, btnElement) {
      // Переключаем активную кнопку в меню фильтров предметов
