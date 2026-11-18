@@ -285,6 +285,36 @@
     let currentSection = 'heroes';
     let currentAttr = 'Strength', currentFaction = 'Sentinel';
 
+    // База данных предметов (объявлена строго 1 раз)
+    const itemsData = [
+      {
+        name: "Town Portal Scroll",
+        category: "Consumables",
+        cost: 100,
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/tpscroll.png",
+        desc: "Позволяет телепортироваться к любой союзной постройке.",
+        forWhat: "Позволяет телепортироваться к любой союзной постройке (вышке или зданию).",
+        effect: "Channelling-заклинание (3 секунды телепортации).",
+        counter: "Полезен против глобального давления.",
+        whoNeeds: "Абсолютно всем героям.",
+        heroes: "Всем героям",
+        counters: "Сплит-пуш"
+      },
+      {
+        name: "Bottle",
+        category: "Consumables",
+        cost: 650,
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/bottle.png",
+        desc: "Восстанавливает здоровье и ману, хранит руны.",
+        forWhat: "Восстанавливает здоровье и ману.",
+        effect: "Дает по 125 здоровья и 75 маны за заряд.",
+        counter: "Эффективна в ранней игре.",
+        whoNeeds: "Мидерам и роумерам.",
+        heroes: "Мидеры",
+        counters: "Ганнгеры"
+      }
+    ];
+
     function switchSection(section) {
       currentSection = section;
       document.getElementById('navHeroes').classList.remove('active');
@@ -308,7 +338,7 @@
         document.getElementById('itemsFilters').style.display = 'block';
         document.getElementById('itemsGrid').style.display = 'grid';
         document.getElementById('headerTitle').innerText = "База предметов";
-        renderItems();
+        renderItems("All");
       } else if (section === 'future') {
         document.getElementById('navFuture').classList.add('active');
         document.getElementById('futureView').style.display = 'block';
@@ -350,55 +380,206 @@
       });
     }
 
-  // База данных предметов
-let itemsData = [
-    {
-        name: "Town Portal Scroll",
-        category: "Расходники",
-        cost: 100,
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/tpscroll.png",
-        forWhat: "Позволяет телепортироваться к любой союзной постройке (вышке или зданию).",
-        effect: "Channelling-заклинание (3 секунды телепортации), уходит на перезарядку при прерывании.",
-        counter: "Полезен против любых героев с глобальным давлением или сплит-пушем.",
-        whoNeeds: "Абсолютно всем героям в игре с первой до последней минуты."
-    },
-    {
-        name: "Bottle",
-        category: "Расходники",
-        cost: 650,
-        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/bottle.png",
-        forWhat: "Восстанавливает здоровье и ману. Можно подбирать руны для перезарядки и сохранения.",
-        effect: "Дает по 125 здоровья и 75 маны за каждый заряд. При использовании руны полностью восполняет 3 заряда.",
-        counter: "Эффективна в ранней игре для затяжных стычек на линии.",
-        whoNeeds: "Мидерам, роумерам и героям, активно играющим через руны."
-    }
-];
+    // Функция отрисовки предметов (исправлен ID контейнера на itemsGrid)
+    function renderItems(categoryFilter = "All") {
+      const container = document.getElementById("itemsGrid");
+      if (!container) return;
 
+      container.innerHTML = "";
+      const searchVal = document.getElementById('search').value.toLowerCase();
+
+      const filteredItems = itemsData.filter(item => {
+        const matchesCategory = categoryFilter.toLowerCase() === "all" || item.category.toLowerCase() === categoryFilter.toLowerCase();
+        const matchesSearch = item.name.toLowerCase().includes(searchVal);
+        return matchesCategory && matchesSearch;
+      });
+
+      if (filteredItems.length === 0) {
+        container.innerHTML = `<div style="grid-column: 1/-1; text-align:center; color:#888; padding:30px;">Предметы не найдены</div>`;
+        return;
+      }
+
+      filteredItems.forEach(item => {
+        const card = document.createElement("div");
+        card.className = "item-catalog-card";
+        card.onclick = () => openItemModal(item);
+
+        card.innerHTML = `
+          <img src="${item.img}" class="item-catalog-img" alt="${item.name}">
+          <div class="item-catalog-title">${item.name}</div>
+          <div class="item-catalog-cost">${item.cost} золота</div>
+        `;
+
+        container.appendChild(card);
+      });
+    }
+
+    // Единая функция фильтрации предметов
+    function filterItems(category, btnElement) {
+      const buttons = document.querySelectorAll('#itemsFilters .main-tab-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      if (btnElement) btnElement.classList.add('active');
+
+      renderItems(category);
+    }
+
+    function setAttr(attr, btn) {
+      currentAttr = attr;
+      document.querySelectorAll('.main-tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderHeroes();
+    }
+
+    function setFaction(faction, btn) {
+      currentFaction = faction;
+      document.querySelectorAll('.sub-tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderHeroes();
+    }
+
+    document.getElementById('search').addEventListener('input', () => {
+      if (currentSection === 'heroes') renderHeroes();
+      else if (currentSection === 'items') renderItems();
+    });
+
+    function openModal(hero) {
+      document.getElementById('modalImg').src = hero.img;
+      document.getElementById('modalName').innerText = hero.name;
+      document.getElementById('modalDota1').innerText = "Dota 1: " + (hero.dota1 || 'Classic');
+      document.getElementById('modalBio').innerHTML = hero.bio;
+      
+      const itemsBox = document.getElementById('itemsBox');
+      if (hero.itemsBuild && hero.itemsBuild.early && hero.itemsBuild.early.length > 0) {
+        let itemsHtml = `<div class="stage-title">Начало игры</div><div class="items-grid">`;
+        hero.itemsBuild.early.forEach(item => {
+          itemsHtml += `<div class="item-card-mini"><img src="${item.img}" class="item-icon" onerror="this.src='https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png';"><div class="item-name-mini">${item.name}</div></div>`;
+        });
+        itemsHtml += `</div><div class="stage-title">Середина игры</div><div class="items-grid">`;
+        hero.itemsBuild.mid.forEach(item => {
+          itemsHtml += `<div class="item-card-mini"><img src="${item.img}" class="item-icon" onerror="this.src='https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png';"><div class="item-name-mini">${item.name}</div></div>`;
+        });
+        itemsHtml += `</div><div class="stage-title">Лейт / 6 Слотов</div><div class="items-grid">`;
+        hero.itemsBuild.late.forEach(item => {
+          itemsHtml += `<div class="item-card-mini"><img src="${item.img}" class="item-icon" onerror="this.src='https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png';"><div class="item-name-mini">${item.name}</div></div>`;
+        });
+        itemsHtml += `</div>`;
+        itemsBox.innerHTML = itemsHtml;
+      } else {
+        itemsBox.innerHTML = "Сборка заполняется.";
+      }
+
+      document.getElementById('countersBox').innerHTML = hero.countersInfo || "Информация заполняется.";
+      document.getElementById('itemsBox').style.display = 'none';
+      document.getElementById('countersBox').style.display = 'none';
+
+      const skillsContainer = document.getElementById('modalSkills');
+      skillsContainer.innerHTML = '';
+      if (hero.skills && hero.skills.length > 0) {
+        hero.skills.forEach((s, index) => {
+          const item = document.createElement('div');
+          item.className = 'skill-card';
+          let levelsHtml = '';
+          if (s.levels) {
+            s.levels.forEach(l => {
+              levelsHtml += `<div class="level-row"><span><b>УР. ${l.lvl}:</b> ${l.effect}</span><span style="color:#3498db;">${l.mana} | ${l.cd}</span></div>`;
+            });
+          }
+          item.innerHTML = `
+            <div class="skill-header">
+              <img src="${s.img}" class="skill-icon" alt="${s.name}" onerror="this.src='https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/base.png';">
+              <div class="skill-info-title">
+                <div class="skill-name">${s.name}</div>
+                <div class="skill-type">${s.isPassive ? 'Пассивная способность' : 'Активная способность'}</div>
+              </div>
+            </div>
+            <div style="font-size: 11px; color: #bbb; margin-top: 6px;">${s.desc}</div>
+            ${s.levels ? `<button class="toggle-levels-btn" onclick="toggleSkillLvl(${index})">УРОВНИ, МАНА И КУЛДАУН</button><div class="skill-levels-container" id="skillLvl_${index}">${levelsHtml}</div>` : ''}
+          `;
+          skillsContainer.appendChild(item);
+        });
+      } else {
+        skillsContainer.innerHTML = '<div style="font-size: 11px; color: #888; text-align:center; padding: 10px;">Способности добавляются...</div>';
+      }
+
+      document.getElementById('heroModal').style.display = 'block';
+    }
+
+    function openItemModal(item) {
+      document.getElementById('itemModalImg').src = item.img;
+      document.getElementById('itemModalName').innerText = item.name;
+      document.getElementById('itemModalCost').innerText = item.cost + " золота";
+      document.getElementById('itemModalDesc').innerText = item.desc;
+      
+      const recipeContainer = document.getElementById('itemModalRecipe');
+      const recipeCardBox = document.getElementById('recipeCardBox');
+
+      if (item.recipeItems && item.recipeItems.length > 0) {
+        recipeCardBox.style.display = 'block';
+        recipeContainer.innerHTML = '';
+        item.recipeItems.forEach(comp => {
+          recipeContainer.innerHTML += `
+            <div class="item-card-mini">
+              <img src="${comp.img}" class="item-icon" onerror="this.src='https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png';">
+              <div class="item-name-mini">${comp.name}</div>
+            </div>
+          `;
+        });
+      } else {
+        recipeCardBox.style.display = 'none';
+      }
+
+      document.getElementById('itemModalHeroes').innerText = item.heroes || "Универсальный предмет.";
+      document.getElementById('itemModalCounters').innerText = item.counters || "По ситуации.";
+      document.getElementById('itemModal').style.display = 'block';
+    }
+
+    function toggleSkillLvl(index) {
+      const container = document.getElementById(`skillLvl_${index}`);
+      container.style.display = container.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function toggleGuideSection(boxId) {
+      const box = document.getElementById(boxId);
+      box.style.display = box.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function closeModal() { document.getElementById('heroModal').style.display = 'none'; }
+    function closeItemModal() { document.getElementById('itemModal').style.display = 'none'; }
+    function openFeedbackModal() { document.getElementById('feedbackModal').style.display = 'block'; }
+    function closeFeedbackModal() { document.getElementById('feedbackModal').style.display = 'none'; }
+
+    function sendFeedback() {
+      const text = document.getElementById('feedbackText').value.trim();
+      if (!text) return alert("Введите текст");
+      alert("Отзыв отправлен!");
+      closeFeedbackModal();
+    }
+
+    renderHeroes();
+  
+
+ 
 // Функция отрисовки предметов
-function renderItems(categoryFilter = "ВСЕ") {
-    const container = document.getElementById("items-container");
+// Функция отрисовки предметов
+function renderItems(categoryFilter = "All") {
+    const container = document.getElementById("itemsGrid");
     if (!container) return;
 
     container.innerHTML = "";
 
-    const filteredItems = categoryFilter.toUpperCase() === "ВСЕ"
+    const filteredItems = categoryFilter.toLowerCase() === "all"
         ? itemsData
-        : itemsData.filter(item => item.category.toUpperCase() === categoryFilter.toUpperCase());
+        : itemsData.filter(item => item.category.toLowerCase() === categoryFilter.toLowerCase());
 
     filteredItems.forEach(item => {
         const card = document.createElement("div");
-        card.className = "item-card";
+        card.className = "item-catalog-card";
+        card.onclick = () => openItemModal(item);
 
         card.innerHTML = `
-            <img src="${item.img}" alt="${item.name}" style="width: 64px; height: 64px; object-fit: contain;">
-            <h3 style="color: #ffb833; font-weight: bold; margin: 10px 0 5px 0;">${item.name}</h3>
-            <div style="color: #f1c40f; margin-bottom: 8px;">Цена: ${item.cost} золота</div>
-            <div style="font-size: 13px; text-align: left; line-height: 1.4;">
-                <p><b style="color: #00e5ff;">Для чего:</b> ${item.forWhat}</p>
-                <p><b style="color: #00e5ff;">Эффект:</b> ${item.effect}</p>
-                <p><b style="color: #00e5ff;">Против кого:</b> ${item.counter}</p>
-                <p><b style="color: #00e5ff;">Кому нужен:</b> ${item.whoNeeds}</p>
-            </div>
+            <img src="${item.img}" class="item-catalog-img" alt="${item.name}">
+            <div class="item-catalog-title">${item.name}</div>
+            <div class="item-catalog-cost">${item.cost} золота</div>
         `;
 
         container.appendChild(card);
