@@ -351,7 +351,7 @@
     }
 
 // База данных предметов прямо в коде (без внешних файлов)
-const itemsData = [
+itemsData = [
     {
         name: "Town Portal Scroll",
         category: "Расходники",
@@ -373,7 +373,6 @@ const itemsData = [
         whoNeeds: "Мидерам, роумерам и героям, активно играющим через руны."
     }
 ];
-
 // Функция отрисовки предметов с уникальными цветами заголовков
 function renderItems(categoryFilter = "ВСЕ") {
     const container = document.getElementById("items-container");
