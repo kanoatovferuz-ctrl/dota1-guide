@@ -350,33 +350,37 @@
       });
     }
 
- function renderItems(filterCategory = 'All') {
-    const grid = document.getElementById('itemsGrid');
-    grid.innerHTML = '';
+function renderItems(categoryFilter = "ВСЕ") {
+    const container = document.getElementById("heroes-container"); // или твой контейнер для карточек
+    if (!container) return;
+    
+    container.innerHTML = "";
 
-    // Фильтрация предметов
-    const filteredItems = filterCategory === 'All' 
+    // Фильтруем предметы по выбранной категории (Расходники, Обувь и т.д.)
+    const filteredItems = categoryFilter === "ВСЕ" 
         ? itemsData 
-        : itemsData.filter(item => item.category === filterCategory);
+        : itemsData.filter(item => item.category.toUpperCase() === categoryFilter.toUpperCase());
 
     filteredItems.forEach(item => {
-        const card = document.createElement('div');
-        card.className = 'hero-card'; // используем твой красивый класс карточки
+        const card = document.createElement("div");
+        card.className = "item-card"; // можешь стилизовать в CSS
+        
+        // Красивая верстка карточки с уникальным цветом заголовка (например, золотисто-оранжевый #ffb833)
         card.innerHTML = `
-            <img src="${item.img}" alt="${item.name}" style="width: 64px; height: 48px; object-fit: contain; margin-bottom: 8px;">
-            <div style="font-weight: bold; color: #fff; font-size: 14px;">${item.name}</div>
-            <div style="color: #ffcc00; font-size: 13px; margin-bottom: 6px;">Цена: ${item.cost} золота</div>
-            <div style="font-size: 11px; color: #aaa; text-align: left; line-height: 1.3;">
-                <p><b>Для чего:</b> ${item.usage}</p>
-                <p><b>Эффект:</b> ${item.effects}</p>
-                <p><b>Против кого:</b> ${item.against}</p>
-                <p><b>Кому нужен:</b> ${item.suitability}</p>
+            <img src="${item.img}" alt="${item.name}" style="width: 64px; height: 64px; object-fit: contain;">
+            <h3 style="color: #ffb833; font-weight: bold; margin: 10px 0 5px 0;">${item.name}</h3>
+            <div style="color: #f1c40f; margin-bottom: 8px;">Цена: ${item.cost} золота</div>
+            <div style="font-size: 13px; text-align: left; line-height: 1.4;">
+                <p><b>Для чего:</b> ${item.forWhat}</p>
+                <p><b>Эффект:</b> ${item.effect}</p>
+                <p><b>Против кого:</b> ${item.counter}</p>
+                <p><b>Кому нужен:</b> ${item.whoNeeds}</p>
             </div>
         `;
-        grid.appendChild(card);
+        
+        container.appendChild(card);
     });
- }
-
+}
      // Функция фильтрации по кнопкам
  function filterItems(category, btnElement) {
      // Переключаем активную кнопку в меню фильтров предметов
