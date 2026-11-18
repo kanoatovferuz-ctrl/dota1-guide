@@ -350,6 +350,31 @@
       });
     }
 
+// База данных предметов прямо в коде (без внешних файлов)
+const itemsData = [
+    {
+        name: "Town Portal Scroll",
+        category: "Расходники",
+        cost: 100,
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/tpscroll.png",
+        forWhat: "Позволяет телепортироваться к любой союзной постройке (вышке или зданию).",
+        effect: "Channelling-заклинание (3 секунды телепортации), уходит на перезарядку при прерывании.",
+        counter: "Полезен против любых героев с глобальным давлением или сплит-пушем.",
+        whoNeeds: "Абсолютно всем героям в игре с первой до последней минуты."
+    },
+    {
+        name: "Bottle",
+        category: "Расходники",
+        cost: 650,
+        img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/bottle.png",
+        forWhat: "Восстанавливает здоровье и ману. Можно подбирать руны для перезарядки и сохранения.",
+        effect: "Дает по 125 здоровья и 75 маны за каждый заряд. При использовании руны полностью восполняет 3 заряда.",
+        counter: "Эффективна в ранней игре для затяжных стычек на линии.",
+        whoNeeds: "Мидерам, роумерам и героям, активно играющим через руны."
+    }
+];
+
+// Функция отрисовки предметов с уникальными цветами заголовков
 function renderItems(categoryFilter = "ВСЕ") {
     const container = document.getElementById("items-container");
     if (!container) return;
@@ -380,6 +405,7 @@ function renderItems(categoryFilter = "ВСЕ") {
     });
 }
 
+// Функция переключения категорий по одному тапу
 function filterItems(category, btnElement) {
     const buttons = document.querySelectorAll('#itemsFilters .main-tab-btn');
     buttons.forEach(btn => btn.classList.remove('active'));
