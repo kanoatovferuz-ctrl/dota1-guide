@@ -350,10 +350,7 @@
       });
     }
 
-    let currentSection = 'heroes';
-let currentAttr = 'Strength', currentFaction = 'Sentinel';
-
-// Объявляем базу предметов ровно один раз на всю страницу
+  // База данных предметов
 let itemsData = [
     {
         name: "Town Portal Scroll",
@@ -376,9 +373,10 @@ let itemsData = [
         whoNeeds: "Мидерам, роумерам и героям, активно играющим через руны."
     }
 ];
-// Функция отрисовки предметов с уникальными цветами заголовков
+
+// Функция отрисовки предметов
 function renderItems(categoryFilter = "ВСЕ") {
-     container = document.getElementById("items-container");
+    const container = document.getElementById("items-container");
     if (!container) return;
 
     container.innerHTML = "";
@@ -405,6 +403,23 @@ function renderItems(categoryFilter = "ВСЕ") {
 
         container.appendChild(card);
     });
+}
+
+function filterItems(category, btnElement) {
+    const buttons = document.querySelectorAll('#itemsFilters .main-tab-btn');
+    buttons.forEach(btn => btn.classList.remove('active'));
+    if (btnElement) btnElement.classList.add('active');
+
+    renderItems(category);
+}
+
+// Функция фильтрации по категориям
+function filterItems(category, btnElement) {
+    const buttons = document.querySelectorAll('#itemsFilters .main-tab-btn');
+    buttons.forEach(btn => btn.classList.remove('active'));
+    if (btnElement) btnElement.classList.add('active');
+
+    renderItems(category);
 }
 
 // Функция переключения категорий по одному тапу
