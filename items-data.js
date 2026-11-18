@@ -7,13 +7,12 @@ const itemsData = [
         desc: "Позволяет телепортироваться к любой союзной постройке...",
         recipeItems: []
     },
-    {
+   {
         name: "Bottle",
         category: "Consumables",
         cost: 650,
         img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/bottle.png",
-        desc: "Востанавливает здоровье и ману за 3 глотка...",
+        desc: "Востанавливает здоровье и ману за 3 глотки...",
         recipeItems: []
     }
-    // Сюда же переносишь все остальные предметы, обувь, компоненты и артефакты
-];
+]; //Вот эти закрывающие скобку и точку с запятой обязательно нужно добавить в самом конце!
