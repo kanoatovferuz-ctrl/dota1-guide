@@ -350,70 +350,43 @@
       });
     }
 
-    <script>
-    // 1. Массив данных предметов
-    const itemsData = [
-        {
-            name: "Town Portal Scroll",
-            category: "Расходные материалы",
-            cost: 100,
-            img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/tpscroll.png",
-            forWhat: "Позволяет телепортироваться к любой союзной постройке (вышке или зданию).",
-            effect: "Channelling-заклинание (3 секунды телепортации), уходит на перезарядку при прерывании.",
-            counter: "Полезен против любых героев с глобальным давлением или сплит-пушем.",
-            whoNeeds: "Абсолютно всем героям в игре с первой до последней минуты."
-        },
-        {
-            name: "Bottle",
-            category: "Расходные материалы",
-            cost: 650,
-            img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/bottle.png",
-            forWhat: "Восстанавливает здоровье и ману. Можно подбирать руны для перезарядки и сохранения.",
-            effect: "Дает по 125 здоровья и 75 маны за каждый заряд. При использовании руны полностью восполняет 3 заряда.",
-            counter: "Эффективна в ранней игре для затяжных стычек на линии.",
-            whoNeeds: "Мидерам, роумерам и героям, активно играющим через руны."
-        }
-    ];
-    
 function renderItems(categoryFilter = "ВСЕ") {
-    const container = document.getElementById("heroes-container"); // или твой контейнер для карточек
+    const container = document.getElementById("items-container");
     if (!container) return;
-    
+
     container.innerHTML = "";
 
-    // Фильтруем предметы по выбранной категории (Расходники, Обувь и т.д.)
-    const filteredItems = categoryFilter === "ВСЕ" 
-        ? itemsData 
+    const filteredItems = categoryFilter.toUpperCase() === "ВСЕ"
+        ? itemsData
         : itemsData.filter(item => item.category.toUpperCase() === categoryFilter.toUpperCase());
 
     filteredItems.forEach(item => {
         const card = document.createElement("div");
-        card.className = "item-card"; // можешь стилизовать в CSS
-        
-        // Красивая верстка карточки с уникальным цветом заголовка (например, золотисто-оранжевый #ffb833)
+        card.className = "item-card";
+
         card.innerHTML = `
             <img src="${item.img}" alt="${item.name}" style="width: 64px; height: 64px; object-fit: contain;">
             <h3 style="color: #ffb833; font-weight: bold; margin: 10px 0 5px 0;">${item.name}</h3>
             <div style="color: #f1c40f; margin-bottom: 8px;">Цена: ${item.cost} золота</div>
             <div style="font-size: 13px; text-align: left; line-height: 1.4;">
-                <p><b>Для чего:</b> ${item.forWhat}</p>
-                <p><b>Эффект:</b> ${item.effect}</p>
-                <p><b>Против кого:</b> ${item.counter}</p>
-                <p><b>Кому нужен:</b> ${item.whoNeeds}</p>
+                <p><b style="color: #00e5ff;">Для чего:</b> ${item.forWhat}</p>
+                <p><b style="color: #00e5ff;">Эффект:</b> ${item.effect}</p>
+                <p><b style="color: #00e5ff;">Против кого:</b> ${item.counter}</p>
+                <p><b style="color: #00e5ff;">Кому нужен:</b> ${item.whoNeeds}</p>
             </div>
         `;
-        
+
         container.appendChild(card);
     });
 }
-    // 3. Вот сюда вставляется третий код (привязка к кнопкам)
-    document.querySelectorAll('.sub-category-btn').forEach(button => {
-        button.addEventListener('click', (e) => {
-            const categoryName = e.target.textContent.trim();
-            renderItems(categoryName);
-        });
-    });
 
+function filterItems(category, btnElement) {
+    const buttons = document.querySelectorAll('#itemsFilters .main-tab-btn');
+    buttons.forEach(btn => btn.classList.remove('active'));
+    if (btnElement) btnElement.classList.add('active');
+
+    renderItems(category);
+}
      // Функция фильтрации по кнопкам
  function filterItems(category, btnElement) {
      // Переключаем активную кнопку в меню фильтров предметов
