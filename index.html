@@ -259,6 +259,21 @@
         <div style="font-size: 11px; color: #e74c3c; margin-bottom: 4px; text-transform: uppercase;">Против кого эффективен:</div>
         <div id="itemModalCounters" style="font-size: 11px; color: #ccc;"></div>
       </div>
+
+      <div class="guide-dropdown-card" style="border-color: rgba(255, 157, 0, 0.45); margin-bottom: 8px;">
+    <div style="font-size: 11px; color: #ff9d00; margin-bottom: 4px; text-transform: uppercase;">Зачем нужен и роль</div>
+    <div id="itemModalForWhat" style="font-size: 12px; line-height: 1.45; color: #ddd;"></div>
+</div>
+
+<div class="guide-dropdown-card" style="border-color: rgba(46, 204, 113, 0.45); margin-bottom: 8px;">
+    <div style="font-size: 11px; color: #2ecc71; margin-bottom: 4px; text-transform: uppercase;">Эффекты и механика</div>
+    <div id="itemModalEffect" style="font-size: 12px; line-height: 1.45; color: #ddd;"></div>
+</div>
+
+<div class="guide-dropdown-card" style="border-color: rgba(155, 89, 182, 0.45); margin-bottom: 8px;">
+    <div style="font-size: 11px; color: #bb8fce; margin-bottom: 4px; text-transform: uppercase;">Когда и кому брать</div>
+    <div id="itemModalWhoNeeds" style="font-size: 12px; line-height: 1.45; color: #ddd;"></div>
+</div>
       
       <button class="send-tg-btn" onclick="closeItemModal()">ЗАКРЫТЬ</button>
     </div>
@@ -503,62 +518,7 @@
 
       document.getElementById('heroModal').style.display = 'block';
     }
-
-    function openItemModal(item) {
-      document.getElementById('itemModalImg').src = item.img;
-      document.getElementById('itemModalName').innerText = item.name;
-      document.getElementById('itemModalCost').innerText = item.cost + " золота";
-      document.getElementById('itemModalDesc').innerText = item.desc;
-      
-      const recipeContainer = document.getElementById('itemModalRecipe');
-      const recipeCardBox = document.getElementById('recipeCardBox');
-
-      if (item.recipeItems && item.recipeItems.length > 0) {
-        recipeCardBox.style.display = 'block';
-        recipeContainer.innerHTML = '';
-        item.recipeItems.forEach(comp => {
-          recipeContainer.innerHTML += `
-            <div class="item-card-mini">
-              <img src="${comp.img}" class="item-icon" onerror="this.src='https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png';">
-              <div class="item-name-mini">${comp.name}</div>
-            </div>
-          `;
-        });
-      } else {
-        recipeCardBox.style.display = 'none';
-      }
-
-      document.getElementById('itemModalHeroes').innerText = item.heroes || "Универсальный предмет.";
-      document.getElementById('itemModalCounters').innerText = item.counters || "По ситуации.";
-      document.getElementById('itemModal').style.display = 'block';
-    }
-
-    function toggleSkillLvl(index) {
-      const container = document.getElementById(`skillLvl_${index}`);
-      container.style.display = container.style.display === 'block' ? 'none' : 'block';
-    }
-
-    function toggleGuideSection(boxId) {
-      const box = document.getElementById(boxId);
-      box.style.display = box.style.display === 'block' ? 'none' : 'block';
-    }
-
-    function closeModal() { document.getElementById('heroModal').style.display = 'none'; }
-    function closeItemModal() { document.getElementById('itemModal').style.display = 'none'; }
-    function openFeedbackModal() { document.getElementById('feedbackModal').style.display = 'block'; }
-    function closeFeedbackModal() { document.getElementById('feedbackModal').style.display = 'none'; }
-
-    function sendFeedback() {
-      const text = document.getElementById('feedbackText').value.trim();
-      if (!text) return alert("Введите текст");
-      alert("Отзыв отправлен!");
-      closeFeedbackModal();
-    }
-
-    renderHeroes();
   
-
- 
 // Функция отрисовки предметов
 function renderItems(categoryFilter = "All") {
     const container = document.getElementById("itemsGrid");
@@ -705,7 +665,10 @@ function filterItems(category, btnElement) {
       } else {
         recipeCardBox.style.display = 'none';
       }
-
+    fillItemBlock('itemModalForWhat', item.forWhat);
+    fillItemBlock('itemModalEffect', item.effect);
+    fillItemBlock('itemModalWhoNeeds', item.whoNeeds);
+      
       document.getElementById('itemModalHeroes').innerText = item.heroes || "Универсальный предмет.";
       document.getElementById('itemModalCounters').innerText = item.counters || "По ситуации.";
       document.getElementById('itemModal').style.display = 'block';
@@ -732,7 +695,19 @@ function filterItems(category, btnElement) {
       alert("Отзыв отправлен!");
       closeFeedbackModal();
     }
+function fillItemBlock(elementId, text) {
+    const el = document.getElementById(elementId);
+    const card = el ? el.closest('.guide-dropdown-card') : null;
+    if (!el) return;
 
+    if (text && String(text).trim()) {
+        el.innerText = text;
+        if (card) card.style.display = 'block';
+    } else {
+        el.innerText = '';
+        if (card) card.style.display = 'none';
+    }
+}
     renderHeroes();
   </script>
 </body>
