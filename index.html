@@ -4636,6 +4636,16 @@ if (recipeTitle) {
     return;
   }
 
+  const sendBtn = document.activeElement && document.activeElement.tagName === 'BUTTON'
+    ? document.activeElement
+    : null;
+  const oldBtnText = sendBtn ? sendBtn.textContent : '';
+
+  if (sendBtn) {
+    sendBtn.disabled = true;
+    sendBtn.textContent = "Отправка...";
+  }
+
   try {
     const tgUser = window.Telegram?.WebApp?.initDataUnsafe?.user;
     const autoUser = tgUser
@@ -4654,14 +4664,19 @@ if (recipeTitle) {
 
     const data = await res.json();
     if (data.ok) {
-      alert("Отзыв отправлен!");
       textarea.value = "";
       closeFeedbackModal();
+      setTimeout(() => alert("Отзыв отправлен!"), 100);
     } else {
       alert("Ошибка при отправке. Попробуй ещё раз.");
     }
   } catch (e) {
     alert("Не удалось связаться с сервером отправки.");
+  } finally {
+    if (sendBtn) {
+      sendBtn.disabled = false;
+      sendBtn.textContent = oldBtnText || "Отправить";
+    }
   }
 }
     renderHeroes();
