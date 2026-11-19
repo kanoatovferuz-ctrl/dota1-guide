@@ -1098,23 +1098,31 @@ function filterItems(category, btnElement) {
       document.getElementById('itemModalCost').innerText = item.cost;
       document.getElementById('itemModalDesc').innerText = item.desc;
       
-      const recipeContainer = document.getElementById('itemModalRecipe');
-      const recipeCardBox = document.getElementById('recipeCardBox');
+      const listItems = (item.recipeItems && item.recipeItems.length > 0)
+        ? item.recipeItems
+        : ((item.buildIntoItems && item.buildIntoItems.length > 0) ? item.buildIntoItems : null);
 
-      if (item.recipeItems && item.recipeItems.length > 0) {
+    const recipeTitle = recipeCardBox.querySelector('h3, h4, .recipe-title, .card-title');
+    if (recipeTitle) {
+        recipeTitle.innerText = (item.recipeItems && item.recipeItems.length > 0)
+            ? 'Компоненты'
+            : 'Пригодится для';
+    }
+
+    if (listItems) {
         recipeCardBox.style.display = 'block';
         recipeContainer.innerHTML = '';
-        item.recipeItems.forEach(comp => {
-          recipeContainer.innerHTML += `
-            <div class="item-card-mini">
-              <img src="${comp.img}" class="item-icon" onerror="this.src='https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png';">
-              <div class="item-name-mini">${comp.name}</div>
-            </div>
-          `;
+        listItems.forEach(comp => {
+            recipeContainer.innerHTML += `
+                <div class="item-card-mini">
+                    <img src="${comp.img}" class="item-icon" onerror="this.src='https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/recipe.png'">
+                    <div class="item-name-mini">${comp.name}</div>
+                </div>
+            `;
         });
-      } else {
+    } else {
         recipeCardBox.style.display = 'none';
-      }
+    }
     fillItemBlock('itemModalForWhat', item.forWhat);
     fillItemBlock('itemModalEffect', item.effect);
     fillItemBlock('itemModalWhoNeeds', item.whoNeeds);
