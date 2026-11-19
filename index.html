@@ -850,7 +850,7 @@
       const container = document.getElementById("itemsGrid");
       if (!container) return;
 
-      container. = "";
+      container.innerHTML = "";
       const searchVal = document.getElementById('search').value.toLowerCase();
 
       const filteredItems = allGameItems(item => {
@@ -860,7 +860,7 @@
       });
 
       if (filteredItems.length === 0) {
-        container. = `<div style="grid-column: 1/-1; text-align:center; color:#888; padding:30px;">Предметы не найдены</div>`;
+        container.innerHTML = `<div style="grid-column: 1/-1; text-align:center; color:#888; padding:30px;">Предметы не найдены</div>`;
         return;
       }
 
@@ -869,7 +869,7 @@
         card.className = "item-catalog-card";
         card.onclick = () => openItemModal(item);
 
-        card. = `
+        card.innerHTML = `
           <img src="${item.img}" class="item-catalog-img" alt="${item.name}">
           <div class="item-catalog-title">${item.name}</div>
           <div class="item-catalog-cost">${item.cost} золота</div>
@@ -911,7 +911,7 @@
       document.getElementById('modalImg').src = hero.img;
       document.getElementById('modalName').innerText = hero.name;
       document.getElementById('modalDota1').innerText = "Dota 1: " + (hero.dota1 || 'Classic');
-      document.getElementById('modalBio'). = hero.bio;
+      document.getElementById('modalBio').innerHTML = hero.bio;
       
       const itemsBox = document.getElementById('itemsBox');
       if (hero.itemsBuild && hero.itemsBuild.early && hero.itemsBuild.early.length > 0) {
@@ -928,17 +928,17 @@
           itemsHtml += `<div class="item-card-mini"><img src="${item.img}" class="item-icon" onerror="this.src='https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png';"><div class="item-name-mini">${item.name}</div></div>`;
         });
         itemsHtml += `</div>`;
-        itemsBox. = itemsHtml;
+        itemsBox.innerHTML = itemsHtml;
       } else {
-        itemsBox. = "Сборка заполняется.";
+        itemsBox.innerHTML = "Сборка заполняется.";
       }
 
-      document.getElementById('countersBox'). = hero.countersInfo || "Информация заполняется.";
+      document.getElementById('countersBox').innerHTML = hero.countersInfo || "Информация заполняется.";
       document.getElementById('itemsBox').style.display = 'none';
       document.getElementById('countersBox').style.display = 'none';
 
       const skillsContainer = document.getElementById('modalSkills');
-      skillsContainer. = '';
+      skillsContainer.innerHTML = '';
       if (hero.skills && hero.skills.length > 0) {
         hero.skills.forEach((s, index) => {
           const item = document.createElement('div');
@@ -949,7 +949,7 @@
               levelsHtml += `<div class="level-row"><span><b>УР. ${l.lvl}:</b> ${l.effect}</span><span style="color:#3498db;">${l.mana} | ${l.cd}</span></div>`;
             });
           }
-          item. = `
+          item.innerHTML = `
             <div class="skill-header">
               <img src="${s.img}" class="skill-icon" alt="${s.name}" onerror="this.src='https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/base.png';">
               <div class="skill-info-title">
@@ -963,7 +963,7 @@
           skillsContainer.appendChild(item);
         });
       } else {
-        skillsContainer. = '<div style="font-size: 11px; color: #888; text-align:center; padding: 10px;">Способности добавляются...</div>';
+        skillsContainer.innerHTML = '<div style="font-size: 11px; color: #888; text-align:center; padding: 10px;">Способности добавляются...</div>';
       }
 
       document.getElementById('heroModal').style.display = 'block';
@@ -974,7 +974,7 @@ function renderItems(categoryFilter = "All") {
     const container = document.getElementById("itemsGrid");
     if (!container) return;
 
-    container. = "";
+    container.innerHTML = "";
     const searchVal = document.getElementById('search').value.toLowerCase();
 
     const filteredItems = categoryFilter.toLowerCase() === "all"
@@ -984,7 +984,7 @@ function renderItems(categoryFilter = "All") {
     const finalFiltered = filteredItems.filter(item => item.name.toLowerCase().includes(searchVal));
 
     if (finalFiltered.length === 0) {
-        container. = `<div style="grid-column: 1/-1; text-align:center; color:#888; padding:30px;">Предметы не найдены</div>`;
+        container.innerHTML = `<div style="grid-column: 1/-1; text-align:center; color:#888; padding:30px;">Предметы не найдены</div>`;
         return;
     }
 
@@ -993,7 +993,7 @@ function renderItems(categoryFilter = "All") {
         card.className = "item-catalog-card";
         card.onclick = () => openItemModal(item);
 
-        card. = `
+        card.innerHTML = `
             <img src="${item.img}" class="item-catalog-img" alt="${item.name}">
             <div class="item-catalog-title">${item.name}</div>
             <div class="item-catalog-cost">${item.cost} золота</div>
@@ -1034,7 +1034,7 @@ function filterItems(category, btnElement) {
       document.getElementById('modalImg').src = hero.img;
       document.getElementById('modalName').innerText = hero.name;
       document.getElementById('modalDota1').innerText = "Dota 1: " + (hero.dota1 || 'Classic');
-      document.getElementById('modalBio'). = hero.bio;
+      document.getElementById('modalBio').innerHTML = hero.bio;
       
       const itemsBox = document.getElementById('itemsBox');
       if (hero.itemsBuild && hero.itemsBuild.early && hero.itemsBuild.early.length > 0) {
@@ -1099,35 +1099,22 @@ function filterItems(category, btnElement) {
       document.getElementById('itemModalDesc').innerText = item.desc;
       
       const recipeContainer = document.getElementById('itemModalRecipe');
-const recipeCardBox = document.getElementById('recipeCardBox');
-      
-const listItems = (item.recipeItems && item.recipeItems.length > 0)
-    ? item.recipeItems
-    : ((item.buildIntoItems && item.buildIntoItems.length > 0) ? item.buildIntoItems : null);
+      const recipeCardBox = document.getElementById('recipeCardBox');
 
-if (recipeCardBox) {
-    const recipeTitle = recipeCardBox.querySelector('h3, h4, .recipe-title, .card-title');
-    if (recipeTitle) {
-        recipeTitle.innerText = (item.recipeItems && item.recipeItems.length > 0)
-            ? 'Компоненты'
-            : 'Пригодится для';
-    }
-}
-
-if (listItems && recipeCardBox && recipeContainer) {
-    recipeCardBox.style.display = 'block';
-    recipeContainer.innerHTML = '';
-    listItems.forEach(comp => {
-        recipeContainer.innerHTML += `
+      if (item.recipeItems && item.recipeItems.length > 0) {
+        recipeCardBox.style.display = 'block';
+        recipeContainer.innerHTML = '';
+        item.recipeItems.forEach(comp => {
+          recipeContainer.innerHTML += `
             <div class="item-card-mini">
-                <img src="${comp.img}" class="item-icon" onerror="this.src='https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/recipe.png'">
-                <div class="item-name-mini">${comp.name}</div>
+              <img src="${comp.img}" class="item-icon" onerror="this.src='https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/branches.png';">
+              <div class="item-name-mini">${comp.name}</div>
             </div>
-        `;
-    });
-} else if (recipeCardBox) {
-    recipeCardBox.style.display = 'none';
-}
+          `;
+        });
+      } else {
+        recipeCardBox.style.display = 'none';
+      }
     fillItemBlock('itemModalForWhat', item.forWhat);
     fillItemBlock('itemModalEffect', item.effect);
     fillItemBlock('itemModalWhoNeeds', item.whoNeeds);
