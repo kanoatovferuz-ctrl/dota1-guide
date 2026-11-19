@@ -4602,6 +4602,18 @@ if (recipeTitle) {
       } else {
         recipeCardBox.style.display = 'none';
       }
+      function fillItemBlock(elementId, text) {
+      const el = document.getElementById(elementId);
+      if (!el) return;
+      const card = el.closest('.guide-dropdown-card') || el.parentElement;
+      if (text && String(text).trim()) {
+        el.innerText = text;
+        if (card) card.style.display = '';
+      } else {
+        el.innerText = '';
+        if (card) card.style.display = 'none';
+      }
+    }
     fillItemBlock('itemModalForWhat', item.forWhat);
     fillItemBlock('itemModalEffect', item.effect);
     fillItemBlock('itemModalWhoNeeds', item.whoNeeds);
