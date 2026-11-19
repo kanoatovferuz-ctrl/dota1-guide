@@ -1100,8 +1100,12 @@ function filterItems(category, btnElement) {
       
       const recipeContainer = document.getElementById('itemModalRecipe');
       const recipeCardBox = document.getElementById('recipeCardBox');
-
+const recipeTitle = recipeCardBox.querySelector('h3, h4, .recipe-title, .card-title');
+if (recipeTitle) {
+    recipeTitle.innerText = item.recipeTitle || 'Компоненты';
+}
       if (item.recipeItems && item.recipeItems.length > 0) {
+        
         recipeCardBox.style.display = 'block';
         recipeContainer.innerHTML = '';
         item.recipeItems.forEach(comp => {
