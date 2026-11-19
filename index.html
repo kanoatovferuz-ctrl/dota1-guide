@@ -4623,27 +4623,46 @@ if (recipeTitle) {
 
     function closeModal() { document.getElementById('heroModal').style.display = 'none'; }
     function closeItemModal() { document.getElementById('itemModal').style.display = 'none'; }
+    const WORKER_URL = "https://silent-meadow-d9ba.kanoatovferuz.workers.dev";
     function openFeedbackModal() { document.getElementById('feedbackModal').style.display = 'block'; }
     function closeFeedbackModal() { document.getElementById('feedbackModal').style.display = 'none'; }
 
-    function sendFeedback() {
-      const text = document.getElementById('feedbackText').value.trim();
-      if (!text) return alert("Введите текст");
-      alert("Отзыв отправлен!");
-      closeFeedbackModal();
-    }
-function fillItemBlock(elementId, text) {
-    const el = document.getElementById(elementId);
-    const card = el ? el.closest('.guide-dropdown-card') : null;
-    if (!el) return;
+ async function sendFeedback() {
+  const textarea = document.getElementById('feedbackText');
+  const message = textarea ? textarea.value.trim() : '';
 
-    if (text && String(text).trim()) {
-        el.innerText = text;
-        if (card) card.style.display = 'block';
+  if (!message) {
+    alert("Введите текст");
+    return;
+  }
+
+  try {
+    const tgUser = window.Telegram?.WebApp?.initDataUnsafe?.user;
+    const autoUser = tgUser
+      ? (tgUser.username ? `@${tgUser.username}` : `${tgUser.first_name || ""} (ID: ${tgUser.id})`).trim()
+      : "Гость";
+
+    const res = await fetch(WORKER_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        type: "отзыв",
+        user: autoUser,
+        message,
+      }),
+    });
+
+    const data = await res.json();
+    if (data.ok) {
+      alert("Отзыв отправлен!");
+      textarea.value = "";
+      closeFeedbackModal();
     } else {
-        el.innerText = '';
-        if (card) card.style.display = 'none';
+      alert("Ошибка при отправке. Попробуй ещё раз.");
     }
+  } catch (e) {
+    alert("Не удалось связаться с сервером отправки.");
+  }
 }
     renderHeroes();
   </script>
